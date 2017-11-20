@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="testServices.SearchSvcTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2017-11-20T15:43:56" hostname="/0:0:0:0:0:0:0:1%lo" time="0.622">
+  <properties/>
+  <testcase name="searchSeries_NombreExactoYSerieEnBDL_DevuelveSerie" classname="testServices.SearchSvcTest" time="0.622"/>
+  <system-out><![CDATA[HOLA
+null
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
