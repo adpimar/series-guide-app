@@ -2,14 +2,14 @@ package impl;
 
 import java.util.List;
 
-import abs.SearchService;
-import abs.TheTVDBManager;
+import abs.ISearchService;
+import abs.IRemoteManager;
 
-public class SearchSvc implements SearchService {
+public class SearchSvc implements ISearchService {
 
-	private TheTVDBManager theTVDBManager;
+	private IRemoteManager theTVDBManager;
 	
-	public SearchSvc(TheTVDBManager theTVDBManager) {
+	public SearchSvc(IRemoteManager theTVDBManager) {
 		this.theTVDBManager = theTVDBManager;
 	}
 	

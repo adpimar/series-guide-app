@@ -7,17 +7,17 @@ import java.util.LinkedList;
 
 import org.junit.Test;
 
-import abs.SearchService;
-import abs.TheTVDBManager;
+import abs.ISearchService;
+import abs.IRemoteManager;
 import impl.SearchSvc;
 
 public class SearchSvcTest {
 	
 	@Test
 	public void prueba() {
-		TheTVDBManager theTVDBMock = mock(TheTVDBManager.class);
+		IRemoteManager theTVDBMock = mock(IRemoteManager.class);
 		when(theTVDBMock.searchSeries("Game of Thrones")).thenReturn(new LinkedList<String>());
-		SearchService searchService = new SearchSvc(theTVDBMock);
+		ISearchService searchService = new SearchSvc(theTVDBMock);
 		System.out.println(searchService.searchSeries("Game of Thrones"));
 	}
 	
