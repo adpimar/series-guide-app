@@ -3,9 +3,8 @@ package impl;
 import java.io.IOException;
 import java.net.URI;
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -43,8 +42,8 @@ public class TheTVDBAdapter implements IRemoteManager {
 	// ------------------------------------------------------------------------
 
 	@Override
-	public List<String> searchSeries(String pattern) {
-		List<String> series = new LinkedList<>();
+	public Map<Long, String> searchSeries(String pattern) {
+		Map<Long, String> theTVDBSeries = new TreeMap<>();
 
 		Response response = client
 				.target(getBaseURI())
@@ -58,15 +57,33 @@ public class TheTVDBAdapter implements IRemoteManager {
 
 		try {
 			JsonParser jsonParser = jsonFactory.createParser(response.readEntity(String.class));
-
+			
+			String idSerie = null;
+			String serieName = null;
+			
 			while (!jsonParser.isClosed()) {
 				JsonToken jsonToken = jsonParser.nextToken();
-
+				
 				if (JsonToken.FIELD_NAME.equals(jsonToken)) {
-					String fieldName = jsonParser.getCurrentName();
-					jsonParser.nextToken();
-					System.out.println(fieldName + " : " + jsonParser.getValueAsString());
+					
+					if (jsonParser.getCurrentName().equals("id")) {
+						jsonParser.nextToken();
+						idSerie = jsonParser.getValueAsString();
+					}
+					
+					if (jsonParser.getCurrentName().equals("seriesName")) {
+						jsonParser.nextToken();
+						serieName = jsonParser.getValueAsString();
+					}
+					
+					if (idSerie != null && serieName != null) {
+						theTVDBSeries.put(Long.parseLong(idSerie), serieName);
+						idSerie = null;
+						serieName = null;
+					}
+
 				}
+
 			}
 
 		} catch (IOException e) {
@@ -75,7 +92,7 @@ public class TheTVDBAdapter implements IRemoteManager {
 
 		response.close();
 
-		return series;
+		return theTVDBSeries;
 	}
 	
 	public Serie getSerie(long id) {
@@ -140,8 +157,8 @@ public class TheTVDBAdapter implements IRemoteManager {
 
 	public static void main(String[] args) {
 		TheTVDBAdapter adapter = new TheTVDBAdapter();
-		//adapter.searchSeries("The OA");
-		System.out.println(adapter.getSerie(321060));
+		System.out.println(adapter.searchSeries("The OA").values());
+		//System.out.println(adapter.getSerie(321060));
 	}
 
 }

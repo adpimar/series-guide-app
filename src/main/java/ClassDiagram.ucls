@@ -30,7 +30,7 @@
   </class>  
   <interface id="4" language="java" name="abs.services.ICheckAsViewedService" project="SeriesGuide" 
     file="/SeriesGuide/src/main/java/abs/services/ICheckAsViewedService.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1466" y="364"/>    
+    <position height="-1" width="-1" x="1466" y="382"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -84,7 +84,7 @@
   </interface>  
   <class id="10" language="java" name="impl.services.CheckAsViewedSvc" project="SeriesGuide" 
     file="/SeriesGuide/src/main/java/impl/services/CheckAsViewedSvc.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1466" y="611"/>    
+    <position height="-1" width="-1" x="1466" y="629"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -111,7 +111,7 @@
   </interface>  
   <interface id="13" language="java" name="abs.ILocalManager" project="SeriesGuide" 
     file="/SeriesGuide/src/main/java/abs/ILocalManager.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="939" y="893"/>    
+    <position height="-1" width="-1" x="705" y="917"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -129,7 +129,7 @@
   </interface>  
   <class id="15" language="java" name="impl.SeriesDAO" project="SeriesGuide" 
     file="/SeriesGuide/src/main/java/impl/SeriesDAO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="940" y="1051"/>    
+    <position height="-1" width="-1" x="706" y="1075"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -283,16 +283,24 @@
   </association>  
   <association id="56">    
     <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="57" name="getAndListService"/>      
-      <multiplicity id="58" minimum="0" maximum="1"/>    
+      <attribute id="57" name="getAndListService">        
+        <position height="18" width="97" x="212" y="272"/>      
+      </attribute>      
+      <multiplicity id="58" minimum="0" maximum="1">        
+        <position height="16" width="23" x="312" y="263"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="59">    
     <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="60" name="checkAsViewedService"/>      
-      <multiplicity id="61" minimum="0" maximum="1"/>    
+      <attribute id="60" name="checkAsViewedService">        
+        <position height="18" width="126" x="1298" y="271"/>      
+      </attribute>      
+      <multiplicity id="61" minimum="0" maximum="1">        
+        <position height="16" width="23" x="1394" y="285"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  

@@ -10,9 +10,15 @@ public class CheckAsViewedSvc implements ICheckAsViewedService {
 	public CheckAsViewedSvc(ILocalManager localManager) {
 		this.localManager = localManager;
 	}
-	
+
 	@Override
 	public void checkEpisodeAsViewed(long idSerie, int seasonNumber, int episodeNumber) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void uncheckEpisodeAsViewed(long idSerie, int seasonNumber, int episodeNumber) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -24,7 +30,13 @@ public class CheckAsViewedSvc implements ICheckAsViewedService {
 	}
 
 	@Override
-	public void uncheckEpisodeAsViewed(long idSerie, int seasonNumber, int episodeNumber) {
+	public void checkSeasonAsViewed(long idSerie, int seasonNumber) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void uncheckSeasonAsViewed(long idSerie, int seasonNumber) {
 		// TODO Auto-generated method stub
 		
 	}

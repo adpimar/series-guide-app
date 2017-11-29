@@ -1,6 +1,7 @@
 package impl.services;
 
 import java.util.List;
+import java.util.Map;
 
 import abs.ILocalManager;
 import abs.IRemoteManager;
@@ -10,7 +11,7 @@ public class SearchSvc implements ISearchService {
 
 	private IRemoteManager remoteManager;
 	private ILocalManager localManager;
-	
+		
 	public SearchSvc(IRemoteManager remoteManager, ILocalManager localManager) {
 		this.remoteManager = remoteManager;
 		this.localManager = localManager;
@@ -22,8 +23,18 @@ public class SearchSvc implements ISearchService {
 	}
 	
 	@Override
-	public List<String> searchSeriesRemote(String pattern) {
-		return null;
+	public Map<Long, String> searchSeriesRemote(String pattern) {
+
+		Map<Long, String> listSeries = null;
+				
+		try {
+			listSeries = remoteManager.searchSeries(pattern);
+		} catch (IllegalArgumentException e) {
+			throw new IllegalArgumentException("REQUERIDO_NOMBRE_PARA_BÚSQUEDA_EN_EL_SERVIDOR_REMOTO");
+		}
+		
+		return listSeries;
+
 	}
 
 }

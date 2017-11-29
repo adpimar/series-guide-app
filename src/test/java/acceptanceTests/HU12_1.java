@@ -2,16 +2,21 @@ package acceptanceTests;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.fail;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import java.util.Map;
+import java.util.TreeMap;
 
 import org.hamcrest.core.StringStartsWith;
-import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import impl.SeriesGuideApp;
+import abs.IRemoteManager;
+import abs.services.ISearchService;
+import impl.services.SearchSvc;
 
 public class HU12_1 {
 
@@ -29,15 +34,8 @@ public class HU12_1 {
 	// series en TheTVDB mediante palabras clave que puedan aparecer en el título
 	// para poder almacenarlas en mi BDL.
 
-	private static SeriesGuideApp seriesGuideApp;
-	
 	@Rule
 	public ExpectedException thrown = ExpectedException.none();
-	
-	@BeforeClass
-	public static void creaProgramaPrincipal() {
-		seriesGuideApp = new SeriesGuideApp();
-	}
 
 	// -----------------------------------------------------------------------------
 
@@ -48,16 +46,21 @@ public class HU12_1 {
 
 	@Test
 	public void busquedaSinPalabrasClave() {
+		IRemoteManager theTVDBMock = mock(IRemoteManager.class);
+		when(theTVDBMock.searchSeries("")).thenThrow(new IllegalArgumentException("Error : Requires only one of name, imdbId, zap2itId params."));
+		ISearchService searchService = new SearchSvc(theTVDBMock, null);
+		
 		thrown.expect(IllegalArgumentException.class);
-		thrown.expectMessage(StringStartsWith.startsWith("REQUERIDO_NOMBRE"));
-		seriesGuideApp.busquedaSeriesServidorRemoto("");
+		thrown.expectMessage(StringStartsWith.startsWith("REQUERIDO_NOMBRE"));	
+		
+		searchService.searchSeriesRemote("");
 	}
 
 	// PRUEBA DE ACEPTACIÓN 12.1.1.2
 
 	@Test
 	public void busquedaConUnaPalabrasClave() {
-		Map<Long, String> series = seriesGuideApp.busquedaSeriesServidorRemoto("Thrones");
+		Map<Long, String> fakeListSeries = new TreeMap<>();
 		
 		String[] serieIdsAndNames = {
 				"268310", "School of Thrones",
@@ -69,24 +72,35 @@ public class HU12_1 {
 				"321282", "Tribe of Hip Hop"
 				};
 		
-		assertEquals(series.size(), serieIdsAndNames.length / 2);
+		for (int i = 0; i < serieIdsAndNames.length; i += 2)
+			fakeListSeries.put(Long.parseLong(serieIdsAndNames[i]), serieIdsAndNames[i+1]);
 		
-		String serie;
-		for (int i = 0; i < serieIdsAndNames.length; i += 2) {
-			serie = null;
-			assertNotNull(serie = series.get(Long.valueOf(serieIdsAndNames[i])));
-			assertEquals(serie, serieIdsAndNames[i+1]);
-		}
+		IRemoteManager theTVDBMock = mock(IRemoteManager.class);
+		when(theTVDBMock.searchSeries("Thrones")).thenReturn(fakeListSeries);
+		
+		ISearchService searchService = new SearchSvc(theTVDBMock, null);
+		Map<Long, String> listSeries = searchService.searchSeriesRemote("Thrones");
+		
+		assertEquals(listSeries.size(), fakeListSeries.size());
+		assertEquals(listSeries, fakeListSeries);
 	}
 
 	// PRUEBA DE ACEPTACIÓN 12.1.1.3
 
 	@Test
 	public void busquedaConVariasPalabrasClave() {
-		Map<Long, String> series = seriesGuideApp.busquedaSeriesServidorRemoto("Game of Thrones");
+		Map<Long, String> fakeListSeries = new TreeMap<>();
+		fakeListSeries.put(Long.valueOf(121361), "Game of Thrones");
+		
+		IRemoteManager theTVDBMock = mock(IRemoteManager.class);
+		when(theTVDBMock.searchSeries("Game of Thrones")).thenReturn(fakeListSeries);
+		
+		ISearchService searchService = new SearchSvc(theTVDBMock, null);
+		Map<Long, String> listSeries = searchService.searchSeriesRemote("Game of Thrones");
+		
 		String serie = null;
-		assertEquals(series.size(), 1);
-		assertNotNull(serie = series.get(Long.valueOf(121361)));
+		assertEquals(listSeries.size(), 1);
+		assertNotNull(serie = listSeries.get(Long.valueOf(121361)));
 		assertEquals(serie, "Game of Thrones");
 	}
 
@@ -99,7 +113,7 @@ public class HU12_1 {
 
 	@Test
 	public void busquedaDeSerieInexistente() {
-
+		fail();
 	}
 
 	// -----------------------------------------------------------------------------
@@ -111,14 +125,14 @@ public class HU12_1 {
 
 	@Test
 	public void busquedaConErrorServidor() {
-
+		fail();
 	}
 
 	// PRUEBA DE ACEPTACIÓN 12.1.3.2
 
 	@Test
 	public void busquedaConTimeout() {
-
+		fail();
 	}
 
 }
