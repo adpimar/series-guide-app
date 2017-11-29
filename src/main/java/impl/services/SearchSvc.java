@@ -1,10 +1,10 @@
-package impl;
+package impl.services;
 
 import java.util.List;
 
 import abs.ILocalManager;
 import abs.IRemoteManager;
-import abs.ISearchService;
+import abs.services.ISearchService;
 
 public class SearchSvc implements ISearchService {
 

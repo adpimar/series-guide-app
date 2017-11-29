@@ -7,9 +7,9 @@ import java.util.LinkedList;
 
 import org.junit.Test;
 
-import abs.ISearchService;
 import abs.IRemoteManager;
-import impl.SearchSvc;
+import abs.services.ISearchService;
+import impl.services.SearchSvc;
 
 public class SearchSvcTest {
 	

@@ -1,18 +1,24 @@
 package impl;
 
-import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import abs.ISearchService;
+import abs.services.ICheckAsViewedService;
+import abs.services.IDeleteService;
+import abs.services.IGetAndListService;
+import abs.services.ISearchService;
+import abs.services.IStoreService;
+import abs.services.IUpdateOverviewService;
 
 public class SeriesGuideApp {
 
 	private ISearchService searchService;
-	
-	private List<Serie> series;
-	
-	
+	private ICheckAsViewedService checkAsViewedService;
+	private IDeleteService deleteService;
+	private IGetAndListService getAndListService;
+	private IStoreService storeService;
+	private IUpdateOverviewService updateOverviewService;
+
 	public Map<Long, String> busquedaSeriesServidorRemoto(String pattern) {
 		
 		if (pattern.isEmpty())

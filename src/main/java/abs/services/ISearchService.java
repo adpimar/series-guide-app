@@ -1,4 +1,4 @@
-package abs;
+package abs.services;
 
 import java.util.List;
 
