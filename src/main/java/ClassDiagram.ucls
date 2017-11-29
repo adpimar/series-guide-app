@@ -12,7 +12,7 @@
   </interface>  
   <class id="2" language="java" name="impl.TheTVDBAdapter" project="SeriesGuide" 
     file="/SeriesGuide/src/main/java/impl/TheTVDBAdapter.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1008" y="632"/>    
+    <position height="-1" width="-1" x="1009" y="723"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -48,7 +48,7 @@
   </class>  
   <class id="6" language="java" name="impl.Season" project="SeriesGuide" 
     file="/SeriesGuide/src/main/java/impl/Season.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1368" y="221"/>    
+    <position height="-1" width="-1" x="1364" y="562"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -57,7 +57,7 @@
   </class>  
   <class id="7" language="java" name="impl.Episode" project="SeriesGuide" 
     file="/SeriesGuide/src/main/java/impl/Episode.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1368" y="344"/>    
+    <position height="-1" width="-1" x="1364" y="685"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -73,8 +73,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="9" language="java" name="impl.Client" project="SeriesGuide" 
-    file="/SeriesGuide/src/main/java/impl/Client.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="9" language="java" name="impl.SeriesGuideApp" project="SeriesGuide" 
+    file="/SeriesGuide/src/main/java/impl/SeriesGuideApp.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="585" y="105"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -82,60 +82,84 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="10">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="11" name="episodes"/>      
-      <multiplicity id="12" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="13">    
+  <realization id="10">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="4"/>  
+  </realization>  
+  <realization id="11">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="1"/>  
+  </realization>  
+  <association id="12">    
     <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="14" name="theTVDBManager"/>      
-      <multiplicity id="15" minimum="0" maximum="1"/>    
+      <attribute id="13" name="theTVDBManager">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="14" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="16">    
+  <association id="15">    
     <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="17" name="localManager"/>      
-      <multiplicity id="18" minimum="0" maximum="1"/>    
+      <attribute id="16" name="localManager">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="17" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="19">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="4"/>  
-  </realization>  
-  <association id="20">    
+  <association id="18">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="19" name="searchService">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="20" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="21">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="22" name="episodes">        
+        <position height="0" width="0" x="-4" y="341"/>      
+      </attribute>      
+      <multiplicity id="23" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-4" y="341"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="24">    
     <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="21" name="seasons"/>      
-      <multiplicity id="22" minimum="0" maximum="2147483647"/>    
+      <attribute id="25" name="seasons">        
+        <position height="0" width="0" x="-4" y="341"/>      
+      </attribute>      
+      <multiplicity id="26" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-4" y="341"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="23">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="24" name="series"/>      
-      <multiplicity id="25" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="26">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="1"/>  
-  </realization>  
   <association id="27">    
     <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="28" name="searchService"/>      
-      <multiplicity id="29" minimum="0" maximum="1"/>    
+      <attribute id="28" name="series">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="29" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
+    <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
