@@ -17,8 +17,8 @@ public class SearchSvcTest {
 	public void prueba() {
 		IRemoteManager theTVDBMock = mock(IRemoteManager.class);
 		when(theTVDBMock.searchSeries("Game of Thrones")).thenReturn(new LinkedList<String>());
-		ISearchService searchService = new SearchSvc(theTVDBMock);
-		System.out.println(searchService.searchSeries("Game of Thrones"));
+		ISearchService searchService = new SearchSvc(theTVDBMock, null);
+		System.out.println(searchService.searchSeriesRemote("Game of Thrones"));
 	}
 	
 	@Test

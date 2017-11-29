@@ -4,12 +4,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import abs.ILocalManager;
 import abs.ISearchService;
 
 public class SeriesGuideApp {
 
-	private ILocalManager localManager;
 	private ISearchService searchService;
 	
 	private List<Serie> series;
