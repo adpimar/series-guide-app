@@ -18,31 +18,31 @@ import abs.IRemoteManager;
 import abs.services.ISearchService;
 import impl.services.SearchSvc;
 
-public class HU12_1 {
+public class R12_HU1 {
 
 	// 503 Service Unavailable
 	// No server is available to handle this request.
 
 	// REQUISITO 12
-	// Debe permitir la realización de búsquedas por Internet usando los servicios
-	// REST que proporciona el API del servidor TheTVDB. Las búsquedas se realizarán
-	// siempre mediante palabras clave que puedan aparecer en el título de una
+	// Debe permitir la realizaciÃ³n de bÃºsquedas por Internet usando los servicios
+	// REST que proporciona el API del servidor TheTVDB. Las bÃºsquedas se realizarÃ¡n
+	// siempre mediante palabras clave que puedan aparecer en el tÃ­tulo de una
 	// serie.
 
 	// HISTORIA DE USUARIO 12.1
-	// Como usuario quiero que a través de la aplicación pueda realizar búsquedas de
-	// series en TheTVDB mediante palabras clave que puedan aparecer en el título
+	// Como usuario quiero que a travÃ©s de la aplicaciÃ³n pueda realizar bÃºsquedas de
+	// series en TheTVDB mediante palabras clave que puedan aparecer en el tÃ­tulo
 	// para poder almacenarlas en mi BDL.
-
+	
 	@Rule
 	public ExpectedException thrown = ExpectedException.none();
 
 	// -----------------------------------------------------------------------------
 
 	// ESCENARIO 12.1.1
-	// Existe la serie a buscar en el servidor de TheTVDB (búsqueda en inglés).
-
-	// PRUEBA DE ACEPTACIÓN 12.1.1.1
+	// Existe la serie a buscar en el servidor de TheTVDB (bÃºsqueda en inglÃ©s).
+	
+	// PRUEBA DE ACEPTACIÃ“N 12.1.1.1
 
 	@Test
 	public void busquedaSinPalabrasClave() {
@@ -56,7 +56,7 @@ public class HU12_1 {
 		searchService.searchSeriesRemote("");
 	}
 
-	// PRUEBA DE ACEPTACIÓN 12.1.1.2
+	// PRUEBA DE ACEPTACIÃ“N 12.1.1.2
 
 	@Test
 	public void busquedaConUnaPalabrasClave() {
@@ -85,7 +85,7 @@ public class HU12_1 {
 		assertEquals(listSeries, fakeListSeries);
 	}
 
-	// PRUEBA DE ACEPTACIÓN 12.1.1.3
+	// PRUEBA DE ACEPTACIÃ“N 12.1.1.3
 
 	@Test
 	public void busquedaConVariasPalabrasClave() {
@@ -107,13 +107,13 @@ public class HU12_1 {
 	// -----------------------------------------------------------------------------
 
 	// ESCENARIO 12.1.2
-	// No existe la serie a buscar en el servidor de TheTVDB (búsqueda en inglés).
+	// No existe la serie a buscar en el servidor de TheTVDB (bÃºsqueda en inglÃ©s).
 
-	// PRUEBA DE ACEPTACIÓN 12.1.2.1
+	// PRUEBA DE ACEPTACIÃ“N 12.1.2.1
 
 	@Test
 	public void busquedaDeSerieInexistente() {
-		fail();
+		fail("No implementada todavÃ­a");
 	}
 
 	// -----------------------------------------------------------------------------
@@ -121,18 +121,18 @@ public class HU12_1 {
 	// ESCENARIO 12.1.3
 	// Surgen problemas con el servidor de TheTVDB.
 
-	// PRUEBA DE ACEPTACIÓN 12.1.3.1
+	// PRUEBA DE ACEPTACIÃ“N 12.1.3.1
 
 	@Test
 	public void busquedaConErrorServidor() {
-		fail();
+		fail("No implementada todavÃ­a");
 	}
 
-	// PRUEBA DE ACEPTACIÓN 12.1.3.2
+	// PRUEBA DE ACEPTACIÃ“N 12.1.3.2
 
 	@Test
 	public void busquedaConTimeout() {
-		fail();
+		fail("No implementada todavÃ­a");
 	}
 
 }
