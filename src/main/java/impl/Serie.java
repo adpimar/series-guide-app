@@ -28,18 +28,18 @@ public class Serie {
 		StringBuilder sb = new StringBuilder();
 		sb.append("[ SERIE ]");
 		sb.append("\nId                 : " + id);
-		sb.append("\nT韙ulo             : " + titulo);
+		sb.append("\nT铆tulo             : " + titulo);
 		sb.append("\nEstado             : " + estado);
-		sb.append("\nInicio de emisi髇  : " + inicioEmision);
-		sb.append("\nD韆 de emisi髇     : " + diaEmision);
-		sb.append("\nHorario de emisi髇 : " + horarioEmision);
+		sb.append("\nInicio de emisi贸n  : " + inicioEmision);
+		sb.append("\nD铆a de emisi贸n     : " + diaEmision);
+		sb.append("\nHorario de emisi贸n : " + horarioEmision);
 		sb.append("\nCadena             : " + cadena);
-		sb.append("\nG閚eros            : ");
+		sb.append("\nG茅neros            : ");
 
 		for (String genero : generos)
 			sb.append(genero + " ");
 		
-		sb.append("\nPuntuaci髇         : " + puntuacion);
+		sb.append("\nPuntuaci贸n         : " + puntuacion);
 		sb.append("\nTotal puntuaciones : " + totalPuntuaciones);
 		sb.append("\nSinopsis           : " + sinopsis);
 		

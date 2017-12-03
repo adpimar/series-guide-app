@@ -30,7 +30,7 @@ public class SearchSvc implements ISearchService {
 		try {
 			listSeries = remoteManager.searchSeries(pattern);
 		} catch (IllegalArgumentException e) {
-			throw new IllegalArgumentException("REQUERIDO_NOMBRE_PARA_BÚSQUEDA_EN_EL_SERVIDOR_REMOTO");
+			throw new IllegalArgumentException("REQUERIDO_NOMBRE_PARA_BÃšSQUEDA_EN_EL_SERVIDOR_REMOTO");
 		}
 		
 		return listSeries;
