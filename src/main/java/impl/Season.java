@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Season {
 	
+	private int numeroTemporada;
 	private String inicioEmision;
 	private String estado;
 	private String vista;
@@ -18,7 +19,7 @@ public class Season {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append("[ SEASON ]");
+		sb.append("[ SEASON "+ numeroTemporada +" ]");
 		sb.append("\nInicio de emisión  : " + inicioEmision);
 		sb.append("\nEstado             : " + estado);
 		sb.append("\nVista	            : " + vista);
