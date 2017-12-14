@@ -21,6 +21,7 @@ public class Serie {
 	
 	public Serie() {
 		generos = new LinkedList<>();
+		seasons = new LinkedList<>();
 	}
 
 	@Override
