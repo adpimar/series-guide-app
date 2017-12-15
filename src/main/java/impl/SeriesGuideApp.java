@@ -22,7 +22,7 @@ public class SeriesGuideApp {
 	public Map<Long, String> busquedaSeriesServidorRemoto(String pattern) {
 		
 		if (pattern.isEmpty())
-			throw new IllegalArgumentException("REQUERIDO_NOMBRE_PARA_BÚSQUEDA_EN_EL_SERVIDOR_REMOTO");
+			throw new IllegalArgumentException("REQUERIDO_NOMBRE_PARA_BÃšSQUEDA_EN_EL_SERVIDOR_REMOTO");
 		
 		Map<Long, String> series = new TreeMap<>();
 		
