@@ -1,5 +1,9 @@
 package acceptance;
 
+import static org.junit.Assert.fail;
+
+import org.junit.Test;
+
 public class R07_HU2 {
 
 	// REQUISITO 07
@@ -18,7 +22,11 @@ public class R07_HU2 {
 	// El episodio está almacenado en la BDL + está indicado como no visto.
 
 	// PRUEBA DE ACEPTACIÓN 07.2.1.1
-	//
+	
+	@Test
+	public void comentarEpisodio_ExisteEpisodioNoVisto_Excepcion() {
+		fail("Not yet implemented");
+	}
 
 	// -----------------------------------------------------------------------------
 
@@ -27,14 +35,26 @@ public class R07_HU2 {
 	// comentado.
 
 	// PRUEBA DE ACEPTACIÓN 07.2.2.1
-	// No se introducen caracteres (cadena vacía).
+	
+	@Test
+	public void comentarEpisodio_ExisteEpisodioVistoCadenaVacia_CadenaVacia() {
+		fail("Not yet implemented");
+	}
 
 	// PRUEBA DE ACEPTACIÓN 07.2.2.2
-	// No excede los 150 caracteres.
 
+	@Test
+	public void comentarEpisodio_ExisteEpisodioVistoCadenaMenor150Caracteres_Cadena() {
+		fail("Not yet implemented");
+	}
+	
 	// PRUEBA DE ACEPTACIÓN 07.2.2.3
-	// Excede los 150 caracteres.
 
+	@Test
+	public void comentarEpisodio_ExisteEpisodioVistoCadenaMayor150Caracteres_Excepcion() {
+		fail("Not yet implemented");
+	}
+	
 	// -----------------------------------------------------------------------------
 
 	// ESCENARIO 07.2.3
@@ -42,14 +62,22 @@ public class R07_HU2 {
 	// comentado.
 
 	// PRUEBA DE ACEPTACIÓN 07.2.3.1
-	//
+	
+	@Test
+	public void comentarEpisodio_ExisteEpisodioVistoComentado_NuevoComentario() {
+		fail("Not yet implemented");
+	}
 
 	// -----------------------------------------------------------------------------
 
 	// ESCENARIO 07.2.4
 	// El episodio no está almacenado en la BDL.
-
+	
 	// PRUEBA DE ACEPTACIÓN 07.2.4.1
-	//
+	
+	@Test
+	public void comentarEpisodio_NoExisteEpisodio_Excepcion() {
+		fail("Not yet implemented");
+	}
 
 }

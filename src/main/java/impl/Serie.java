@@ -47,7 +47,7 @@ public class Serie {
 		return sb.toString();
 	}
 	
-	// ------------------------------------------------------------------------
+	// ---------------------------- GETTERS && SETTERS -----------------------------
 
 	public long getId() {
 		return id;
@@ -96,8 +96,6 @@ public class Serie {
 	public List<Season> getSeasons() {
 		return seasons;
 	}
-
-	// ------------------------------------------------------------------------
 
 	public void setId(long id) {
 		this.id = id;

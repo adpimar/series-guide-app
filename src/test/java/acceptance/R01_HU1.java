@@ -1,5 +1,9 @@
 package acceptance;
 
+import static org.junit.Assert.fail;
+
+import org.junit.Test;
+
 public class R01_HU1 {
 
 	// REQUISITO 01
@@ -17,6 +21,11 @@ public class R01_HU1 {
 
 	// PRUEBA DE ACEPTACIÓN 01.1.1.1
 
+	@Test
+	public void listar_ExistenVariasSeries_DosSeries() {
+		fail("Not yet implemented");
+	}
+
 	// -----------------------------------------------------------------------------
 
 	// ESCENARIO 01.1.2
@@ -24,11 +33,21 @@ public class R01_HU1 {
 
 	// PRUEBA DE ACEPTACIÓN 01.1.2.1
 
+	@Test
+	public void listar_ExisteUnaSerie_UnaSerie() {
+		fail("Not yet implemented");
+	}
+
 	// -----------------------------------------------------------------------------
 
 	// ESCENARIO 01.1.3
 	// No existe ninguna serie almacenada en la BDL.
 
 	// PRUEBA DE ACEPTACIÓN 01.1.3.1
+
+	@Test
+	public void listar_NoExistenSeries_Excepcion() {
+		fail("Not yet implemented");
+	}
 
 }

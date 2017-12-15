@@ -9,25 +9,25 @@ public class Episode {
 	private String visto;
 	private long id;
 	private String comentario;
-	
+
 	public Episode() {
-		
+
 	}
-	
+
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append("[ EPISODE "+ numeroEpisodio +" ]");
-		sb.append("\nTítulo			    : " + titulo);
+		sb.append("[ EPISODE " + numeroEpisodio + " ]");
+		sb.append("\nTÃ­tulo			    : " + titulo);
 		sb.append("\nfechaEmision       : " + fechaEmision);
 		sb.append("\nVisto	            : " + visto);
 		sb.append("\nId  	            : " + id);
 		sb.append("\nComentario         : " + comentario);
-		
+
 		return sb.toString();
 	}
 
-	// ------------------------ GETTERS && SETTERS ---------------------------------------
+	// ---------------------------- GETTERS && SETTERS -----------------------------
 
 	public String getTitulo() {
 		return titulo;
@@ -76,6 +76,5 @@ public class Episode {
 	public void setComentario(String comentario) {
 		this.comentario = comentario;
 	}
-
 
 }

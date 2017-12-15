@@ -1,5 +1,9 @@
 package acceptance;
 
+import static org.junit.Assert.fail;
+
+import org.junit.Test;
+
 public class R05_HU1 {
 
 	// REQUISITO 05
@@ -17,8 +21,26 @@ public class R05_HU1 {
 	// el episodio está almacenado en la BDL.
 
 	// PRUEBA DE ACEPTACIÓN 05.1.1.1
-	//
+	
+	@Test
+	public void getInfoEpisodio_ExisteSerieExisteTemporadaExisteEpidosio_UnaSerieUnaTemporada_UnaInfo() {
+		fail("Not yet implemented");
+	}
+	
+	// PRUEBA DE ACEPTACIÓN 05.1.1.2
+	
+	@Test
+	public void getInfoEpisodio_ExisteSerieExisteTemporadaExisteEpidosio_UnaSerieVariasTemporadas_UnaInfo() {
+		fail("Not yet implemented");
+	}
+	
+	// PRUEBA DE ACEPTACIÓN 05.1.1.3
 
+	@Test
+	public void getInfoEpisodio_ExisteSerieExisteTemporadaExisteEpidosio_VariasSeriesVariasTemporadas_UnaInfo() {
+		fail("Not yet implemented");
+	}
+	
 	// -----------------------------------------------------------------------------
 
 	// ESCENARIO 05.1.2
@@ -26,7 +48,11 @@ public class R05_HU1 {
 	// el episodio no está almacenado en la BDL.
 
 	// PRUEBA DE ACEPTACIÓN 05.1.2.1
-	//
+	
+	@Test
+	public void getInfoEpisodio_ExisteSerieExisteTemporadaNoExisteEpidosio_Excepcion() {
+		fail("Not yet implemented");
+	}
 
 	// -----------------------------------------------------------------------------
 
@@ -35,7 +61,11 @@ public class R05_HU1 {
 	// BDL.
 
 	// PRUEBA DE ACEPTACIÓN 05.1.3.1
-	//
+	
+	@Test
+	public void getInfoEpisodio_ExisteSerieNoExisteTemporada_Excepcion() {
+		fail("Not yet implemented");
+	}
 
 	// -----------------------------------------------------------------------------
 
@@ -43,6 +73,10 @@ public class R05_HU1 {
 	// La serie no está almacenada en la BDL.
 
 	// PRUEBA DE ACEPTACIÓN 05.1.4.1
-	//
+	
+	@Test
+	public void getInfoEpisodio_NoExisteSerie_Excepcion() {
+		fail("Not yet implemented");
+	}
 
 }

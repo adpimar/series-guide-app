@@ -1,5 +1,9 @@
 package acceptance;
 
+import static org.junit.Assert.fail;
+
+import org.junit.Test;
+
 public class R07_HU1 {
 
 	// REQUISITO 07
@@ -18,7 +22,11 @@ public class R07_HU1 {
 	// El episodio está almacenado en la BDL + está indicado como no visto.
 
 	// PRUEBA DE ACEPTACIÓN 07.1.1.1
-	//
+	
+	@Test
+	public void indicarVistoEpisodio_ExisteEpisodioNoVisto_EpisodioVisto() {
+		fail("Not yet implemented");
+	}
 
 	// -----------------------------------------------------------------------------
 
@@ -27,7 +35,11 @@ public class R07_HU1 {
 	// comentado.
 
 	// PRUEBA DE ACEPTACIÓN 07.1.2.1
-	//
+	
+	@Test
+	public void indicarVistoEpisodio_ExisteEpisodioVistoNoComentado_Excepcion() {
+		fail("Not yet implemented");
+	}
 
 	// -----------------------------------------------------------------------------
 
@@ -36,7 +48,11 @@ public class R07_HU1 {
 	// comentado.
 
 	// PRUEBA DE ACEPTACIÓN 07.1.3.1
-	//
+	
+	@Test
+	public void indicarVistoEpisodio_ExisteEpisodioVistoComentado_Excepcion() {
+		fail("Not yet implemented");
+	}
 
 	// -----------------------------------------------------------------------------
 
@@ -44,6 +60,10 @@ public class R07_HU1 {
 	// El episodio no está almacenado en la BDL.
 
 	// PRUEBA DE ACEPTACIÓN 07.1.4.1
-	//
+	
+	@Test
+	public void indicarVistoEpisodio_NoExisteEpisodio_Excepcion() {
+		fail("Not yet implemented");
+	}
 
 }

@@ -1,5 +1,9 @@
 package acceptance;
 
+import static org.junit.Assert.fail;
+
+import org.junit.Test;
+
 public class R03_HU1 {
 
 	// REQUISITO 03
@@ -16,20 +20,36 @@ public class R03_HU1 {
 	// La serie está almacenada en la BDL.
 
 	// PRUEBA DE ACEPTACIÓN 03.1.1.1
-	// No se introducen caracteres (cadena vacía).
 
+	@Test
+	public void setSinopsisSerie_CadenaVacia_CadenaVacia() {
+		fail("Not yet implemented");
+	}
+	
 	// PRUEBA DE ACEPTACIÓN 03.1.1.2
-	// No excede los 500 caracteres.
 
+	@Test
+	public void setSinopsisSerie_CadenaMenor500Caracteres_Cadena() {
+		fail("Not yet implemented");
+	}
+	
 	// PRUEBA DE ACEPTACIÓN 03.1.1.3
-	// Excede los 500 caracteres.
 
+	@Test
+	public void setSinopsisSerie_CadenaMayor500Caracteres_Excepcion() {
+		fail("Not yet implemented");
+	}
+	
 	// -----------------------------------------------------------------------------
 
 	// ESCENARIO 03.1.2
 	// La serie no está almacenada en la BDL.
 
 	// PRUEBA DE ACEPTACIÓN 03.1.2.1
-	//
+	
+	@Test
+	public void setSinopsisSerie_NoExisteSerie_Excepcion() {
+		fail("Not yet implemented");
+	}
 
 }

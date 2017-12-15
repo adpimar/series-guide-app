@@ -1,5 +1,9 @@
 package acceptance;
 
+import static org.junit.Assert.fail;
+
+import org.junit.Test;
+
 public class R08_HU1 {
 
 	// REQUISITO 08
@@ -17,7 +21,11 @@ public class R08_HU1 {
 	// El episodio está almacenado en la BDL + está ya indicado como no visto.
 
 	// PRUEBA DE ACEPTACIÓN 08.1.1.1
-	//
+	
+	@Test
+	public void indicarNoVistoEpisodio_ExisteEpisodioNoVisto_Excepcion() {
+		fail("Not yet implemented");
+	}
 
 	// -----------------------------------------------------------------------------
 
@@ -26,7 +34,11 @@ public class R08_HU1 {
 	// comentado.
 
 	// PRUEBA DE ACEPTACIÓN 08.1.2.1
-	//
+	
+	@Test
+	public void indicarNoVistoEpisodio_ExisteEpisodioVistoNoComentado_EpisodioNoVisto() {
+		fail("Not yet implemented");
+	}
 
 	// -----------------------------------------------------------------------------
 
@@ -35,7 +47,11 @@ public class R08_HU1 {
 	// comentado.
 
 	// PRUEBA DE ACEPTACIÓN 08.1.3.1
-	//
+	
+	@Test
+	public void indicarNoVistoEpisodio_ExisteEpisodioVistoComentado_EpisodioNoVistoSinComentario() {
+		fail("Not yet implemented");
+	}
 
 	// -----------------------------------------------------------------------------
 
@@ -43,6 +59,10 @@ public class R08_HU1 {
 	// El episodio no está almacenado en la BDL.
 
 	// PRUEBA DE ACEPTACIÓN 08.1.4.1
-	//
+	
+	@Test
+	public void indicarNoVistoEpisodio_NoExisteEpisodio_Excepcion() {
+		fail("Not yet implemented");
+	}
 
 }

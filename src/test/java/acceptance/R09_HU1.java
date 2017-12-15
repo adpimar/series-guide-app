@@ -1,5 +1,9 @@
 package acceptance;
 
+import static org.junit.Assert.fail;
+
+import org.junit.Test;
+
 public class R09_HU1 {
 
 	// REQUISITO 09
@@ -16,13 +20,25 @@ public class R09_HU1 {
 	// La temporada está almacenada en la BDL + tiene varios episodios almacenados.
 
 	// PRUEBA DE ACEPTACIÓN 09.1.1.1
-	// Ninguno indicado como visto.
+	
+	@Test
+	public void eliminarTemporada_ExisteTemporadaConVariosEpisodiosNoVistos_TemporadaBorrada() {
+		fail("Not yet implemented");
+	}
 
 	// PRUEBA DE ACEPTACIÓN 09.1.1.2
-	// Al menos uno indicado como visto.
 
+	@Test
+	public void eliminarTemporada_ExisteTemporadaConVariosEpisodiosAlgunoVisto_TemporadaBorrada() {
+		fail("Not yet implemented");
+	}
+	
 	// PRUEBA DE ACEPTACIÓN 09.1.1.3
-	// Al menos uno indicado como visto + con un comentario.
+	
+	@Test
+	public void eliminarTemporada_ExisteTemporadaConVariosEpisodiosAlgunoVistoComentado_TemporadaBorrada() {
+		fail("Not yet implemented");
+	}
 
 	// -----------------------------------------------------------------------------
 
@@ -30,7 +46,11 @@ public class R09_HU1 {
 	// La temporada está almacenada en la BDL + tiene un episodio almacenado.
 
 	// PRUEBA DE ACEPTACIÓN 09.1.2.1
-	//
+	
+	@Test
+	public void eliminarTemporada_ExisteTemporadaConUnEpisodio_TemporadaBorrada() {
+		fail("Not yet implemented");
+	}
 
 	// -----------------------------------------------------------------------------
 
@@ -38,14 +58,29 @@ public class R09_HU1 {
 	// La temporada está almacenada en la BDL + no tiene ningún episodio almacenado.
 
 	// PRUEBA DE ACEPTACIÓN 09.1.3.1
-	//
+	
+	@Test
+	public void eliminarTemporada_ExisteTemporadaSinEpisodios_Excepcion() {
+		fail("Not yet implemented");
+	}
 
 	// -----------------------------------------------------------------------------
 
 	// ESCENARIO 09.1.4
-	// La temporada no está almacenada en la BDL.
+	// Existen varias temporadas de una misma serie almacenadas en la BDL.
 
-	// PRUEBA DE ACEPTACIÓN 09.1.3.4
-	//
+	// PRUEBA DE ACEPTACIÓN 09.1.4.1
+	
+	@Test
+	public void eliminarTemporada_VariasTemporadasExisteTemporada_TemporadaBorrada() {
+		fail("Not yet implemented");
+	}
 
+	// PRUEBA DE ACEPTACIÓN 09.1.4.2
+	
+	@Test
+	public void eliminarTemporada_VariasTemporadasNoExisteTemporada_Excepcion() {
+		fail("Not yet implemented");
+	}
+	
 }

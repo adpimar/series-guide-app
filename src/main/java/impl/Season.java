@@ -4,14 +4,14 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Season {
-	
+
 	private int numeroTemporada;
 	private String inicioEmision;
 	private String estado;
 	private String vista;
-	
+
 	private List<Episode> episodes;
-	
+
 	public Season() {
 		episodes = new LinkedList<>();
 	}
@@ -19,15 +19,15 @@ public class Season {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append("[ SEASON "+ numeroTemporada +" ]");
-		sb.append("\nInicio de emisión  : " + inicioEmision);
+		sb.append("[ SEASON " + numeroTemporada + " ]");
+		sb.append("\nInicio de emisiÃ³n  : " + inicioEmision);
 		sb.append("\nEstado             : " + estado);
 		sb.append("\nVista	            : " + vista);
-		
+
 		return sb.toString();
 	}
 
-	// ------------------------ GETTERS && SETTERS ---------------------------------------
+	// ---------------------------- GETTERS && SETTERS -----------------------------
 
 	public String getInicioEmision() {
 		return inicioEmision;
@@ -60,6 +60,5 @@ public class Season {
 	public void setEpisodes(List<Episode> episodes) {
 		this.episodes = episodes;
 	}
-	
-	
+
 }

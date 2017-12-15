@@ -1,5 +1,9 @@
 package acceptance;
 
+import static org.junit.Assert.fail;
+
+import org.junit.Test;
+
 public class R06_HU1 {
 
 	// REQUISITO 06
@@ -16,13 +20,25 @@ public class R06_HU1 {
 	// El episodio está almacenado en la BDL.
 
 	// PRUEBA DE ACEPTACIÓN 06.1.1.1
-	// No se introducen caracteres (cadena vacía).
 
+	@Test
+	public void setSinopsisEpisodio_CadenaVacia_CadenaVacia() {
+		fail("Not yet implemented");
+	}
+	
 	// PRUEBA DE ACEPTACIÓN 06.1.1.2
-	// No excede los 500 caracteres.
 
+	@Test
+	public void setSinopsisEpisodio_CadenaMenor500Caracteres_Cadena() {
+		fail("Not yet implemented");
+	}
+	
 	// PRUEBA DE ACEPTACIÓN 06.1.1.3
-	// Excede los 500 caracteres.
+	
+	@Test
+	public void setSinopsisEpisodio_CadenaMayor500Caracteres_Excepcion() {
+		fail("Not yet implemented");
+	}
 
 	// -----------------------------------------------------------------------------
 
@@ -30,6 +46,10 @@ public class R06_HU1 {
 	// El episodio no está almacenado en la BDL.
 
 	// PRUEBA DE ACEPTACIÓN 06.1.2.1
-	//
+	
+	@Test
+	public void setSinopsisEpisodio_NoExisteEpisodio_Excepcion() {
+		fail("Not yet implemented");
+	}
 
 }
