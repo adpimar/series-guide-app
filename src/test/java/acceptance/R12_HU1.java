@@ -45,7 +45,7 @@ public class R12_HU1 {
 	// PRUEBA DE ACEPTACIÓN 12.1.1.1
 
 	@Test
-	public void busquedaSinPalabrasClave() {
+	public void buscarRemotamenteSerie_ConCadenaVacia_Excepcion() {
 		IRemoteManager theTVDBMock = mock(IRemoteManager.class);
 		when(theTVDBMock.searchSeries("")).thenThrow(new IllegalArgumentException("Error : Requires only one of name, imdbId, zap2itId params."));
 		ISearchService searchService = new SearchSvc(theTVDBMock, null);
@@ -59,7 +59,7 @@ public class R12_HU1 {
 	// PRUEBA DE ACEPTACIÓN 12.1.1.2
 
 	@Test
-	public void busquedaConUnaPalabrasClave() {
+	public void buscarRemotamenteSerie_ConUnaPalabraClave_Excepcion() {
 		Map<Long, String> fakeListSeries = new TreeMap<>();
 		
 		String[] serieIdsAndNames = {
@@ -88,7 +88,7 @@ public class R12_HU1 {
 	// PRUEBA DE ACEPTACIÓN 12.1.1.3
 
 	@Test
-	public void busquedaConVariasPalabrasClave() {
+	public void buscarRemotamenteSerie_ConVariasPalabrasClave_Excepcion() {
 		Map<Long, String> fakeListSeries = new TreeMap<>();
 		fakeListSeries.put(Long.valueOf(121361), "Game of Thrones");
 		
@@ -112,7 +112,7 @@ public class R12_HU1 {
 	// PRUEBA DE ACEPTACIÓN 12.1.2.1
 
 	@Test
-	public void busquedaDeSerieInexistente() {
+	public void buscarRemotamenteSerie_NoExisteSerie_Excepcion() {
 		fail("No implementada todavía");
 	}
 
@@ -124,14 +124,14 @@ public class R12_HU1 {
 	// PRUEBA DE ACEPTACIÓN 12.1.3.1
 
 	@Test
-	public void busquedaConErrorServidor() {
+	public void buscarRemotamenteSerie_ErrorDeServidor_Excepcion() {
 		fail("No implementada todavía");
 	}
 
 	// PRUEBA DE ACEPTACIÓN 12.1.3.2
 
 	@Test
-	public void busquedaConTimeout() {
+	public void buscarRemotamenteSerie_ErrorDeTimeout_Excepcion() {
 		fail("No implementada todavía");
 	}
 

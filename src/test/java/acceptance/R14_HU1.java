@@ -1,5 +1,9 @@
 package acceptance;
 
+import static org.junit.Assert.fail;
+
+import org.junit.Test;
+
 public class R14_HU1 {
 
 	// REQUISITO 14
@@ -18,21 +22,37 @@ public class R14_HU1 {
 	// La serie existe en TheTVDB + la temporada existe en TheTVDB.
 
 	// PRUEBA DE ACEPTACIÓN 14.1.1.1
-	// La temporada tiene varios episodios.
 
+	@Test
+	public void descargarTemporada_ExisteSerieExisteTemporadaConVariosEpisodios_TemporadaDescargada() {
+		fail("Not yet implemented");
+	}
+	
 	// PRUEBA DE ACEPTACIÓN 14.1.1.2
-	// La temporada tiene un episodio.
 
+	@Test
+	public void descargarTemporada_ExisteSerieExisteTemporadaConUnEpisodio_TemporadaDescargada() {
+		fail("Not yet implemented");
+	}
+	
 	// PRUEBA DE ACEPTACIÓN 14.1.1.3
-	// La temporada no tiene ningún episodio.
 
+	@Test
+	public void descargarTemporada_ExisteSerieExisteTemporadaSinEpisodios_TemporadaDescargada() {
+		fail("Not yet implemented");
+	}
+	
 	// -----------------------------------------------------------------------------
 
 	// ESCENARIO 14.1.2
 	// La serie existe en TheTVDB + la temporada no existe en TheTVDB.
 
 	// PRUEBA DE ACEPTACIÓN 14.1.2.1
-	//
+	
+	@Test
+	public void descargarTemporada_ExisteSerieNoExisteTemporada_Excepcion() {
+		fail("Not yet implemented");
+	}
 
 	// -----------------------------------------------------------------------------
 
@@ -40,17 +60,29 @@ public class R14_HU1 {
 	// La serie no existe en TheTVDB.
 
 	// PRUEBA DE ACEPTACIÓN 14.1.3.1
-	//
-
+	
+	@Test
+	public void descargarTemporada_NoExisteSerie_Excepcion() {
+		fail("Not yet implemented");
+	}
+	
 	// -----------------------------------------------------------------------------
 
 	// ESCENARIO 14.1.4
 	// Surgen problemas con el servidor de TheTVDB.
 
 	// PRUEBA DE ACEPTACIÓN 14.1.4.1
-	// Se produce un error en el servidor.
 
+	@Test
+	public void descargarTemporada_ErrorDeServidor_Excepcion() {
+		fail("Not yet implemented");
+	}
+	
 	// PRUEBA DE ACEPTACIÓN 14.1.4.2
-	// Timeout.
+	
+	@Test
+	public void descargarTemporada_ErrorDeTimeout_Excepcion() {
+		fail("Not yet implemented");
+	}
 
 }

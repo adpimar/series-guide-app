@@ -1,5 +1,9 @@
 package acceptance;
 
+import static org.junit.Assert.fail;
+
+import org.junit.Test;
+
 public class R15_HU2 {
 
 	// REQUISITO 15
@@ -17,17 +21,29 @@ public class R15_HU2 {
 	// La temporada está almacenada en la BDL.
 
 	// PRUEBA DE ACEPTACIÓN 15.2.1.1
-	// Está indicada como no vista.
+	
+	@Test
+	public void indicarNoVistaTemporada_ExisteTemporadaNoVista_Excepcion() {
+		fail("Not yet implemented");
+	}
 
 	// PRUEBA DE ACEPTACIÓN 15.2.1.2
-	// Está indicada como vista.
 
+	@Test
+	public void indicarNoVistaTemporada_ExisteTemporadaVista_TemporadaNoVista() {
+		fail("Not yet implemented");
+	}
+	
 	// -----------------------------------------------------------------------------
 
 	// ESCENARIO 15.2.2
 	// La temporada no está almacenada en la BDL.
 
 	// PRUEBA DE ACEPTACIÓN 15.2.2.1
-	//
+	
+	@Test
+	public void indicarNoVistaTemporada_NoExisteTemporada_Excepcion() {
+		fail("Not yet implemented");
+	}
 
 }

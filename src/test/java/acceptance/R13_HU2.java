@@ -1,5 +1,9 @@
 package acceptance;
 
+import static org.junit.Assert.fail;
+
+import org.junit.Test;
+
 public class R13_HU2 {
 
 	// REQUISITO 13
@@ -17,7 +21,11 @@ public class R13_HU2 {
 	// La serie no está almacenada en la BDL.
 
 	// PRUEBA DE ACEPTACIÓN 13.2.1.1
-	//
+	
+	@Test
+	public void almacenarSerie_SerieNoAlmacenada_SerieAlmacenada() {
+		fail("Not yet implemented");
+	}
 
 	// -----------------------------------------------------------------------------
 
@@ -25,6 +33,10 @@ public class R13_HU2 {
 	// La serie está almacenada en la BDL.
 
 	// PRUEBA DE ACEPTACIÓN 13.2.2.1
-	//
+	
+	@Test
+	public void almacenarSerie_SerieAlmacenada_Excepcion() {
+		fail("Not yet implemented");
+	}
 
 }
