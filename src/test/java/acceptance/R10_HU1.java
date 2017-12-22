@@ -1,5 +1,9 @@
 package acceptance;
 
+import static org.junit.Assert.fail;
+
+import org.junit.Test;
+
 public class R10_HU1 {
 
 	// REQUISITO 10
@@ -13,26 +17,28 @@ public class R10_HU1 {
 	// -----------------------------------------------------------------------------
 
 	// ESCENARIO 10.1.1
-	// La serie está almacenada en la BDL + tiene varias temporadas almacenadas.
+	// La serie está almacenada en la BDL.
 
 	// PRUEBA DE ACEPTACIÓN 10.1.1.1
-	//
+	
+	@Test
+	public void eliminarSerie_ExisteSerieConVariasTemporadas_SerieBorrada() {
+		fail("Not yet implemented");
+	}
 
-	// -----------------------------------------------------------------------------
+	// PRUEBA DE ACEPTACIÓN 10.1.1.2
+	
+	@Test
+	public void eliminarSerie_ExisteSerieConUnaTemporada_SerieBorrada() {
+		fail("Not yet implemented");
+	}
 
-	// ESCENARIO 10.1.2
-	// La serie está almacenada en la BDL + tiene una temporada almacenada.
-
-	// PRUEBA DE ACEPTACIÓN 10.1.2.1
-	//
-
-	// -----------------------------------------------------------------------------
-
-	// ESCENARIO 10.1.3
-	// La serie está almacenada en la BDL + no tiene ninguna temporada almacenada.
-
-	// PRUEBA DE ACEPTACIÓN 10.1.3.1
-	//
+	// PRUEBA DE ACEPTACIÓN 10.1.1.3
+	
+	@Test
+	public void eliminarSerie_ExisteSerieConCeroTemporada_SerieBorrada() {
+		fail("Not yet implemented");
+	}
 
 	// -----------------------------------------------------------------------------
 
@@ -40,6 +46,10 @@ public class R10_HU1 {
 	// La serie no está almacenada en la BDL.
 
 	// PRUEBA DE ACEPTACIÓN 10.1.4.1
-	//
+	
+	@Test
+	public void eliminarSerie_NoExisteSerie_Excepcion() {
+		fail("Not yet implemented");
+	}
 
 }

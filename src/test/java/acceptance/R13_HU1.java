@@ -1,5 +1,9 @@
 package acceptance;
 
+import static org.junit.Assert.fail;
+
+import org.junit.Test;
+
 public class R13_HU1 {
 
 	// REQUISITO 13
@@ -17,7 +21,11 @@ public class R13_HU1 {
 	// Existe la serie en el servidor de TheTVDB.
 
 	// PRUEBA DE ACEPTACIÓN 13.1.1.1
-	//
+	
+	@Test
+	public void descargarSerie_ExisteSerie_SerieDescargada() {
+		fail("Not yet implemented");
+	}
 
 	// -----------------------------------------------------------------------------
 
@@ -25,7 +33,11 @@ public class R13_HU1 {
 	// No existe la serie en el servidor de TheTVDB.
 
 	// PRUEBA DE ACEPTACIÓN 13.1.2.1
-	//
+	
+	@Test
+	public void descargarSerie_NoExisteSerie_Excepcion() {
+		fail("Not yet implemented");
+	}
 
 	// -----------------------------------------------------------------------------
 
@@ -33,9 +45,17 @@ public class R13_HU1 {
 	// Surgen problemas con el servidor de TheTVDB.
 
 	// PRUEBA DE ACEPTACIÓN 13.1.3.1
-	// Se produce un error en el servidor.
+	
+	@Test
+	public void descargarSerie_ErrorDeServidor_Excepcion() {
+		fail("Not yet implemented");
+	}
 
 	// PRUEBA DE ACEPTACIÓN 13.1.3.2
-	// Timeout.
+	
+	@Test
+	public void descargarSerie_ErrorDeTimeout_Excepcion() {
+		fail("Not yet implemented");
+	}
 
 }

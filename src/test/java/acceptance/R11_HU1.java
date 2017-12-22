@@ -1,5 +1,9 @@
 package acceptance;
 
+import static org.junit.Assert.fail;
+
+import org.junit.Test;
+
 public class R11_HU1 {
 
 	// REQUISITO 11
@@ -16,27 +20,51 @@ public class R11_HU1 {
 	// Existen varias series almacenadas en la BDL y existe la serie a buscar.
 
 	// PRUEBA DE ACEPTACIÓN 11.1.1.1
-	// Sin palabras clave (cadena vacía).
 
+	@Test
+	public void buscarLocalmenteSerie_ConCadenaVacia_ListaVacia() {
+		fail("Not yet implemented");
+	}
+	
 	// PRUEBA DE ACEPTACIÓN 11.1.1.2
-	// Con una palabra clave.
+	
+	@Test
+	public void buscarLocalmenteSerie_ConUnaPalabraClave_ListaNoVacia() {
+		fail("Not yet implemented");
+	}
 
 	// PRUEBA DE ACEPTACIÓN 11.1.1.3
-	// Con varias palabras clave (separadas).
 
+	@Test
+	public void buscarLocalmenteSerie_ConPalabrasClave_ListaNoVacia() {
+		fail("Not yet implemented");
+	}
+	
 	// -----------------------------------------------------------------------------
 
 	// ESCENARIO 11.1.2
 	// Existen varias series almacenadas en la BDL y no existe la serie a buscar.
 
-	// PRUEBA DE ACEPTACIÓN 11.1.2.1
-	// Sin palabras clave (cadena vacía).
+	// PRUEBA DE ACEPTACIÓN 11.1.1.1
 
-	// PRUEBA DE ACEPTACIÓN 11.1.2.2
-	// Con una palabra clave.
+	@Test
+	public void buscarLocalmenteSerie_ConCadenaVacia_Excepcion() {
+		fail("Not yet implemented");
+	}
+	
+	// PRUEBA DE ACEPTACIÓN 11.1.1.2
+	
+	@Test
+	public void buscarLocalmenteSerie_ConUnaPalabraClave_Excepcion() {
+		fail("Not yet implemented");
+	}
 
-	// PRUEBA DE ACEPTACIÓN 11.1.2.3
-	// Con varias palabras clave (separadas).
+	// PRUEBA DE ACEPTACIÓN 11.1.1.3
+
+	@Test
+	public void buscarLocalmenteSerie_ConPalabrasClave_Excepcion() {
+		fail("Not yet implemented");
+	}
 
 	// -----------------------------------------------------------------------------
 
@@ -44,6 +72,10 @@ public class R11_HU1 {
 	// No existe ninguna serie almacenada en la BDL.
 
 	// PRUEBA DE ACEPTACIÓN 11.1.3.1
-	//
+	
+	@Test
+	public void buscarLocalmenteSerie_NoExistenSeries_Excepcion() {
+		fail("Not yet implemented");
+	}
 
 }
