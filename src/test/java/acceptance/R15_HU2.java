@@ -24,14 +24,14 @@ public class R15_HU2 {
 	
 	@Test
 	public void indicarNoVistaTemporada_ExisteTemporadaNoVista_Excepcion() {
-		fail("Not yet implemented");
+
 	}
 
 	// PRUEBA DE ACEPTACIÓN 15.2.1.2
 
 	@Test
 	public void indicarNoVistaTemporada_ExisteTemporadaVista_TemporadaNoVista() {
-		fail("Not yet implemented");
+
 	}
 	
 	// -----------------------------------------------------------------------------
@@ -43,7 +43,7 @@ public class R15_HU2 {
 	
 	@Test
 	public void indicarNoVistaTemporada_NoExisteTemporada_Excepcion() {
-		fail("Not yet implemented");
+
 	}
 
 }

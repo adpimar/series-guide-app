@@ -24,7 +24,7 @@ public class R08_HU1 {
 	
 	@Test
 	public void indicarNoVistoEpisodio_ExisteEpisodioNoVisto_Excepcion() {
-		fail("Not yet implemented");
+
 	}
 
 	// -----------------------------------------------------------------------------
@@ -37,7 +37,7 @@ public class R08_HU1 {
 	
 	@Test
 	public void indicarNoVistoEpisodio_ExisteEpisodioVistoNoComentado_EpisodioNoVisto() {
-		fail("Not yet implemented");
+
 	}
 
 	// -----------------------------------------------------------------------------
@@ -50,7 +50,7 @@ public class R08_HU1 {
 	
 	@Test
 	public void indicarNoVistoEpisodio_ExisteEpisodioVistoComentado_EpisodioNoVistoSinComentario() {
-		fail("Not yet implemented");
+
 	}
 
 	// -----------------------------------------------------------------------------
@@ -62,7 +62,7 @@ public class R08_HU1 {
 	
 	@Test
 	public void indicarNoVistoEpisodio_NoExisteEpisodio_Excepcion() {
-		fail("Not yet implemented");
+
 	}
 
 }

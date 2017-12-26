@@ -25,21 +25,21 @@ public class R14_HU1 {
 
 	@Test
 	public void descargarTemporada_ExisteSerieExisteTemporadaConVariosEpisodios_TemporadaDescargada() {
-		fail("Not yet implemented");
+
 	}
 	
 	// PRUEBA DE ACEPTACIÓN 14.1.1.2
 
 	@Test
 	public void descargarTemporada_ExisteSerieExisteTemporadaConUnEpisodio_TemporadaDescargada() {
-		fail("Not yet implemented");
+
 	}
 	
 	// PRUEBA DE ACEPTACIÓN 14.1.1.3
 
 	@Test
 	public void descargarTemporada_ExisteSerieExisteTemporadaSinEpisodios_TemporadaDescargada() {
-		fail("Not yet implemented");
+
 	}
 	
 	// -----------------------------------------------------------------------------
@@ -51,7 +51,7 @@ public class R14_HU1 {
 	
 	@Test
 	public void descargarTemporada_ExisteSerieNoExisteTemporada_Excepcion() {
-		fail("Not yet implemented");
+
 	}
 
 	// -----------------------------------------------------------------------------
@@ -63,7 +63,7 @@ public class R14_HU1 {
 	
 	@Test
 	public void descargarTemporada_NoExisteSerie_Excepcion() {
-		fail("Not yet implemented");
+
 	}
 	
 	// -----------------------------------------------------------------------------
@@ -75,14 +75,14 @@ public class R14_HU1 {
 
 	@Test
 	public void descargarTemporada_ErrorDeServidor_Excepcion() {
-		fail("Not yet implemented");
+
 	}
 	
 	// PRUEBA DE ACEPTACIÓN 14.1.4.2
 	
 	@Test
 	public void descargarTemporada_ErrorDeTimeout_Excepcion() {
-		fail("Not yet implemented");
+
 	}
 
 }

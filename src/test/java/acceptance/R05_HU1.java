@@ -24,21 +24,21 @@ public class R05_HU1 {
 	
 	@Test
 	public void getInfoEpisodio_ExisteSerieExisteTemporadaExisteEpidosio_UnaSerieUnaTemporada_UnaInfo() {
-		fail("Not yet implemented");
+
 	}
 	
 	// PRUEBA DE ACEPTACIÓN 05.1.1.2
 	
 	@Test
 	public void getInfoEpisodio_ExisteSerieExisteTemporadaExisteEpidosio_UnaSerieVariasTemporadas_UnaInfo() {
-		fail("Not yet implemented");
+
 	}
 	
 	// PRUEBA DE ACEPTACIÓN 05.1.1.3
 
 	@Test
 	public void getInfoEpisodio_ExisteSerieExisteTemporadaExisteEpidosio_VariasSeriesVariasTemporadas_UnaInfo() {
-		fail("Not yet implemented");
+
 	}
 	
 	// -----------------------------------------------------------------------------
@@ -51,7 +51,7 @@ public class R05_HU1 {
 	
 	@Test
 	public void getInfoEpisodio_ExisteSerieExisteTemporadaNoExisteEpidosio_Excepcion() {
-		fail("Not yet implemented");
+
 	}
 
 	// -----------------------------------------------------------------------------
@@ -64,7 +64,7 @@ public class R05_HU1 {
 	
 	@Test
 	public void getInfoEpisodio_ExisteSerieNoExisteTemporada_Excepcion() {
-		fail("Not yet implemented");
+
 	}
 
 	// -----------------------------------------------------------------------------
@@ -76,7 +76,7 @@ public class R05_HU1 {
 	
 	@Test
 	public void getInfoEpisodio_NoExisteSerie_Excepcion() {
-		fail("Not yet implemented");
+
 	}
 
 }

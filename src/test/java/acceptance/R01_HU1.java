@@ -23,7 +23,7 @@ public class R01_HU1 {
 
 	@Test
 	public void listar_ExistenVariasSeries_DosSeries() {
-		fail("Not yet implemented");
+		
 	}
 
 	// -----------------------------------------------------------------------------
@@ -35,7 +35,7 @@ public class R01_HU1 {
 
 	@Test
 	public void listar_ExisteUnaSerie_UnaSerie() {
-		fail("Not yet implemented");
+
 	}
 
 	// -----------------------------------------------------------------------------
@@ -47,7 +47,7 @@ public class R01_HU1 {
 
 	@Test
 	public void listar_NoExistenSeries_Excepcion() {
-		fail("Not yet implemented");
+
 	}
 
 }

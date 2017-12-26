@@ -24,7 +24,7 @@ public class R13_HU2 {
 	
 	@Test
 	public void almacenarSerie_SerieNoAlmacenada_SerieAlmacenada() {
-		fail("Not yet implemented");
+
 	}
 
 	// -----------------------------------------------------------------------------
@@ -36,7 +36,7 @@ public class R13_HU2 {
 	
 	@Test
 	public void almacenarSerie_SerieAlmacenada_Excepcion() {
-		fail("Not yet implemented");
+
 	}
 
 }

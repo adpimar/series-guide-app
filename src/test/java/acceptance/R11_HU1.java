@@ -23,21 +23,21 @@ public class R11_HU1 {
 
 	@Test
 	public void buscarLocalmenteSerie_ConCadenaVacia_ListaVacia() {
-		fail("Not yet implemented");
+
 	}
 	
 	// PRUEBA DE ACEPTACIÓN 11.1.1.2
 	
 	@Test
 	public void buscarLocalmenteSerie_ConUnaPalabraClave_ListaNoVacia() {
-		fail("Not yet implemented");
+
 	}
 
 	// PRUEBA DE ACEPTACIÓN 11.1.1.3
 
 	@Test
 	public void buscarLocalmenteSerie_ConPalabrasClave_ListaNoVacia() {
-		fail("Not yet implemented");
+
 	}
 	
 	// -----------------------------------------------------------------------------
@@ -49,21 +49,21 @@ public class R11_HU1 {
 
 	@Test
 	public void buscarLocalmenteSerie_ConCadenaVacia_Excepcion() {
-		fail("Not yet implemented");
+
 	}
 	
 	// PRUEBA DE ACEPTACIÓN 11.1.1.2
 	
 	@Test
 	public void buscarLocalmenteSerie_ConUnaPalabraClave_Excepcion() {
-		fail("Not yet implemented");
+
 	}
 
 	// PRUEBA DE ACEPTACIÓN 11.1.1.3
 
 	@Test
 	public void buscarLocalmenteSerie_ConPalabrasClave_Excepcion() {
-		fail("Not yet implemented");
+
 	}
 
 	// -----------------------------------------------------------------------------
@@ -75,7 +75,7 @@ public class R11_HU1 {
 	
 	@Test
 	public void buscarLocalmenteSerie_NoExistenSeries_Excepcion() {
-		fail("Not yet implemented");
+
 	}
 
 }

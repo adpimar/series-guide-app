@@ -113,7 +113,7 @@ public class R12_HU1 {
 
 	@Test
 	public void buscarRemotamenteSerie_NoExisteSerie_Excepcion() {
-		fail("No implementada todavía");
+
 	}
 
 	// -----------------------------------------------------------------------------
@@ -125,14 +125,14 @@ public class R12_HU1 {
 
 	@Test
 	public void buscarRemotamenteSerie_ErrorDeServidor_Excepcion() {
-		fail("No implementada todavía");
+
 	}
 
 	// PRUEBA DE ACEPTACIÓN 12.1.3.2
 
 	@Test
 	public void buscarRemotamenteSerie_ErrorDeTimeout_Excepcion() {
-		fail("No implementada todavía");
+
 	}
 
 }

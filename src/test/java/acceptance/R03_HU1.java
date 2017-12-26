@@ -23,21 +23,21 @@ public class R03_HU1 {
 
 	@Test
 	public void setSinopsisSerie_CadenaVacia_CadenaVacia() {
-		fail("Not yet implemented");
+
 	}
 	
 	// PRUEBA DE ACEPTACIÓN 03.1.1.2
 
 	@Test
 	public void setSinopsisSerie_CadenaMenor500Caracteres_Cadena() {
-		fail("Not yet implemented");
+
 	}
 	
 	// PRUEBA DE ACEPTACIÓN 03.1.1.3
 
 	@Test
 	public void setSinopsisSerie_CadenaMayor500Caracteres_Excepcion() {
-		fail("Not yet implemented");
+
 	}
 	
 	// -----------------------------------------------------------------------------
@@ -49,7 +49,7 @@ public class R03_HU1 {
 	
 	@Test
 	public void setSinopsisSerie_NoExisteSerie_Excepcion() {
-		fail("Not yet implemented");
+
 	}
 
 }

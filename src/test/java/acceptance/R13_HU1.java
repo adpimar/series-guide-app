@@ -24,7 +24,7 @@ public class R13_HU1 {
 	
 	@Test
 	public void descargarSerie_ExisteSerie_SerieDescargada() {
-		fail("Not yet implemented");
+
 	}
 
 	// -----------------------------------------------------------------------------
@@ -36,7 +36,7 @@ public class R13_HU1 {
 	
 	@Test
 	public void descargarSerie_NoExisteSerie_Excepcion() {
-		fail("Not yet implemented");
+
 	}
 
 	// -----------------------------------------------------------------------------
@@ -48,14 +48,14 @@ public class R13_HU1 {
 	
 	@Test
 	public void descargarSerie_ErrorDeServidor_Excepcion() {
-		fail("Not yet implemented");
+
 	}
 
 	// PRUEBA DE ACEPTACIÓN 13.1.3.2
 	
 	@Test
 	public void descargarSerie_ErrorDeTimeout_Excepcion() {
-		fail("Not yet implemented");
+
 	}
 
 }

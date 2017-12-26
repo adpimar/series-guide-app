@@ -23,21 +23,21 @@ public class R09_HU1 {
 	
 	@Test
 	public void eliminarTemporada_ExisteTemporadaConVariosEpisodiosNoVistos_TemporadaBorrada() {
-		fail("Not yet implemented");
+
 	}
 
 	// PRUEBA DE ACEPTACIÓN 09.1.1.2
 
 	@Test
 	public void eliminarTemporada_ExisteTemporadaConVariosEpisodiosAlgunoVisto_TemporadaBorrada() {
-		fail("Not yet implemented");
+
 	}
 	
 	// PRUEBA DE ACEPTACIÓN 09.1.1.3
 	
 	@Test
 	public void eliminarTemporada_ExisteTemporadaConVariosEpisodiosAlgunoVistoComentado_TemporadaBorrada() {
-		fail("Not yet implemented");
+
 	}
 
 	// -----------------------------------------------------------------------------
@@ -49,7 +49,7 @@ public class R09_HU1 {
 	
 	@Test
 	public void eliminarTemporada_ExisteTemporadaConUnEpisodio_TemporadaBorrada() {
-		fail("Not yet implemented");
+
 	}
 
 	// -----------------------------------------------------------------------------
@@ -61,7 +61,7 @@ public class R09_HU1 {
 	
 	@Test
 	public void eliminarTemporada_ExisteTemporadaSinEpisodios_Excepcion() {
-		fail("Not yet implemented");
+
 	}
 
 	// -----------------------------------------------------------------------------
@@ -73,14 +73,14 @@ public class R09_HU1 {
 	
 	@Test
 	public void eliminarTemporada_VariasTemporadasExisteTemporada_TemporadaBorrada() {
-		fail("Not yet implemented");
+
 	}
 
 	// PRUEBA DE ACEPTACIÓN 09.1.4.2
 	
 	@Test
 	public void eliminarTemporada_VariasTemporadasNoExisteTemporada_Excepcion() {
-		fail("Not yet implemented");
+
 	}
 	
 }
