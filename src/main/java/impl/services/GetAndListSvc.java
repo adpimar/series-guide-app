@@ -30,7 +30,7 @@ public class GetAndListSvc implements IGetAndListService {
 		List<Serie> localSeries = localManager.listSeries();
 		
 		if (localSeries.isEmpty())
-			throw new NoSuchElementException("No existen series.");
+			throw new NoSuchElementException("No existen series en la BDL.");
 		
 		List<String> localSeriesList = new LinkedList<>();		
 		for (Serie serie : localSeries)
@@ -39,13 +39,17 @@ public class GetAndListSvc implements IGetAndListService {
 	}
 
 	@Override
-	public String getInfoSerie(long id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Serie getInfoSerie(long id) {
+		Serie serie = localManager.getSerie(id);
+		
+		if (serie == null)
+			throw new NoSuchElementException("No existe la serie con id " + id + " en la BDL.");
+		
+		return serie;
 	}
 
 	@Override
-	public String getRemoteSerie(long idSerie, int seasonNumber) {
+	public Serie getRemoteSerie(long idSerie, int seasonNumber) {
 		// TODO Auto-generated method stub
 		return null;
 	}

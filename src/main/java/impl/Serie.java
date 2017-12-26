@@ -27,7 +27,6 @@ public class Serie {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append("[ SERIE ]");
 		sb.append("\nId                 : " + id);
 		sb.append("\nTítulo             : " + titulo);
 		sb.append("\nEstado             : " + estado);
@@ -45,6 +44,71 @@ public class Serie {
 		sb.append("\nSinopsis           : " + sinopsis);
 		
 		return sb.toString();
+	}
+	
+	// ---------------------------- EQUALS -----------------------------------------
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Serie other = (Serie) obj;
+		if (cadena == null) {
+			if (other.cadena != null)
+				return false;
+		} else if (!cadena.equals(other.cadena))
+			return false;
+		if (diaEmision == null) {
+			if (other.diaEmision != null)
+				return false;
+		} else if (!diaEmision.equals(other.diaEmision))
+			return false;
+		if (estado == null) {
+			if (other.estado != null)
+				return false;
+		} else if (!estado.equals(other.estado))
+			return false;
+		if (generos == null) {
+			if (other.generos != null)
+				return false;
+		} else if (!generos.equals(other.generos))
+			return false;
+		if (horarioEmision == null) {
+			if (other.horarioEmision != null)
+				return false;
+		} else if (!horarioEmision.equals(other.horarioEmision))
+			return false;
+		if (id != other.id)
+			return false;
+		if (inicioEmision == null) {
+			if (other.inicioEmision != null)
+				return false;
+		} else if (!inicioEmision.equals(other.inicioEmision))
+			return false;
+		if (Double.doubleToLongBits(puntuacion) != Double.doubleToLongBits(other.puntuacion))
+			return false;
+		if (seasons == null) {
+			if (other.seasons != null)
+				return false;
+		} else if (!seasons.equals(other.seasons))
+			return false;
+		if (sinopsis == null) {
+			if (other.sinopsis != null)
+				return false;
+		} else if (!sinopsis.equals(other.sinopsis))
+			return false;
+		if (titulo == null) {
+			if (other.titulo != null)
+				return false;
+		} else if (!titulo.equals(other.titulo))
+			return false;
+		if (totalPuntuaciones != other.totalPuntuaciones)
+			return false;
+		return true;
 	}
 	
 	// ---------------------------- GETTERS && SETTERS -----------------------------

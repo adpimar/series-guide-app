@@ -139,7 +139,7 @@ public class R01_HU1 {
 		getAndListService.setLocalManager(localManager);
 
 		thrown.expect(NoSuchElementException.class);
-		thrown.expectMessage(StringStartsWith.startsWith("No existen series."));
+		thrown.expectMessage(StringStartsWith.startsWith("No existen series"));
 		
 		getAndListService.listSeries();
 

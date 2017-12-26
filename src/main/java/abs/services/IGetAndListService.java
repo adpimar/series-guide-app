@@ -5,6 +5,7 @@ import java.util.List;
 import abs.ILocalManager;
 import abs.IRemoteManager;
 import impl.Season;
+import impl.Serie;
 
 public interface IGetAndListService {
 
@@ -14,9 +15,9 @@ public interface IGetAndListService {
 	
 	List<String> listSeries();
 
-	String getInfoSerie(long id);
+	Serie getInfoSerie(long id);
 
-	String getRemoteSerie(long idSerie, int seasonNumber);
+	Serie getRemoteSerie(long idSerie, int seasonNumber);
 
 	Season getRemoteSeason(long idSerie, int seasonNumber);
 
