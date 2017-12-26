@@ -18,4 +18,10 @@ public class SeriesDAO implements ILocalManager {
 		return null;
 	}
 
+	@Override
+	public Serie getSerie(long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
