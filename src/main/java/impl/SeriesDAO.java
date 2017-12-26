@@ -12,4 +12,10 @@ public class SeriesDAO implements ILocalManager {
 		return null;
 	}
 
+	@Override
+	public List<Serie> listSeries() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
