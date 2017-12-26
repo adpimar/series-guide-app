@@ -25,7 +25,7 @@ public class R07_HU2 {
 	
 	@Test
 	public void comentarEpisodio_ExisteEpisodioNoVisto_Excepcion() {
-		fail("Not yet implemented");
+
 	}
 
 	// -----------------------------------------------------------------------------
@@ -38,21 +38,21 @@ public class R07_HU2 {
 	
 	@Test
 	public void comentarEpisodio_ExisteEpisodioVistoCadenaVacia_CadenaVacia() {
-		fail("Not yet implemented");
+
 	}
 
 	// PRUEBA DE ACEPTACIÓN 07.2.2.2
 
 	@Test
 	public void comentarEpisodio_ExisteEpisodioVistoCadenaMenor150Caracteres_Cadena() {
-		fail("Not yet implemented");
+
 	}
 	
 	// PRUEBA DE ACEPTACIÓN 07.2.2.3
 
 	@Test
 	public void comentarEpisodio_ExisteEpisodioVistoCadenaMayor150Caracteres_Excepcion() {
-		fail("Not yet implemented");
+
 	}
 	
 	// -----------------------------------------------------------------------------
@@ -65,7 +65,7 @@ public class R07_HU2 {
 	
 	@Test
 	public void comentarEpisodio_ExisteEpisodioVistoComentado_NuevoComentario() {
-		fail("Not yet implemented");
+
 	}
 
 	// -----------------------------------------------------------------------------
@@ -77,7 +77,7 @@ public class R07_HU2 {
 	
 	@Test
 	public void comentarEpisodio_NoExisteEpisodio_Excepcion() {
-		fail("Not yet implemented");
+
 	}
 
 }

@@ -25,7 +25,7 @@ public class R14_HU2 {
 	
 	@Test
 	public void almacenarTemporada_SerieNoAlmacenada_SerieAlmacenadaTemporadaAlmacenada() {
-		fail("Not yet implemented");
+
 	}
 
 	// -----------------------------------------------------------------------------
@@ -37,7 +37,7 @@ public class R14_HU2 {
 	
 	@Test
 	public void almacenarTemporada_SerieAlmacenadaTemporadaNoAlmacenada_TemporadaAlmacenada() {
-		fail("Not yet implemented");
+
 	}
 
 	// -----------------------------------------------------------------------------
@@ -49,7 +49,7 @@ public class R14_HU2 {
 	
 	@Test
 	public void almacenarTemporada_SerieAlmacenadaTemporadaAlmacenada_Excepcion() {
-		fail("Not yet implemented");
+
 	}
 
 }

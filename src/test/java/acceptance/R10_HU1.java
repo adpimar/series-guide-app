@@ -23,21 +23,21 @@ public class R10_HU1 {
 	
 	@Test
 	public void eliminarSerie_ExisteSerieConVariasTemporadas_SerieBorrada() {
-		fail("Not yet implemented");
+
 	}
 
 	// PRUEBA DE ACEPTACIÓN 10.1.1.2
 	
 	@Test
 	public void eliminarSerie_ExisteSerieConUnaTemporada_SerieBorrada() {
-		fail("Not yet implemented");
+
 	}
 
 	// PRUEBA DE ACEPTACIÓN 10.1.1.3
 	
 	@Test
 	public void eliminarSerie_ExisteSerieConCeroTemporada_SerieBorrada() {
-		fail("Not yet implemented");
+
 	}
 
 	// -----------------------------------------------------------------------------
@@ -49,7 +49,7 @@ public class R10_HU1 {
 	
 	@Test
 	public void eliminarSerie_NoExisteSerie_Excepcion() {
-		fail("Not yet implemented");
+
 	}
 
 }

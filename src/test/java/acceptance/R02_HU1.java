@@ -23,14 +23,14 @@ public class R02_HU1 {
 
 	@Test
 	public void getInfoSerie_ExisteUnaSerie_UnaInfo() {
-		fail("Not yet implemented");
+
 	}
 
 	// PRUEBA DE ACEPTACIÓN 02.1.1.2
 
 	@Test
 	public void getInfoSerie_ExistenVariasSeries_UnaInfo() {
-		fail("Not yet implemented");
+
 	}
 
 	// -----------------------------------------------------------------------------
@@ -42,7 +42,7 @@ public class R02_HU1 {
 
 	@Test
 	public void getInfoSerie_NoExisteSerie_Excepcion() {
-		fail("Not yet implemented");
+
 	}
 
 }

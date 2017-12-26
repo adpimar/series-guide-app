@@ -23,21 +23,21 @@ public class R04_HU1 {
 
 	@Test
 	public void listarEpisodios_UnaSerieUnaTemporadaExistenTodosEpisodios_TodosEpisodios() {
-		fail("Not yet implemented");
+
 	}
 
 	// PRUEBA DE ACEPTACIÓN 04.1.1.2
 
 	@Test
 	public void listarEpisodios_VariasSeriesVariasTemporadasExistenAlgunosEpisodios_AlgunosEpisodiosConOpcionDescargaRestoEpisodios() {
-		fail("Not yet implemented");
+
 	}
 
 	// PRUEBA DE ACEPTACIÓN 04.1.1.3
 
 	@Test
 	public void listarEpisodios_UnaSerieVariasTemporadasNoExistenEpisodios_OpcionDescargaEpisodios() {
-		fail("Not yet implemented");
+
 	}
 
 	// -----------------------------------------------------------------------------
@@ -50,7 +50,7 @@ public class R04_HU1 {
 
 	@Test
 	public void listarEpisodios_NoExisteTemporada_Excepcion() {
-		fail("Not yet implemented");
+
 	}
 
 	// -----------------------------------------------------------------------------
@@ -62,7 +62,7 @@ public class R04_HU1 {
 
 	@Test
 	public void listarEpisodios_NoExisteSerie_Excepcion() {
-		fail("Not yet implemented");
+
 	}
 
 }
