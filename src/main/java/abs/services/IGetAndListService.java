@@ -9,9 +9,9 @@ import impl.Serie;
 
 public interface IGetAndListService {
 
-	void setLocalManager(ILocalManager remoteManager);
+	void setLocalManager(ILocalManager localManager);
 	
-	void setRemoteManager(IRemoteManager localManager);
+	void setRemoteManager(IRemoteManager remoteManager);
 	
 	List<String> listSeries();
 
