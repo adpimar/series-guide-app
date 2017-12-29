@@ -1,64 +1,101 @@
 package impl;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Season {
 
-	private int numeroTemporada;
-	private String inicioEmision;
-	private String estado;
-	private String vista;
+	// cod_serie#aired_season#first_aired#status#total_episodes#seen
+	
+	private long codSerie;
+	private int airedSeason;
+	private String firstAired;
+	private String status;
+	private int totalEpisodes;
+	private boolean seen;
 
 	private List<Episode> episodes;
 
 	public Season() {
-		episodes = new LinkedList<>();
+		episodes = new ArrayList<>();
 	}
 
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append("[ SEASON " + numeroTemporada + " ]");
-		sb.append("\nInicio de emisión  : " + inicioEmision);
-		sb.append("\nEstado             : " + estado);
-		sb.append("\nVista	            : " + vista);
+
+		sb.append("[ TEMPORADA ]");
+		sb.append("\nSerie id            : " + codSerie);
+		sb.append("\nNúmero de temporada : " + airedSeason);
+		sb.append("\nInicio de emisión   : " + firstAired);
+		sb.append("\nEstado              : " + status);
+		sb.append("\nEpisodios totales   : " + totalEpisodes);
+		sb.append("\nVista               : " + seen);
 
 		return sb.toString();
 	}
 
-	// ---------------------------- GETTERS && SETTERS -----------------------------
-
-	public String getInicioEmision() {
-		return inicioEmision;
+	public long getCodSerie() {
+		return codSerie;
 	}
 
-	public void setInicioEmision(String inicioEmision) {
-		this.inicioEmision = inicioEmision;
+	public int getAiredSeason() {
+		return airedSeason;
 	}
 
-	public String getEstado() {
-		return estado;
+	public String getFirstAired() {
+		return firstAired;
 	}
 
-	public void setEstado(String estado) {
-		this.estado = estado;
+	public String getStatus() {
+		return status;
 	}
 
-	public String getVista() {
-		return vista;
+	public int getTotalEpisodes() {
+		return totalEpisodes;
 	}
 
-	public void setVista(String vista) {
-		this.vista = vista;
+	public boolean isSeen() {
+		return seen;
 	}
 
 	public List<Episode> getEpisodes() {
 		return episodes;
 	}
 
+	public void setCodSerie(long codSerie) {
+		this.codSerie = codSerie;
+	}
+
+	public void setAiredSeason(int airedSeason) {
+		this.airedSeason = airedSeason;
+	}
+
+	public void setFirstAired(String firstAired) {
+		this.firstAired = firstAired;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public void setTotalEpisodes(int totalEpisodes) {
+		this.totalEpisodes = totalEpisodes;
+	}
+
+	public void setSeen(boolean seen) {
+		this.seen = seen;
+	}
+
 	public void setEpisodes(List<Episode> episodes) {
 		this.episodes = episodes;
 	}
 
+	// ---------------------------- EQUALS -----------------------------------------
+
+
+	// ---------------------------- GETTERS && SETTERS -----------------------------
+
+	
+	
 }

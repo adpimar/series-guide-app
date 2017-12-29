@@ -1,11 +1,9 @@
 package abs.services;
 
-import abs.ILocalManager;
+import abs.ISetLocalManager;
 import impl.Serie;
 
-public interface IUpdateOverviewService {
-
-	void setLocalManager(ILocalManager localManager);
+public interface IUpdateOverviewService extends ISetLocalManager {
 	
 	Serie updateSerieOverview(long idSerie, String newOverview);
 

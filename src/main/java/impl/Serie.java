@@ -1,213 +1,139 @@
 package impl;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Serie {
 
-	private long id;
-	private String titulo;
-	private String estado;
-	private String inicioEmision;
-	private String diaEmision;
-	private String horarioEmision;
-	private String cadena;
-	private List<String> generos;
-	private double puntuacion;
-	private int totalPuntuaciones;
-	private String sinopsis;
+	// cod_serie#series_name#status#first_aired#airs_dow#airs_time#network#site_rating#site_rating_count#overview
+	
+	private long codSerie;
+	private String seriesName;
+	private String status;
+	private String firstAired;
+	private String airsDOW;
+	private String airsTime;
+	private String network;
+	private double siteRating;
+	private int siteRatingCount;
+	private String overview;
 
 	private List<Season> seasons;
 	
 	public Serie() {
-		generos = new LinkedList<>();
-		seasons = new LinkedList<>();
+		seasons = new ArrayList<>();
 	}
 
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append("\nId                 : " + id);
-		sb.append("\nTítulo             : " + titulo);
-		sb.append("\nEstado             : " + estado);
-		sb.append("\nInicio de emisión  : " + inicioEmision);
-		sb.append("\nDía de emisión     : " + diaEmision);
-		sb.append("\nHorario de emisión : " + horarioEmision);
-		sb.append("\nCadena             : " + cadena);
-		sb.append("\nGéneros            : ");
-
-		for (String genero : generos)
-			sb.append(genero + " ");
-		
-		sb.append("\nPuntuación         : " + puntuacion);
-		sb.append("\nTotal puntuaciones : " + totalPuntuaciones);
-		sb.append("\nSinopsis           : " + sinopsis);
+		sb.append("[ SERIE ]");
+		sb.append("\nId                 : " + codSerie);
+		sb.append("\nTítulo             : " + seriesName);
+		sb.append("\nEstado             : " + status);
+		sb.append("\nInicio de emisión  : " + firstAired);
+		sb.append("\nDía de emisión     : " + airsDOW);
+		sb.append("\nHorario de emisión : " + airsTime);
+		sb.append("\nCadena             : " + network);
+		sb.append("\nPuntuación         : " + siteRating);
+		sb.append("\nTotal puntuaciones : " + siteRatingCount);
+		sb.append("\nSinopsis           : " + overview);
 		
 		return sb.toString();
 	}
-	
-	// ---------------------------- EQUALS -----------------------------------------
-	
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Serie other = (Serie) obj;
-		if (cadena == null) {
-			if (other.cadena != null)
-				return false;
-		} else if (!cadena.equals(other.cadena))
-			return false;
-		if (diaEmision == null) {
-			if (other.diaEmision != null)
-				return false;
-		} else if (!diaEmision.equals(other.diaEmision))
-			return false;
-		if (estado == null) {
-			if (other.estado != null)
-				return false;
-		} else if (!estado.equals(other.estado))
-			return false;
-		if (generos == null) {
-			if (other.generos != null)
-				return false;
-		} else if (!generos.equals(other.generos))
-			return false;
-		if (horarioEmision == null) {
-			if (other.horarioEmision != null)
-				return false;
-		} else if (!horarioEmision.equals(other.horarioEmision))
-			return false;
-		if (id != other.id)
-			return false;
-		if (inicioEmision == null) {
-			if (other.inicioEmision != null)
-				return false;
-		} else if (!inicioEmision.equals(other.inicioEmision))
-			return false;
-		if (Double.doubleToLongBits(puntuacion) != Double.doubleToLongBits(other.puntuacion))
-			return false;
-		if (seasons == null) {
-			if (other.seasons != null)
-				return false;
-		} else if (!seasons.equals(other.seasons))
-			return false;
-		if (sinopsis == null) {
-			if (other.sinopsis != null)
-				return false;
-		} else if (!sinopsis.equals(other.sinopsis))
-			return false;
-		if (titulo == null) {
-			if (other.titulo != null)
-				return false;
-		} else if (!titulo.equals(other.titulo))
-			return false;
-		if (totalPuntuaciones != other.totalPuntuaciones)
-			return false;
-		return true;
-	}
-	
-	// ---------------------------- GETTERS && SETTERS -----------------------------
 
-	public long getId() {
-		return id;
+	public long getCodSerie() {
+		return codSerie;
 	}
 
-	public String getTitulo() {
-		return titulo;
+	public String getSeriesName() {
+		return seriesName;
 	}
 
-	public String getEstado() {
-		return estado;
+	public String getStatus() {
+		return status;
 	}
 
-	public String getInicioEmision() {
-		return inicioEmision;
+	public String getFirstAired() {
+		return firstAired;
 	}
 
-	public String getDiaEmision() {
-		return diaEmision;
+	public String getAirsDOW() {
+		return airsDOW;
 	}
 
-	public String getHorarioEmision() {
-		return horarioEmision;
+	public String getAirsTime() {
+		return airsTime;
 	}
 
-	public String getCadena() {
-		return cadena;
+	public String getNetwork() {
+		return network;
 	}
 
-	public List<String> getGeneros() {
-		return generos;
+	public double getSiteRating() {
+		return siteRating;
 	}
 
-	public double getPuntuacion() {
-		return puntuacion;
+	public int getSiteRatingCount() {
+		return siteRatingCount;
 	}
 
-	public int getTotalPuntuaciones() {
-		return totalPuntuaciones;
-	}
-
-	public String getSinopsis() {
-		return sinopsis;
+	public String getOverview() {
+		return overview;
 	}
 
 	public List<Season> getSeasons() {
 		return seasons;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setCodSerie(long codSerie) {
+		this.codSerie = codSerie;
 	}
 
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
+	public void setSeriesName(String seriesName) {
+		this.seriesName = seriesName;
 	}
 
-	public void setEstado(String estado) {
-		this.estado = estado;
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
-	public void setInicioEmision(String inicioEmision) {
-		this.inicioEmision = inicioEmision;
+	public void setFirstAired(String firstAired) {
+		this.firstAired = firstAired;
 	}
 
-	public void setDiaEmision(String diaEmision) {
-		this.diaEmision = diaEmision;
+	public void setAirsDOW(String airsDOW) {
+		this.airsDOW = airsDOW;
 	}
 
-	public void setHorarioEmision(String horarioEmision) {
-		this.horarioEmision = horarioEmision;
+	public void setAirsTime(String airsTime) {
+		this.airsTime = airsTime;
 	}
 
-	public void setCadena(String cadena) {
-		this.cadena = cadena;
+	public void setNetwork(String network) {
+		this.network = network;
 	}
 
-	public void setGeneros(List<String> generos) {
-		if (generos == null) return;
-		this.generos = generos;
+	public void setSiteRating(double siteRating) {
+		this.siteRating = siteRating;
 	}
 
-	public void setPuntuacion(double puntuacion) {
-		this.puntuacion = puntuacion;
+	public void setSiteRatingCount(int siteRatingCount) {
+		this.siteRatingCount = siteRatingCount;
 	}
 
-	public void setTotalPuntuaciones(int totalPuntuaciones) {
-		this.totalPuntuaciones = totalPuntuaciones;
-	}
-
-	public void setSinopsis(String sinopsis) {
-		this.sinopsis = sinopsis;
+	public void setOverview(String overview) {
+		this.overview = overview;
 	}
 
 	public void setSeasons(List<Season> seasons) {
 		this.seasons = seasons;
 	}
+	
+	// ---------------------------- EQUALS -----------------------------------------
+	
+	
+	// ---------------------------- GETTERS && SETTERS -----------------------------
 
+	
 }
