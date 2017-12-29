@@ -2,18 +2,18 @@ package abs.services;
 
 import java.util.List;
 
-import abs.ILocalManager;
-import abs.IRemoteManager;
+import abs.ISetLocalManager;
+import abs.ISetRemoteManager;
 import impl.Season;
 import impl.Serie;
 
-public interface IGetAndListService {
-
-	void setLocalManager(ILocalManager localManager);
+public interface IGetAndListService extends ISetLocalManager, ISetRemoteManager {
 	
-	void setRemoteManager(IRemoteManager remoteManager);
+	List<String> listSeriesNames();
 	
-	List<String> listSeries();
+	List<String> listSerieSeasonsNames(long codSerie);
+	
+	String[] listSerieSeasonsEpisodesNames(long codSerie, int airedSeason);
 
 	Serie getInfoSerie(long id);
 

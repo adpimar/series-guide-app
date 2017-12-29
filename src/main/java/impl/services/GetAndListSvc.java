@@ -1,12 +1,15 @@
 package impl.services;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.NoSuchElementException;
 
 import abs.ILocalManager;
 import abs.IRemoteManager;
 import abs.services.IGetAndListService;
+import impl.Episode;
 import impl.Season;
 import impl.Serie;
 
@@ -26,7 +29,7 @@ public class GetAndListSvc implements IGetAndListService {
 	}
 	
 	@Override
-	public List<String> listSeries() {
+	public List<String> listSeriesNames() {
 		List<Serie> localSeries = localManager.listSeries();
 		
 		if (localSeries.isEmpty())
@@ -34,8 +37,22 @@ public class GetAndListSvc implements IGetAndListService {
 		
 		List<String> localSeriesList = new LinkedList<>();		
 		for (Serie serie : localSeries)
-			localSeriesList.add(serie.getTitulo());	
+			localSeriesList.add(serie.getSeriesName());	
 		return localSeriesList;
+	}
+	
+	@Override
+	public List<String> listSerieSeasonsNames(long codSerie) {
+		return null;
+	}
+	
+	@Override
+	public String[] listSerieSeasonsEpisodesNames(long codSerie, int airedSeason) {
+		List<Episode> listSerieSeasonEpisodes = localManager.listSerieSeasonEpisodes(codSerie, airedSeason);
+		String[] listSerieSeasonEpisodesNames = new String[listSerieSeasonEpisodes.size()];
+		for (Episode e : listSerieSeasonEpisodes)
+			listSerieSeasonEpisodesNames[e.getAiredEpisode()-1] = e.getEpisodeName();
+		return listSerieSeasonEpisodesNames;
 	}
 
 	@Override

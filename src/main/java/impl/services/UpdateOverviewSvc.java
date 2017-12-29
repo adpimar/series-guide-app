@@ -27,7 +27,7 @@ public class UpdateOverviewSvc implements IUpdateOverviewService {
 		if (serie == null)
 			throw new NoSuchElementException("No existe la serie con id " + idSerie + " en la BDL.");
 		
-		serie.setSinopsis(newOverview);
+		serie.setOverview(newOverview);
 		return serie;
 	}
 

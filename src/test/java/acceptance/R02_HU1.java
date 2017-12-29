@@ -2,12 +2,14 @@ package acceptance;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import java.util.NoSuchElementException;
 
 import org.hamcrest.core.StringStartsWith;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -30,6 +32,18 @@ public class R02_HU1 {
 
 	@Rule
 	public ExpectedException thrown = ExpectedException.none();
+
+	private ILocalManager localManager;
+	private IGetAndListService getAndListService;
+	
+	@Before
+	public void inicia() {
+		localManager = mock(ILocalManager.class);
+		when(localManager.getSerie(anyLong()))
+			.thenReturn(FakeSeriesFactory.THE_OA_SIN_TEMPORADAS.getSerie());
+		getAndListService = new GetAndListSvc();
+		getAndListService.setLocalManager(localManager);
+	}
 	
 	// -----------------------------------------------------------------------------
 
@@ -40,30 +54,13 @@ public class R02_HU1 {
 
 	@Test
 	public void getInfoSerie_ExisteUnaSerie_UnaInfo() {
-
-		ILocalManager localManager;
 		
-		// --- PARTE SIMULADA -----------------------------
+		Serie expectedSerie = FakeSeriesFactory.THE_OA_SIN_TEMPORADAS.getSerie();
 
-		Serie fakeSerie = FakeSeriesFactory.THE_OA_SIN_TEMPORADAS.getSerie();
+		Serie returnedSerie = getAndListService.getInfoSerie(321060);
 
-		localManager = mock(ILocalManager.class);
-		when(localManager.getSerie(321060)).thenReturn(fakeSerie);
-
-		// --- PARTE REAL ---------------------------------
-
-		// TODO Implementar parte real.
-
-		// --- PRUEBA DEL SERVICIO ------------------------
-
-		Serie serieEsperada = FakeSeriesFactory.THE_OA_SIN_TEMPORADAS.getSerie();
-
-		IGetAndListService getAndListService = new GetAndListSvc();
-		getAndListService.setLocalManager(localManager);
-		Serie serieReal = getAndListService.getInfoSerie(321060);
-
-		assertNotNull(serieReal);
-		assertEquals(serieReal, serieEsperada);
+		assertNotNull(returnedSerie);
+		assertEquals(returnedSerie, expectedSerie);
 
 	}
 
@@ -71,31 +68,14 @@ public class R02_HU1 {
 
 	@Test
 	public void getInfoSerie_ExistenVariasSeries_UnaInfo() {
-
-		ILocalManager localManager;
 		
-		// --- PARTE SIMULADA -----------------------------
+		Serie expectedSerie = FakeSeriesFactory.THE_OA_SIN_TEMPORADAS.getSerie();
+	
+		Serie returnedSerie = getAndListService.getInfoSerie(321060);
+	
+		assertNotNull(returnedSerie);
+		assertEquals(returnedSerie, expectedSerie);		
 
-		Serie fakeSerie = FakeSeriesFactory.THE_OA_SIN_TEMPORADAS.getSerie();
-
-		localManager = mock(ILocalManager.class);
-		when(localManager.getSerie(321060)).thenReturn(fakeSerie);
-
-		// --- PARTE REAL ---------------------------------
-
-		// TODO Implementar parte real.
-
-		// --- PRUEBA DEL SERVICIO ------------------------
-
-		Serie serieEsperada = FakeSeriesFactory.THE_OA_SIN_TEMPORADAS.getSerie();
-
-		IGetAndListService getAndListService = new GetAndListSvc();
-		getAndListService.setLocalManager(localManager);
-		Serie serieReal = getAndListService.getInfoSerie(321060);
-
-		assertNotNull(serieReal);
-		assertEquals(serieReal, serieEsperada);
-		
 	}
 
 	// -----------------------------------------------------------------------------
@@ -108,21 +88,7 @@ public class R02_HU1 {
 	@Test
 	public void getInfoSerie_NoExisteSerie_Excepcion() {
 		
-		ILocalManager localManager;
-		
-		// --- PARTE SIMULADA -----------------------------
-
-		localManager = mock(ILocalManager.class);
 		when(localManager.getSerie(000000)).thenReturn(null);
-
-		// --- PARTE REAL ---------------------------------
-
-		// TODO Implementar parte real.
-
-		// --- PRUEBA DEL SERVICIO ------------------------
-
-		IGetAndListService getAndListService = new GetAndListSvc();
-		getAndListService.setLocalManager(localManager);
 		
 		thrown.expect(NoSuchElementException.class);
 		thrown.expectMessage(StringStartsWith.startsWith("No existe la serie"));

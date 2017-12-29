@@ -1,12 +1,14 @@
 package acceptance;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import java.util.NoSuchElementException;
 
 import org.hamcrest.core.StringStartsWith;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -30,6 +32,18 @@ public class R03_HU1 {
 	@Rule
 	public ExpectedException thrown = ExpectedException.none();
 
+	private ILocalManager localManager;
+	private IUpdateOverviewService updateOverviewService;
+	
+	@Before
+	public void inicia() {
+		localManager = mock(ILocalManager.class);
+		when(localManager.getSerie(anyLong()))
+			.thenReturn(FakeSeriesFactory.THE_OA_SIN_TEMPORADAS.getSerie());
+		updateOverviewService = new UpdateOverviewSvc();
+		updateOverviewService.setLocalManager(localManager);
+	}
+	
 	// -----------------------------------------------------------------------------
 
 	// ESCENARIO 03.1.1
@@ -40,25 +54,9 @@ public class R03_HU1 {
 	@Test
 	public void setSinopsisSerie_CadenaVacia_CadenaVacia() {
 		
-		ILocalManager localManager;
+		Serie expectedSerie = updateOverviewService.updateSerieOverview(321060, "");
 		
-		// --- PARTE SIMULADA -----------------------------
-		
-		Serie fakeSerie = FakeSeriesFactory.THE_OA_SIN_TEMPORADAS.getSerie();
-		localManager = mock(ILocalManager.class);
-		when(localManager.getSerie(321060)).thenReturn(fakeSerie);
-
-		// --- PARTE REAL ---------------------------------
-
-		// TODO Implementar parte real.
-
-		// --- PRUEBA DEL SERVICIO ------------------------
-		
-		IUpdateOverviewService updateOverviewService = new UpdateOverviewSvc();
-		updateOverviewService.setLocalManager(localManager);
-		Serie serieEsperada = updateOverviewService.updateSerieOverview(321060, "");
-		
-		assertEquals(serieEsperada.getSinopsis(), "");
+		assertEquals(expectedSerie.getOverview(), "");
 
 	}
 	
@@ -67,29 +65,14 @@ public class R03_HU1 {
 	@Test
 	public void setSinopsisSerie_CadenaMenor500Caracteres_Cadena() {
 
-		ILocalManager localManager;
-		String nuevaSinopsis = 
+		String newOverview = 
 				"Prairie Johnson es una chica ciega que ha estado desaparecida durante"
 				+ " 7 largos años. Un día, vuelve a la comunidad donde se crió con un "
 				+ "gran cambio: su vista se ha curado.";
 		
-		// --- PARTE SIMULADA -----------------------------
+		Serie expectedSerie = updateOverviewService.updateSerieOverview(321060, newOverview);
 		
-		Serie fakeSerie = FakeSeriesFactory.THE_OA_SIN_TEMPORADAS.getSerie();
-		localManager = mock(ILocalManager.class);
-		when(localManager.getSerie(321060)).thenReturn(fakeSerie);
-
-		// --- PARTE REAL ---------------------------------
-
-		// TODO Implementar parte real.
-
-		// --- PRUEBA DEL SERVICIO ------------------------
-		
-		IUpdateOverviewService updateOverviewService = new UpdateOverviewSvc();
-		updateOverviewService.setLocalManager(localManager);
-		Serie serieEsperada = updateOverviewService.updateSerieOverview(321060, nuevaSinopsis);
-		
-		assertEquals(serieEsperada.getSinopsis(), nuevaSinopsis);
+		assertEquals(expectedSerie.getOverview(), newOverview);
 		
 	}
 	
@@ -98,8 +81,7 @@ public class R03_HU1 {
 	@Test
 	public void setSinopsisSerie_CadenaMayor500Caracteres_Excepcion() {
 
-		ILocalManager localManager;
-		String nuevaSinopsis = 
+		String newOverview = 
 				"Prairie Johnson es una chica ciega que ha estado desaparecida durante 7"
 				+ " largos años. Un día, vuelve a la comunidad donde se crió con un gran "
 				+ "cambio: su vista se ha curado. Prairie puede ver. Algunos de sus vecinos "
@@ -108,25 +90,10 @@ public class R03_HU1 {
 				+ "intentan hacerle hablar sobre qué ha pasado en todo ese tiempo, son "
 				+ "incapaces de conseguir información. La joven solo habla con un grupo de...";
 		
-		// --- PARTE SIMULADA -----------------------------
-		
-		Serie fakeSerie = FakeSeriesFactory.THE_OA_SIN_TEMPORADAS.getSerie();
-		localManager = mock(ILocalManager.class);
-		when(localManager.getSerie(321060)).thenReturn(fakeSerie);
-
-		// --- PARTE REAL ---------------------------------
-
-		// TODO Implementar parte real.
-
-		// --- PRUEBA DEL SERVICIO ------------------------
-		
-		IUpdateOverviewService updateOverviewService = new UpdateOverviewSvc();
-		updateOverviewService.setLocalManager(localManager);
-		
 		thrown.expect(IllegalArgumentException.class);
 		thrown.expectMessage(StringStartsWith.startsWith("La nueva sinopsis excede"));
 		
-		updateOverviewService.updateSerieOverview(321060, nuevaSinopsis);
+		updateOverviewService.updateSerieOverview(321060, newOverview);
 		
 	}
 	
@@ -140,21 +107,7 @@ public class R03_HU1 {
 	@Test
 	public void setSinopsisSerie_NoExisteSerie_Excepcion() {
 
-		ILocalManager localManager;
-		
-		// --- PARTE SIMULADA -----------------------------
-		
-		localManager = mock(ILocalManager.class);
 		when(localManager.getSerie(000000)).thenReturn(null);
-
-		// --- PARTE REAL ---------------------------------
-
-		// TODO Implementar parte real.
-
-		// --- PRUEBA DEL SERVICIO ------------------------
-		
-		IUpdateOverviewService updateOverviewService = new UpdateOverviewSvc();
-		updateOverviewService.setLocalManager(localManager);
 		
 		thrown.expect(NoSuchElementException.class);
 		thrown.expectMessage(StringStartsWith.startsWith("No existe la serie"));
