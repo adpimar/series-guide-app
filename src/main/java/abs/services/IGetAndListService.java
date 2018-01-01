@@ -17,7 +17,7 @@ public interface IGetAndListService extends ISetLocalManager, ISetRemoteManager 
 	
 	String[] listSerieSeasonEpisodesNamesOrderedByAired(long codSerie, int airedSeason);
 
-	Serie getSerie(long id);
+	Serie getSerie(long codSerie) throws NoSeriesStoredException;
 	
 	Season getSeason(long codSerie, int airedSeason);
 	
