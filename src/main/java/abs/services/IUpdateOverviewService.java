@@ -1,13 +1,15 @@
 package abs.services;
 
 import abs.ISetLocalManager;
+import impl.exceptions.NoSeriesStoredException;
+import impl.exceptions.TooLongOverviewException;
 import impl.model.Episode;
 import impl.model.Serie;
 
 public interface IUpdateOverviewService extends ISetLocalManager {
-	
-	Serie updateSerieOverview(long idSerie, String newOverview);
 
-	Episode updateEpisodeOverview(long idSerie, int seasonNumber, int episodeNumber, String newOverview);
+	Serie updateSerieOverview(long codSerie, String newOverview) throws NoSeriesStoredException, TooLongOverviewException;
+
+	Episode updateEpisodeOverview(long codSerie, int airedSeason, int airedEpisode, String newOverview);
 
 }

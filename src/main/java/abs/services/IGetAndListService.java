@@ -23,8 +23,8 @@ public interface IGetAndListService extends ISetLocalManager, ISetRemoteManager 
 	
 	Episode getEpisode(long codSerie, int airedSeason, int airedEpisode);
 
-	Serie getRemoteSerie(long idSerie, int seasonNumber);
+	Serie getRemoteSerie(long idSerie, int airedSeason);
 
-	Serie getRemoteSeason(long idSerie, int seasonNumber);
+	Serie getRemoteSeason(long idSerie, int airedSeason);
 
 }
