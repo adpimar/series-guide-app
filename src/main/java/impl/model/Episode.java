@@ -148,6 +148,7 @@ public class Episode {
 		sb.append("\nSinopsis            : " + overview);
 		sb.append("\nVisto               : " + seen);
 		sb.append("\nComentario          : " + comment);
+		sb.append("\n");
 
 		return sb.toString();
 	}

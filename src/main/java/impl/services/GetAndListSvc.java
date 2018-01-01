@@ -1,10 +1,12 @@
 package impl.services;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import abs.ILocalManager;
 import abs.IRemoteManager;
 import abs.services.IGetAndListService;
+import impl.exceptions.NoSeriesStoredException;
 import impl.model.Episode;
 import impl.model.Season;
 import impl.model.Serie;
@@ -25,9 +27,16 @@ public class GetAndListSvc implements IGetAndListService {
 	}
 
 	@Override
-	public List<String> listSeriesNames() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<String> listSeriesNames() throws NoSeriesStoredException {
+		List<Serie> series = localManager.listSeries();
+		
+		if (series.isEmpty())
+			throw new NoSeriesStoredException();
+		
+		List<String> seriesNames = new LinkedList<>();
+		for (Serie serie : localManager.listSeries())
+			seriesNames.add(serie.getSeriesName());
+		return seriesNames;
 	}
 
 	@Override

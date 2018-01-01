@@ -193,6 +193,7 @@ public class Serie {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
+		
 		sb.append("[ SERIE ]");
 		sb.append("\nId                 : " + codSerie);
 		sb.append("\nTítulo             : " + seriesName);
@@ -205,6 +206,7 @@ public class Serie {
 		sb.append("\nPuntuación         : " + siteRating);
 		sb.append("\nTotal puntuaciones : " + siteRatingCount);
 		sb.append("\nSinopsis           : " + overview);
+		sb.append("\n");
 		
 		return sb.toString();
 	}
