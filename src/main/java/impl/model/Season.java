@@ -139,6 +139,7 @@ public class Season {
 		sb.append("\nEstado              : " + status);
 		sb.append("\nEpisodios totales   : " + totalEpisodes);
 		sb.append("\nVista               : " + seen);
+		sb.append("\n");
 
 		return sb.toString();
 	}
