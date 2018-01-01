@@ -1,6 +1,9 @@
 package abs.services;
 
-public interface IDeleteService {
+import abs.ISetLocalManager;
+import abs.ISetRemoteManager;
+
+public interface IDeleteService extends ISetLocalManager, ISetRemoteManager {
 
 	void deleteSeason(long idSerie, int seasonNumber);
 

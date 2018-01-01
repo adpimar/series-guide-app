@@ -1,23 +1,19 @@
 package impl.services;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
-import java.util.NoSuchElementException;
 
 import abs.ILocalManager;
 import abs.IRemoteManager;
 import abs.services.IGetAndListService;
-import impl.Episode;
-import impl.Season;
-import impl.Serie;
+import impl.model.Episode;
+import impl.model.Season;
+import impl.model.Serie;
 
 public class GetAndListSvc implements IGetAndListService {
 
 	private IRemoteManager remoteManager;
 	private ILocalManager localManager;
-	
+
 	@Override
 	public void setLocalManager(ILocalManager localManager) {
 		this.localManager = localManager;
@@ -27,42 +23,41 @@ public class GetAndListSvc implements IGetAndListService {
 	public void setRemoteManager(IRemoteManager remoteManager) {
 		this.remoteManager = remoteManager;
 	}
-	
+
 	@Override
 	public List<String> listSeriesNames() {
-		List<Serie> localSeries = localManager.listSeries();
-		
-		if (localSeries.isEmpty())
-			throw new NoSuchElementException("No existen series en la BDL.");
-		
-		List<String> localSeriesList = new LinkedList<>();		
-		for (Serie serie : localSeries)
-			localSeriesList.add(serie.getSeriesName());	
-		return localSeriesList;
-	}
-	
-	@Override
-	public List<String> listSerieSeasonsNames(long codSerie) {
+		// TODO Auto-generated method stub
 		return null;
-	}
-	
-	@Override
-	public String[] listSerieSeasonsEpisodesNames(long codSerie, int airedSeason) {
-		List<Episode> listSerieSeasonEpisodes = localManager.listSerieSeasonEpisodes(codSerie, airedSeason);
-		String[] listSerieSeasonEpisodesNames = new String[listSerieSeasonEpisodes.size()];
-		for (Episode e : listSerieSeasonEpisodes)
-			listSerieSeasonEpisodesNames[e.getAiredEpisode()-1] = e.getEpisodeName();
-		return listSerieSeasonEpisodesNames;
 	}
 
 	@Override
-	public Serie getInfoSerie(long id) {
-		Serie serie = localManager.getSerie(id);
-		
-		if (serie == null)
-			throw new NoSuchElementException("No existe la serie con id " + id + " en la BDL.");
-		
-		return serie;
+	public String[] listSerieSeasonsNamesOrderedByAired(long codSerie) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String[] listSerieSeasonEpisodesNamesOrderedByAired(long codSerie, int airedSeason) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Serie getSerie(long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Season getSeason(long codSerie, int airedSeason) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Episode getEpisode(long codSerie, int airedSeason, int airedEpisode) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
@@ -72,7 +67,7 @@ public class GetAndListSvc implements IGetAndListService {
 	}
 
 	@Override
-	public Season getRemoteSeason(long idSerie, int seasonNumber) {
+	public Serie getRemoteSeason(long idSerie, int seasonNumber) {
 		// TODO Auto-generated method stub
 		return null;
 	}

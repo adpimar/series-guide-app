@@ -1,15 +1,20 @@
 package abs.services;
 
-public interface ICheckAsViewedService {
+import abs.ISetLocalManager;
+import abs.ISetRemoteManager;
+import impl.model.Episode;
+import impl.model.Season;
 
-	void checkEpisodeAsViewed(long idSerie, int seasonNumber, int episodeNumber);
+public interface ICheckAsViewedService extends ISetLocalManager, ISetRemoteManager {
 
-	void uncheckEpisodeAsViewed(long idSerie, int seasonNumber, int episodeNumber);
+	Episode checkEpisodeAsViewed(long idSerie, int seasonNumber, int episodeNumber);
+
+	Episode uncheckEpisodeAsViewed(long idSerie, int seasonNumber, int episodeNumber);
 	
-	void setEpisodeComment(long idSerie, int seasonNumber, int episodeNumber, String comment);
+	Episode commentEpisodeViewed(long idSerie, int seasonNumber, int episodeNumber, String comment);
 
-	void checkSeasonAsViewed(long idSerie, int seasonNumber);
+	Season checkSeasonAsViewed(long idSerie, int seasonNumber);
 
-	void uncheckSeasonAsViewed(long idSerie, int seasonNumber);
+	Season uncheckSeasonAsViewed(long idSerie, int seasonNumber);
 	
 }

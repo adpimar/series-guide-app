@@ -1,9 +1,11 @@
 package abs.services;
 
-import impl.Season;
-import impl.Serie;
+import abs.ISetLocalManager;
+import abs.ISetRemoteManager;
+import impl.model.Season;
+import impl.model.Serie;
 
-public interface IStoreService {
+public interface IStoreService extends ISetLocalManager, ISetRemoteManager {
 
 	void storeRemoteSerie(Serie remoteSerie);
 
