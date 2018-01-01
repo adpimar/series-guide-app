@@ -28,7 +28,8 @@ public class R04_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 04.1.1.1
 
 	@Test
-	public void listarEpisodios_UnaSerieUnaTemporadaExistenTodosEpisodios_TodosEpisodios() {
+	public void listarEpisodios_UnaSerieUnaTemporadaExistenTodosEpisodios_TodosEpisodios() 
+			throws NoSeriesStoredException, NoSeasonsStoredException {
 
 		String[] resultExpected = {
 				"Homecoming",
@@ -57,7 +58,8 @@ public class R04_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 04.1.1.2
 
 	@Test
-	public void listarEpisodios_VariasSeriesVariasTemporadasExistenAlgunosEpisodios_AlgunosEpisodios() {
+	public void listarEpisodios_VariasSeriesVariasTemporadasExistenAlgunosEpisodios_AlgunosEpisodios() 
+			throws NoSeriesStoredException, NoSeasonsStoredException {
 		
 		String[] resultExpected = {
 				"Homecoming",
@@ -86,7 +88,8 @@ public class R04_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 04.1.1.3
 
 	@Test
-	public void listarEpisodios_UnaSerieVariasTemporadasNoExistenEpisodios_NingunEpisodio() {
+	public void listarEpisodios_UnaSerieVariasTemporadasNoExistenEpisodios_NingunEpisodio() 
+			throws NoSeriesStoredException, NoSeasonsStoredException {
 		
 		String[] resultExpected = {
 				null,
@@ -101,7 +104,7 @@ public class R04_HU1 extends AcceptanceTest {
 		};
 		
 		// Given
-		setLocalManagers(FakeLocalManagers.R04_1_1_2.getLocalManager());
+		setLocalManagers(FakeLocalManagers.R04_1_1_3.getLocalManager());
 		
 		// When
 		String[] resultReturned = getAndListService.listSerieSeasonEpisodesNamesOrderedByAired(260449, 1);
@@ -122,7 +125,8 @@ public class R04_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 04.1.2.1
 
 	@Test
-	public void listarEpisodios_NoExisteTemporada_Excepcion() {
+	public void listarEpisodios_NoExisteTemporada_Excepcion() 
+			throws NoSeriesStoredException, NoSeasonsStoredException {
 				
 		thrown.expect(NoSeasonsStoredException.class);
 		
@@ -144,7 +148,8 @@ public class R04_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 04.1.3.1
 
 	@Test
-	public void listarEpisodios_NoExisteSerie_Excepcion() {
+	public void listarEpisodios_NoExisteSerie_Excepcion() 
+			throws NoSeriesStoredException, NoSeasonsStoredException {
 		
 		thrown.expect(NoSeriesStoredException.class);
 		

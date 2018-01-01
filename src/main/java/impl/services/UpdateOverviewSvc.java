@@ -26,12 +26,10 @@ public class UpdateOverviewSvc implements IUpdateOverviewService {
 			throw new TooLongOverviewException();
 
 		Serie serie = localManager.getSerie(codSerie);
-
 		if (serie == null)
 			throw new NoSeriesStoredException();
-
 		serie.setOverview(newOverview);
-
+		
 		return serie;
 	}
 

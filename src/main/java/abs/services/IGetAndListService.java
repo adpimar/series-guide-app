@@ -4,6 +4,7 @@ import java.util.List;
 
 import abs.ISetLocalManager;
 import abs.ISetRemoteManager;
+import impl.exceptions.NoSeasonsStoredException;
 import impl.exceptions.NoSeriesStoredException;
 import impl.model.Episode;
 import impl.model.Season;
@@ -15,7 +16,7 @@ public interface IGetAndListService extends ISetLocalManager, ISetRemoteManager 
 	
 	String[] listSerieSeasonsNamesOrderedByAired(long codSerie);
 	
-	String[] listSerieSeasonEpisodesNamesOrderedByAired(long codSerie, int airedSeason);
+	String[] listSerieSeasonEpisodesNamesOrderedByAired(long codSerie, int airedSeason) throws NoSeriesStoredException, NoSeasonsStoredException;
 
 	Serie getSerie(long codSerie) throws NoSeriesStoredException;
 	
