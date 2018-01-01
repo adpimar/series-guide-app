@@ -52,9 +52,13 @@ public class GetAndListSvc implements IGetAndListService {
 	}
 
 	@Override
-	public Serie getSerie(long id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Serie getSerie(long codSerie) throws NoSeriesStoredException {
+		Serie serie = localManager.getSerie(codSerie);
+		
+		if (serie == null)
+			throw new NoSeriesStoredException();
+		
+		return serie;
 	}
 
 	@Override
