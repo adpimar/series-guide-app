@@ -6,6 +6,7 @@ import java.util.List;
 import abs.ILocalManager;
 import abs.IRemoteManager;
 import abs.services.IGetAndListService;
+import impl.exceptions.NoEpisodesStoredException;
 import impl.exceptions.NoSeasonsStoredException;
 import impl.exceptions.NoSeriesStoredException;
 import impl.model.Episode;
@@ -38,12 +39,6 @@ public class GetAndListSvc implements IGetAndListService {
 		for (Serie serie : localManager.listSeries())
 			seriesNames.add(serie.getSeriesName());
 		return seriesNames;
-	}
-
-	@Override
-	public String[] listSerieSeasonsNamesOrderedByAired(long codSerie) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
@@ -84,9 +79,22 @@ public class GetAndListSvc implements IGetAndListService {
 	}
 
 	@Override
-	public Episode getEpisode(long codSerie, int airedSeason, int airedEpisode) {
-		// TODO Auto-generated method stub
-		return null;
+	public Episode getEpisode(long codSerie, int airedSeason, int airedEpisode) 
+			throws NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException {
+		
+		if (localManager.getSerie(codSerie) == null)
+			throw new NoSeriesStoredException();
+
+		Season season = getSerieSeasonByAiredSeason(codSerie, airedSeason);
+
+		if (season == null)
+			throw new NoSeasonsStoredException();
+		
+		for (Episode episode : localManager.listEpisodes())
+			if (episode.getCodSeason() == season.getCodSeason() && episode.getAiredEpisode() == airedEpisode)
+				return episode;
+		
+		throw new NoEpisodesStoredException();
 	}
 
 	@Override

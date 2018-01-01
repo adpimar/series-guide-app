@@ -5,8 +5,8 @@ import abs.ISetRemoteManager;
 
 public interface IDeleteService extends ISetLocalManager, ISetRemoteManager {
 
-	void deleteSeason(long idSerie, int seasonNumber);
+	void deleteSeason(long codSerie, int airedSeason);
 
-	void deleteSerie(long idSerie);
+	void deleteSerie(long codSerie);
 
 }
