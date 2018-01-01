@@ -6,6 +6,7 @@ import java.util.List;
 import abs.ILocalManager;
 import abs.IRemoteManager;
 import abs.services.IGetAndListService;
+import impl.exceptions.NoSeasonsStoredException;
 import impl.exceptions.NoSeriesStoredException;
 import impl.model.Episode;
 import impl.model.Season;
@@ -29,10 +30,10 @@ public class GetAndListSvc implements IGetAndListService {
 	@Override
 	public List<String> listSeriesNames() throws NoSeriesStoredException {
 		List<Serie> series = localManager.listSeries();
-		
+
 		if (series.isEmpty())
 			throw new NoSeriesStoredException();
-		
+
 		List<String> seriesNames = new LinkedList<>();
 		for (Serie serie : localManager.listSeries())
 			seriesNames.add(serie.getSeriesName());
@@ -46,18 +47,33 @@ public class GetAndListSvc implements IGetAndListService {
 	}
 
 	@Override
-	public String[] listSerieSeasonEpisodesNamesOrderedByAired(long codSerie, int airedSeason) {
-		// TODO Auto-generated method stub
-		return null;
+	public String[] listSerieSeasonEpisodesNamesOrderedByAired(long codSerie, int airedSeason)
+			throws NoSeriesStoredException, NoSeasonsStoredException {
+
+		if (localManager.getSerie(codSerie) == null)
+			throw new NoSeriesStoredException();
+
+		Season season = getSerieSeasonByAiredSeason(codSerie, airedSeason);
+
+		if (season == null)
+			throw new NoSeasonsStoredException();
+
+		List<Episode> episodes = listSerieSeasonEpisodes(season.getCodSeason());
+
+		String[] episodesNames = new String[season.getTotalEpisodes()];
+		for (Episode episode : episodes)
+			episodesNames[episode.getAiredEpisode() - 1] = episode.getEpisodeName();
+
+		return episodesNames;
 	}
 
 	@Override
 	public Serie getSerie(long codSerie) throws NoSeriesStoredException {
 		Serie serie = localManager.getSerie(codSerie);
-		
+
 		if (serie == null)
 			throw new NoSeriesStoredException();
-		
+
 		return serie;
 	}
 
@@ -83,6 +99,31 @@ public class GetAndListSvc implements IGetAndListService {
 	public Serie getRemoteSeason(long idSerie, int seasonNumber) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	// -----------------------------------------------------------------------------
+
+	private List<Season> listSerieSeasons(long codSerie) {
+		List<Season> seasons = new LinkedList<>();
+		for (Season season : localManager.listSeasons())
+			if (season.getCodSerie() == codSerie)
+				seasons.add(season);
+		return seasons;
+	}
+
+	private Season getSerieSeasonByAiredSeason(long codSerie, int airedSeason) {
+		for (Season season : localManager.listSeasons())
+			if (season.getCodSerie() == codSerie && season.getAiredSeason() == airedSeason)
+				return season;
+		return null;
+	}
+
+	private List<Episode> listSerieSeasonEpisodes(long codSeason) {
+		List<Episode> episodes = new LinkedList<>();
+		for (Episode episode : localManager.listEpisodes())
+			if (episode.getCodSeason() == codSeason)
+				episodes.add(episode);
+		return episodes;
 	}
 
 }
