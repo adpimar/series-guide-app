@@ -2,28 +2,34 @@ package abs;
 
 import java.util.List;
 
-import impl.Episode;
-import impl.Season;
-import impl.Serie;
+import impl.model.Episode;
+import impl.model.Season;
+import impl.model.Serie;
 
 public interface ILocalManager {
 
-	List<String> searchSeries(String pattern);
-	
 	List<Serie> listSeries();
-	
-	List<Season> listSerieSeasons(long codSerie);
 
-	List<Episode> listSerieEpisodes(long codSerie);
-	
-	List<Episode> listSerieSeasonEpisodes(long codSerie, int airedSeason);
-	
+	List<Season> listSeasons();
+
+	List<Episode> listEpisodes();
+
 	Serie getSerie(long codSerie);
-	
-	Season getSerieSeason(long codSerie, int airedSeason);
-	
-	Episode getSerieEpisode(long codEpisode);
-	
-	Episode getSerieSeasonEpisode(long codSerie, int airedSeason, int airedEpisode);
-	
+
+	Season getSeason(long codSeason);
+
+	Episode getEpisode(long codEpisode);
+
+	Serie updateSerie(Serie serie);
+
+	Season updateSeason(Season season);
+
+	Episode updateEpisode(Episode episode);
+
+	boolean removeSerie(Serie serie);
+
+	boolean removeSeason(Season season);
+
+	boolean removeEpisode(Episode episode);
+
 }

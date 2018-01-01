@@ -2,7 +2,6 @@ package impl;
 
 import java.io.IOException;
 import java.net.URI;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -18,6 +17,7 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
 
 import abs.IRemoteManager;
+import impl.model.RemoteSerie;
 
 public class TheTVDBAdapter implements IRemoteManager {
 
@@ -95,52 +95,52 @@ public class TheTVDBAdapter implements IRemoteManager {
 		return theTVDBSeries;
 	}
 	
-	public Serie getSerie(long id) {
-		Serie serie = new Serie();
-		Map<String, String> theTVDBSeriefields = new HashMap<>();
-		
-		Response response = client
-				.target(getBaseURI())
-				.path("series")
-				.path(Long.toString(id))
-				.request(MediaType.APPLICATION_JSON)
-				.header("Authorization", "Bearer " + token.getToken())
-				.header("Accept-Language", "en")
-				.get();
-		
-		try {
-			JsonParser jsonParser = jsonFactory.createParser(response.readEntity(String.class));
-
-			while (!jsonParser.isClosed()) {
-				JsonToken jsonToken = jsonParser.nextToken();
-
-				if (JsonToken.FIELD_NAME.equals(jsonToken)) {
-					String fieldName = jsonParser.getCurrentName();
-					jsonParser.nextToken();					
-					theTVDBSeriefields.put(fieldName, jsonParser.getValueAsString());
-				}
-			}
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		response.close();
-		
-		serie.setId(Long.parseLong(theTVDBSeriefields.get("id")));
-		serie.setTitulo(theTVDBSeriefields.get("seriesName"));
-		serie.setEstado(theTVDBSeriefields.get("status"));
-		serie.setInicioEmision(theTVDBSeriefields.get("firstAired"));
-		serie.setDiaEmision(theTVDBSeriefields.get("airsDayOfWeek"));
-		serie.setHorarioEmision(theTVDBSeriefields.get("airsTime"));
-		serie.setCadena(theTVDBSeriefields.get("network"));
-		serie.setGeneros(null);
-		serie.setPuntuacion(Double.parseDouble(theTVDBSeriefields.get("siteRating")));
-		serie.setTotalPuntuaciones(Integer.parseInt(theTVDBSeriefields.get("siteRatingCount")));
-		serie.setSinopsis(theTVDBSeriefields.get("overview"));
-
-		return serie;
-	}
+//	public Serie getSerie(long id) {
+//		Serie serie = new Serie();
+//		Map<String, String> theTVDBSeriefields = new HashMap<>();
+//		
+//		Response response = client
+//				.target(getBaseURI())
+//				.path("series")
+//				.path(Long.toString(id))
+//				.request(MediaType.APPLICATION_JSON)
+//				.header("Authorization", "Bearer " + token.getToken())
+//				.header("Accept-Language", "en")
+//				.get();
+//		
+//		try {
+//			JsonParser jsonParser = jsonFactory.createParser(response.readEntity(String.class));
+//
+//			while (!jsonParser.isClosed()) {
+//				JsonToken jsonToken = jsonParser.nextToken();
+//
+//				if (JsonToken.FIELD_NAME.equals(jsonToken)) {
+//					String fieldName = jsonParser.getCurrentName();
+//					jsonParser.nextToken();					
+//					theTVDBSeriefields.put(fieldName, jsonParser.getValueAsString());
+//				}
+//			}
+//			
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//
+//		response.close();
+//		
+//		serie.setCodSerie(Long.parseLong(theTVDBSeriefields.get("id")));
+//		serie.setSeriesName(theTVDBSeriefields.get("seriesName"));
+//		serie.setStatus(theTVDBSeriefields.get("status"));
+//		serie.setFirstAired(theTVDBSeriefields.get("firstAired"));
+//		serie.setAirsDOW(theTVDBSeriefields.get("airsDayOfWeek"));
+//		serie.setAirsTime(theTVDBSeriefields.get("airsTime"));
+//		serie.setNetwork(theTVDBSeriefields.get("network"));
+//		serie.setGenres(null);
+//		serie.setSiteRating(Double.parseDouble(theTVDBSeriefields.get("siteRating")));
+//		serie.setSiteRatingCount(Integer.parseInt(theTVDBSeriefields.get("siteRatingCount")));
+//		serie.setOverview(theTVDBSeriefields.get("overview"));
+//
+//		return serie;
+//	}
 
 	private void setToken() {
 		Response response = client
@@ -159,6 +159,18 @@ public class TheTVDBAdapter implements IRemoteManager {
 		TheTVDBAdapter adapter = new TheTVDBAdapter();
 		System.out.println(adapter.searchSeries("The OA").values());
 		//System.out.println(adapter.getSerie(321060));
+	}
+
+	@Override
+	public RemoteSerie getSerie(long codSerie) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Map<String, String> getSeason(long codSeason) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

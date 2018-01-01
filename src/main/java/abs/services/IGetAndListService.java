@@ -4,21 +4,26 @@ import java.util.List;
 
 import abs.ISetLocalManager;
 import abs.ISetRemoteManager;
-import impl.Season;
-import impl.Serie;
+import impl.model.Episode;
+import impl.model.Season;
+import impl.model.Serie;
 
 public interface IGetAndListService extends ISetLocalManager, ISetRemoteManager {
 	
 	List<String> listSeriesNames();
 	
-	List<String> listSerieSeasonsNames(long codSerie);
+	String[] listSerieSeasonsNamesOrderedByAired(long codSerie);
 	
-	String[] listSerieSeasonsEpisodesNames(long codSerie, int airedSeason);
+	String[] listSerieSeasonEpisodesNamesOrderedByAired(long codSerie, int airedSeason);
 
-	Serie getInfoSerie(long id);
+	Serie getSerie(long id);
+	
+	Season getSeason(long codSerie, int airedSeason);
+	
+	Episode getEpisode(long codSerie, int airedSeason, int airedEpisode);
 
 	Serie getRemoteSerie(long idSerie, int seasonNumber);
 
-	Season getRemoteSeason(long idSerie, int seasonNumber);
+	Serie getRemoteSeason(long idSerie, int seasonNumber);
 
 }

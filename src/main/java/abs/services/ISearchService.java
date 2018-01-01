@@ -1,12 +1,14 @@
 package abs.services;
 
-import java.util.List;
 import java.util.Map;
 
-public interface ISearchService {
+import abs.ISetLocalManager;
+import abs.ISetRemoteManager;
+
+public interface ISearchService extends ISetLocalManager, ISetRemoteManager {
 	
-	List<String> searchSeriesLocal(String pattern);
+	Map<String, Long> searchSeriesLocal(String pattern);
 	
-	Map<Long, String> searchSeriesRemote(String pattern);
+	Map<String, Long> searchSeriesRemote(String pattern);
 	
 }

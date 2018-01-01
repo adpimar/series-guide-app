@@ -1,15 +1,14 @@
 package impl.services;
 
-import java.util.NoSuchElementException;
-
 import abs.ILocalManager;
 import abs.services.IUpdateOverviewService;
-import impl.Serie;
+import impl.model.Episode;
+import impl.model.Serie;
 
 public class UpdateOverviewSvc implements IUpdateOverviewService {
 
 	private static final int LIMITE_CARACTERES_SINOPSIS = 500;
-	
+
 	private ILocalManager localManager;
 
 	@Override
@@ -19,22 +18,14 @@ public class UpdateOverviewSvc implements IUpdateOverviewService {
 
 	@Override
 	public Serie updateSerieOverview(long idSerie, String newOverview) {
-		if (newOverview.length() > LIMITE_CARACTERES_SINOPSIS)
-			throw new IllegalArgumentException("La nueva sinopsis excede los 500 caracteres.");
-		
-		Serie serie = localManager.getSerie(idSerie);
-		
-		if (serie == null)
-			throw new NoSuchElementException("No existe la serie con id " + idSerie + " en la BDL.");
-		
-		serie.setOverview(newOverview);
-		return serie;
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public void updateEpisodeOverview(long idSerie, int seasonNumber, int episodeNumber, String newOverview) {
+	public Episode updateEpisodeOverview(long idSerie, int seasonNumber, int episodeNumber, String newOverview) {
 		// TODO Auto-generated method stub
-
+		return null;
 	}
 
 }
