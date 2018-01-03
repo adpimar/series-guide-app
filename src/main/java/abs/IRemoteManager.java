@@ -1,12 +1,13 @@
 package abs;
 
+import java.util.List;
 import java.util.Map;
 
 import impl.model.RemoteSerie;
 
 public interface IRemoteManager {
 
-	Map<Long, String> searchSeries(String pattern);
+	List<RemoteSerie> searchSeries(String pattern);
 	
 	RemoteSerie getSerie(long codSerie);
 	

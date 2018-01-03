@@ -8,6 +8,7 @@ import java.util.Map;
 import abs.ILocalManager;
 import abs.IRemoteManager;
 import abs.services.ISearchService;
+import impl.exceptions.NoKeywordsOnRemoteSearchException;
 import impl.exceptions.NoSeriesStoredException;
 import impl.model.Serie;
 
@@ -28,21 +29,22 @@ public class SearchSvc implements ISearchService {
 
 	@Override
 	public Map<String, Long> searchSeriesLocal(String pattern) 
-			throws NoSeriesStoredException 
+			throws NoSeriesStoredException, NoKeywordsOnRemoteSearchException 
 	{
-		Map<String, Long> seriesMatched = new HashMap<>();
-		
-		// Comprueba no cadena vacía
-		if (pattern.isEmpty())
-			return seriesMatched;
-		
-		// Comrpueba existen series
+		// Comprueba existen series
 		List<Serie> series = localManager.listSeries();
 		if (series.isEmpty())
 			throw new NoSeriesStoredException();
-
-		// Dame y ordena palabras clave
+		
+		// Filtra el patrón y obtén palabras claves
 		String[] keyWords = getCleanKeyWords(pattern);
+		
+		// Comprueba si se han introducido palabras
+		if (keyWords.length == 1 && keyWords[0].equals(""))
+			throw new NoKeywordsOnRemoteSearchException();
+		
+		Map<String, Long> seriesMatched = new HashMap<>();
+
 		Arrays.sort(keyWords);
 		
 		// Busca coincidencias con las series
@@ -54,12 +56,24 @@ public class SearchSvc implements ISearchService {
 	}
 
 	@Override
-	public Map<String, Long> searchSeriesRemote(String pattern) {
-		// TODO Auto-generated method stub
+	public Map<String, Long> searchSeriesRemote(String pattern) 
+			throws NoKeywordsOnRemoteSearchException 
+	{
+		// Filtra el patrón y obtén palabras claves
+		String[] keyWords = getCleanKeyWords(pattern);
+		
+		// Comprueba si se han introducido palabras
+		if (keyWords.length == 1 && keyWords[0].equals(""))
+			throw new NoKeywordsOnRemoteSearchException();
+		
+		Map<String, Long> seriesMatched = new HashMap<>();
+		
+		
+		
 		return null;
 	}
 
-	private String[] getCleanKeyWords(String s) {
+	private static String[] getCleanKeyWords(String s) {
 		return s.replaceAll("\\W", " ")
 				.replaceAll("^ +| +$|( )+", "$1")
 				.toLowerCase()
@@ -74,4 +88,16 @@ public class SearchSvc implements ISearchService {
 		return false;
 	}
 
+	public static void main(String[] args) {
+		
+		String pattern1 = "   \\$    ` ? =  ";
+		String pattern2 = "     ";
+		String pattern3 = "";
+				
+		System.out.println(getCleanKeyWords(pattern1)[0].equals(""));
+		System.out.println(Arrays.deepToString(getCleanKeyWords(pattern2)));
+		System.out.println(Arrays.deepToString(getCleanKeyWords(pattern3)));
+		
+	}
+	
 }

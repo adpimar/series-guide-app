@@ -32,8 +32,6 @@ public class RemoteSerie {
 		aliases = new LinkedList<>();
 		genre = new LinkedList<>();
 	}
-
-	// ---------- Getters -----------------------------------------------------
 	
 	public long getId() {
 		return id;
@@ -123,8 +121,6 @@ public class RemoteSerie {
 		return siteRatingCount;
 	}
 	
-	// ---------- Setters -----------------------------------------------------
-
 	public void setId(long id) {
 		this.id = id;
 	}
@@ -211,16 +207,6 @@ public class RemoteSerie {
 
 	public void setSiteRatingCount(int siteRatingCount) {
 		this.siteRatingCount = siteRatingCount;
-	}
-
-	@Override
-	public String toString() {
-		return "RemoteSerie [id=" + id + ", seriesName=" + seriesName + ", aliases=" + aliases + ", banner=" + banner
-				+ ", seriesId=" + seriesId + ", status=" + status + ", firstAired=" + firstAired + ", network="
-				+ network + ", networkId=" + networkId + ", runtime=" + runtime + ", genre=" + genre + ", overview="
-				+ overview + ", lastUpdated=" + lastUpdated + ", airsDayOfWeek=" + airsDayOfWeek + ", airsTime="
-				+ airsTime + ", rating=" + rating + ", imdbId=" + imdbId + ", zap2itld=" + zap2itld + ", added=" + added
-				+ ", addedBy=" + addedBy + ", siteRating=" + siteRating + ", siteRatingCount=" + siteRatingCount + "]";
 	}
 
 }
