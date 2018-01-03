@@ -10,7 +10,6 @@ import abs.IRemoteManager;
 import abs.services.ISearchService;
 import impl.exceptions.NoSeriesStoredException;
 import impl.model.Serie;
-import javafx.scene.chart.XYChart.Series;
 
 public class SearchSvc implements ISearchService {
 
