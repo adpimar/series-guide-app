@@ -15,8 +15,6 @@ public class RemoteEpisode {
 	private long lastUpdated;
 	private String overview;
 
-	// ---------- Getters -----------------------------------------------------
-
 	public int getAbsoluteNumber() {
 		return absoluteNumber;
 	}
@@ -64,8 +62,6 @@ public class RemoteEpisode {
 	public String getOverview() {
 		return overview;
 	}
-
-	// ---------- Setters -----------------------------------------------------
 
 	public void setAbsoluteNumber(int absoluteNumber) {
 		this.absoluteNumber = absoluteNumber;

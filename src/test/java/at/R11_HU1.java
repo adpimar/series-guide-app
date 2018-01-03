@@ -10,6 +10,7 @@ import java.util.Map;
 
 import org.junit.Test;
 
+import impl.exceptions.NoKeywordsOnRemoteSearchException;
 import impl.exceptions.NoSeriesStoredException;
 import resources.FakeLocalManagers;
 
@@ -31,25 +32,26 @@ public class R11_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 11.1.1.1
 
 	@Test
-	public void buscarLocalmenteSerie_ExisteSerieConCadenaVacia_ListaVacia() 
-			throws NoSeriesStoredException 
+	public void buscarLocalmenteSerie_ExisteSerieConCadenaVacia_Excepcion() 
+			throws NoSeriesStoredException, NoKeywordsOnRemoteSearchException 
 	{
+		thrown.expect(NoKeywordsOnRemoteSearchException.class);
+		
 		// Given
 		setLocalManagers(FakeLocalManagers.R11_1_1_1.getLocalManager());
 		
 		// When
-		Map<String, Long> resultReturned = searchService.searchSeriesLocal("");
+		searchService.searchSeriesLocal("");
 		
 		// Then
-		assertNotNull(resultReturned);
-		assertEquals(0, resultReturned.size());	
+
 	}
 	
 	// PRUEBA DE ACEPTACIÓN 11.1.1.2
 	
 	@Test
 	public void buscarLocalmenteSerie_ExisteSerieConUnaPalabraClave_ListaNoVacia() 
-			throws NoSeriesStoredException 
+			throws NoSeriesStoredException, NoKeywordsOnRemoteSearchException  
 	{
 		List<String> resultExpected = Arrays.asList(
 				"The OA",
@@ -72,7 +74,7 @@ public class R11_HU1 extends AcceptanceTest {
 
 	
 	public void buscarLocalmenteSerie_ExisteSerieConPalabrasClave_ListaNoVacia() 
-			throws NoSeriesStoredException 
+			throws NoSeriesStoredException, NoKeywordsOnRemoteSearchException  
 	{
 		List<String> resultExpected = Arrays.asList(
 				"The Big Bang Theory"
@@ -99,7 +101,7 @@ public class R11_HU1 extends AcceptanceTest {
 
 	@Test
 	public void buscarLocalmenteSerie_NoExisteSerieConUnaPalabraClave_ListaVacia() 
-			throws NoSeriesStoredException 
+			throws NoSeriesStoredException, NoKeywordsOnRemoteSearchException  
 	{	
 		// Given
 		setLocalManagers(FakeLocalManagers.R11_1_2_1.getLocalManager());
@@ -116,7 +118,7 @@ public class R11_HU1 extends AcceptanceTest {
 	
 	@Test
 	public void buscarLocalmenteSerie_NoExisteSerieConPalabrasClave_ListaVacia() 
-			throws NoSeriesStoredException 
+			throws NoSeriesStoredException, NoKeywordsOnRemoteSearchException  
 	{
 		// Given
 		setLocalManagers(FakeLocalManagers.R11_1_2_2.getLocalManager());
@@ -138,7 +140,7 @@ public class R11_HU1 extends AcceptanceTest {
 	
 	@Test
 	public void buscarLocalmenteSerie_NoExistenSeries_Excepcion() 
-			throws NoSeriesStoredException 
+			throws NoSeriesStoredException, NoKeywordsOnRemoteSearchException  
 	{	
 		thrown.expect(NoSeriesStoredException.class);
 		
