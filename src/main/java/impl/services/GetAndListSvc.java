@@ -29,43 +29,50 @@ public class GetAndListSvc implements IGetAndListService {
 	}
 
 	@Override
-	public List<String> listSeriesNames() throws NoSeriesStoredException {
+	public List<String> listSeriesNames() 
+			throws NoSeriesStoredException 
+	{
+		// Comprueba existen series
 		List<Serie> series = localManager.listSeries();
-
 		if (series.isEmpty())
 			throw new NoSeriesStoredException();
 
+		// Crea lista nombres series
 		List<String> seriesNames = new LinkedList<>();
 		for (Serie serie : localManager.listSeries())
 			seriesNames.add(serie.getSeriesName());
+		
 		return seriesNames;
 	}
 
 	@Override
 	public String[] listSerieSeasonEpisodesNamesOrderedByAired(long codSerie, int airedSeason)
-			throws NoSeriesStoredException, NoSeasonsStoredException {
-
-		if (localManager.getSerie(codSerie) == null)
-			throw new NoSeriesStoredException();
-
-		Season season = getSerieSeasonByAiredSeason(codSerie, airedSeason);
-
+			throws NoSeriesStoredException, NoSeasonsStoredException 
+	{
+		// Comprueba existe serie
+		Serie serie = localManager.getSerie(codSerie);
+		if (serie == null)
+			throw new NoSeriesStoredException();	
+		
+		// Comprueba existe temporada
+		Season season = serie.getSeasonByAired(airedSeason);
 		if (season == null)
 			throw new NoSeasonsStoredException();
-
-		List<Episode> episodes = listSerieSeasonEpisodes(season.getCodSeason());
-
+		
+		// Crea vector episodios ordenados
 		String[] episodesNames = new String[season.getTotalEpisodes()];
-		for (Episode episode : episodes)
+		for (Episode episode : season.getEpisodes())
 			episodesNames[episode.getAiredEpisode() - 1] = episode.getEpisodeName();
-
+		
 		return episodesNames;
 	}
 
 	@Override
-	public Serie getSerie(long codSerie) throws NoSeriesStoredException {
+	public Serie getSerie(long codSerie) 
+			throws NoSeriesStoredException 
+	{
+		// Comprueba existe serie
 		Serie serie = localManager.getSerie(codSerie);
-
 		if (serie == null)
 			throw new NoSeriesStoredException();
 
@@ -73,28 +80,42 @@ public class GetAndListSvc implements IGetAndListService {
 	}
 
 	@Override
-	public Season getSeason(long codSerie, int airedSeason) {
-		// TODO Auto-generated method stub
-		return null;
+	public Season getSeason(long codSerie, int airedSeason) 
+			throws NoSeriesStoredException, NoSeasonsStoredException 
+	{
+		// Comprueba existe serie
+		Serie serie = localManager.getSerie(codSerie);
+		if (serie == null)
+			throw new NoSeriesStoredException();
+		
+		// Comprueba existe temporada
+		Season season = serie.getSeasonByAired(airedSeason);
+		if (season == null)
+			throw new NoSeasonsStoredException();
+		
+		return season;
 	}
 
 	@Override
 	public Episode getEpisode(long codSerie, int airedSeason, int airedEpisode) 
-			throws NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException {
+			throws NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException 
+	{
+		// Comprueba existe serie
+		Serie serie = localManager.getSerie(codSerie);
+		if (serie == null)
+			throw new NoSeriesStoredException();	
 		
-		if (localManager.getSerie(codSerie) == null)
-			throw new NoSeriesStoredException();
-
-		Season season = getSerieSeasonByAiredSeason(codSerie, airedSeason);
-
+		// Comprueba existe temporada
+		Season season = serie.getSeasonByAired(airedSeason);
 		if (season == null)
 			throw new NoSeasonsStoredException();
 		
-		for (Episode episode : localManager.listEpisodes())
-			if (episode.getCodSeason() == season.getCodSeason() && episode.getAiredEpisode() == airedEpisode)
-				return episode;
+		// Comprueba existe episodio
+		Episode episode = season.getEpisodeByAired(airedEpisode);
+		if (episode == null)
+			throw new NoEpisodesStoredException();
 		
-		throw new NoEpisodesStoredException();
+		return episode;
 	}
 
 	@Override
@@ -108,30 +129,5 @@ public class GetAndListSvc implements IGetAndListService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	// -----------------------------------------------------------------------------
-
-	private List<Season> listSerieSeasons(long codSerie) {
-		List<Season> seasons = new LinkedList<>();
-		for (Season season : localManager.listSeasons())
-			if (season.getCodSerie() == codSerie)
-				seasons.add(season);
-		return seasons;
-	}
-
-	private Season getSerieSeasonByAiredSeason(long codSerie, int airedSeason) {
-		for (Season season : localManager.listSeasons())
-			if (season.getCodSerie() == codSerie && season.getAiredSeason() == airedSeason)
-				return season;
-		return null;
-	}
-
-	private List<Episode> listSerieSeasonEpisodes(long codSeason) {
-		List<Episode> episodes = new LinkedList<>();
-		for (Episode episode : localManager.listEpisodes())
-			if (episode.getCodSeason() == codSeason)
-				episodes.add(episode);
-		return episodes;
-	}
-
+	
 }

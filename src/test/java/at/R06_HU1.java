@@ -31,8 +31,9 @@ public class R06_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 06.1.1.1
 
 	@Test
-	public void modificarSinopsisEpisodio_CadenaVacia_CadenaVacia() {
-		
+	public void modificarSinopsisEpisodio_CadenaVacia_CadenaVacia() 
+			throws TooLongOverviewException, NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException 
+	{
 		String newOverview = "";
 		
 		// Given
@@ -44,15 +45,15 @@ public class R06_HU1 extends AcceptanceTest {
 		// Then
 		assertNotNull(resultReturned);
 		assertEquals(resultReturned, ExpectedEpisodes.R06_1_1_1.getExpectedEpisode());
-		assertEquals(getAndListService.getEpisode(321060, 1, 4).getOverview(), newOverview);
-		
+		assertEquals(getAndListService.getEpisode(321060, 1, 4).getOverview(), newOverview);		
 	}
 	
 	// PRUEBA DE ACEPTACIÓN 06.1.1.2
 
 	@Test
-	public void modificarSinopsisEpisodio_CadenaMenor500Caracteres_Cadena() {
-		
+	public void modificarSinopsisEpisodio_CadenaMenor500Caracteres_Cadena() 
+			throws TooLongOverviewException, NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException 
+	{		
 		String newOverview = 
 				"Un doloroso dilema ofrece a OA una nueva perspectiva de los problemas "
 				+ "del grupo. Homer decide averiguar el verdadero propósito de los "
@@ -68,23 +69,23 @@ public class R06_HU1 extends AcceptanceTest {
 		assertNotNull(resultReturned);
 		assertEquals(resultReturned, ExpectedEpisodes.R06_1_1_2.getExpectedEpisode());
 		assertEquals(getAndListService.getEpisode(321060, 1, 4).getOverview(), newOverview);
-		
 	}
 	
 	// PRUEBA DE ACEPTACIÓN 06.1.1.3
 	
 	@Test
-	public void modificarSinopsisEpisodio_CadenaMayor500Caracteres_Excepcion() {
-
+	public void modificarSinopsisEpisodio_CadenaMayor500Caracteres_Excepcion() 
+			throws TooLongOverviewException, NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException 
+	{
 		String newOverview = 
 				"Un doloroso dilema ofrece a OA una nueva perspectiva de los problemas "
 				+ "del grupo. Homer decide averiguar el verdadero propósito de los "
 				+ "experimentos de Hap. (…) OA rememora las dramáticas idas y vueltas "
 				+ "de su vida desde el accidente que sufrió de niña, el cual la condujo "
-				+ "a un encuentro fatídico lejos de casa muchos años después (...) Una "
+				+ "a un encuentro fatídico lejos de casa muchos años después (...). Una "
 				+ "vez que OA relata la trágica noche final en lo de Hap, el grupo "
 				+ "comienza a ver su historia de otra manera. Los fragmentos del sueño "
-				+ "finalmente cobran sentido... ";
+				+ "finalmente cobran sentido ... ";
 		
 		thrown.expect(TooLongOverviewException.class);
 		
@@ -94,7 +95,7 @@ public class R06_HU1 extends AcceptanceTest {
 		// When
 		updateOverviewService.updateEpisodeOverview(321060, 1, 4, newOverview);
 		
-		// Then
+		// Then	
 		
 	}
 
@@ -106,8 +107,9 @@ public class R06_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 06.1.2.1
 	
 	@Test
-	public void modificarSinopsisEpisodio_ExisteSerieExisteTemporadaNoExisteEpidosio_Excepcion() {
-
+	public void modificarSinopsisEpisodio_ExisteSerieExisteTemporadaNoExisteEpidosio_Excepcion() 
+			throws TooLongOverviewException, NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException 
+	{
 		thrown.expect(NoEpisodesStoredException.class);
 		
 		// Given
@@ -123,8 +125,9 @@ public class R06_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 06.1.2.2
 	
 	@Test
-	public void modificarSinopsisEpisodio_ExisteSerieNoExisteTemporada_Excepcion() {
-
+	public void modificarSinopsisEpisodio_ExisteSerieNoExisteTemporada_Excepcion() 
+			throws TooLongOverviewException, NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException 
+	{
 		thrown.expect(NoSeasonsStoredException.class);
 		
 		// Given
@@ -140,8 +143,9 @@ public class R06_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 06.1.2.3
 	
 	@Test
-	public void modificarSinopsisEpisodio_NoExisteSerieExiste_Excepcion() {
-
+	public void modificarSinopsisEpisodio_NoExisteSerieExiste_Excepcion() 
+			throws TooLongOverviewException, NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException 
+	{
 		thrown.expect(NoSeriesStoredException.class);
 		
 		// Given

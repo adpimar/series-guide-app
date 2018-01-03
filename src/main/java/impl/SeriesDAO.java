@@ -16,19 +16,25 @@ public class SeriesDAO implements ILocalManager {
 	}
 
 	@Override
-	public List<Season> listSeasons() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Episode> listEpisodes() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public Serie getSerie(long codSerie) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void updateSerie(Serie serie) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void removeSerie(Serie serie) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public List<Season> listSeasons() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -40,45 +46,39 @@ public class SeriesDAO implements ILocalManager {
 	}
 
 	@Override
+	public void updateSeason(Season season) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void removeSeason(Season season) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public List<Episode> listEpisodes() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
 	public Episode getEpisode(long codEpisode) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Serie updateSerie(Serie serie) {
+	public void updateEpisode(Episode episode) {
 		// TODO Auto-generated method stub
-		return null;
+
 	}
 
 	@Override
-	public Season updateSeason(Season season) {
+	public void removeEpisode(Episode episode) {
 		// TODO Auto-generated method stub
-		return null;
-	}
 
-	@Override
-	public Episode updateEpisode(Episode episode) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean removeSerie(Serie serie) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean removeSeason(Season season) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean removeEpisode(Episode episode) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 }

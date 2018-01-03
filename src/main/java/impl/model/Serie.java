@@ -1,6 +1,6 @@
 package impl.model;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Serie {
@@ -20,7 +20,16 @@ public class Serie {
 	private List<Season> seasons;
 	
 	public Serie() {
-		seasons = new ArrayList<>();
+		seasons = new LinkedList<>();
+	}
+	
+	// ------------------------------------------------------------------------
+	
+	public Season getSeasonByAired(int airedSeason) {
+		for (Season season : seasons)
+			if (season.getAiredSeason() == airedSeason)
+				return season;
+		return null;
 	}
 
 	// ---------- Getters -----------------------------------------------------
@@ -165,11 +174,6 @@ public class Serie {
 			if (other.overview != null)
 				return false;
 		} else if (!overview.equals(other.overview))
-			return false;
-		if (seasons == null) {
-			if (other.seasons != null)
-				return false;
-		} else if (!seasons.equals(other.seasons))
 			return false;
 		if (seriesName == null) {
 			if (other.seriesName != null)

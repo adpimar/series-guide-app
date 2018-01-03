@@ -28,8 +28,9 @@ public class R02_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 02.1.1.1
 
 	@Test
-	public void obtenerSerieAlmacenada_ExisteUnaSerie_Serie() throws NoSeriesStoredException {
-		
+	public void obtenerSerieAlmacenada_ExisteUnaSerie_Serie() 
+			throws NoSeriesStoredException 
+	{	
 		// Given
 		setLocalManagers(FakeLocalManagers.R02_1_1_1.getLocalManager());
 		
@@ -39,14 +40,14 @@ public class R02_HU1 extends AcceptanceTest {
 		// Then
 		assertNotNull(resultReturned);
 		assertEquals(resultReturned, ExpectedSeries.R02_1_1_1.getExpectedSerie());
-
 	}
 
 	// PRUEBA DE ACEPTACIÓN 02.1.1.2
 
 	@Test
-	public void obtenerSerieAlmacenada_ExistenVariasSeries_Serie() throws NoSeriesStoredException {
-		
+	public void obtenerSerieAlmacenada_ExistenVariasSeries_Serie() 
+			throws NoSeriesStoredException 
+	{		
 		// Given
 		setLocalManagers(FakeLocalManagers.R02_1_1_2.getLocalManager());
 		
@@ -56,7 +57,6 @@ public class R02_HU1 extends AcceptanceTest {
 		// Then
 		assertNotNull(resultReturned);
 		assertEquals(resultReturned, ExpectedSeries.R02_1_1_2.getExpectedSerie());
-
 	}
 
 	// -----------------------------------------------------------------------------
@@ -67,8 +67,9 @@ public class R02_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 02.1.2.1
 
 	@Test
-	public void obtenerSerieNoAlmacenada_ExisteUnaSerie_Excepcion() throws NoSeriesStoredException {
-		
+	public void obtenerSerieNoAlmacenada_ExisteUnaSerie_Excepcion() 
+			throws NoSeriesStoredException 
+	{
 		thrown.expect(NoSeriesStoredException.class);
 		
 		// Given
@@ -84,8 +85,9 @@ public class R02_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 02.1.2.2
 	
 	@Test
-	public void obtenerSerieNoAlmacenada_ExistenVariasSeries_Excepcion() throws NoSeriesStoredException {
-		
+	public void obtenerSerieNoAlmacenada_ExistenVariasSeries_Excepcion() 
+			throws NoSeriesStoredException 
+	{
 		thrown.expect(NoSeriesStoredException.class);
 		
 		// Given
@@ -101,8 +103,9 @@ public class R02_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 02.1.2.3
 
 	@Test
-	public void obtenerSerieNoAlmacenada_NoExistenSeries_Excepcion() throws NoSeriesStoredException {
-		
+	public void obtenerSerieNoAlmacenada_NoExistenSeries_Excepcion() 
+			throws NoSeriesStoredException 
+	{	
 		thrown.expect(NoSeriesStoredException.class);
 		
 		// Given

@@ -32,8 +32,9 @@ public class R15_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 15.1.1.1
 	
 	@Test
-	public void indicarVistaTemporada_TemporadaNoVistaConTodosEpisodios_TemporadaVista() {
-		
+	public void indicarVistaTemporada_TemporadaNoVistaConTodosEpisodios_TemporadaVista() 
+			throws NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException 
+	{
 		// Given
 		setLocalManagers(FakeLocalManagers.R15_1_1_1.getLocalManager());
 		
@@ -44,14 +45,14 @@ public class R15_HU1 extends AcceptanceTest {
 		assertNotNull(resultReturned);
 		assertEquals(resultReturned, ExpectedSeasons.R15_1_1_1.getExpectedSeason());
 		assertTrue(compruebaTemporadaVistaConEpisodiosVistos(resultReturned));
-
 	}
 
 	// PRUEBA DE ACEPTACIÓN 15.1.1.2
 
 	@Test
-	public void indicarVistaTemporada_TemporadaNoVistaConUnEpisodio_Excepcion() {
-
+	public void indicarVistaTemporada_TemporadaNoVistaConUnEpisodio_Excepcion() 
+			throws NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException 
+	{
 		thrown.expect(NoEpisodesStoredException.class);
 		
 		// Given
@@ -67,8 +68,9 @@ public class R15_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 15.1.1.3
 	
 	@Test
-	public void indicarVistaTemporada_TemporadaNoVistaSinEpisodios_Excepcion() {
-
+	public void indicarVistaTemporada_TemporadaNoVistaSinEpisodios_Excepcion() 
+			throws NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException 
+	{
 		thrown.expect(NoEpisodesStoredException.class);
 		
 		// Given
@@ -84,8 +86,9 @@ public class R15_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 15.1.1.4
 	
 	@Test
-	public void indicarVistaTemporada_TemporadaVista_TemporadaVista() {
-		
+	public void indicarVistaTemporada_TemporadaVista_TemporadaVista() 
+			throws NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException 
+	{
 		// Given
 		setLocalManagers(FakeLocalManagers.R15_1_1_4.getLocalManager());
 		
@@ -107,8 +110,9 @@ public class R15_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 15.1.2.1
 	
 	@Test
-	public void indicarVistaTemporada_ExisteSerieNoExisteTemporada_Excepcion() {
-
+	public void indicarVistaTemporada_ExisteSerieNoExisteTemporada_Excepcion() 
+			throws NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException 
+	{
 		thrown.expect(NoSeasonsStoredException.class);
 		
 		// Given
@@ -124,8 +128,9 @@ public class R15_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 15.1.2.2
 	
 	@Test
-	public void indicarVistaTemporada_NoExisteSerie_Excepcion() {
-
+	public void indicarVistaTemporada_NoExisteSerie_Excepcion() 
+			throws NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException 
+	{
 		thrown.expect(NoSeriesStoredException.class);
 		
 		// Given
@@ -140,7 +145,9 @@ public class R15_HU1 extends AcceptanceTest {
 	
 	// -----------------------------------------------------------------------------
 	
-	private boolean compruebaTemporadaVistaConEpisodiosVistos(Season season) {
+	private boolean compruebaTemporadaVistaConEpisodiosVistos(Season season) 
+			throws NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException 
+	{
 		long codSerie = season.getCodSerie();
 		int airedSeason = season.getAiredSeason();
 		int totalEpisodes = season.getTotalEpisodes();

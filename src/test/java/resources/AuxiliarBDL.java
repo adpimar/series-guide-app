@@ -35,7 +35,7 @@ public class AuxiliarBDL implements ILocalManager {
 		}
 	}
 	
-	// ---------- Readers -----------------------------------------------------
+	// ------------------------------------------------------------------------
 
 	private void read() throws FileNotFoundException, IOException {
 		BufferedReader b = new BufferedReader(new FileReader(filename));
@@ -43,29 +43,39 @@ public class AuxiliarBDL implements ILocalManager {
 		while ((line = b.readLine()) != null) {
 			String[] fields = line.split("#");
 			switch (fields[0].charAt(0)) {
-				case 'S': series.add(TestParsers.localSerieParser(fields)); break;
-				case 'T': seasons.add(TestParsers.localSeasonParser(fields)); break;
-				case 'E': episodes.add(TestParsers.localEpisodeParser(fields));
+				case 'S': addSerie(TestParsers.localSerieParser(fields)); break;
+				case 'T': addSeason(TestParsers.localSeasonParser(fields)); break;
+				case 'E': addEpisode(TestParsers.localEpisodeParser(fields));
 			}
 		}
 		b.close();
 	}
-
-	// ---------- ILocalManager -----------------------------------------------
 	
+	private void addSerie(Serie serie) {
+		series.add(serie);
+	}
+	
+	private void addSeason(Season season) {
+		for (Serie serie : series)
+			if (serie.getCodSerie() == season.getCodSerie())
+				if (!serie.getSeasons().add(season))
+					throw new IllegalArgumentException();
+		seasons.add(season);
+	}
+	
+	private void addEpisode(Episode episode) {
+		for (Season season : seasons)
+			if (season.getCodSeason() == episode.getCodSeason())
+				if (!season.getEpisodes().add(episode))
+					throw new IllegalArgumentException();
+		episodes.add(episode);
+	}
+	
+	// ---------- ILocalManager -----------------------------------------------
+
 	@Override
 	public List<Serie> listSeries() {
 		return series;
-	}
-
-	@Override
-	public List<Season> listSeasons() {
-		return seasons;
-	}
-
-	@Override
-	public List<Episode> listEpisodes() {
-		return episodes;
 	}
 
 	@Override
@@ -77,11 +87,51 @@ public class AuxiliarBDL implements ILocalManager {
 	}
 
 	@Override
+	public void updateSerie(Serie serie) {
+		for (Serie s : series)
+			if (s.getCodSerie() == serie.getCodSerie())
+				s = serie;
+	}
+
+	@Override
+	public void removeSerie(Serie serie) {
+		series.remove(serie);
+	}
+
+	@Override
+	public List<Season> listSeasons() {
+		return seasons;
+	}
+
+	@Override
 	public Season getSeason(long codSeason) {
-		for (Season t : seasons)
-			if (t.getCodSeason() == codSeason)
-				return t;
+		for (Season s : seasons)
+			if (s.getCodSeason() == codSeason)
+				return s;
 		return null;
+	}
+
+	@Override
+	public void updateSeason(Season season) {
+		for (Season s : seasons)
+			if (s.getCodSeason() == season.getCodSeason())
+				s = season;
+	}
+
+	@Override
+	public void removeSeason(Season season) {
+		List<Episode> listEpisodes = new LinkedList<>();
+		for (Episode e : episodes)
+			if (e.getCodSeason() != season.getCodSeason())
+				listEpisodes.add(e);
+		episodes = listEpisodes;
+		
+		seasons.remove(season);
+	}
+
+	@Override
+	public List<Episode> listEpisodes() {
+		return episodes;
 	}
 
 	@Override
@@ -93,48 +143,15 @@ public class AuxiliarBDL implements ILocalManager {
 	}
 
 	@Override
-	public Serie updateSerie(Serie serie) {
-		for (Serie s : series)
-			if (s.getCodSerie() == serie.getCodSerie()) {
-				s = serie;
-				return s;
-			}
-		return null;
-	}
-
-	@Override
-	public Season updateSeason(Season season) {
-		for (Season t : seasons)
-			if (t.getCodSeason() == season.getCodSeason()) {
-				t = season;
-				return t;
-			}
-		return null;
-	}
-
-	@Override
-	public Episode updateEpisode(Episode episode) {
+	public void updateEpisode(Episode episode) {
 		for (Episode e : episodes)
-			if (e.getCodEpisode() == episode.getCodEpisode()) {
+			if (e.getCodEpisode() == episode.getCodEpisode())
 				e = episode;
-				return e;
-			}
-		return null;
 	}
 
 	@Override
-	public boolean removeSerie(Serie serie) {
-		return series.remove(serie);
+	public void removeEpisode(Episode episode) {
+		episodes.remove(episode);
 	}
 
-	@Override
-	public boolean removeSeason(Season season) {
-		return seasons.remove(season);
-	}
-
-	@Override
-	public boolean removeEpisode(Episode episode) {
-		return episodes.remove(episode);
-	}
-	
 }

@@ -19,7 +19,7 @@ public interface IGetAndListService extends ISetLocalManager, ISetRemoteManager 
 
 	Serie getSerie(long codSerie) throws NoSeriesStoredException;
 	
-	Season getSeason(long codSerie, int airedSeason);
+	Season getSeason(long codSerie, int airedSeason) throws NoSeriesStoredException, NoSeasonsStoredException;
 	
 	Episode getEpisode(long codSerie, int airedSeason, int airedEpisode) throws NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException;
 

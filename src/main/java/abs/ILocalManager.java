@@ -9,27 +9,31 @@ import impl.model.Serie;
 public interface ILocalManager {
 
 	List<Serie> listSeries();
+		
+	Serie getSerie(long codSerie);
+	
+	void updateSerie(Serie serie);
+			
+	void removeSerie(Serie serie);
+	
+	// -----------------------------------------------------------------------------
 
 	List<Season> listSeasons();
-
-	List<Episode> listEpisodes();
-
-	Serie getSerie(long codSerie);
-
+		
 	Season getSeason(long codSeason);
-
+	
+	void updateSeason(Season season);
+	
+	void removeSeason(Season season);
+				
+	// -----------------------------------------------------------------------------
+	
+	List<Episode> listEpisodes();
+		
 	Episode getEpisode(long codEpisode);
-
-	Serie updateSerie(Serie serie);
-
-	Season updateSeason(Season season);
-
-	Episode updateEpisode(Episode episode);
-
-	boolean removeSerie(Serie serie);
-
-	boolean removeSeason(Season season);
-
-	boolean removeEpisode(Episode episode);
-
+			
+	void updateEpisode(Episode episode);
+		
+	void removeEpisode(Episode episode);
+	
 }
