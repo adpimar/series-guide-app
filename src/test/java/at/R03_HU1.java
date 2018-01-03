@@ -30,8 +30,8 @@ public class R03_HU1 extends AcceptanceTest {
 
 	@Test
 	public void modificarSinopsisSerie_CadenaVacia_CadenaVacia()
-			throws NoSeriesStoredException, TooLongOverviewException {
-
+			throws NoSeriesStoredException, TooLongOverviewException 
+	{
 		String newOverview = "";
 
 		// Given
@@ -44,15 +44,14 @@ public class R03_HU1 extends AcceptanceTest {
 		assertNotNull(resultReturned);
 		assertEquals(resultReturned, ExpectedSeries.R03_1_1_1.getExpectedSerie());
 		assertEquals(getAndListService.getSerie(321060).getOverview(), newOverview);
-
 	}
 
 	// PRUEBA DE ACEPTACIÓN 03.1.1.2
 
 	@Test
 	public void modificarSinopsisSerie_CadenaMenor500Caracteres_Cadena()
-			throws NoSeriesStoredException, TooLongOverviewException {
-
+			throws NoSeriesStoredException, TooLongOverviewException 
+	{
 		String newOverview = "Prairie Johnson es una chica ciega que ha estado desaparecida durante"
 				+ " 7 largos años. Un día, vuelve a la comunidad donde se crió con un "
 				+ "gran cambio: su vista se ha curado.";
@@ -67,15 +66,14 @@ public class R03_HU1 extends AcceptanceTest {
 		assertNotNull(resultReturned);
 		assertEquals(resultReturned, ExpectedSeries.R03_1_1_2.getExpectedSerie());
 		assertEquals(getAndListService.getSerie(321060).getOverview(), newOverview);
-
 	}
 
 	// PRUEBA DE ACEPTACIÓN 03.1.1.3
 
 	@Test
 	public void modificarSinopsisSerie_CadenaMayor500Caracteres_Excepcion()
-			throws NoSeriesStoredException, TooLongOverviewException {
-
+			throws NoSeriesStoredException, TooLongOverviewException 
+	{
 		String newOverview = "Prairie Johnson es una chica ciega que ha estado desaparecida durante 7"
 				+ " largos años. Un día, vuelve a la comunidad donde se crió con un gran "
 				+ "cambio: su vista se ha curado. Prairie puede ver. Algunos de sus vecinos "
@@ -93,7 +91,7 @@ public class R03_HU1 extends AcceptanceTest {
 		updateOverviewService.updateSerieOverview(321060, newOverview);
 
 		// Then
-
+		
 	}
 
 	// -----------------------------------------------------------------------------
@@ -105,8 +103,8 @@ public class R03_HU1 extends AcceptanceTest {
 
 	@Test
 	public void modificarSinopsisSerie_NoExisteSerie_Excepcion()
-			throws NoSeriesStoredException, TooLongOverviewException {
-
+			throws NoSeriesStoredException, TooLongOverviewException 
+	{
 		thrown.expect(NoSeriesStoredException.class);
 
 		// Given

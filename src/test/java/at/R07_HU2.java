@@ -5,7 +5,7 @@ import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 
-import impl.exceptions.NoCommentEpisodeNotChekedException;
+import impl.exceptions.NoEpisodeCheckedAsViewedException;
 import impl.exceptions.NoEpisodesStoredException;
 import impl.exceptions.NoSeasonsStoredException;
 import impl.exceptions.NoSeriesStoredException;
@@ -34,9 +34,10 @@ public class R07_HU2 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 07.2.1.1
 	
 	@Test
-	public void comentarEpisodio_ExisteEpisodioNoVisto_Excepcion() {
-		
-		thrown.expect(NoCommentEpisodeNotChekedException.class);
+	public void comentarEpisodio_ExisteEpisodioNoVisto_Excepcion() 
+			throws TooLongCommentException, NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException, NoEpisodeCheckedAsViewedException 
+	{
+		thrown.expect(NoEpisodeCheckedAsViewedException.class);
 		
 		// Given
 		setLocalManagers(FakeLocalManagers.R07_2_1_1.getLocalManager());
@@ -57,8 +58,9 @@ public class R07_HU2 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 07.2.2.1
 	
 	@Test
-	public void comentarEpisodio_ExisteEpisodioVistoCadenaVacia_CadenaVacia() {
-
+	public void comentarEpisodio_ExisteEpisodioVistoCadenaVacia_CadenaVacia() 
+			throws TooLongCommentException, NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException, NoEpisodeCheckedAsViewedException 
+	{
 		String comment = "";
 		
 		// Given
@@ -77,8 +79,9 @@ public class R07_HU2 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 07.2.2.2
 
 	@Test
-	public void comentarEpisodio_ExisteEpisodioVistoCadenaMenor150Caracteres_Cadena() {
-
+	public void comentarEpisodio_ExisteEpisodioVistoCadenaMenor150Caracteres_Cadena() 
+			throws TooLongCommentException, NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException, NoEpisodeCheckedAsViewedException 
+	{
 		String comment = "¡Qué gran episodio! El mejor de la temporada hasta el momento.";
 		
 		// Given
@@ -97,8 +100,9 @@ public class R07_HU2 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 07.2.2.3
 
 	@Test
-	public void comentarEpisodio_ExisteEpisodioVistoCadenaMayor150Caracteres_Excepcion() {
-
+	public void comentarEpisodio_ExisteEpisodioVistoCadenaMayor150Caracteres_Excepcion() 
+			throws TooLongCommentException, NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException, NoEpisodeCheckedAsViewedException 
+	{
 		String comment = 
 				"¡Qué impotencia de episodio! Después de ver el anterior episodio que tan "
 				+ "buenas esperanzas dio para el siguiente, este me ha defraudado muchísimo."
@@ -126,8 +130,9 @@ public class R07_HU2 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 07.2.3.1
 	
 	@Test
-	public void comentarEpisodio_ExisteEpisodioVistoComentado_NuevoComentario() {
-		
+	public void comentarEpisodio_ExisteEpisodioVistoComentado_NuevoComentario() 
+			throws TooLongCommentException, NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException, NoEpisodeCheckedAsViewedException 
+	{		
 		String comment = "¡Ya no me gusta!";
 		
 		// Given
@@ -151,8 +156,9 @@ public class R07_HU2 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 07.2.4.1
 	
 	@Test
-	public void comentarEpisodio_ExisteSerieExisteTemporadaNoExisteEpisodio_Excepcion() {
-		
+	public void comentarEpisodio_ExisteSerieExisteTemporadaNoExisteEpisodio_Excepcion() 
+			throws TooLongCommentException, NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException, NoEpisodeCheckedAsViewedException 
+	{		
 		thrown.expect(NoEpisodesStoredException.class);
 		
 		// Given
@@ -168,8 +174,9 @@ public class R07_HU2 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 07.2.4.2
 	
 	@Test
-	public void comentarEpisodio_ExisteSerieNoExisteTemporada_Excepcion() {
-		
+	public void comentarEpisodio_ExisteSerieNoExisteTemporada_Excepcion() 
+			throws TooLongCommentException, NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException, NoEpisodeCheckedAsViewedException 
+	{		
 		thrown.expect(NoSeasonsStoredException.class);
 		
 		// Given
@@ -185,8 +192,9 @@ public class R07_HU2 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 07.2.4.3
 	
 	@Test
-	public void comentarEpisodio_NoExisteSerie_Excepcion() {
-		
+	public void comentarEpisodio_NoExisteSerie_Excepcion() 
+			throws TooLongCommentException, NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException, NoEpisodeCheckedAsViewedException 
+	{
 		thrown.expect(NoSeriesStoredException.class);
 		
 		// Given

@@ -29,8 +29,8 @@ public class R04_HU1 extends AcceptanceTest {
 
 	@Test
 	public void listarEpisodios_UnaSerieUnaTemporadaExistenTodosEpisodios_TodosEpisodios() 
-			throws NoSeriesStoredException, NoSeasonsStoredException {
-
+			throws NoSeriesStoredException, NoSeasonsStoredException 
+	{
 		String[] resultExpected = {
 				"Homecoming",
 				"New Colossus",
@@ -52,15 +52,14 @@ public class R04_HU1 extends AcceptanceTest {
 		assertNotNull(resultReturned);
 		assertEquals(resultExpected.length, resultReturned.length);
 		assertArrayEquals(resultReturned, resultExpected);
-		
 	}
 
 	// PRUEBA DE ACEPTACIÓN 04.1.1.2
 
 	@Test
 	public void listarEpisodios_VariasSeriesVariasTemporadasExistenAlgunosEpisodios_AlgunosEpisodios() 
-			throws NoSeriesStoredException, NoSeasonsStoredException {
-		
+			throws NoSeriesStoredException, NoSeasonsStoredException 
+	{	
 		String[] resultExpected = {
 				"Homecoming",
 				null,
@@ -89,8 +88,8 @@ public class R04_HU1 extends AcceptanceTest {
 
 	@Test
 	public void listarEpisodios_UnaSerieVariasTemporadasNoExistenEpisodios_NingunEpisodio() 
-			throws NoSeriesStoredException, NoSeasonsStoredException {
-		
+			throws NoSeriesStoredException, NoSeasonsStoredException 
+	{
 		String[] resultExpected = {
 				null,
 				null,
@@ -113,7 +112,6 @@ public class R04_HU1 extends AcceptanceTest {
 		assertNotNull(resultReturned);
 		assertEquals(resultExpected.length, resultReturned.length);
 		assertArrayEquals(resultReturned, resultExpected);
-
 	}
 
 	// -----------------------------------------------------------------------------
@@ -126,8 +124,8 @@ public class R04_HU1 extends AcceptanceTest {
 
 	@Test
 	public void listarEpisodios_NoExisteTemporada_Excepcion() 
-			throws NoSeriesStoredException, NoSeasonsStoredException {
-				
+			throws NoSeriesStoredException, NoSeasonsStoredException 
+	{			
 		thrown.expect(NoSeasonsStoredException.class);
 		
 		// Given
@@ -149,8 +147,8 @@ public class R04_HU1 extends AcceptanceTest {
 
 	@Test
 	public void listarEpisodios_NoExisteSerie_Excepcion() 
-			throws NoSeriesStoredException, NoSeasonsStoredException {
-		
+			throws NoSeriesStoredException, NoSeasonsStoredException 
+	{	
 		thrown.expect(NoSeriesStoredException.class);
 		
 		// Given

@@ -1,6 +1,6 @@
 package impl.model;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Season {
@@ -16,7 +16,24 @@ public class Season {
 	private List<Episode> episodes;
 
 	public Season() {
-		episodes = new ArrayList<>();
+		episodes = new LinkedList<>();
+	}
+	
+	// ------------------------------------------------------------------------
+	
+	public Episode getEpisodeByAired(int airedEpisode) {
+		for (Episode episode : episodes)
+			if (episode.getAiredEpisode() == airedEpisode)
+				return episode;
+		return null;
+	}
+	
+	public boolean checkSeasonSeen() {
+		boolean oldValue = seen;
+		seen = true;
+		for (Episode episode : episodes)
+			seen = seen && episode.isSeen();
+		return oldValue != seen;
 	}
 	
 	// ---------- Getters -----------------------------------------------------
@@ -104,11 +121,6 @@ public class Season {
 			return false;
 		if (codSerie != other.codSerie)
 			return false;
-		if (episodes == null) {
-			if (other.episodes != null)
-				return false;
-		} else if (!episodes.equals(other.episodes))
-			return false;
 		if (firstAired == null) {
 			if (other.firstAired != null)
 				return false;
@@ -134,6 +146,7 @@ public class Season {
 
 		sb.append("[ TEMPORADA ]");
 		sb.append("\nSerie id            : " + codSerie);
+		sb.append("\nTemporada id        : " + codSeason);
 		sb.append("\nNúmero de temporada : " + airedSeason);
 		sb.append("\nInicio de emisión   : " + firstAired);
 		sb.append("\nEstado              : " + status);

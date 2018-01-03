@@ -1,10 +1,10 @@
 package impl.exceptions;
 
-public class NoCommentEpisodeNotChekedException extends Exception {
+public class NoEpisodeCheckedAsViewedException extends Exception {
 
 	private static final long serialVersionUID = 1L;
 
-	public NoCommentEpisodeNotChekedException() {
+	public NoEpisodeCheckedAsViewedException() {
 		super("No es posible comentar el episodio si no está marcado como visto.");
 	}
 

@@ -1,8 +1,11 @@
 package impl.services;
 
 import abs.ILocalManager;
-import abs.IRemoteManager;
 import abs.services.IDeleteService;
+import impl.exceptions.NoSeasonsStoredException;
+import impl.exceptions.NoSeriesStoredException;
+import impl.model.Season;
+import impl.model.Serie;
 
 public class DeleteSvc implements IDeleteService {
 
@@ -10,26 +13,39 @@ public class DeleteSvc implements IDeleteService {
 
 	@Override
 	public void setLocalManager(ILocalManager localManager) {
-		// TODO Auto-generated method stub
-
+		this.localManager = localManager;
 	}
 
 	@Override
-	public void setRemoteManager(IRemoteManager remoteManager) {
-		// TODO Auto-generated method stub
+	public void deleteSeason(long codSerie, int airedSeason) 
+			throws NoSeriesStoredException, NoSeasonsStoredException 
+	{	
+		// Comprueba existe serie
+		Serie serie = localManager.getSerie(codSerie);
+		if (serie == null)
+			throw new NoSeriesStoredException();	
+		
+		// Comprueba existe temporada
+		Season season = serie.getSeasonByAired(airedSeason);
+		if (season == null)
+			throw new NoSeasonsStoredException();
 
+		// Borra temporada
+		serie.getSeasons().remove(season);
+		localManager.removeSeason(season);
 	}
 
 	@Override
-	public void deleteSeason(long idSerie, int seasonNumber) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void deleteSerie(long idSerie) {
-		// TODO Auto-generated method stub
-
+	public void deleteSerie(long codSerie) 
+			throws NoSeriesStoredException 
+	{	
+		// Comprueba existe serie
+		Serie serie = localManager.getSerie(codSerie);
+		if (serie == null)
+			throw new NoSeriesStoredException();
+		
+		// Borra serie
+		localManager.removeSerie(serie);
 	}
 
 }

@@ -31,8 +31,9 @@ public class R01_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 01.1.1.1
 
 	@Test
-	public void listarTitulosSeries_ExistenVariasSeries_DosSeries() throws NoSeriesStoredException {
-		
+	public void listarTitulosSeries_ExistenVariasSeries_DosSeries() 
+			throws NoSeriesStoredException 
+	{
 		List<String> resultExpected = Arrays.asList(
 				"The OA",
 				"Vikings"
@@ -48,7 +49,6 @@ public class R01_HU1 extends AcceptanceTest {
 		assertNotNull(resultReturned);
 		assertEquals(resultExpected.size(), resultReturned.size());
 		assertThat(resultReturned, containsInAnyOrder(resultExpected.toArray()));
-
 	}
 
 	// -----------------------------------------------------------------------------
@@ -59,8 +59,9 @@ public class R01_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 01.1.2.1
 
 	@Test
-	public void listarTitulosSeries_ExisteUnaSerie_UnaSerie() throws NoSeriesStoredException {
-		
+	public void listarTitulosSeries_ExisteUnaSerie_UnaSerie() 
+			throws NoSeriesStoredException 
+	{
 		List<String> resultExpected = Arrays.asList(
 				"The OA"
 		);
@@ -74,8 +75,7 @@ public class R01_HU1 extends AcceptanceTest {
 		// Then
 		assertNotNull(resultReturned);
 		assertEquals(resultExpected.size(), resultReturned.size());
-		assertThat(resultReturned, containsInAnyOrder(resultExpected.toArray()));
-		
+		assertThat(resultReturned, containsInAnyOrder(resultExpected.toArray()));	
 	}
 
 	// -----------------------------------------------------------------------------
@@ -86,8 +86,9 @@ public class R01_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 01.1.3.1
 
 	@Test
-	public void listarTitulosSeries_NoExistenSeries_Excepcion() throws NoSeriesStoredException {
-		
+	public void listarTitulosSeries_NoExistenSeries_Excepcion() 
+			throws NoSeriesStoredException
+	{
 		thrown.expect(NoSeriesStoredException.class);
 		
 		// Given
