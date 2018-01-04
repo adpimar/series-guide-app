@@ -8,11 +8,8 @@ import java.util.TreeMap;
 import abs.ILocalManager;
 import abs.IRemoteManager;
 import abs.services.ISearchService;
-import impl.exceptions.ErrorOnRemoteServerException;
 import impl.exceptions.NoKeywordsOnRemoteSearchException;
 import impl.exceptions.NoSeriesStoredException;
-import impl.exceptions.NotFoundSerieOnRemoteServerException;
-import impl.exceptions.TimeoutOnRemoteServerException;
 import impl.model.RemoteSearchSerie;
 import impl.model.Serie;
 
@@ -71,7 +68,7 @@ public class SearchSvc implements ISearchService {
 		Map<String, Long> seriesMatched = new TreeMap<>();
 						
 		// Busca coincidencias con las series
-		for (RemoteSearchSerie serie : remoteManager.searchSeries(pattern))
+		for (RemoteSearchSerie serie : remoteManager.searchRemoteSeries(pattern))
 			seriesMatched.put(serie.getSeriesName(), serie.getId());
 		
 		return seriesMatched;

@@ -5,14 +5,16 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
 
-import impl.model.RemoteSerie;
+import impl.model.RemoteEpisode;
 
-public enum MockRemoteSeries {
+public enum MockRemoteSeason {
 	
-	R13_1_1_1("R13.1.1.1.txt"),
-	R13_2_1_1("R13.2.1.1.txt"),
-	R13_2_2_1("R13.2.2.1.txt");
+	R14_1_1_1("R14.1.1.1.txt"),
+	R14_1_1_2("R14.1.1.2.txt"),
+	R14_1_1_3("R14.1.1.3.txt");
 	
 	private static final String PATH;
 	
@@ -25,23 +27,28 @@ public enum MockRemoteSeries {
 	
 	private final String filename;
 	
-	private MockRemoteSeries(final String filename) {
+	private MockRemoteSeason(final String filename) {
         this.filename = filename;
     }
 
-	public RemoteSerie getMockRemoteSerie() {
-		RemoteSerie serie = null;
+	public RemoteEpisode[] getMockRemoteSeason() {
+		List<RemoteEpisode> remoteSeason = new LinkedList<>();
 		try {
 			BufferedReader b = new BufferedReader(new FileReader(PATH + filename));
-			String[] fields = b.readLine().split("#");		
-			serie = TestParsers.remoteSerieParser(fields);
+			String line;
+			while ((line = b.readLine()) != null) {
+				String[] fields = line.split("#");
+				switch (fields[0].charAt(0)) {
+					case 'E': remoteSeason.add(TestParsers.remoteEpisodeParser(fields)); break;
+				}
+			}
 			b.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return serie;
+		return (RemoteEpisode[]) remoteSeason.toArray();
 	}
 
 }

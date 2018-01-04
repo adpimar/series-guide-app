@@ -64,7 +64,6 @@ public class AcceptanceTest {
 	public void setRemoteManagers(IRemoteManager remoteManager) {
 		getAndListService.setRemoteManager(remoteManager);
 		searchService.setRemoteManager(remoteManager);
-		storeService.setRemoteManager(remoteManager);
 	}
 	
 }

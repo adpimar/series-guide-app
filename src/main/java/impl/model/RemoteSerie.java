@@ -33,6 +33,29 @@ public class RemoteSerie {
 		genre = new LinkedList<>();
 	}
 	
+	public Serie getSerie() {
+		Serie serie = new Serie();
+		
+		serie.setCodSerie(id);
+		serie.setSeriesName(seriesName);
+		serie.setStatus(status);
+		serie.setFirstAired(firstAired);
+		serie.setAirsDOW(airsDayOfWeek);
+		serie.setAirsTime(airsTime);
+		serie.setNetwork(network);
+		serie.setSiteRating(siteRating);
+		serie.setSiteRatingCount(siteRatingCount);
+		serie.setOverview(overview);
+		
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < genre.size() - 1; i++)
+			sb.append(genre.get(i) + ", ");
+		sb.append(genre.get(genre.size() - 1));
+		serie.setGenres(sb.toString());
+		
+		return serie;
+	}
+	
 	public long getId() {
 		return id;
 	}

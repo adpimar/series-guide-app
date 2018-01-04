@@ -16,7 +16,9 @@ public enum ExpectedSeries {
 	R03_1_1_1("R03.1.1.1.txt"),
 	R03_1_1_2("R03.1.1.2.txt"),
 	
-	R13_1_1_1("R13.1.1.1.txt");
+	R13_1_1_1("R13.1.1.1.txt"),
+	R13_2_1_1("R13.2.1.1.txt"),
+	R13_2_2_1("R13.2.2.1.txt");
 	
 	private static final String PATH;
 	

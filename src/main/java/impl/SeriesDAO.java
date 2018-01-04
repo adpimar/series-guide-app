@@ -81,4 +81,22 @@ public class SeriesDAO implements ILocalManager {
 
 	}
 
+	@Override
+	public void addSerie(Serie serie) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addSeason(Season season) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addEpisode(Episode episode) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

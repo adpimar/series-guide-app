@@ -1,17 +1,17 @@
 package abs;
 
 import java.util.List;
-import java.util.Map;
 
+import impl.model.RemoteEpisode;
 import impl.model.RemoteSearchSerie;
 import impl.model.RemoteSerie;
 
 public interface IRemoteManager {
 
-	List<RemoteSearchSerie> searchSeries(String pattern);
+	List<RemoteSearchSerie> searchRemoteSeries(String pattern);
 	
-	RemoteSerie getSerie(long codSerie);
+	RemoteSerie getRemoteSerie(long codSerie);
 	
-	Map<String, String> getSeason(long codSeason);
+	RemoteEpisode[] getRemoteSeason(long codSerie, int airedSeason);
 	
 }

@@ -23,9 +23,6 @@ import resources.MockRemoteSearchSeries;
 
 public class R12_HU1 extends AcceptanceTest {
 
-	// 503 Service Unavailable
-	// No server is available to handle this request.
-
 	// REQUISITO 12
 	// Debe permitir la realización de búsquedas por Internet usando los servicios
 	// REST que proporciona el API del servidor TheTVDB. Las búsquedas se realizarán
@@ -90,7 +87,7 @@ public class R12_HU1 extends AcceptanceTest {
 			resultExpected.put(searchSeries[i + 1], Long.parseLong(searchSeries[i]));
 		
 		// Given
-		when(remoteManager.searchSeries(searchPattern)).thenReturn(MockRemoteSearchSeries.R12_1_1_2.getMockRemoteSearchSeries());
+		when(remoteManager.searchRemoteSeries(searchPattern)).thenReturn(MockRemoteSearchSeries.R12_1_1_2.getMockRemoteSearchSeries());
 		
 		// When
 		Map<String, Long> resultReturned = searchService.searchSeriesRemote(searchPattern);
@@ -120,7 +117,7 @@ public class R12_HU1 extends AcceptanceTest {
 			resultExpected.put(searchSeries[i + 1], Long.parseLong(searchSeries[i]));
 		
 		// Given
-		when(remoteManager.searchSeries(searchPattern)).thenReturn(MockRemoteSearchSeries.R12_1_1_3.getMockRemoteSearchSeries());
+		when(remoteManager.searchRemoteSeries(searchPattern)).thenReturn(MockRemoteSearchSeries.R12_1_1_3.getMockRemoteSearchSeries());
 		
 		// When
 		Map<String, Long> resultReturned = searchService.searchSeriesRemote(searchPattern);
@@ -147,7 +144,7 @@ public class R12_HU1 extends AcceptanceTest {
 		thrown.expect(NotFoundSerieOnRemoteServerException.class);
 		
 		// Given
-		when(remoteManager.searchSeries(searchPattern)).thenThrow(new NotFoundSerieOnRemoteServerException());
+		when(remoteManager.searchRemoteSeries(searchPattern)).thenThrow(new NotFoundSerieOnRemoteServerException());
 		
 		// When
 		searchService.searchSeriesRemote(searchPattern);
@@ -171,7 +168,7 @@ public class R12_HU1 extends AcceptanceTest {
 		thrown.expect(ErrorOnRemoteServerException.class);
 		
 		// Given
-		when(remoteManager.searchSeries(searchPattern)).thenThrow(new ErrorOnRemoteServerException());
+		when(remoteManager.searchRemoteSeries(searchPattern)).thenThrow(new ErrorOnRemoteServerException());
 		
 		// When
 		searchService.searchSeriesRemote(searchPattern);
@@ -190,7 +187,7 @@ public class R12_HU1 extends AcceptanceTest {
 		thrown.expect(TimeoutOnRemoteServerException.class);
 		
 		// Given
-		when(remoteManager.searchSeries(searchPattern)).thenThrow(new TimeoutOnRemoteServerException());
+		when(remoteManager.searchRemoteSeries(searchPattern)).thenThrow(new TimeoutOnRemoteServerException());
 		
 		// When
 		searchService.searchSeriesRemote(searchPattern);
