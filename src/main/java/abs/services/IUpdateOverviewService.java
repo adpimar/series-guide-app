@@ -10,11 +10,8 @@ import impl.model.Serie;
 
 public interface IUpdateOverviewService extends ISetLocalManager {
 
-	Serie updateSerieOverview(long codSerie, String newOverview)
-			throws NoSeriesStoredException, TooLongOverviewException;
-
-	Episode updateEpisodeOverview(long codSerie, int airedSeason, int airedEpisode, String newOverview)
-			throws TooLongOverviewException, NoEpisodesStoredException, NoSeriesStoredException,
-			NoSeasonsStoredException;
+	Serie updateSerieOverview(long codSerie, String newOverview);
+	
+	Episode updateEpisodeOverview(long codSerie, int airedSeason, int airedEpisode, String newOverview);
 
 }

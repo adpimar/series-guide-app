@@ -44,7 +44,7 @@ public class R13_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 13.1.1.1
 	
 	@Test
-	public void descargarSerie_ExisteSerie_SerieDescargada() throws NoSeriesStoredException {
+	public void descargarSerie_ExisteSerie_SerieDescargada() {
 
 //		// Given
 //		
@@ -66,7 +66,7 @@ public class R13_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 13.1.2.1
 	
 	@Test
-	public void descargarSerie_NoExisteSerie_Excepcion() throws NoSeriesStoredException {
+	public void descargarSerie_NoExisteSerie_Excepcion() {
 
 //		thrown.expect(NotFoundSerieOnRemoteServerException.class);
 //		

@@ -1,6 +1,6 @@
 package impl.exceptions;
 
-public class NoEpisodeCheckedAsViewedException extends Exception {
+public class NoEpisodeCheckedAsViewedException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
 

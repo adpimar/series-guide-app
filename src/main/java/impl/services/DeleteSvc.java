@@ -17,9 +17,8 @@ public class DeleteSvc implements IDeleteService {
 	}
 
 	@Override
-	public void deleteSeason(long codSerie, int airedSeason) 
-			throws NoSeriesStoredException, NoSeasonsStoredException 
-	{	
+	public void deleteSeason(long codSerie, int airedSeason) {
+		
 		// Comprueba existe serie
 		Serie serie = localManager.getSerie(codSerie);
 		if (serie == null)
@@ -33,12 +32,12 @@ public class DeleteSvc implements IDeleteService {
 		// Borra temporada
 		serie.getSeasons().remove(season);
 		localManager.removeSeason(season);
+		
 	}
 
 	@Override
-	public void deleteSerie(long codSerie) 
-			throws NoSeriesStoredException 
-	{	
+	public void deleteSerie(long codSerie) {
+		
 		// Comprueba existe serie
 		Serie serie = localManager.getSerie(codSerie);
 		if (serie == null)
@@ -46,6 +45,7 @@ public class DeleteSvc implements IDeleteService {
 		
 		// Borra serie
 		localManager.removeSerie(serie);
+		
 	}
 
 }

@@ -82,4 +82,11 @@ public class RemoteSearchSerie {
 		this.status = status;
 	}
 
+	@Override
+	public String toString() {
+		return "RemoteSearchSerie [aliases=" + aliases + ", banner=" + banner + ", firstAired=" + firstAired + ", id="
+				+ id + ", network=" + network + ", overview=" + overview + ", seriesName=" + seriesName + ", status="
+				+ status + "]";
+	}
+
 }

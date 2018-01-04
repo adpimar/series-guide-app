@@ -11,14 +11,14 @@ import impl.model.Season;
 
 public interface ICheckAsViewedService extends ISetLocalManager {
 
-	Episode checkEpisodeAsViewed(long codSerie, int airedSeason, int airedEpisode) throws NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException;
+	Episode checkEpisodeAsViewed(long codSerie, int airedSeason, int airedEpisode);
 
-	Episode uncheckEpisodeAsViewed(long codSerie, int airedSeason, int airedEpisode) throws NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException;
+	Episode uncheckEpisodeAsViewed(long codSerie, int airedSeason, int airedEpisode);
 	
-	Episode commentEpisodeViewed(long codSerie, int airedSeason, int airedEpisode, String comment) throws TooLongCommentException, NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException, NoEpisodeCheckedAsViewedException;
+	Episode commentEpisodeViewed(long codSerie, int airedSeason, int airedEpisode, String comment);
 
-	Season checkSeasonAsViewed(long codSerie, int airedSeason) throws NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException;
+	Season checkSeasonAsViewed(long codSerie, int airedSeason);
 
-	Season uncheckSeasonAsViewed(long codSerie, int airedSeason) throws NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException;
+	Season uncheckSeasonAsViewed(long codSerie, int airedSeason);
 	
 }

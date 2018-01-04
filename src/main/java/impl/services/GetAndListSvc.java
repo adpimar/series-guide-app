@@ -46,9 +46,8 @@ public class GetAndListSvc implements IGetAndListService {
 	}
 
 	@Override
-	public String[] listSerieSeasonEpisodesNamesOrderedByAired(long codSerie, int airedSeason)
-			throws NoSeriesStoredException, NoSeasonsStoredException 
-	{
+	public String[] listSerieSeasonEpisodesNamesOrderedByAired(long codSerie, int airedSeason) {
+		
 		// Comprueba existe serie
 		Serie serie = localManager.getSerie(codSerie);
 		if (serie == null)
@@ -68,9 +67,8 @@ public class GetAndListSvc implements IGetAndListService {
 	}
 
 	@Override
-	public Serie getSerie(long codSerie) 
-			throws NoSeriesStoredException 
-	{
+	public Serie getSerie(long codSerie) {
+		
 		// Comprueba existe serie
 		Serie serie = localManager.getSerie(codSerie);
 		if (serie == null)
@@ -80,9 +78,8 @@ public class GetAndListSvc implements IGetAndListService {
 	}
 
 	@Override
-	public Season getSeason(long codSerie, int airedSeason) 
-			throws NoSeriesStoredException, NoSeasonsStoredException 
-	{
+	public Season getSeason(long codSerie, int airedSeason) {
+		
 		// Comprueba existe serie
 		Serie serie = localManager.getSerie(codSerie);
 		if (serie == null)
@@ -97,9 +94,8 @@ public class GetAndListSvc implements IGetAndListService {
 	}
 
 	@Override
-	public Episode getEpisode(long codSerie, int airedSeason, int airedEpisode) 
-			throws NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException 
-	{
+	public Episode getEpisode(long codSerie, int airedSeason, int airedEpisode) {
+		
 		// Comprueba existe serie
 		Serie serie = localManager.getSerie(codSerie);
 		if (serie == null)

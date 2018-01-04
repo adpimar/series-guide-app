@@ -6,8 +6,8 @@ import impl.exceptions.NoSeriesStoredException;
 
 public interface IDeleteService extends ISetLocalManager {
 
-	void deleteSeason(long codSerie, int airedSeason) throws NoSeriesStoredException, NoSeasonsStoredException;
+	void deleteSeason(long codSerie, int airedSeason);
 
-	void deleteSerie(long codSerie) throws NoSeriesStoredException;
+	void deleteSerie(long codSerie);
 
 }

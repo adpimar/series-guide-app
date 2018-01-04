@@ -31,9 +31,8 @@ public class R05_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 05.1.1.1
 	
 	@Test
-	public void obtenerEpisodio_ExisteUnaSerieUnaTemporada_Episodio() 
-			throws NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException 
-	{
+	public void obtenerEpisodio_ExisteUnaSerieUnaTemporada_Episodio() {
+		
 		// Given
 		setLocalManagers(FakeLocalManagers.R05_1_1_1.getLocalManager());
 		
@@ -43,14 +42,14 @@ public class R05_HU1 extends AcceptanceTest {
 		// Then
 		assertNotNull(resultReturned);
 		assertEquals(resultReturned, ExpectedEpisodes.R05_1_1_1.getExpectedEpisode());
+		
 	}
 	
 	// PRUEBA DE ACEPTACIÓN 05.1.1.2
 	
 	@Test
-	public void obtenerEpisodio_ExisteUnaSerieVariasTemporadas_Episodio() 
-			throws NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException 
-	{		
+	public void obtenerEpisodio_ExisteUnaSerieVariasTemporadas_Episodio() {
+		
 		// Given
 		setLocalManagers(FakeLocalManagers.R05_1_1_2.getLocalManager());
 		
@@ -59,15 +58,15 @@ public class R05_HU1 extends AcceptanceTest {
 		
 		// Then
 		assertNotNull(resultReturned);
-		assertEquals(resultReturned, ExpectedEpisodes.R05_1_1_2.getExpectedEpisode());		
+		assertEquals(resultReturned, ExpectedEpisodes.R05_1_1_2.getExpectedEpisode());
+		
 	}
 	
 	// PRUEBA DE ACEPTACIÓN 05.1.1.3
 
 	@Test
-	public void obtenerEpisodio_ExistenVariasSeriesVariasTemporadas_Episodio() 
-			throws NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException 
-	{	
+	public void obtenerEpisodio_ExistenVariasSeriesVariasTemporadas_Episodio() {
+		
 		// Given
 		setLocalManagers(FakeLocalManagers.R05_1_1_3.getLocalManager());
 		
@@ -76,7 +75,8 @@ public class R05_HU1 extends AcceptanceTest {
 		
 		// Then
 		assertNotNull(resultReturned);
-		assertEquals(resultReturned, ExpectedEpisodes.R05_1_1_3.getExpectedEpisode());	
+		assertEquals(resultReturned, ExpectedEpisodes.R05_1_1_3.getExpectedEpisode());
+		
 	}
 	
 	// -----------------------------------------------------------------------------
@@ -88,9 +88,8 @@ public class R05_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 05.1.2.1
 	
 	@Test
-	public void obtenerEpisodio_ExisteSerieExisteTemporadaNoExisteEpidosio_Excepcion() 
-			throws NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException 
-	{
+	public void obtenerEpisodio_ExisteSerieExisteTemporadaNoExisteEpidosio_Excepcion() {
+		
 		thrown.expect(NoEpisodesStoredException.class);
 		
 		// Given
@@ -112,9 +111,8 @@ public class R05_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 05.1.3.1
 	
 	@Test
-	public void obtenerEpisodio_ExisteSerieNoExisteTemporada_Excepcion() 
-			throws NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException 
-	{	
+	public void obtenerEpisodio_ExisteSerieNoExisteTemporada_Excepcion() {
+		
 		thrown.expect(NoSeasonsStoredException.class);
 		
 		// Given
@@ -135,9 +133,8 @@ public class R05_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 05.1.4.1
 	
 	@Test
-	public void obtenerEpisodio_NoExisteSerie_Excepcion() 
-			throws NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException 
-	{
+	public void obtenerEpisodio_NoExisteSerie_Excepcion() {
+		
 		thrown.expect(NoSeriesStoredException.class);
 		
 		// Given
