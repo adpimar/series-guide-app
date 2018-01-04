@@ -17,12 +17,18 @@ public class MySQLConnect {
 			if (connection != null && !connection.isClosed())
 				return connection;
 			
+			//Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("org.mysql.Driver");
+			
 			connection = DriverManager.getConnection(url);
 			
 			if (connection != null) 
 				System.out.println("Connected to the database seriesguideapp-adan");
 			else 
 				System.out.println("Connexion to the database seriesguideapp-adan has failed!");
+		
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
 			
 		} catch (SQLException ex) {
             System.out.println("An error occurred. <MySQLConnect>");
