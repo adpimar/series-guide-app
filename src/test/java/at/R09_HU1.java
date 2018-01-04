@@ -25,9 +25,8 @@ public class R09_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 09.1.1.1
 
 	@Test
-	public void eliminarTemporada_TodosEpisodiosAlmacenadosTodosVistos_TemporadaBorrada() 
-			throws NoSeriesStoredException, NoSeasonsStoredException 
-	{
+	public void eliminarTemporada_TodosEpisodiosAlmacenadosTodosVistos_TemporadaBorrada() {
+		
 		// Given
 		setLocalManagers(FakeLocalManagers.R09_1_1_1.getLocalManager());
 		
@@ -36,15 +35,15 @@ public class R09_HU1 extends AcceptanceTest {
 		
 		// Then
 		thrown.expect(NoSeasonsStoredException.class);
-		getAndListService.getSeason(321060, 1);	
+		getAndListService.getSeason(321060, 1);
+		
 	}
 
 	// PRUEBA DE ACEPTACIÓN 09.1.1.2
 
 	@Test
-	public void eliminarTemporada_TodosEpisodiosAlmacenadosNoTodosVistos_TemporadaBorrada() 
-			throws NoSeriesStoredException, NoSeasonsStoredException 
-	{	
+	public void eliminarTemporada_TodosEpisodiosAlmacenadosNoTodosVistos_TemporadaBorrada() {
+		
 		// Given
 		setLocalManagers(FakeLocalManagers.R09_1_1_2.getLocalManager());
 		
@@ -54,14 +53,14 @@ public class R09_HU1 extends AcceptanceTest {
 		// Then
 		thrown.expect(NoSeasonsStoredException.class);
 		getAndListService.getSeason(321060, 1);
+		
 	}
 
 	// PRUEBA DE ACEPTACIÓN 09.1.1.3
 
 	@Test
-	public void eliminarTemporada_UnEpisodioAlmacenado_TemporadaBorrada() 
-			throws NoSeriesStoredException, NoSeasonsStoredException 
-	{	
+	public void eliminarTemporada_UnEpisodioAlmacenado_TemporadaBorrada() {
+		
 		// Given
 		setLocalManagers(FakeLocalManagers.R09_1_1_3.getLocalManager());
 		
@@ -71,14 +70,14 @@ public class R09_HU1 extends AcceptanceTest {
 		// Then
 		thrown.expect(NoSeasonsStoredException.class);
 		getAndListService.getSeason(321060, 1);
+		
 	}
 
 	// PRUEBA DE ACEPTACIÓN 09.1.1.4
 
 	@Test
-	public void eliminarTemporada_NingunEpisodioAlmacenado_TemporadaBorrada() 
-			throws NoSeriesStoredException, NoSeasonsStoredException 
-	{		
+	public void eliminarTemporada_NingunEpisodioAlmacenado_TemporadaBorrada() {
+		
 		// Given
 		setLocalManagers(FakeLocalManagers.R09_1_1_4.getLocalManager());
 		
@@ -88,6 +87,7 @@ public class R09_HU1 extends AcceptanceTest {
 		// Then
 		thrown.expect(NoSeasonsStoredException.class);
 		getAndListService.getSeason(321060, 1);
+		
 	}
 
 	// -----------------------------------------------------------------------------
@@ -99,9 +99,8 @@ public class R09_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 09.1.2.1
 
 	@Test
-	public void eliminarTemporada_SerieConVariasTemporadas_TemporadaBorrada() 
-			throws NoSeriesStoredException, NoSeasonsStoredException 
-	{	
+	public void eliminarTemporada_SerieConVariasTemporadas_TemporadaBorrada() {
+		
 		// Given
 		setLocalManagers(FakeLocalManagers.R09_1_2_1.getLocalManager());
 		
@@ -111,6 +110,7 @@ public class R09_HU1 extends AcceptanceTest {
 		// Then
 		thrown.expect(NoSeasonsStoredException.class);
 		getAndListService.getSeason(305288, 1);
+		
 	}
 
 	// -----------------------------------------------------------------------------
@@ -121,9 +121,8 @@ public class R09_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 09.1.3.1
 
 	@Test
-	public void eliminarTemporada_ExisteSerieNoExisteTemporada_Excepcion() 
-			throws NoSeriesStoredException, NoSeasonsStoredException 
-	{
+	public void eliminarTemporada_ExisteSerieNoExisteTemporada_Excepcion() {
+		
 		thrown.expect(NoSeasonsStoredException.class);
 		
 		// Given
@@ -139,9 +138,8 @@ public class R09_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 09.1.3.2
 
 	@Test
-	public void eliminarTemporada_NoExisteSerie_Excepcion() 
-			throws NoSeriesStoredException, NoSeasonsStoredException 
-	{
+	public void eliminarTemporada_NoExisteSerie_Excepcion() {
+		
 		thrown.expect(NoSeriesStoredException.class);
 		
 		// Given

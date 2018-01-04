@@ -22,9 +22,8 @@ public class UpdateOverviewSvc implements IUpdateOverviewService {
 	}
 
 	@Override
-	public Serie updateSerieOverview(long codSerie, String newOverview)
-			throws NoSeriesStoredException, TooLongOverviewException 
-	{
+	public Serie updateSerieOverview(long codSerie, String newOverview) {
+		
 		// Comprueba sinopsis no excede limite caracteres
 		if (newOverview.length() > LIMITE_CARACTERES_SINOPSIS)
 			throw new TooLongOverviewException();
@@ -44,9 +43,8 @@ public class UpdateOverviewSvc implements IUpdateOverviewService {
 	}
 
 	@Override
-	public Episode updateEpisodeOverview(long codSerie, int airedSeason, int airedEpisode, String newOverview) 
-			throws TooLongOverviewException, NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException 
-	{		
+	public Episode updateEpisodeOverview(long codSerie, int airedSeason, int airedEpisode, String newOverview) {
+		
 		// Comprueba sinopsis no excede limite caracteres
 		if (newOverview.length() > LIMITE_CARACTERES_SINOPSIS)
 			throw new TooLongOverviewException();
@@ -72,7 +70,7 @@ public class UpdateOverviewSvc implements IUpdateOverviewService {
 		// Almacena modificaciones
 		localManager.updateEpisode(episode);
 		
-		return episode;
+		return episode;	
 	}
 
 }

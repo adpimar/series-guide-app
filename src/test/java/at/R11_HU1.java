@@ -32,9 +32,8 @@ public class R11_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 11.1.1.1
 
 	@Test
-	public void buscarLocalmenteSerie_ExisteSerieConCadenaVacia_Excepcion() 
-			throws NoSeriesStoredException, NoKeywordsOnRemoteSearchException 
-	{
+	public void buscarLocalmenteSerie_ExisteSerieConCadenaVacia_Excepcion() {
+		
 		thrown.expect(NoKeywordsOnRemoteSearchException.class);
 		
 		// Given
@@ -50,9 +49,8 @@ public class R11_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 11.1.1.2
 	
 	@Test
-	public void buscarLocalmenteSerie_ExisteSerieConUnaPalabraClave_ListaNoVacia() 
-			throws NoSeriesStoredException, NoKeywordsOnRemoteSearchException  
-	{
+	public void buscarLocalmenteSerie_ExisteSerieConUnaPalabraClave_ListaNoVacia() {
+		
 		List<String> resultExpected = Arrays.asList(
 				"The OA",
 				"The Big Bang Theory"
@@ -68,14 +66,14 @@ public class R11_HU1 extends AcceptanceTest {
 		assertNotNull(resultReturned);
 		assertEquals(resultExpected.size(), resultReturned.size());
 		assertTrue(compruebaEstanLosTitulos(resultExpected, resultReturned));
+		
 	}
 
 	// PRUEBA DE ACEPTACIÓN 11.1.1.3
 
 	
-	public void buscarLocalmenteSerie_ExisteSerieConPalabrasClave_ListaNoVacia() 
-			throws NoSeriesStoredException, NoKeywordsOnRemoteSearchException  
-	{
+	public void buscarLocalmenteSerie_ExisteSerieConPalabrasClave_ListaNoVacia() {
+		
 		List<String> resultExpected = Arrays.asList(
 				"The Big Bang Theory"
 		);
@@ -90,6 +88,7 @@ public class R11_HU1 extends AcceptanceTest {
 		assertNotNull(resultReturned);
 		assertEquals(resultExpected.size(), resultReturned.size());
 		assertTrue(compruebaEstanLosTitulos(resultExpected, resultReturned));
+		
 	}
 	
 	// -----------------------------------------------------------------------------
@@ -100,9 +99,8 @@ public class R11_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 11.1.2.1
 
 	@Test
-	public void buscarLocalmenteSerie_NoExisteSerieConUnaPalabraClave_ListaVacia() 
-			throws NoSeriesStoredException, NoKeywordsOnRemoteSearchException  
-	{	
+	public void buscarLocalmenteSerie_NoExisteSerieConUnaPalabraClave_ListaVacia() 	{
+		
 		// Given
 		setLocalManagers(FakeLocalManagers.R11_1_2_1.getLocalManager());
 		
@@ -112,14 +110,14 @@ public class R11_HU1 extends AcceptanceTest {
 		// Then
 		assertNotNull(resultReturned);
 		assertEquals(0, resultReturned.size());
+		
 	}
 	
 	// PRUEBA DE ACEPTACIÓN 11.1.2.2
 	
 	@Test
-	public void buscarLocalmenteSerie_NoExisteSerieConPalabrasClave_ListaVacia() 
-			throws NoSeriesStoredException, NoKeywordsOnRemoteSearchException  
-	{
+	public void buscarLocalmenteSerie_NoExisteSerieConPalabrasClave_ListaVacia() {
+		
 		// Given
 		setLocalManagers(FakeLocalManagers.R11_1_2_2.getLocalManager());
 		
@@ -129,6 +127,7 @@ public class R11_HU1 extends AcceptanceTest {
 		// Then
 		assertNotNull(resultReturned);
 		assertEquals(0, resultReturned.size());
+		
 	}
 
 	// -----------------------------------------------------------------------------
@@ -139,9 +138,8 @@ public class R11_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 11.1.3.1
 	
 	@Test
-	public void buscarLocalmenteSerie_NoExistenSeries_Excepcion() 
-			throws NoSeriesStoredException, NoKeywordsOnRemoteSearchException  
-	{	
+	public void buscarLocalmenteSerie_NoExistenSeries_Excepcion() {
+		
 		thrown.expect(NoSeriesStoredException.class);
 		
 		// Given

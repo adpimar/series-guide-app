@@ -31,9 +31,8 @@ public class R06_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 06.1.1.1
 
 	@Test
-	public void modificarSinopsisEpisodio_CadenaVacia_CadenaVacia() 
-			throws TooLongOverviewException, NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException 
-	{
+	public void modificarSinopsisEpisodio_CadenaVacia_CadenaVacia() {
+		
 		String newOverview = "";
 		
 		// Given
@@ -51,9 +50,8 @@ public class R06_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 06.1.1.2
 
 	@Test
-	public void modificarSinopsisEpisodio_CadenaMenor500Caracteres_Cadena() 
-			throws TooLongOverviewException, NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException 
-	{		
+	public void modificarSinopsisEpisodio_CadenaMenor500Caracteres_Cadena() {
+		
 		String newOverview = 
 				"Un doloroso dilema ofrece a OA una nueva perspectiva de los problemas "
 				+ "del grupo. Homer decide averiguar el verdadero propósito de los "
@@ -74,9 +72,8 @@ public class R06_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 06.1.1.3
 	
 	@Test
-	public void modificarSinopsisEpisodio_CadenaMayor500Caracteres_Excepcion() 
-			throws TooLongOverviewException, NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException 
-	{
+	public void modificarSinopsisEpisodio_CadenaMayor500Caracteres_Excepcion() {
+		
 		String newOverview = 
 				"Un doloroso dilema ofrece a OA una nueva perspectiva de los problemas "
 				+ "del grupo. Homer decide averiguar el verdadero propósito de los "
@@ -107,9 +104,8 @@ public class R06_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 06.1.2.1
 	
 	@Test
-	public void modificarSinopsisEpisodio_ExisteSerieExisteTemporadaNoExisteEpidosio_Excepcion() 
-			throws TooLongOverviewException, NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException 
-	{
+	public void modificarSinopsisEpisodio_ExisteSerieExisteTemporadaNoExisteEpidosio_Excepcion() {
+		
 		thrown.expect(NoEpisodesStoredException.class);
 		
 		// Given
@@ -125,9 +121,8 @@ public class R06_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 06.1.2.2
 	
 	@Test
-	public void modificarSinopsisEpisodio_ExisteSerieNoExisteTemporada_Excepcion() 
-			throws TooLongOverviewException, NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException 
-	{
+	public void modificarSinopsisEpisodio_ExisteSerieNoExisteTemporada_Excepcion() {
+		
 		thrown.expect(NoSeasonsStoredException.class);
 		
 		// Given
@@ -143,9 +138,8 @@ public class R06_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 06.1.2.3
 	
 	@Test
-	public void modificarSinopsisEpisodio_NoExisteSerieExiste_Excepcion() 
-			throws TooLongOverviewException, NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException 
-	{
+	public void modificarSinopsisEpisodio_NoExisteSerieExiste_Excepcion() {
+		
 		thrown.expect(NoSeriesStoredException.class);
 		
 		// Given

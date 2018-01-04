@@ -13,15 +13,15 @@ import impl.model.Serie;
 
 public interface IGetAndListService extends ISetLocalManager, ISetRemoteManager {
 	
-	List<String> listSeriesNames() throws NoSeriesStoredException;
+	List<String> listSeriesNames();
 		
-	String[] listSerieSeasonEpisodesNamesOrderedByAired(long codSerie, int airedSeason) throws NoSeriesStoredException, NoSeasonsStoredException;
+	String[] listSerieSeasonEpisodesNamesOrderedByAired(long codSerie, int airedSeason);
 
-	Serie getSerie(long codSerie) throws NoSeriesStoredException;
+	Serie getSerie(long codSerie);
 	
-	Season getSeason(long codSerie, int airedSeason) throws NoSeriesStoredException, NoSeasonsStoredException;
+	Season getSeason(long codSerie, int airedSeason);
 	
-	Episode getEpisode(long codSerie, int airedSeason, int airedEpisode) throws NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException;
+	Episode getEpisode(long codSerie, int airedSeason, int airedEpisode);
 
 	Serie getRemoteSerie(long idSerie, int airedSeason);
 

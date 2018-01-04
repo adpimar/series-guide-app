@@ -1,15 +1,19 @@
 package impl.services;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import abs.ILocalManager;
 import abs.IRemoteManager;
 import abs.services.ISearchService;
+import impl.exceptions.ErrorOnRemoteServerException;
 import impl.exceptions.NoKeywordsOnRemoteSearchException;
 import impl.exceptions.NoSeriesStoredException;
+import impl.exceptions.NotFoundSerieOnRemoteServerException;
+import impl.exceptions.TimeoutOnRemoteServerException;
+import impl.model.RemoteSearchSerie;
 import impl.model.Serie;
 
 public class SearchSvc implements ISearchService {
@@ -28,9 +32,8 @@ public class SearchSvc implements ISearchService {
 	}
 
 	@Override
-	public Map<String, Long> searchSeriesLocal(String pattern) 
-			throws NoSeriesStoredException, NoKeywordsOnRemoteSearchException 
-	{
+	public Map<String, Long> searchSeriesLocal(String pattern) {
+		
 		// Comprueba existen series
 		List<Serie> series = localManager.listSeries();
 		if (series.isEmpty())
@@ -43,7 +46,7 @@ public class SearchSvc implements ISearchService {
 		if (keyWords.length == 1 && keyWords[0].equals(""))
 			throw new NoKeywordsOnRemoteSearchException();
 		
-		Map<String, Long> seriesMatched = new HashMap<>();
+		Map<String, Long> seriesMatched = new TreeMap<>();
 
 		Arrays.sort(keyWords);
 		
@@ -56,9 +59,8 @@ public class SearchSvc implements ISearchService {
 	}
 
 	@Override
-	public Map<String, Long> searchSeriesRemote(String pattern) 
-			throws NoKeywordsOnRemoteSearchException 
-	{
+	public Map<String, Long> searchSeriesRemote(String pattern) {
+		
 		// Filtra el patrón y obtén palabras claves
 		String[] keyWords = getCleanKeyWords(pattern);
 		
@@ -66,11 +68,13 @@ public class SearchSvc implements ISearchService {
 		if (keyWords.length == 1 && keyWords[0].equals(""))
 			throw new NoKeywordsOnRemoteSearchException();
 		
-		Map<String, Long> seriesMatched = new HashMap<>();
+		Map<String, Long> seriesMatched = new TreeMap<>();
+						
+		// Busca coincidencias con las series
+		for (RemoteSearchSerie serie : remoteManager.searchSeries(pattern))
+			seriesMatched.put(serie.getSeriesName(), serie.getId());
 		
-		
-		
-		return null;
+		return seriesMatched;
 	}
 
 	private static String[] getCleanKeyWords(String s) {
@@ -86,18 +90,6 @@ public class SearchSvc implements ISearchService {
 			if (Arrays.binarySearch(sortedKeyWords, s) >= 0)
 				return true;
 		return false;
-	}
-
-	public static void main(String[] args) {
-		
-		String pattern1 = "   \\$    ` ? =  ";
-		String pattern2 = "     ";
-		String pattern3 = "";
-				
-		System.out.println(getCleanKeyWords(pattern1)[0].equals(""));
-		System.out.println(Arrays.deepToString(getCleanKeyWords(pattern2)));
-		System.out.println(Arrays.deepToString(getCleanKeyWords(pattern3)));
-		
 	}
 	
 }

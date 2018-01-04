@@ -1,23 +1,10 @@
 package impl;
 
-import java.io.IOException;
-import java.net.URI;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
-
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.Entity;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.UriBuilder;
-
-import com.fasterxml.jackson.core.JsonFactory;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonToken;
 
 import abs.IRemoteManager;
+import impl.model.RemoteSearchSerie;
 import impl.model.RemoteSerie;
 
 public class TheTVDBAdapter implements IRemoteManager {
@@ -175,7 +162,7 @@ public class TheTVDBAdapter implements IRemoteManager {
 	}
 
 	@Override
-	public List<RemoteSerie> searchSeries(String pattern) {
+	public List<RemoteSearchSerie> searchSeries(String pattern) {
 		// TODO Auto-generated method stub
 		return null;
 	}

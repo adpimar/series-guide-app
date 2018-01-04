@@ -32,9 +32,8 @@ public class R08_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 08.1.1.1
 	
 	@Test
-	public void indicarNoVistoEpisodio_ExisteEpisodioNoVisto_EpisodioNoVisto() 
-			throws NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException 
-	{		
+	public void indicarNoVistoEpisodio_ExisteEpisodioNoVisto_EpisodioNoVisto() {
+		
 		// Given
 		setLocalManagers(FakeLocalManagers.R08_1_1_1.getLocalManager());
 
@@ -44,7 +43,8 @@ public class R08_HU1 extends AcceptanceTest {
 		// Then
 		assertNotNull(resultReturned);
 		assertEquals(resultReturned, ExpectedEpisodes.R08_1_1_1.getExpectedEpisode());
-		assertFalse(getAndListService.getEpisode(321060, 1, 1).isSeen());			
+		assertFalse(getAndListService.getEpisode(321060, 1, 1).isSeen());
+		
 	}
 
 	// -----------------------------------------------------------------------------
@@ -55,9 +55,8 @@ public class R08_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 08.1.2.1
 	
 	@Test
-	public void indicarNoVistoEpisodio_NoTodosVistosEpisodioVistoNoComentado_EpisodioNoVisto() 
-			throws NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException 
-	{
+	public void indicarNoVistoEpisodio_NoTodosVistosEpisodioVistoNoComentado_EpisodioNoVisto() {
+		
 		// Given
 		setLocalManagers(FakeLocalManagers.R08_1_2_1.getLocalManager());
 		
@@ -67,15 +66,15 @@ public class R08_HU1 extends AcceptanceTest {
 		// Then
 		assertNotNull(resultReturned);
 		assertEquals(resultReturned, ExpectedEpisodes.R08_1_2_1.getExpectedEpisode());
-		assertFalse(getAndListService.getEpisode(321060, 1, 2).isSeen());	
+		assertFalse(getAndListService.getEpisode(321060, 1, 2).isSeen());
+		
 	}
 
 	// PRUEBA DE ACEPTACIÓN 08.1.2.2
 	
 	@Test
-	public void indicarNoVistoEpisodio_NoTodosVistosEpisodioVistoComentado_EpisodioNoVistoSinComentario() 
-			throws NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException 
-	{
+	public void indicarNoVistoEpisodio_NoTodosVistosEpisodioVistoComentado_EpisodioNoVistoSinComentario() {
+		
 		// Given
 		setLocalManagers(FakeLocalManagers.R08_1_2_2.getLocalManager());
 		
@@ -85,15 +84,15 @@ public class R08_HU1 extends AcceptanceTest {
 		// Then
 		assertNotNull(resultReturned);
 		assertEquals(resultReturned, ExpectedEpisodes.R08_1_2_2.getExpectedEpisode());
-		assertFalse(getAndListService.getEpisode(321060, 1, 2).isSeen());	
+		assertFalse(getAndListService.getEpisode(321060, 1, 2).isSeen());
+		
 	}
 	
 	// PRUEBA DE ACEPTACIÓN 08.1.2.3
 	
 	@Test
-	public void indicarNoVistoEpisodio_TodosVistosEpisodioVistoNoComentado_EpisodioNoVistoTemporadaNoVista() 
-			throws NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException 
-	{
+	public void indicarNoVistoEpisodio_TodosVistosEpisodioVistoNoComentado_EpisodioNoVistoTemporadaNoVista() {
+		
 		// Given
 		setLocalManagers(FakeLocalManagers.R08_1_2_3.getLocalManager());
 		
@@ -104,7 +103,8 @@ public class R08_HU1 extends AcceptanceTest {
 		assertNotNull(resultReturned);
 		assertEquals(resultReturned, ExpectedEpisodes.R08_1_2_3.getExpectedEpisode());
 		assertFalse(getAndListService.getEpisode(321060, 1, 2).isSeen());
-		assertFalse(getAndListService.getSeason(321060, 1).isSeen());	
+		assertFalse(getAndListService.getSeason(321060, 1).isSeen());
+		
 	}
 
 	// -----------------------------------------------------------------------------
@@ -115,9 +115,8 @@ public class R08_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 08.1.3.1
 	
 	@Test
-	public void indicarNoVistoEpisodio_ExisteSerieExisteTemporadaNoExisteEpisodio_Excepcion() 
-			throws NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException 
-	{	
+	public void indicarNoVistoEpisodio_ExisteSerieExisteTemporadaNoExisteEpisodio_Excepcion() {
+		
 		thrown.expect(NoEpisodesStoredException.class);
 		
 		// Given
@@ -133,9 +132,8 @@ public class R08_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 08.1.3.2
 	
 	@Test
-	public void indicarNoVistoEpisodio_ExisteSerieNoExisteTemporada_Excepcion() 
-			throws NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException 
-	{	
+	public void indicarNoVistoEpisodio_ExisteSerieNoExisteTemporada_Excepcion() {
+		
 		thrown.expect(NoSeasonsStoredException.class);
 		
 		// Given
@@ -151,9 +149,8 @@ public class R08_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 08.1.3.3
 	
 	@Test
-	public void indicarNoVistoEpisodio_NoExisteSerie_Excepcion() 
-			throws NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException 
-	{
+	public void indicarNoVistoEpisodio_NoExisteSerie_Excepcion() {
+		
 		thrown.expect(NoSeriesStoredException.class);
 		
 		// Given

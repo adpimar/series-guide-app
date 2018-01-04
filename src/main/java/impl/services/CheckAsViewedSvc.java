@@ -23,9 +23,8 @@ public class CheckAsViewedSvc implements ICheckAsViewedService {
 	}
 
 	@Override
-	public Episode checkEpisodeAsViewed(long codSerie, int airedSeason, int airedEpisode) 
-			throws NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException
-	{
+	public Episode checkEpisodeAsViewed(long codSerie, int airedSeason, int airedEpisode) {
+		
 		// Comprueba existe serie
 		Serie serie = localManager.getSerie(codSerie);
 		if (serie == null)
@@ -55,13 +54,12 @@ public class CheckAsViewedSvc implements ICheckAsViewedService {
 		if (season.checkSeasonSeen())
 			localManager.updateSeason(season);
 
-		return episode;
+		return episode;	
 	}
 
 	@Override
-	public Episode uncheckEpisodeAsViewed(long codSerie, int airedSeason, int airedEpisode) 
-			throws NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException
-	{
+	public Episode uncheckEpisodeAsViewed(long codSerie, int airedSeason, int airedEpisode) {
+		
 		// Comprueba existe serie
 		Serie serie = localManager.getSerie(codSerie);
 		if (serie == null)
@@ -92,13 +90,12 @@ public class CheckAsViewedSvc implements ICheckAsViewedService {
 		if (season.checkSeasonSeen())
 			localManager.updateSeason(season);
 
-		return episode;
+		return episode;	
 	}
 
 	@Override
-	public Episode commentEpisodeViewed(long codSerie, int airedSeason, int airedEpisode, String comment) 
-			throws TooLongCommentException, NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException, NoEpisodeCheckedAsViewedException
-	{
+	public Episode commentEpisodeViewed(long codSerie, int airedSeason, int airedEpisode, String comment) {
+		
 		// Comprueba comentario no excede limite caracteres
 		if (comment.length() > LIMITE_CARACTERES_COMENTARIO)
 			throw new TooLongCommentException();
@@ -128,13 +125,12 @@ public class CheckAsViewedSvc implements ICheckAsViewedService {
 		// Almacena modificaciones
 		localManager.updateEpisode(episode);
 		
-		return episode;
+		return episode;	
 	}
 
 	@Override
-	public Season checkSeasonAsViewed(long codSerie, int airedSeason) 
-			throws NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException
-	{
+	public Season checkSeasonAsViewed(long codSerie, int airedSeason) {
+		
 		// Comprueba existe serie
 		Serie serie = localManager.getSerie(codSerie);
 		if (serie == null)
@@ -165,13 +161,12 @@ public class CheckAsViewedSvc implements ICheckAsViewedService {
 			localManager.updateEpisode(episode);
 		}
 		
-		return season;
+		return season;	
 	}
 
 	@Override
-	public Season uncheckSeasonAsViewed(long codSerie, int airedSeason) 
-			throws NoSeriesStoredException, NoSeasonsStoredException, NoEpisodesStoredException
-	{
+	public Season uncheckSeasonAsViewed(long codSerie, int airedSeason) {
+		
 		// Comprueba existe serie
 		Serie serie = localManager.getSerie(codSerie);
 		if (serie == null)
