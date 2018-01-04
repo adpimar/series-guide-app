@@ -1,8 +1,8 @@
 package impl.services;
 
 import abs.ILocalManager;
-import abs.IRemoteManager;
 import abs.services.IStoreService;
+import impl.model.RemoteSerie;
 import impl.model.Season;
 import impl.model.Serie;
 
@@ -12,20 +12,22 @@ public class StoreSvc implements IStoreService {
 
 	@Override
 	public void setLocalManager(ILocalManager localManager) {
-		// TODO Auto-generated method stub
-
+		this.localManager = localManager;
 	}
 
 	@Override
-	public void setRemoteManager(IRemoteManager remoteManager) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void storeRemoteSerie(Serie remoteSerie) {
-		// TODO Auto-generated method stub
-
+	public Serie storeRemoteSerie(RemoteSerie remoteSerie) {
+		
+		// Comprueba si existe serie en BDL
+		Serie serie = localManager.getSerie(remoteSerie.getId());
+		
+		// Almacena serie en BDL si no existe
+		if (serie == null) {
+			serie = remoteSerie.getSerie();
+			localManager.addSerie(serie);
+		}
+		
+		return serie;
 	}
 
 	@Override

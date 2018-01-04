@@ -1,8 +1,6 @@
 package abs.services;
 
 import abs.ISetLocalManager;
-import impl.exceptions.NoSeasonsStoredException;
-import impl.exceptions.NoSeriesStoredException;
 
 public interface IDeleteService extends ISetLocalManager {
 

@@ -9,8 +9,10 @@ import impl.model.Serie;
 public interface ILocalManager {
 
 	List<Serie> listSeries();
-		
+	
 	Serie getSerie(long codSerie);
+	
+	void addSerie(Serie serie);
 	
 	void updateSerie(Serie serie);
 			
@@ -22,6 +24,8 @@ public interface ILocalManager {
 		
 	Season getSeason(long codSeason);
 	
+	void addSeason(Season season);
+	
 	void updateSeason(Season season);
 	
 	void removeSeason(Season season);
@@ -31,6 +35,8 @@ public interface ILocalManager {
 	List<Episode> listEpisodes();
 		
 	Episode getEpisode(long codEpisode);
+	
+	void addEpisode(Episode episode);
 			
 	void updateEpisode(Episode episode);
 		

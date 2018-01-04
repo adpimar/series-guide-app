@@ -10,8 +10,9 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import abs.IRemoteManager;
-import impl.exceptions.NoSeriesStoredException;
+import impl.exceptions.ErrorOnRemoteServerException;
 import impl.exceptions.NotFoundSerieOnRemoteServerException;
+import impl.exceptions.TimeoutOnRemoteServerException;
 import impl.model.Serie;
 import resources.ExpectedSeries;
 import resources.MockRemoteSeries;
@@ -46,15 +47,17 @@ public class R13_HU1 extends AcceptanceTest {
 	@Test
 	public void descargarSerie_ExisteSerie_SerieDescargada() {
 
-//		// Given
-//		
-//		// When
-//		when(remoteManager.getSerie(121361)).thenReturn(MockRemoteSeries.R13_1_1_1.getMockRemoteSerie());
-//		Serie resultReturned = getAndListService.getSerie(121361);
-//
-//		// Then
-//		assertNotNull(resultReturned);
-//		assertEquals(resultReturned, ExpectedSeries.R13_1_1_1.getExpectedSerie());
+		long codSerie = 121361;
+		
+		// Given
+		when(remoteManager.getRemoteSerie(codSerie)).thenReturn(MockRemoteSeries.R13_1_1_1.getMockRemoteSerie());
+		
+		// When
+		Serie resultReturned = getAndListService.getRemoteSerie(codSerie);
+
+		// Then
+		assertNotNull(resultReturned);
+		assertEquals(resultReturned, ExpectedSeries.R13_1_1_1.getExpectedSerie());
 		
 	}
 
@@ -67,16 +70,18 @@ public class R13_HU1 extends AcceptanceTest {
 	
 	@Test
 	public void descargarSerie_NoExisteSerie_Excepcion() {
+		
+		long codSerie = 999999;
 
-//		thrown.expect(NotFoundSerieOnRemoteServerException.class);
-//		
-//		// Given
-//		
-//		// When
-//		when(remoteManager.getSerie(999999)).thenThrow(new NotFoundSerieOnRemoteServerException());
-//		getAndListService.getSerie(999999);
-//		
-//		// Then
+		thrown.expect(NotFoundSerieOnRemoteServerException.class);
+		
+		// Given
+		when(remoteManager.getRemoteSerie(codSerie)).thenThrow(new NotFoundSerieOnRemoteServerException());
+		
+		// When
+		getAndListService.getRemoteSerie(codSerie);
+		
+		// Then
 		
 	}
 
@@ -90,13 +95,37 @@ public class R13_HU1 extends AcceptanceTest {
 	@Test
 	public void descargarSerie_ErrorDeServidor_Excepcion() {
 
+		long codSerie = 121361;
+		
+		thrown.expect(ErrorOnRemoteServerException.class);
+		
+		// Given
+		when(remoteManager.getRemoteSerie(codSerie)).thenThrow(new ErrorOnRemoteServerException());
+		
+		// When
+		getAndListService.getRemoteSerie(codSerie);
+		
+		// Then
+		
 	}
 
 	// PRUEBA DE ACEPTACIÓN 13.1.3.2
 	
 	@Test
 	public void descargarSerie_ErrorDeTimeout_Excepcion() {
+		
+		long codSerie = 121361;
 
+		thrown.expect(TimeoutOnRemoteServerException.class);
+		
+		// Given
+		when(remoteManager.getRemoteSerie(codSerie)).thenThrow(new TimeoutOnRemoteServerException());
+		
+		// When
+		getAndListService.getRemoteSerie(codSerie);
+		
+		// Then
+		
 	}
 
 }

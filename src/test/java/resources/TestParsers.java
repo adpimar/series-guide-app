@@ -135,7 +135,7 @@ public class TestParsers {
 
 		return remoteSearchSerie;
 	}
-
+	
 	private static List<String> stringListParser(String field) {
 		if (field.equals("null"))
 			return null;

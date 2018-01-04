@@ -10,6 +10,7 @@ import impl.exceptions.NoEpisodesStoredException;
 import impl.exceptions.NoSeasonsStoredException;
 import impl.exceptions.NoSeriesStoredException;
 import impl.model.Episode;
+import impl.model.RemoteEpisode;
 import impl.model.Season;
 import impl.model.Serie;
 
@@ -29,9 +30,8 @@ public class GetAndListSvc implements IGetAndListService {
 	}
 
 	@Override
-	public List<String> listSeriesNames() 
-			throws NoSeriesStoredException 
-	{
+	public List<String> listSeriesNames() {
+		
 		// Comprueba existen series
 		List<Serie> series = localManager.listSeries();
 		if (series.isEmpty())
@@ -115,14 +115,19 @@ public class GetAndListSvc implements IGetAndListService {
 	}
 
 	@Override
-	public Serie getRemoteSerie(long idSerie, int seasonNumber) {
-		// TODO Auto-generated method stub
-		return null;
+	public Serie getRemoteSerie(long codSerie) {
+		return remoteManager.getRemoteSerie(codSerie).getSerie();
 	}
 
 	@Override
-	public Serie getRemoteSeason(long idSerie, int seasonNumber) {
-		// TODO Auto-generated method stub
+	public Season getRemoteSeason(long codSerie, int airedSeason) {
+		
+		// Dame todos episodios temporada
+		RemoteEpisode[] remoteEpisodes = remoteManager.getRemoteSeason(codSerie, airedSeason);
+		
+		
+		
+		
 		return null;
 	}
 	

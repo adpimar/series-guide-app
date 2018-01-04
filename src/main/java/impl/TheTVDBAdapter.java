@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import abs.IRemoteManager;
+import impl.model.RemoteEpisode;
 import impl.model.RemoteSearchSerie;
 import impl.model.RemoteSerie;
 
@@ -155,20 +156,21 @@ public class TheTVDBAdapter implements IRemoteManager {
 //		return null;
 //	}
 
+
 	@Override
-	public Map<String, String> getSeason(long codSeason) {
+	public List<RemoteSearchSerie> searchRemoteSeries(String pattern) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<RemoteSearchSerie> searchSeries(String pattern) {
+	public RemoteSerie getRemoteSerie(long codSerie) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public RemoteSerie getSerie(long codSerie) {
+	public RemoteEpisode[] getRemoteSeason(long codSerie, int airedSeason) {
 		// TODO Auto-generated method stub
 		return null;
 	}

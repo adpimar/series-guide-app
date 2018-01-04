@@ -1,10 +1,6 @@
 package abs.services;
 
 import abs.ISetLocalManager;
-import impl.exceptions.NoEpisodesStoredException;
-import impl.exceptions.NoSeasonsStoredException;
-import impl.exceptions.NoSeriesStoredException;
-import impl.exceptions.TooLongOverviewException;
 import impl.model.Episode;
 import impl.model.Serie;
 

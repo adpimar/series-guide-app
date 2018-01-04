@@ -51,26 +51,6 @@ public class AuxiliarBDL implements ILocalManager {
 		b.close();
 	}
 	
-	private void addSerie(Serie serie) {
-		series.add(serie);
-	}
-	
-	private void addSeason(Season season) {
-		for (Serie serie : series)
-			if (serie.getCodSerie() == season.getCodSerie())
-				if (!serie.getSeasons().add(season))
-					throw new IllegalArgumentException();
-		seasons.add(season);
-	}
-	
-	private void addEpisode(Episode episode) {
-		for (Season season : seasons)
-			if (season.getCodSeason() == episode.getCodSeason())
-				if (!season.getEpisodes().add(episode))
-					throw new IllegalArgumentException();
-		episodes.add(episode);
-	}
-	
 	// ---------- ILocalManager -----------------------------------------------
 
 	@Override
@@ -87,6 +67,11 @@ public class AuxiliarBDL implements ILocalManager {
 	}
 
 	@Override
+	public void addSerie(Serie serie) {
+		series.add(serie);
+	}
+	
+	@Override
 	public void updateSerie(Serie serie) {
 		for (Serie s : series)
 			if (s.getCodSerie() == serie.getCodSerie())
@@ -98,6 +83,8 @@ public class AuxiliarBDL implements ILocalManager {
 		series.remove(serie);
 	}
 
+	// ----------
+	
 	@Override
 	public List<Season> listSeasons() {
 		return seasons;
@@ -111,6 +98,15 @@ public class AuxiliarBDL implements ILocalManager {
 		return null;
 	}
 
+	@Override
+	public void addSeason(Season season) {
+		for (Serie serie : series)
+			if (serie.getCodSerie() == season.getCodSerie())
+				if (!serie.getSeasons().add(season))
+					throw new IllegalArgumentException();
+		seasons.add(season);
+	}
+	
 	@Override
 	public void updateSeason(Season season) {
 		for (Season s : seasons)
@@ -128,6 +124,8 @@ public class AuxiliarBDL implements ILocalManager {
 		
 		seasons.remove(season);
 	}
+	
+	// ----------
 
 	@Override
 	public List<Episode> listEpisodes() {
@@ -140,6 +138,15 @@ public class AuxiliarBDL implements ILocalManager {
 			if (e.getCodEpisode() == codEpisode)
 				return e;
 		return null;
+	}
+	
+	@Override
+	public void addEpisode(Episode episode) {
+		for (Season season : seasons)
+			if (season.getCodSeason() == episode.getCodSeason())
+				if (!season.getEpisodes().add(episode))
+					throw new IllegalArgumentException();
+		episodes.add(episode);
 	}
 
 	@Override

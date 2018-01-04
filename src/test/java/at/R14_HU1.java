@@ -1,6 +1,15 @@
 package at;
 
+import static org.mockito.Mockito.when;
+
+import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+
+import abs.IRemoteManager;
+import impl.model.Season;
+import resources.MockRemoteSeason;
 
 public class R14_HU1 extends AcceptanceTest {
 
@@ -14,6 +23,15 @@ public class R14_HU1 extends AcceptanceTest {
 	// toda la información de una temporada (títulos y descripciones de los
 	// episodios) de una serie para consultarta y decidir si almacenarla o no.
 
+	@Mock
+	private IRemoteManager remoteManager;
+	
+	@Before
+	public void prepara() {
+		MockitoAnnotations.initMocks(this);
+		setRemoteManagers(remoteManager);
+	}
+	
 	// -----------------------------------------------------------------------------
 
 	// ESCENARIO 14.1.1
@@ -23,7 +41,19 @@ public class R14_HU1 extends AcceptanceTest {
 
 	@Test
 	public void descargarTemporada_ExisteSerieExisteTemporadaConVariosEpisodios_TemporadaDescargada() {
-
+		
+		long codSerie = 321060;
+		int airedSeason = 1;
+		
+		// Given
+		//when(remoteManager.getRemoteSeason(codSerie, airedSeason)).thenReturn(MockRemoteSeason.R14_1_1_1.getMockRemoteSeason());
+		
+		// When
+		//Season resultReturned = getAndListService.getRemoteSeason(codSerie, airedSeason);
+		//System.out.println(resultReturned);
+		// Then
+		
+		
 	}
 	
 	// PRUEBA DE ACEPTACIÓN 14.1.1.2
@@ -31,6 +61,8 @@ public class R14_HU1 extends AcceptanceTest {
 	@Test
 	public void descargarTemporada_ExisteSerieExisteTemporadaConUnEpisodio_TemporadaDescargada() {
 
+		
+		
 	}
 	
 	// PRUEBA DE ACEPTACIÓN 14.1.1.3
@@ -38,6 +70,8 @@ public class R14_HU1 extends AcceptanceTest {
 	@Test
 	public void descargarTemporada_ExisteSerieExisteTemporadaSinEpisodios_TemporadaDescargada() {
 
+		
+		
 	}
 	
 	// -----------------------------------------------------------------------------
@@ -50,6 +84,8 @@ public class R14_HU1 extends AcceptanceTest {
 	@Test
 	public void descargarTemporada_ExisteSerieNoExisteTemporada_Excepcion() {
 
+		
+		
 	}
 
 	// -----------------------------------------------------------------------------
@@ -62,6 +98,8 @@ public class R14_HU1 extends AcceptanceTest {
 	@Test
 	public void descargarTemporada_NoExisteSerie_Excepcion() {
 
+		
+		
 	}
 	
 	// -----------------------------------------------------------------------------
@@ -74,6 +112,8 @@ public class R14_HU1 extends AcceptanceTest {
 	@Test
 	public void descargarTemporada_ErrorDeServidor_Excepcion() {
 
+		
+		
 	}
 	
 	// PRUEBA DE ACEPTACIÓN 14.1.4.2
@@ -81,6 +121,8 @@ public class R14_HU1 extends AcceptanceTest {
 	@Test
 	public void descargarTemporada_ErrorDeTimeout_Excepcion() {
 
+		
+		
 	}
 
 }

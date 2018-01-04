@@ -1,11 +1,6 @@
 package abs.services;
 
 import abs.ISetLocalManager;
-import impl.exceptions.NoEpisodeCheckedAsViewedException;
-import impl.exceptions.NoEpisodesStoredException;
-import impl.exceptions.NoSeasonsStoredException;
-import impl.exceptions.NoSeriesStoredException;
-import impl.exceptions.TooLongCommentException;
 import impl.model.Episode;
 import impl.model.Season;
 

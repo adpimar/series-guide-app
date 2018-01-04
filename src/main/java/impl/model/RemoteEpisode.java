@@ -15,6 +15,23 @@ public class RemoteEpisode {
 	private long lastUpdated;
 	private String overview;
 
+	public Episode getEpisode() {
+		Episode episode = new Episode();
+		
+		episode.setCodEpisode(id);
+		episode.setCodSeason(airedSeasonID);
+		episode.setAiredSeason(airedSeason);
+		episode.setAiredEpisode(airedEpisodeNumber);
+		episode.setEpisodeName(episodeName);
+		episode.setEpisodeName(episodeName);
+		episode.setFirstAired(firstAired);
+		episode.setOverview(overview);
+		episode.setSeen(false);
+		episode.setComment(null);
+		
+		return episode;
+	}
+	
 	public int getAbsoluteNumber() {
 		return absoluteNumber;
 	}

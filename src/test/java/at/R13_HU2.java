@@ -1,6 +1,15 @@
 package at;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
 import org.junit.Test;
+
+import abs.ILocalManager;
+import impl.model.Serie;
+import resources.ExpectedSeries;
+import resources.FakeLocalManagers;
+import resources.MockRemoteSeries;
 
 public class R13_HU2 extends AcceptanceTest {
 
@@ -22,7 +31,19 @@ public class R13_HU2 extends AcceptanceTest {
 	
 	@Test
 	public void almacenarSerie_SerieNoAlmacenada_SerieAlmacenada() {
+				
+		// Given
+		ILocalManager localManager = FakeLocalManagers.R13_2_1_1.getLocalManager();
+		setLocalManagers(localManager);
+				
+		// When
+		Serie resultReturned = storeService.storeRemoteSerie(MockRemoteSeries.R13_2_1_1.getMockRemoteSerie());
 
+		// Then
+		assertNotNull(resultReturned);
+		assertEquals(resultReturned, ExpectedSeries.R13_2_1_1.getExpectedSerie());
+		assertEquals(localManager.getSerie(resultReturned.getCodSerie()), ExpectedSeries.R13_2_1_1.getExpectedSerie());
+		
 	}
 
 	// -----------------------------------------------------------------------------
@@ -33,8 +54,20 @@ public class R13_HU2 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 13.2.2.1
 	
 	@Test
-	public void almacenarSerie_SerieAlmacenada_Excepcion() {
+	public void almacenarSerie_SerieAlmacenada_SerieNoAlmacenada() {
 
+		// Given
+		ILocalManager localManager = FakeLocalManagers.R13_2_2_1.getLocalManager();
+		setLocalManagers(localManager);
+				
+		// When
+		Serie resultReturned = storeService.storeRemoteSerie(MockRemoteSeries.R13_2_2_1.getMockRemoteSerie());
+
+		// Then
+		assertNotNull(resultReturned);
+		assertEquals(resultReturned, ExpectedSeries.R13_2_2_1.getExpectedSerie());
+		assertEquals(localManager.getSerie(resultReturned.getCodSerie()), ExpectedSeries.R13_2_1_1.getExpectedSerie());		
+		
 	}
 
 }
