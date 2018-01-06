@@ -7,7 +7,7 @@ import abs.services.ICheckAsViewedService;
 import abs.services.IDeleteService;
 import abs.services.IGetAndListService;
 import abs.services.ISearchService;
-import abs.services.IStoreService;
+import abs.services.IDownloadAndStoreService;
 import abs.services.IUpdateOverviewService;
 
 public class SeriesGuideApp {
@@ -16,7 +16,7 @@ public class SeriesGuideApp {
 	private ICheckAsViewedService checkAsViewedService;
 	private IDeleteService deleteService;
 	private IGetAndListService getAndListService;
-	private IStoreService storeService;
+	private IDownloadAndStoreService storeService;
 	private IUpdateOverviewService updateOverviewService;
 
 	public Map<Long, String> busquedaSeriesServidorRemoto(String pattern) {

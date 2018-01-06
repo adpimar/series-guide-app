@@ -1,6 +1,6 @@
 package impl.services;
 
-import abs.ILocalManager;
+import abs.managers.ILocalManager;
 import abs.services.ICheckAsViewedService;
 import impl.exceptions.NoEpisodeCheckedAsViewedException;
 import impl.exceptions.NoEpisodesStoredException;
@@ -36,7 +36,7 @@ public class CheckAsViewedSvc implements ICheckAsViewedService {
 			throw new NoSeasonsStoredException();
 		
 		// Comprueba existe episodio
-		Episode episode = season.getEpisodeByAired(airedEpisode);
+		Episode episode = season.getEpisodes()[airedEpisode - 1];
 		if (episode == null)
 			throw new NoEpisodesStoredException();
 		
@@ -71,7 +71,7 @@ public class CheckAsViewedSvc implements ICheckAsViewedService {
 			throw new NoSeasonsStoredException();
 		
 		// Comprueba existe episodio
-		Episode episode = season.getEpisodeByAired(airedEpisode);
+		Episode episode = season.getEpisodes()[airedEpisode - 1];
 		if (episode == null)
 			throw new NoEpisodesStoredException();
 		
@@ -111,7 +111,7 @@ public class CheckAsViewedSvc implements ICheckAsViewedService {
 			throw new NoSeasonsStoredException();
 		
 		// Comprueba existe episodio
-		Episode episode = season.getEpisodeByAired(airedEpisode);
+		Episode episode = season.getEpisodes()[airedEpisode - 1];
 		if (episode == null)
 			throw new NoEpisodesStoredException();
 		
@@ -142,8 +142,12 @@ public class CheckAsViewedSvc implements ICheckAsViewedService {
 			throw new NoSeasonsStoredException();
 
 		// Comprueba tiene todos episodios
-		if (season.getEpisodes().size() < season.getTotalEpisodes())
+		Episode[] episodes = season.getEpisodes();
+		if (episodes.length < season.getTotalEpisodes())
 			throw new NoEpisodesStoredException();
+		for (int i = 0; i < season.getTotalEpisodes(); i++)
+			if (episodes[i] == null)
+				throw new NoEpisodesStoredException();
 		
 		// Comprueba temporada vista
 		if (season.isSeen())
@@ -178,8 +182,12 @@ public class CheckAsViewedSvc implements ICheckAsViewedService {
 			throw new NoSeasonsStoredException();
 		
 		// Comprueba tiene todos episodios
-		if (season.getEpisodes().size() < season.getTotalEpisodes())
+		Episode[] episodes = season.getEpisodes();
+		if (episodes.length < season.getTotalEpisodes())
 			throw new NoEpisodesStoredException();
+		for (int i = 0; i < season.getTotalEpisodes(); i++)
+			if (episodes[i] == null)
+				throw new NoEpisodesStoredException();
 		
 		// Modifica temporada
 		season.setSeen(false);

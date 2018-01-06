@@ -1,6 +1,6 @@
 package impl.services;
 
-import abs.ILocalManager;
+import abs.managers.ILocalManager;
 import abs.services.IDeleteService;
 import impl.exceptions.NoSeasonsStoredException;
 import impl.exceptions.NoSeriesStoredException;

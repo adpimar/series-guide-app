@@ -2,8 +2,8 @@ package abs.services;
 
 import java.util.Map;
 
-import abs.ISetLocalManager;
-import abs.ISetRemoteManager;
+import abs.managers.ISetLocalManager;
+import abs.managers.ISetRemoteManager;
 
 public interface ISearchService extends ISetLocalManager, ISetRemoteManager {
 	
