@@ -1,6 +1,6 @@
 package abs.services;
 
-import abs.ISetLocalManager;
+import abs.managers.ISetLocalManager;
 import impl.model.Episode;
 import impl.model.Serie;
 

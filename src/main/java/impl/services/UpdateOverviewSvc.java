@@ -1,6 +1,6 @@
 package impl.services;
 
-import abs.ILocalManager;
+import abs.managers.ILocalManager;
 import abs.services.IUpdateOverviewService;
 import impl.exceptions.NoEpisodesStoredException;
 import impl.exceptions.NoSeasonsStoredException;
@@ -60,7 +60,7 @@ public class UpdateOverviewSvc implements IUpdateOverviewService {
 			throw new NoSeasonsStoredException();
 		
 		// Comprueba existe episodio
-		Episode episode = season.getEpisodeByAired(airedEpisode);
+		Episode episode = season.getEpisodes()[airedEpisode - 1];
 		if (episode == null)
 			throw new NoEpisodesStoredException();
 		

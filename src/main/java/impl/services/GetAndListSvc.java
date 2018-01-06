@@ -3,30 +3,22 @@ package impl.services;
 import java.util.LinkedList;
 import java.util.List;
 
-import abs.ILocalManager;
-import abs.IRemoteManager;
+import abs.managers.ILocalManager;
 import abs.services.IGetAndListService;
 import impl.exceptions.NoEpisodesStoredException;
 import impl.exceptions.NoSeasonsStoredException;
 import impl.exceptions.NoSeriesStoredException;
 import impl.model.Episode;
-import impl.model.RemoteEpisode;
 import impl.model.Season;
 import impl.model.Serie;
 
 public class GetAndListSvc implements IGetAndListService {
 
-	private IRemoteManager remoteManager;
 	private ILocalManager localManager;
 
 	@Override
 	public void setLocalManager(ILocalManager localManager) {
 		this.localManager = localManager;
-	}
-
-	@Override
-	public void setRemoteManager(IRemoteManager remoteManager) {
-		this.remoteManager = remoteManager;
 	}
 
 	@Override
@@ -46,7 +38,7 @@ public class GetAndListSvc implements IGetAndListService {
 	}
 
 	@Override
-	public String[] listSerieSeasonEpisodesNamesOrderedByAired(long codSerie, int airedSeason) {
+	public String[] listSerieSeasonsEpisodesNames(long codSerie, int airedSeason) {
 		
 		// Comprueba existe serie
 		Serie serie = localManager.getSerie(codSerie);
@@ -107,28 +99,11 @@ public class GetAndListSvc implements IGetAndListService {
 			throw new NoSeasonsStoredException();
 		
 		// Comprueba existe episodio
-		Episode episode = season.getEpisodeByAired(airedEpisode);
+		Episode episode = season.getEpisodes()[airedEpisode - 1];
 		if (episode == null)
 			throw new NoEpisodesStoredException();
 		
 		return episode;
-	}
-
-	@Override
-	public Serie getRemoteSerie(long codSerie) {
-		return remoteManager.getRemoteSerie(codSerie).getSerie();
-	}
-
-	@Override
-	public Season getRemoteSeason(long codSerie, int airedSeason) {
-		
-		// Dame todos episodios temporada
-		RemoteEpisode[] remoteEpisodes = remoteManager.getRemoteSeason(codSerie, airedSeason);
-		
-		
-		
-		
-		return null;
 	}
 	
 }

@@ -1,8 +1,5 @@
 package impl.model;
 
-import java.util.LinkedList;
-import java.util.List;
-
 public class Season {
 
 	private long codSerie;
@@ -13,20 +10,13 @@ public class Season {
 	private int totalEpisodes;
 	private boolean seen;
 
-	private List<Episode> episodes;
+	private Episode[] episodes;
 
 	public Season() {
-		episodes = new LinkedList<>();
+		episodes = new Episode[totalEpisodes];
 	}
 	
 	// ------------------------------------------------------------------------
-	
-	public Episode getEpisodeByAired(int airedEpisode) {
-		for (Episode episode : episodes)
-			if (episode.getAiredEpisode() == airedEpisode)
-				return episode;
-		return null;
-	}
 	
 	public boolean checkSeasonSeen() {
 		boolean oldValue = seen;
@@ -66,7 +56,7 @@ public class Season {
 		return seen;
 	}
 
-	public List<Episode> getEpisodes() {
+	public Episode[] getEpisodes() {
 		return episodes;
 	}
 	
@@ -93,6 +83,10 @@ public class Season {
 	}
 
 	public void setTotalEpisodes(int totalEpisodes) {
+		Episode[] newEpisodes = new Episode[totalEpisodes];
+		for (int i = 0; i < episodes.length; i++)
+			newEpisodes[i] = episodes[i];
+		episodes = newEpisodes;
 		this.totalEpisodes = totalEpisodes;
 	}
 
@@ -100,7 +94,7 @@ public class Season {
 		this.seen = seen;
 	}
 
-	public void setEpisodes(List<Episode> episodes) {
+	public void setEpisodes(Episode[] episodes) {
 		this.episodes = episodes;
 	}
 	

@@ -1,6 +1,6 @@
 package abs.services;
 
-import abs.ISetLocalManager;
+import abs.managers.ISetLocalManager;
 
 public interface IDeleteService extends ISetLocalManager {
 

@@ -46,8 +46,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="6" language="java" name="impl.services.StoreSvc" project="SeriesGuideApp" 
-    file="/SeriesGuideApp/src/main/java/impl/services/StoreSvc.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="6" language="java" name="impl.services.DownloadAndStoreSvc" project="SeriesGuideApp" 
+    file="/SeriesGuideApp/src/main/java/impl/services/DownloadAndStoreSvc.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="754" y="585"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -100,8 +100,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <interface id="12" language="java" name="abs.services.IStoreService" project="SeriesGuideApp" 
-    file="/SeriesGuideApp/src/main/java/abs/services/IStoreService.java" binary="false" corner="BOTTOM_RIGHT">    
+  <interface id="12" language="java" name="abs.services.IDownloadAndStoreService" project="SeriesGuideApp" 
+    file="/SeriesGuideApp/src/main/java/abs/services/IDownloadAndStoreService.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="754" y="329"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -109,8 +109,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <interface id="13" language="java" name="abs.ILocalManager" project="SeriesGuideApp" 
-    file="/SeriesGuideApp/src/main/java/abs/ILocalManager.java" binary="false" corner="BOTTOM_RIGHT">    
+  <interface id="13" language="java" name="abs.managers.ILocalManager" project="SeriesGuideApp" 
+    file="/SeriesGuideApp/src/main/java/abs/managers/ILocalManager.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="841" y="975"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -118,8 +118,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <interface id="14" language="java" name="abs.IRemoteManager" project="SeriesGuideApp" 
-    file="/SeriesGuideApp/src/main/java/abs/IRemoteManager.java" binary="false" corner="BOTTOM_RIGHT">    
+  <interface id="14" language="java" name="abs.managers.IRemoteManager" project="SeriesGuideApp" 
+    file="/SeriesGuideApp/src/main/java/abs/managers/IRemoteManager.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="179" y="878"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -127,8 +127,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="15" language="java" name="impl.SeriesDAO" project="SeriesGuideApp" 
-    file="/SeriesGuideApp/src/main/java/impl/SeriesDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="15" language="java" name="impl.managers.local.SeriesDAO" project="SeriesGuideApp" 
+    file="/SeriesGuideApp/src/main/java/impl/managers/local/SeriesDAO.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="841" y="1307"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -136,8 +136,9 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="16" language="java" name="impl.TheTVDBAdapter" project="SeriesGuideApp" 
-    file="/SeriesGuideApp/src/main/java/impl/TheTVDBAdapter.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="16" language="java" name="impl.managers.remote.thetvdb.TheTVDBAdapter" project="SeriesGuideApp" 
+    file="/SeriesGuideApp/src/main/java/impl/managers/remote/thetvdb/TheTVDBAdapter.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="179" y="1097"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -181,80 +182,80 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <realization id="21">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="4"/>  
-  </realization>  
-  <association id="22">    
+  <association id="21">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="22" name="localManager">        
+        <position height="0" width="0" x="133" y="58"/>      
+      </attribute>      
+      <multiplicity id="23" minimum="0" maximum="1">        
+        <position height="0" width="0" x="133" y="58"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="24">    
     <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="23" name="checkAsViewedService">        
+      <attribute id="25" name="checkAsViewedService">        
         <position height="18" width="126" x="1380" y="280"/>      
       </attribute>      
-      <multiplicity id="24" minimum="0" maximum="1">        
+      <multiplicity id="26" minimum="0" maximum="1">        
         <position height="16" width="23" x="1476" y="294"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="25">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="26" name="localManager">        
-        <position height="0" width="0" x="133" y="58"/>      
-      </attribute>      
-      <multiplicity id="27" minimum="0" maximum="1">        
-        <position height="0" width="0" x="133" y="58"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="28">    
-    <end type="SOURCE" refId="19" navigable="false">      
-      <attribute id="29" name="episodes">        
-        <position height="18" width="52" x="1693" y="1167"/>      
-      </attribute>      
-      <multiplicity id="30" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="-64" y="298"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="20" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="31">    
+  <association id="27">    
     <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="32" name="updateOverviewService">        
-        <position height="0" width="0" x="70" y="11"/>      
+      <attribute id="28" name="storeService">        
+        <position height="0" width="0" x="48" y="11"/>      
       </attribute>      
-      <multiplicity id="33" minimum="0" maximum="1">        
-        <position height="0" width="0" x="70" y="11"/>      
+      <multiplicity id="29" minimum="0" maximum="1">        
+        <position height="0" width="0" x="48" y="11"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
+    <end type="TARGET" refId="12" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="34">    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="5"/>  
-  </realization>  
-  <association id="35">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="36" name="localManager">        
+  <association id="30">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="31" name="localManager">        
         <position height="0" width="0" x="133" y="58"/>      
       </attribute>      
-      <multiplicity id="37" minimum="0" maximum="1">        
+      <multiplicity id="32" minimum="0" maximum="1">        
         <position height="0" width="0" x="133" y="58"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="13" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="38">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="11"/>  
-  </realization>  
+  <association id="33">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="34" name="searchService">        
+        <position height="0" width="0" x="42" y="1"/>      
+      </attribute>      
+      <multiplicity id="35" minimum="0" maximum="1">        
+        <position height="0" width="0" x="42" y="1"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="36">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="37" name="seasons">        
+        <position height="0" width="0" x="-151" y="267"/>      
+      </attribute>      
+      <multiplicity id="38" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-151" y="267"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
   <association id="39">    
-    <end type="SOURCE" refId="10" navigable="false">      
+    <end type="SOURCE" refId="3" navigable="false">      
       <attribute id="40" name="localManager">        
         <position height="0" width="0" x="133" y="58"/>      
       </attribute>      
@@ -266,143 +267,131 @@
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="42">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="43" name="remoteManager">        
-        <position height="0" width="0" x="0" y="0"/>      
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="43" name="localManager">        
+        <position height="0" width="0" x="133" y="58"/>      
       </attribute>      
       <multiplicity id="44" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
+        <position height="0" width="0" x="133" y="58"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="14" navigable="true"/>    
+    <end type="TARGET" refId="13" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="45">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="46" name="remoteManager">        
-        <position height="0" width="0" x="0" y="0"/>      
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="46" name="updateOverviewService">        
+        <position height="0" width="0" x="70" y="11"/>      
       </attribute>      
       <multiplicity id="47" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
+        <position height="0" width="0" x="70" y="11"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="14" navigable="true"/>    
+    <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="48">    
-    <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="49" name="deleteService">        
-        <position height="0" width="0" x="54" y="11"/>      
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="49" name="localManager">        
+        <position height="0" width="0" x="133" y="58"/>      
       </attribute>      
       <multiplicity id="50" minimum="0" maximum="1">        
-        <position height="0" width="0" x="54" y="11"/>      
+        <position height="0" width="0" x="133" y="58"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="11" navigable="true"/>    
+    <end type="TARGET" refId="13" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <realization id="51">    
-    <end type="SOURCE" refId="15"/>    
-    <end type="TARGET" refId="13"/>  
-  </realization>  
-  <association id="52">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="53" name="localManager">        
-        <position height="0" width="0" x="133" y="58"/>      
-      </attribute>      
-      <multiplicity id="54" minimum="0" maximum="1">        
-        <position height="0" width="0" x="133" y="58"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="55">    
     <end type="SOURCE" refId="16"/>    
     <end type="TARGET" refId="14"/>  
   </realization>  
-  <association id="56">    
+  <association id="52">    
     <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="57" name="storeService">        
-        <position height="0" width="0" x="48" y="11"/>      
-      </attribute>      
-      <multiplicity id="58" minimum="0" maximum="1">        
-        <position height="0" width="0" x="48" y="11"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="59">    
-    <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="60" name="searchService">        
-        <position height="0" width="0" x="42" y="1"/>      
-      </attribute>      
-      <multiplicity id="61" minimum="0" maximum="1">        
-        <position height="0" width="0" x="42" y="1"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="62">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="2"/>  
-  </realization>  
-  <realization id="63">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="12"/>  
-  </realization>  
-  <association id="64">    
-    <end type="SOURCE" refId="18" navigable="false">      
-      <attribute id="65" name="seasons">        
-        <position height="0" width="0" x="-151" y="267"/>      
-      </attribute>      
-      <multiplicity id="66" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="-151" y="267"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="67">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="68" name="localManager">        
-        <position height="0" width="0" x="133" y="58"/>      
-      </attribute>      
-      <multiplicity id="69" minimum="0" maximum="1">        
-        <position height="0" width="0" x="133" y="58"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="70">    
-    <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="71" name="getAndListService">        
+      <attribute id="53" name="getAndListService">        
         <position height="18" width="97" x="212" y="272"/>      
       </attribute>      
-      <multiplicity id="72" minimum="0" maximum="1">        
+      <multiplicity id="54" minimum="0" maximum="1">        
         <position height="16" width="23" x="312" y="263"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="73">    
+  <association id="55">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="56" name="deleteService">        
+        <position height="0" width="0" x="54" y="11"/>      
+      </attribute>      
+      <multiplicity id="57" minimum="0" maximum="1">        
+        <position height="0" width="0" x="54" y="11"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="58">    
     <end type="SOURCE" refId="7"/>    
     <end type="TARGET" refId="9"/>  
   </realization>  
-  <association id="74">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="75" name="localManager">        
+  <realization id="59">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="13"/>  
+  </realization>  
+  <realization id="60">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="2"/>  
+  </realization>  
+  <realization id="61">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="4"/>  
+  </realization>  
+  <realization id="62">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <realization id="63">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="12"/>  
+  </realization>  
+  <association id="64">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="65" name="localManager">        
         <position height="0" width="0" x="133" y="58"/>      
       </attribute>      
-      <multiplicity id="76" minimum="0" maximum="1">        
+      <multiplicity id="66" minimum="0" maximum="1">        
         <position height="0" width="0" x="133" y="58"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="67">    
+    <end type="SOURCE" refId="19" navigable="false">      
+      <attribute id="68" name="episodes">        
+        <position height="18" width="52" x="1693" y="1167"/>      
+      </attribute>      
+      <multiplicity id="69" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-64" y="298"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="70">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="11"/>  
+  </realization>  
+  <association id="71">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="72" name="remoteManager">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="73" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
