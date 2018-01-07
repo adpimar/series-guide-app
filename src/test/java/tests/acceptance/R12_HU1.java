@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.TreeMap;
@@ -19,7 +20,8 @@ import impl.exceptions.ErrorOnRemoteServerException;
 import impl.exceptions.NoKeywordsOnRemoteSearchException;
 import impl.exceptions.NotFoundSerieOnRemoteServerException;
 import impl.exceptions.TimeoutOnRemoteServerException;
-import resources.MockRemoteSearchSeries;
+import impl.model.Serie;
+import resources.FactoryMocks;
 
 public class R12_HU1 extends AcceptanceTest {
 
@@ -40,7 +42,7 @@ public class R12_HU1 extends AcceptanceTest {
 	@Before
 	public void prepara() {
 		MockitoAnnotations.initMocks(this);
-		setRemoteManagers(remoteManager);
+		seriesGuideApp.setRemoteManager(remoteManager);
 	}
 	
 	// -----------------------------------------------------------------------------
@@ -59,7 +61,7 @@ public class R12_HU1 extends AcceptanceTest {
 		thrown.expect(NoKeywordsOnRemoteSearchException.class);
 		
 		// When
-		searchService.searchSeriesRemote(searchPattern);
+		seriesGuideApp.searchSeriesRemote(searchPattern);
 		
 		// Then
 		
@@ -67,6 +69,7 @@ public class R12_HU1 extends AcceptanceTest {
 
 	// PRUEBA DE ACEPTACIÓN 12.1.1.2
 
+	@SuppressWarnings("unchecked")
 	@Test
 	public void buscarRemotamenteSerie_ConUnaPalabraClave_Series() {
 		
@@ -87,10 +90,10 @@ public class R12_HU1 extends AcceptanceTest {
 			resultExpected.put(searchSeries[i + 1], Long.parseLong(searchSeries[i]));
 		
 		// Given
-		when(remoteManager.searchRemoteSeries(searchPattern)).thenReturn(MockRemoteSearchSeries.R12_1_1_2.getMockRemoteSearchSeries());
+		when(remoteManager.searchRemoteSeries(searchPattern)).thenReturn((List<Serie>) FactoryMocks.R12_1_1_2.getMock());
 		
 		// When
-		Map<String, Long> resultReturned = searchService.searchSeriesRemote(searchPattern);
+		Map<String, Long> resultReturned = seriesGuideApp.searchSeriesRemote(searchPattern);
 		
 		// Then
 		assertNotNull(resultReturned);
@@ -101,6 +104,7 @@ public class R12_HU1 extends AcceptanceTest {
 
 	// PRUEBA DE ACEPTACIÓN 12.1.1.3
 
+	@SuppressWarnings("unchecked")
 	@Test
 	public void buscarRemotamenteSerie_ConVariasPalabrasClave_Series() {
 		
@@ -117,10 +121,10 @@ public class R12_HU1 extends AcceptanceTest {
 			resultExpected.put(searchSeries[i + 1], Long.parseLong(searchSeries[i]));
 		
 		// Given
-		when(remoteManager.searchRemoteSeries(searchPattern)).thenReturn(MockRemoteSearchSeries.R12_1_1_3.getMockRemoteSearchSeries());
+		when(remoteManager.searchRemoteSeries(searchPattern)).thenReturn((List<Serie>) FactoryMocks.R12_1_1_3.getMock());
 		
 		// When
-		Map<String, Long> resultReturned = searchService.searchSeriesRemote(searchPattern);
+		Map<String, Long> resultReturned = seriesGuideApp.searchSeriesRemote(searchPattern);
 		
 		// Then
 		assertNotNull(resultReturned);
@@ -147,7 +151,7 @@ public class R12_HU1 extends AcceptanceTest {
 		when(remoteManager.searchRemoteSeries(searchPattern)).thenThrow(new NotFoundSerieOnRemoteServerException());
 		
 		// When
-		searchService.searchSeriesRemote(searchPattern);
+		seriesGuideApp.searchSeriesRemote(searchPattern);
 		
 		// Then
 
@@ -171,7 +175,7 @@ public class R12_HU1 extends AcceptanceTest {
 		when(remoteManager.searchRemoteSeries(searchPattern)).thenThrow(new ErrorOnRemoteServerException());
 		
 		// When
-		searchService.searchSeriesRemote(searchPattern);
+		seriesGuideApp.searchSeriesRemote(searchPattern);
 		
 		// Then
 		
@@ -190,7 +194,7 @@ public class R12_HU1 extends AcceptanceTest {
 		when(remoteManager.searchRemoteSeries(searchPattern)).thenThrow(new TimeoutOnRemoteServerException());
 		
 		// When
-		searchService.searchSeriesRemote(searchPattern);
+		seriesGuideApp.searchSeriesRemote(searchPattern);
 		
 		// Then
 		

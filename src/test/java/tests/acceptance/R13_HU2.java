@@ -1,11 +1,10 @@
 package tests.acceptance;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 
-import abs.managers.ILocalManager;
+import impl.exceptions.SerieAlreadyStoredException;
 import impl.model.Serie;
 import resources.FactoryExpectedResults;
 import resources.FactoryLocalManagers;
@@ -30,19 +29,18 @@ public class R13_HU2 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 13.2.1.1
 	
 	@Test
-	public void almacenarSerie_SerieNoAlmacenada_SerieAlmacenada() {
+	public void almacenarSerieRemota_NoAlmacenada_SerieAlmacenada() {
+		
+		Serie mockSerie = (Serie) FactoryMocks.R13_2_1_1.getMock();
 				
 		// Given
-		ILocalManager localManager = FactoryLocalManagers.R13_2_1_1.getLocalManager();
-		setLocalManagers(localManager);
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R13_2_1_1.getLocalManager());
 				
 		// When
-		Serie resultReturned = downloadAndStoreService.storeRemoteSerie(FactoryMocks.R13_2_1_1.getMockRemoteSerie());
+		seriesGuideApp.storeRemoteSerie(mockSerie);
 
 		// Then
-		assertNotNull(resultReturned);
-		assertEquals(resultReturned, FactoryExpectedResults.R13_2_1_1.getExpectedSerie());
-		assertEquals(localManager.getSerie(resultReturned.getCodSerie()), FactoryExpectedResults.R13_2_1_1.getExpectedSerie());
+		assertEquals(FactoryExpectedResults.R13_2_1_1.getExpectedResult(), seriesGuideApp.getSerie(mockSerie.getCodSerie()));
 		
 	}
 
@@ -54,19 +52,17 @@ public class R13_HU2 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 13.2.2.1
 	
 	@Test
-	public void almacenarSerie_SerieAlmacenada_SerieNoAlmacenada() {
+	public void almacenarSerieRemota_Almacenada_Excepcion() {
 
+		thrown.expect(SerieAlreadyStoredException.class);
+		
 		// Given
-		ILocalManager localManager = FactoryLocalManagers.R13_2_2_1.getLocalManager();
-		setLocalManagers(localManager);
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R13_2_2_1.getLocalManager());
 				
 		// When
-		Serie resultReturned = downloadAndStoreService.storeRemoteSerie(FactoryMocks.R13_2_2_1.getMockRemoteSerie());
+		seriesGuideApp.storeRemoteSerie((Serie) FactoryMocks.R13_2_2_1.getMock());
 
 		// Then
-		assertNotNull(resultReturned);
-		assertEquals(resultReturned, FactoryExpectedResults.R13_2_2_1.getExpectedSerie());
-		assertEquals(localManager.getSerie(resultReturned.getCodSerie()), FactoryExpectedResults.R13_2_1_1.getExpectedSerie());		
 		
 	}
 

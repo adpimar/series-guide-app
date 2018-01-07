@@ -1,23 +1,19 @@
 package tests.unit;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 import java.util.concurrent.TimeUnit;
 
 import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.rules.Timeout;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 
 import abs.managers.ILocalManager;
-import abs.managers.IRemoteManager;
 import abs.services.IDownloadAndStoreService;
+import impl.exceptions.SerieAlreadyStoredException;
 import impl.model.Serie;
 import impl.services.DownloadAndStoreSvc;
 import resources.FactoryExpectedResults;
@@ -46,17 +42,6 @@ public class StoreRemoteSerieTest {
 		downloadAndStoreService = null;
 	}
 	
-	// ------------------------------------------------------------------------
-	
-	@Mock
-	private IRemoteManager remoteManager;
-	
-	@Before
-	public void prepara() {
-		MockitoAnnotations.initMocks(this);
-		downloadAndStoreService.setRemoteManager(remoteManager);
-	}
-	
 	// ------------------------------------------------------------------------------------------------------
 	//  void storeRemoteSerie(Serie remoteSerie)
 	// ------------------------------------------------------------------------------------------------------
@@ -65,35 +50,29 @@ public class StoreRemoteSerieTest {
 	public void almacenarSerieRemota_NoAlmacenada_SerieAlmacenada() {
 				
 		// Arrange
+		Serie mockSerie = (Serie) FactoryMocks.R13_2_1_1.getMock();
 		ILocalManager localManager = FactoryLocalManagers.R13_2_1_1.getLocalManager();
 		downloadAndStoreService.setLocalManager(localManager);
 				
 		// Act
-		int resultReturned = downloadAndStoreService.storeRemoteSerie((Serie) FactoryMocks.R13_2_1_1.getMock());
+		downloadAndStoreService.storeRemoteSerie(mockSerie);
 
 		// Assert
-		assertNotNull(resultReturned);
-		assertEquals(resultReturned, FactoryExpectedResults.R13_2_1_1.getExpectedResult());
-		assertEquals(localManager.getSerie(resultReturned.getCodSerie()), FactoryExpectedResults.R13_2_1_1.getExpectedResult());
+		assertEquals(FactoryExpectedResults.R13_2_1_1.getExpectedResult(), localManager.getSerie(mockSerie.getCodSerie()));
 		
 	}
 	
 	@Test
-	public void almacenarSerie_Almacenada_SerieNoAlmacenada() {
+	public void almacenarSerieRemota_Almacenada_Excepcion() {
 
-		// TODO: Actualizar
-		
 		// Arrange
-		ILocalManager localManager = FactoryLocalManagers.R13_2_2_1.getLocalManager();
-		downloadAndStoreService.setLocalManager(localManager);
+		thrown.expect(SerieAlreadyStoredException.class);
+		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R13_2_2_1.getLocalManager());
 				
 		// Act
-		int resultReturned = downloadAndStoreService.storeRemoteSerie((Serie) FactoryMocks.R13_2_2_1.getMock());
+		downloadAndStoreService.storeRemoteSerie((Serie) FactoryMocks.R13_2_2_1.getMock());
 
 		// Assert
-		assertNotNull(resultReturned);
-		assertEquals(resultReturned, FactoryExpectedResults.R13_2_2_1.getExpectedResult());
-		assertEquals(localManager.getSerie(resultReturned.getCodSerie()), FactoryExpectedResults.R13_2_1_1.getExpectedResult());		
 		
 	}
 	

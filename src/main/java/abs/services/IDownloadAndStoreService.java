@@ -11,8 +11,8 @@ public interface IDownloadAndStoreService extends ISetLocalManager, ISetRemoteMa
 
 	Season downloadRemoteSeason(long codSerie, int airedSeason);
 	
-	int storeRemoteSerie(Serie remoteSerie);
+	void storeRemoteSerie(Serie remoteSerie);
 
-	int storeRemoteSeason(Serie serie, Season remoteSeason);
+	void storeRemoteSeason(Season remoteSeason);
 	
 }

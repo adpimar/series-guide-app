@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
 
 import impl.model.Episode;
 import impl.model.Season;
@@ -12,16 +14,18 @@ import impl.model.Serie;
 
 public enum FactoryMocks {
 	
-	R12_1_1_2("R12.1.1.2.txt", "SS"),
-	R12_1_1_3("R12.1.1.3.txt", "SS"),
+	R12_1_1_2("R12.1.1.2.txt", "LSS"),
+	R12_1_1_3("R12.1.1.3.txt", "LSS"),
 
 	R13_1_1_1("R13.1.1.1.txt", "S"),
 	R13_2_1_1("R13.2.1.1.txt", "S"),
 	R13_2_2_1("R13.2.2.1.txt", "S"),
 	
-	R14_1_1_1("R14.1.1.1.txt", "T"),
-	R14_1_1_2("R14.1.1.2.txt", "T"),
-	R14_1_1_3("R14.1.1.3.txt", "T");
+	R14_1_1_1("R14.1.1.1.txt", "RT"),
+	R14_2_1_1("R14.2.1.1.txt", "RT"),
+	R14_2_2_1("R14.2.2.1.txt", "RT"),
+	R14_2_2_2("R14.2.2.2.txt", "RT"),
+	R14_2_3_1("R14.2.3.1.txt", "RT");
 	
 	// ------------------------------------------------------------------------
 	
@@ -55,8 +59,10 @@ public enum FactoryMocks {
 				return getMockRemoteSerie(b);
 			if (objectExpected.equals("T"))
 				return getMockRemoteSearchSerie(b);
-			if (objectExpected.equals("E"))
+			if (objectExpected.equals("RT"))
 				return getMockRemoteSeason(b);
+			if (objectExpected.equals("LSS"))
+				return getMockRemoteSeriesList(b);
 			
 			b.close();
 		} catch (FileNotFoundException e) {
@@ -91,6 +97,19 @@ public enum FactoryMocks {
 			episodes[episode.getAiredEpisode() - 1] = episode;
 		}
 		return season;
+	}
+	
+	private List<Serie> getMockRemoteSeriesList(BufferedReader b) throws IOException {
+		String[] fields;
+		String line;
+		Serie serie;
+		List<Serie> series = new LinkedList<>();
+		while ((line = b.readLine()) != null) {
+			fields = line.split("#");
+			serie = TestParsers.remoteSearchSerieParser(fields);
+			series.add(serie);
+		}
+		return series;
 	}
 	
 }

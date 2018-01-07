@@ -15,6 +15,7 @@ import impl.exceptions.NotFoundSerieOnRemoteServerException;
 import impl.exceptions.TimeoutOnRemoteServerException;
 import impl.model.Serie;
 import resources.FactoryExpectedResults;
+import resources.FactoryLocalManagers;
 import resources.FactoryMocks;
 
 public class R13_HU1 extends AcceptanceTest {
@@ -34,54 +35,69 @@ public class R13_HU1 extends AcceptanceTest {
 	@Before
 	public void prepara() {
 		MockitoAnnotations.initMocks(this);
-		setRemoteManagers(remoteManager);
+		seriesGuideApp.setRemoteManager(remoteManager);
 	}
 	
 	// -----------------------------------------------------------------------------
 
 	// ESCENARIO 13.1.1
-	// Existe la serie en el servidor de TheTVDB.
+	// La serie no está almacenada en la BDL.
 
 	// PRUEBA DE ACEPTACIÓN 13.1.1.1
 	
 	@Test
-	public void descargarSerie_ExisteSerie_SerieDescargada() {
-
-		long codSerie = 121361;
+	public void descargarSerieRemota_NoAlmacenadaExisteSerieRemota_SerieDescargada() {
 		
 		// Given
-		when(remoteManager.getRemoteSerie(codSerie)).thenReturn(FactoryMocks.R13_1_1_1.getMockRemoteSerie());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R13_1_1_1.getLocalManager());
+		when(remoteManager.getRemoteSerie(121361)).thenReturn((Serie) FactoryMocks.R13_1_1_1.getMock());
 		
 		// When
-		Serie resultReturned = getAndListService.downloadRemoteSerie(codSerie);
+		Serie resultReturned = seriesGuideApp.downloadRemoteSerie(121361);
 
 		// Then
 		assertNotNull(resultReturned);
-		assertEquals(resultReturned, FactoryExpectedResults.R13_1_1_1.getExpectedSerie());
+		assertEquals(FactoryExpectedResults.R13_1_1_1.getExpectedResult(), resultReturned);
+		
+	}
+	
+	// PRUEBA DE ACEPTACIÓN 13.1.1.2
+	
+	@Test
+	public void descargarSerieRemota_NoAlmacenadaNoExisteSerieRemota_Excepcion() {
+		
+		thrown.expect(NotFoundSerieOnRemoteServerException.class);
+		
+		// Given
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R13_1_1_2.getLocalManager());
+		when(remoteManager.getRemoteSerie(999999)).thenThrow(new NotFoundSerieOnRemoteServerException());
+		
+		// When
+		seriesGuideApp.downloadRemoteSerie(999999);
+		
+		// Then
 		
 	}
 
 	// -----------------------------------------------------------------------------
 
 	// ESCENARIO 13.1.2
-	// No existe la serie en el servidor de TheTVDB.
+	// La serie está almacenada en la BDL.
 
 	// PRUEBA DE ACEPTACIÓN 13.1.2.1
 	
 	@Test
-	public void descargarSerie_NoExisteSerie_Excepcion() {
-		
-		long codSerie = 999999;
-
-		thrown.expect(NotFoundSerieOnRemoteServerException.class);
-		
+	public void descargarSerieRemota_AlmacenadaExisteSerie_SerieLocal() {
+				
 		// Given
-		when(remoteManager.getRemoteSerie(codSerie)).thenThrow(new NotFoundSerieOnRemoteServerException());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R13_1_2_1.getLocalManager());
 		
 		// When
-		getAndListService.downloadRemoteSerie(codSerie);
+		Serie resultReturned = seriesGuideApp.downloadRemoteSerie(121361);
 		
 		// Then
+		assertNotNull(resultReturned);
+		assertEquals(FactoryExpectedResults.R13_1_2_1.getExpectedResult(), resultReturned);
 		
 	}
 
@@ -93,17 +109,16 @@ public class R13_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 13.1.3.1
 	
 	@Test
-	public void descargarSerie_ErrorDeServidor_Excepcion() {
-
-		long codSerie = 121361;
+	public void descargarSerieRemota_ErrorDeServidor_Excepcion() {
 		
 		thrown.expect(ErrorOnRemoteServerException.class);
 		
 		// Given
-		when(remoteManager.getRemoteSerie(codSerie)).thenThrow(new ErrorOnRemoteServerException());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R13_1_3_1.getLocalManager());
+		when(remoteManager.getRemoteSerie(121361)).thenThrow(new ErrorOnRemoteServerException());
 		
 		// When
-		getAndListService.downloadRemoteSerie(codSerie);
+		seriesGuideApp.downloadRemoteSerie(121361);
 		
 		// Then
 		
@@ -112,17 +127,16 @@ public class R13_HU1 extends AcceptanceTest {
 	// PRUEBA DE ACEPTACIÓN 13.1.3.2
 	
 	@Test
-	public void descargarSerie_ErrorDeTimeout_Excepcion() {
+	public void descargarSerieRemota_ErrorDeTimeout_Excepcion() {
 		
-		long codSerie = 121361;
-
 		thrown.expect(TimeoutOnRemoteServerException.class);
 		
 		// Given
-		when(remoteManager.getRemoteSerie(codSerie)).thenThrow(new TimeoutOnRemoteServerException());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R13_1_3_2.getLocalManager());
+		when(remoteManager.getRemoteSerie(121361)).thenThrow(new TimeoutOnRemoteServerException());
 		
 		// When
-		getAndListService.downloadRemoteSerie(codSerie);
+		seriesGuideApp.downloadRemoteSerie(121361);
 		
 		// Then
 		

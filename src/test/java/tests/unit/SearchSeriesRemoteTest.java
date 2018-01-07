@@ -82,6 +82,7 @@ public class SearchSeriesRemoteTest {
 		
 	}
 
+	@SuppressWarnings("unchecked")
 	@Test
 	public void buscarSerieRemota_HayCoincidenciaConUnaPalabraClave_Listado() {
 		
@@ -113,6 +114,7 @@ public class SearchSeriesRemoteTest {
 		
 	}
 
+	@SuppressWarnings("unchecked")
 	@Test
 	public void buscarSerieRemota_HayCoincidenciaConVariasPalabraClave_Listado() {
 		

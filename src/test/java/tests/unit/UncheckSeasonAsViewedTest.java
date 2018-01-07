@@ -62,7 +62,7 @@ public class UncheckSeasonAsViewedTest {
 		
 		// Assert
 		assertNotNull(resultReturned);
-		assertEquals(resultReturned, FactoryExpectedResults.R15_2_1_1.getExpectedResult());
+		assertEquals(FactoryExpectedResults.R15_2_1_1.getExpectedResult(), resultReturned);
 		assertTrue(compruebaTemporadaNoVistaConEpisodiosNoVistos(resultReturned, localManager));
 		
 	}
@@ -107,7 +107,7 @@ public class UncheckSeasonAsViewedTest {
 		
 		// Assert
 		assertNotNull(resultReturned);
-		assertEquals(resultReturned, FactoryExpectedResults.R15_2_1_4.getExpectedResult());
+		assertEquals(FactoryExpectedResults.R15_2_1_4.getExpectedResult(), resultReturned);
 		assertTrue(compruebaTemporadaNoVistaConEpisodiosNoVistos(resultReturned, localManager));
 		
 	}

@@ -69,7 +69,7 @@ public class SearchSeriesLocalTest {
 		List<String> resultExpected = Arrays.asList(
 				"The OA",
 				"The Big Bang Theory"
-				);
+		);
 		searchService.setLocalManager(FactoryLocalManagers.R11_1_1_2.getLocalManager());
 		
 		// Act
@@ -88,7 +88,7 @@ public class SearchSeriesLocalTest {
 		// Arrange
 		List<String> resultExpected = Arrays.asList(
 				"The Big Bang Theory"
-				);
+		);
 		searchService.setLocalManager(FactoryLocalManagers.R11_1_1_3.getLocalManager());
 		
 		// Act
@@ -148,10 +148,10 @@ public class SearchSeriesLocalTest {
 	// ------------------------------------------------------------------------
 	
 	private boolean compruebaEstanLosTitulos(List<String> resultExpected, Map<String, Long> resultReturned) {
-		boolean flag = true;
-		for (String s : resultExpected) 
-			flag = flag && resultReturned.containsKey(s);
-		return flag;
+		for (String s : resultExpected)
+			if (!resultReturned.containsKey(s))
+				return false;
+		return true;
 	}
-
+	
 }

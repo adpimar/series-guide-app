@@ -4,8 +4,4 @@ public class NotFoundSeasonOnRemoteServerException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
 
-	public NotFoundSeasonOnRemoteServerException() {
-		super("Temporada no encontrada en el servidor remoto.");
-	}
-
 }

@@ -56,7 +56,7 @@ public class GetSerieTest {
 		
 		// Assert
 		assertNotNull(resultReturned);
-		assertEquals(resultReturned, FactoryExpectedResults.R02_1_1_1.getExpectedResult());
+		assertEquals(FactoryExpectedResults.R02_1_1_1.getExpectedResult(), resultReturned);
 		
 	}
 
@@ -71,7 +71,7 @@ public class GetSerieTest {
 		
 		// Assert
 		assertNotNull(resultReturned);
-		assertEquals(resultReturned, FactoryExpectedResults.R02_1_1_2.getExpectedResult());
+		assertEquals(FactoryExpectedResults.R02_1_1_2.getExpectedResult(), resultReturned);
 		
 	}
 

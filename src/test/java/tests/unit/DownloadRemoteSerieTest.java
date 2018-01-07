@@ -24,6 +24,7 @@ import impl.exceptions.TimeoutOnRemoteServerException;
 import impl.model.Serie;
 import impl.services.DownloadAndStoreSvc;
 import resources.FactoryExpectedResults;
+import resources.FactoryLocalManagers;
 import resources.FactoryMocks;
 
 public class DownloadRemoteSerieTest {
@@ -64,32 +65,49 @@ public class DownloadRemoteSerieTest {
 	// ------------------------------------------------------------------------------------------------------
 
 	@Test
-	public void descargarSerieRemota_Existe_SerieDescargada() {
+	public void descargarSerieRemota_NoAlmacenadaExisteSerieRemota_SerieDescargada() {
 		
 		// Arrange
-		when(remoteManager.getRemoteSerie(121361)).thenReturn((Serie) FactoryMocks.R13_1_1_1.getMock());
+		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R13_1_1_1.getLocalManager());
 		
 		// Act
+		when(remoteManager.getRemoteSerie(121361)).thenReturn((Serie) FactoryMocks.R13_1_1_1.getMock());
 		Serie resultReturned = downloadAndStoreService.downloadRemoteSerie(121361);
 
 		// Assert
 		assertNotNull(resultReturned);
-		assertEquals(resultReturned, FactoryExpectedResults.R13_1_1_1.getExpectedResult());
+		assertEquals(FactoryExpectedResults.R13_1_1_1.getExpectedResult(), resultReturned);
 		
 	}
 
 	
 	@Test
-	public void descargarSerieRemota_NoExiste_Excepcion() {
+	public void descargarSerieRemota_NoAlmacenadaNoExisteSerieRemota_Excepcion() {
 		
 		// Arrange
 		thrown.expect(NotFoundSerieOnRemoteServerException.class);
-		when(remoteManager.getRemoteSerie(999999)).thenThrow(new NotFoundSerieOnRemoteServerException());
+		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R13_1_1_2.getLocalManager());
 		
 		// Act
+		when(remoteManager.getRemoteSerie(999999)).thenThrow(new NotFoundSerieOnRemoteServerException());
 		downloadAndStoreService.downloadRemoteSerie(999999);
 		
 		// Assert
+		
+	}
+	
+	@Test
+	public void descargarSerieRemota_AlmacenadaExisteSerie_SerieLocal() {
+				
+		// Arrange
+		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R13_1_2_1.getLocalManager());
+		
+		// Act
+		Serie resultReturned = downloadAndStoreService.downloadRemoteSerie(121361);
+		
+		// Assert
+		assertNotNull(resultReturned);
+		assertEquals(FactoryExpectedResults.R13_1_2_1.getExpectedResult(), resultReturned);
 		
 	}
 	
@@ -98,9 +116,10 @@ public class DownloadRemoteSerieTest {
 
 		// Arrange
 		thrown.expect(ErrorOnRemoteServerException.class);
-		when(remoteManager.getRemoteSerie(121361)).thenThrow(new ErrorOnRemoteServerException());
+		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R13_1_3_1.getLocalManager());
 		
 		// Act
+		when(remoteManager.getRemoteSerie(121361)).thenThrow(new ErrorOnRemoteServerException());
 		downloadAndStoreService.downloadRemoteSerie(121361);
 		
 		// Assert
@@ -112,9 +131,10 @@ public class DownloadRemoteSerieTest {
 		
 		// Arrange
 		thrown.expect(TimeoutOnRemoteServerException.class);
-		when(remoteManager.getRemoteSerie(121361)).thenThrow(new TimeoutOnRemoteServerException());
+		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R13_1_3_2.getLocalManager());
 		
 		// Act
+		when(remoteManager.getRemoteSerie(121361)).thenThrow(new TimeoutOnRemoteServerException());
 		downloadAndStoreService.downloadRemoteSerie(121361);
 		
 		// Assert

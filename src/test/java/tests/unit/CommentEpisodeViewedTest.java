@@ -77,7 +77,7 @@ public class CommentEpisodeViewedTest {
 		
 		// Assert
 		assertNotNull(resultReturned);
-		assertEquals(resultReturned, FactoryExpectedResults.R07_2_2_1.getExpectedResult());
+		assertEquals(FactoryExpectedResults.R07_2_2_1.getExpectedResult(), resultReturned);
 		assertEquals(localManager.getEpisode(resultReturned.getCodEpisode()).getComment(), comment);
 		
 	}
@@ -95,7 +95,7 @@ public class CommentEpisodeViewedTest {
 		
 		// Assert
 		assertNotNull(resultReturned);
-		assertEquals(resultReturned, FactoryExpectedResults.R07_2_2_2.getExpectedResult());
+		assertEquals(FactoryExpectedResults.R07_2_2_2.getExpectedResult(), resultReturned);
 		assertEquals(localManager.getEpisode(resultReturned.getCodEpisode()).getComment(), comment);
 		
 	}
@@ -132,9 +132,8 @@ public class CommentEpisodeViewedTest {
 		
 		// Assert
 		assertNotNull(resultReturned);
-		assertEquals(resultReturned, FactoryExpectedResults.R07_2_3_1.getExpectedResult());
+		assertEquals(FactoryExpectedResults.R07_2_3_1.getExpectedResult(), resultReturned);
 		assertEquals(localManager.getEpisode(resultReturned.getCodEpisode()).getComment(), comment);
-		
 
 	}
 

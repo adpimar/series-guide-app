@@ -1,5 +1,10 @@
 package tests.unit;
 
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.when;
+
+import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.AfterClass;
@@ -12,9 +17,20 @@ import org.junit.rules.Timeout;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import abs.managers.ILocalManager;
 import abs.managers.IRemoteManager;
 import abs.services.IDownloadAndStoreService;
+import impl.exceptions.ErrorOnRemoteServerException;
+import impl.exceptions.NoSeriesStoredException;
+import impl.exceptions.NotFoundSeasonOnRemoteServerException;
+import impl.exceptions.NotFoundSerieOnRemoteServerException;
+import impl.exceptions.TimeoutOnRemoteServerException;
+import impl.model.Episode;
+import impl.model.Season;
 import impl.services.DownloadAndStoreSvc;
+import resources.FactoryExpectedResults;
+import resources.FactoryLocalManagers;
+import resources.FactoryMocks;
 
 public class DownloadRemoteSeasonTest {
 
@@ -54,86 +70,159 @@ public class DownloadRemoteSeasonTest {
 	// ------------------------------------------------------------------------------------------------------
 
 	@Test
-	public void descargarTemporada_ExisteSerieExisteTemporadaConVariosEpisodios_TemporadaDescargada() {
-		
-		long codSerie = 321060;
-		int airedSeason = 1;
+	public void descargarTemporadaRemota_NoAlmacenadaExisteSerieRemotaExisteTemporadaRemota_TemporadaRemota() {
 		
 		// Arrange
-		//when(remoteManager.getRemoteSeason(codSerie, airedSeason)).thenReturn(MockRemoteSeason.R14_1_1_1.getMockRemoteSeason());
+		ILocalManager localManager = FactoryLocalManagers.R14_1_1_1.getLocalManager();
+		Season mockSeason = (Season) FactoryMocks.R14_1_1_1.getMock();
+		Season resultExpected = (Season) FactoryExpectedResults.R14_1_1_1.getExpectedResult();
+		downloadAndStoreService.setLocalManager(localManager);
 		
 		// Act
-		//Season resultReturned = getAndListService.getRemoteSeason(codSerie, airedSeason);
-		//System.out.println(resultReturned);
+		when(remoteManager.getRemoteSeason(321060, 1)).thenReturn(mockSeason);
+		Season resultReturned = downloadAndStoreService.downloadRemoteSeason(321060, 1);
+
 		// Assert
+		assertNotNull(resultReturned);
+		assertTrue(compruebaMismaTemporadaMismosEpisodios(resultExpected, resultReturned));
 		
 	}
 	
 	@Test
-	public void descargarTemporada_ExisteSerieExisteTemporadaConUnEpisodio_TemporadaDescargada() {
-
+	public void descargarTemporadaRemota_NoAlmacenadaExisteSerieRemotaNoExisteTemporadaRemota_Excepcion() {
+			
 		// Arrange
-
-		// Act
-
-		// Assert
+		thrown.expect(NotFoundSeasonOnRemoteServerException.class);
+		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R14_1_1_2.getLocalManager());
 		
-	}
-	
-	@Test
-	public void descargarTemporada_ExisteSerieExisteTemporadaSinEpisodios_TemporadaDescargada() {
-
-		// Arrange
-
 		// Act
-
-		// Assert
-		
-	}
-
-	@Test
-	public void descargarTemporada_ExisteSerieNoExisteTemporada_Excepcion() {
-
-		// Arrange
-
-		// Act
+		when(remoteManager.getRemoteSeason(321060, 4)).thenThrow(NotFoundSeasonOnRemoteServerException.class);
+		downloadAndStoreService.downloadRemoteSeason(321060, 4);
 
 		// Assert
 		
 	}
 	
 	@Test
-	public void descargarTemporada_NoExisteSerie_Excepcion() {
-
+	public void descargarTemporadaRemota_NoAlmacenadaNoExisteSerieRemota_Excepcion() {
+		
 		// Arrange
-
+		thrown.expect(NotFoundSerieOnRemoteServerException.class);
+		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R14_1_1_3.getLocalManager());
+		
 		// Act
+		when(remoteManager.getRemoteSeason(321060, 1)).thenThrow(NotFoundSerieOnRemoteServerException.class);
+		downloadAndStoreService.downloadRemoteSeason(321060, 1);
 
 		// Assert
 		
 	}
 
 	@Test
-	public void descargarTemporada_ErrorDeServidor_Excepcion() {
+	public void descargarTemporadaRemota_AlmacenadaConTodosEpisodios_TemporadaLocal() {
+
+		
+		// Arrange
+		ILocalManager localManager = FactoryLocalManagers.R14_1_2_1.getLocalManager();
+		Season resultExpected = (Season) FactoryExpectedResults.R14_1_2_1.getExpectedResult();
+		downloadAndStoreService.setLocalManager(localManager);
+		
+		// Act
+		Season resultReturned = downloadAndStoreService.downloadRemoteSeason(321060, 1);
+
+		// Assert
+		assertNotNull(resultReturned);
+		assertTrue(compruebaMismaTemporadaMismosEpisodios(resultExpected, resultReturned));
+		
+	}
+		
+	@Test
+	public void descargarTemporadaRemota_AlmacenadaConUnEpisodio_TemporadaLocal() {
 
 		// Arrange
-
+		ILocalManager localManager = FactoryLocalManagers.R14_1_2_2.getLocalManager();
+		Season resultExpected = (Season) FactoryExpectedResults.R14_1_2_2.getExpectedResult();
+		downloadAndStoreService.setLocalManager(localManager);
+		
 		// Act
+		Season resultReturned = downloadAndStoreService.downloadRemoteSeason(321060, 1);
+
+		// Assert
+		assertNotNull(resultReturned);
+		assertTrue(compruebaMismaTemporadaMismosEpisodios(resultExpected, resultReturned));
+		
+	}
+		
+	@Test
+	public void descargarTemporadaRemota_AlmacenadaSinEpisodios_TemporadaLocal() {
+	
+		// Arrange
+		ILocalManager localManager = FactoryLocalManagers.R14_1_2_3.getLocalManager();
+		Season resultExpected = (Season) FactoryExpectedResults.R14_1_2_3.getExpectedResult();
+		downloadAndStoreService.setLocalManager(localManager);
+		
+		// Act
+		Season resultReturned = downloadAndStoreService.downloadRemoteSeason(321060, 1);
+
+		// Assert
+		assertNotNull(resultReturned);
+		assertTrue(compruebaMismaTemporadaMismosEpisodios(resultExpected, resultReturned));
+		
+	}
+
+	@Test
+	public void descargarTemporadaRemota_SerieNoAlmacenada_Excepcion() {
+	
+		// Arrange
+		thrown.expect(NoSeriesStoredException.class);
+		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R14_1_3_1.getLocalManager());
+		
+		// Act
+		when(remoteManager.getRemoteSeason(321060, 1)).thenThrow(NoSeriesStoredException.class);
+		downloadAndStoreService.downloadRemoteSeason(321060, 1);
 
 		// Assert
 		
 	}
-	
-	
+
 	@Test
-	public void descargarTemporada_ErrorDeTimeout_Excepcion() {
-
+	public void descargarTemporadaRemota_ErrorDeServidor_Excepcion() {
+		
 		// Arrange
-
+		thrown.expect(ErrorOnRemoteServerException.class);
+		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R14_1_4_1.getLocalManager());
+		
 		// Act
+		when(remoteManager.getRemoteSeason(321060, 1)).thenThrow(ErrorOnRemoteServerException.class);
+		downloadAndStoreService.downloadRemoteSeason(321060, 1);
 
 		// Assert
 		
+	}
+
+	@Test
+	public void descargarTemporadaRemota_ErrorDeTimeout_Excepcion() {
+		
+		// Arrange
+		thrown.expect(TimeoutOnRemoteServerException.class);
+		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R14_1_4_2.getLocalManager());
+		
+		// Act
+		when(remoteManager.getRemoteSeason(321060, 1)).thenThrow(TimeoutOnRemoteServerException.class);
+		downloadAndStoreService.downloadRemoteSeason(321060, 1);
+
+		// Assert
+		
+	}
+
+	// -----------------------------------------------------------------------------
+	
+	private boolean compruebaMismaTemporadaMismosEpisodios(Season seasonExpected, Season seasonReturned) {
+		if (!seasonExpected.equals(seasonReturned))
+			return false;
+		Episode[] seasonExpectedEpisodes = seasonExpected.getEpisodes();
+		Episode[] seasonReturnedEpisodes = seasonReturned.getEpisodes();
+		return Arrays.equals(seasonExpectedEpisodes, seasonReturnedEpisodes);
 	}
 
 }

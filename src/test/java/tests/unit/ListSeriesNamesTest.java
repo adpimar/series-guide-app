@@ -63,7 +63,7 @@ public class ListSeriesNamesTest {
 		// Assert
 		assertNotNull(resultReturned);
 		assertEquals(resultExpected.size(), resultReturned.size());
-		assertThat(resultReturned, containsInAnyOrder(resultExpected.toArray()));
+		assertThat(resultExpected, containsInAnyOrder(resultReturned.toArray()));
 		
 	}
 
@@ -82,7 +82,7 @@ public class ListSeriesNamesTest {
 		// Assert
 		assertNotNull(resultReturned);
 		assertEquals(resultExpected.size(), resultReturned.size());
-		assertThat(resultReturned, containsInAnyOrder(resultExpected.toArray()));
+		assertThat(resultExpected, containsInAnyOrder(resultReturned.toArray()));
 		
 	}
 

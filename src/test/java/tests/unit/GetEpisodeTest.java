@@ -58,7 +58,7 @@ public class GetEpisodeTest {
 		
 		// Assert
 		assertNotNull(resultReturned);
-		assertEquals(resultReturned, FactoryExpectedResults.R05_1_1_1.getExpectedResult());
+		assertEquals(FactoryExpectedResults.R05_1_1_1.getExpectedResult(), resultReturned);
 		
 	}
 			
@@ -73,7 +73,7 @@ public class GetEpisodeTest {
 		
 		// Assert
 		assertNotNull(resultReturned);
-		assertEquals(resultReturned, FactoryExpectedResults.R05_1_1_2.getExpectedResult());
+		assertEquals(FactoryExpectedResults.R05_1_1_2.getExpectedResult(), resultReturned);
 		
 	}
 	
@@ -88,7 +88,7 @@ public class GetEpisodeTest {
 		
 		// Assert
 		assertNotNull(resultReturned);
-		assertEquals(resultReturned, FactoryExpectedResults.R05_1_1_3.getExpectedResult());
+		assertEquals(FactoryExpectedResults.R05_1_1_3.getExpectedResult(), resultReturned);
 		
 	}
 

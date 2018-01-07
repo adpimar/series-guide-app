@@ -55,7 +55,6 @@ public class TestParsers {
 		season.setCodSeason(Long.parseLong(fields[i++]));
 		season.setAiredSeason(Integer.parseInt(fields[i++]));
 		season.setFirstAired(readStringFields(fields[i++]));
-		season.setStatus(readStringFields(fields[i++]));
 		season.setTotalEpisodes(Integer.parseInt(fields[i++]));
 		season.setSeen(fields[i++].toUpperCase().charAt(0) == 'T');
 

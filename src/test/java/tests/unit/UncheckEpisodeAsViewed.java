@@ -61,7 +61,7 @@ public class UncheckEpisodeAsViewed {
 		
 		// Assert
 		assertNotNull(resultReturned);
-		assertEquals(resultReturned, FactoryExpectedResults.R08_1_1_1.getExpectedResult());
+		assertEquals(FactoryExpectedResults.R08_1_1_1.getExpectedResult(), resultReturned);
 		assertFalse(localManager.getEpisode(resultReturned.getCodEpisode()).isSeen());
 		
 	}
@@ -79,7 +79,7 @@ public class UncheckEpisodeAsViewed {
 		
 		// Assert
 		assertNotNull(resultReturned);
-		assertEquals(resultReturned, FactoryExpectedResults.R08_1_2_1.getExpectedResult());
+		assertEquals(FactoryExpectedResults.R08_1_2_1.getExpectedResult(), resultReturned);
 		assertFalse(localManager.getEpisode(resultReturned.getCodEpisode()).isSeen());
 		
 	}
@@ -96,7 +96,7 @@ public class UncheckEpisodeAsViewed {
 		
 		// Assert
 		assertNotNull(resultReturned);
-		assertEquals(resultReturned, FactoryExpectedResults.R08_1_2_2.getExpectedResult());
+		assertEquals(FactoryExpectedResults.R08_1_2_2.getExpectedResult(), resultReturned);
 		assertFalse(localManager.getEpisode(resultReturned.getCodEpisode()).isSeen());
 		
 	}
@@ -113,7 +113,7 @@ public class UncheckEpisodeAsViewed {
 		
 		// Assert
 		assertNotNull(resultReturned);
-		assertEquals(resultReturned, FactoryExpectedResults.R08_1_2_3.getExpectedResult());
+		assertEquals(FactoryExpectedResults.R08_1_2_3.getExpectedResult(), resultReturned);
 		assertFalse(localManager.getEpisode(resultReturned.getCodEpisode()).isSeen());
 		assertFalse(localManager.getSeason(resultReturned.getCodSeason()).isSeen());
 		

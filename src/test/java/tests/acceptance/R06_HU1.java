@@ -10,7 +10,7 @@ import impl.exceptions.NoSeasonsStoredException;
 import impl.exceptions.NoSeriesStoredException;
 import impl.exceptions.TooLongOverviewException;
 import impl.model.Episode;
-import resources.ExpectedEpisodes;
+import resources.FactoryExpectedResults;
 import resources.FactoryLocalManagers;
 
 public class R06_HU1 extends AcceptanceTest {
@@ -36,15 +36,16 @@ public class R06_HU1 extends AcceptanceTest {
 		String newOverview = "";
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R06_1_1_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R06_1_1_1.getLocalManager());
 		
 		// When
-		Episode resultReturned = updateOverviewService.updateEpisodeOverview(321060, 1, 4, newOverview);
+		Episode resultReturned = seriesGuideApp.updateEpisodeOverview(321060, 1, 4, newOverview);
 		
 		// Then
 		assertNotNull(resultReturned);
-		assertEquals(resultReturned, ExpectedEpisodes.R06_1_1_1.getExpectedEpisode());
-		assertEquals(getAndListService.getEpisode(321060, 1, 4).getOverview(), newOverview);		
+		assertEquals(FactoryExpectedResults.R06_1_1_1.getExpectedResult(), resultReturned);
+		assertEquals(newOverview, seriesGuideApp.getEpisode(321060, 1, 4).getOverview());
+		
 	}
 	
 	// PRUEBA DE ACEPTACIÓN 06.1.1.2
@@ -58,15 +59,16 @@ public class R06_HU1 extends AcceptanceTest {
 				+ "experimentos de Hap.";
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R06_1_1_2.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R06_1_1_2.getLocalManager());
 		
 		// When
-		Episode resultReturned = updateOverviewService.updateEpisodeOverview(321060, 1, 4, newOverview);
+		Episode resultReturned = seriesGuideApp.updateEpisodeOverview(321060, 1, 4, newOverview);
 		
 		// Then
 		assertNotNull(resultReturned);
-		assertEquals(resultReturned, ExpectedEpisodes.R06_1_1_2.getExpectedEpisode());
-		assertEquals(getAndListService.getEpisode(321060, 1, 4).getOverview(), newOverview);
+		assertEquals(FactoryExpectedResults.R06_1_1_2.getExpectedResult(), resultReturned);
+		assertEquals(newOverview, seriesGuideApp.getEpisode(321060, 1, 4).getOverview());
+		
 	}
 	
 	// PRUEBA DE ACEPTACIÓN 06.1.1.3
@@ -87,10 +89,10 @@ public class R06_HU1 extends AcceptanceTest {
 		thrown.expect(TooLongOverviewException.class);
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R06_1_1_3.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R06_1_1_3.getLocalManager());
 		
 		// When
-		updateOverviewService.updateEpisodeOverview(321060, 1, 4, newOverview);
+		seriesGuideApp.updateEpisodeOverview(321060, 1, 4, newOverview);
 		
 		// Then	
 		
@@ -109,10 +111,10 @@ public class R06_HU1 extends AcceptanceTest {
 		thrown.expect(NoEpisodesStoredException.class);
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R06_1_2_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R06_1_2_1.getLocalManager());
 		
 		// When
-		updateOverviewService.updateEpisodeOverview(321060, 1, 4, "");
+		seriesGuideApp.updateEpisodeOverview(321060, 1, 4, "");
 		
 		// Then
 		
@@ -126,10 +128,10 @@ public class R06_HU1 extends AcceptanceTest {
 		thrown.expect(NoSeasonsStoredException.class);
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R06_1_2_2.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R06_1_2_2.getLocalManager());
 		
 		// When
-		updateOverviewService.updateEpisodeOverview(321060, 1, 4, "");
+		seriesGuideApp.updateEpisodeOverview(321060, 1, 4, "");
 		
 		// Then
 		
@@ -143,10 +145,10 @@ public class R06_HU1 extends AcceptanceTest {
 		thrown.expect(NoSeriesStoredException.class);
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R06_1_2_3.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R06_1_2_3.getLocalManager());
 		
 		// When
-		updateOverviewService.updateEpisodeOverview(321060, 1, 4, "");
+		seriesGuideApp.updateEpisodeOverview(321060, 1, 4, "");
 		
 		// Then
 		

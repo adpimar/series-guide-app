@@ -1,41 +1,172 @@
 package impl;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 
+import abs.ISeriesGuideApp;
+import abs.managers.ILocalManager;
+import abs.managers.IRemoteManager;
 import abs.services.ICheckAsViewedService;
 import abs.services.IDeleteService;
+import abs.services.IDownloadAndStoreService;
 import abs.services.IGetAndListService;
 import abs.services.ISearchService;
-import abs.services.IDownloadAndStoreService;
 import abs.services.IUpdateOverviewService;
+import impl.model.Episode;
+import impl.model.Season;
+import impl.model.Serie;
+import impl.services.CheckAsViewedSvc;
+import impl.services.DeleteSvc;
+import impl.services.DownloadAndStoreSvc;
+import impl.services.GetAndListSvc;
+import impl.services.SearchSvc;
+import impl.services.UpdateOverviewSvc;
 
-public class SeriesGuideApp {
+public class SeriesGuideApp implements ISeriesGuideApp {
 
-	private ISearchService searchService;
+	private List<Serie> series;
+	private List<Season> seasons;
+	private List<Episode> episodes;
+	
 	private ICheckAsViewedService checkAsViewedService;
 	private IDeleteService deleteService;
 	private IGetAndListService getAndListService;
-	private IDownloadAndStoreService storeService;
+	private ISearchService searchService;
+	private IDownloadAndStoreService downloadAndStoreService;
 	private IUpdateOverviewService updateOverviewService;
-
-	public Map<Long, String> busquedaSeriesServidorRemoto(String pattern) {
+	
+	public SeriesGuideApp() {		
+		series = new LinkedList<>();
+		seasons = new LinkedList<>();
+		episodes = new LinkedList<>();
 		
-		if (pattern.isEmpty())
-			throw new IllegalArgumentException("REQUERIDO_NOMBRE_PARA_BÚSQUEDA_EN_EL_SERVIDOR_REMOTO");
-		
-		Map<Long, String> series = new TreeMap<>();
-		
-		series.put(Long.valueOf(268310), "School of Thrones");
-		series.put(Long.valueOf(273385), "King of Thrones");
-		series.put(Long.valueOf(311939), "Game of Thrones: Cartoon Parody");
-		series.put(Long.valueOf(312618), "Gay of Thrones");
-		series.put(Long.valueOf(309875), "After the Thrones");
-		series.put(Long.valueOf(121361), "Game of Thrones");
-		series.put(Long.valueOf(321282), "Tribe of Hip Hop");
-		
-		return series;
-		
+		checkAsViewedService = new CheckAsViewedSvc();
+		deleteService = new DeleteSvc();
+		getAndListService = new GetAndListSvc();
+		searchService = new SearchSvc();
+		downloadAndStoreService = new DownloadAndStoreSvc();
+		updateOverviewService = new UpdateOverviewSvc();
 	}
+
+	// ------------------------------------------------------------------------
+	
+	@Override
+	public void setLocalManager(ILocalManager localManager) {
+		checkAsViewedService.setLocalManager(localManager);
+		deleteService.setLocalManager(localManager);
+		getAndListService.setLocalManager(localManager);
+		searchService.setLocalManager(localManager);
+		downloadAndStoreService.setLocalManager(localManager);
+		updateOverviewService.setLocalManager(localManager);
+	}
+
+	@Override
+	public void setRemoteManager(IRemoteManager remoteManager) {
+		downloadAndStoreService.setRemoteManager(remoteManager);
+		searchService.setRemoteManager(remoteManager);
+	}
+
+	// ------------------------------------------------------------------------
+	
+	@Override
+	public Episode checkEpisodeAsViewed(long codSerie, int airedSeason, int airedEpisode) {
+		return checkAsViewedService.checkEpisodeAsViewed(codSerie, airedSeason, airedEpisode);
+	}
+
+	@Override
+	public Episode uncheckEpisodeAsViewed(long codSerie, int airedSeason, int airedEpisode) {
+		return checkAsViewedService.uncheckEpisodeAsViewed(codSerie, airedSeason, airedEpisode);
+	}
+
+	@Override
+	public Episode commentEpisodeViewed(long codSerie, int airedSeason, int airedEpisode, String comment) {
+		return checkAsViewedService.commentEpisodeViewed(codSerie, airedSeason, airedEpisode, comment);
+	}
+
+	@Override
+	public Season checkSeasonAsViewed(long codSerie, int airedSeason) {
+		return checkAsViewedService.checkSeasonAsViewed(codSerie, airedSeason);
+	}
+
+	@Override
+	public Season uncheckSeasonAsViewed(long codSerie, int airedSeason) {
+		return checkAsViewedService.uncheckSeasonAsViewed(codSerie, airedSeason);
+	}
+
+	@Override
+	public void deleteSeason(long codSerie, int airedSeason) {
+		deleteService.deleteSeason(codSerie, airedSeason);
+	}
+	
+	@Override
+	public void deleteSerie(long codSerie) {
+		deleteService.deleteSerie(codSerie);
+	}
+
+	@Override
+	public Serie downloadRemoteSerie(long codSerie) {
+		return downloadAndStoreService.downloadRemoteSerie(codSerie);
+	}
+
+	@Override
+	public Season downloadRemoteSeason(long codSerie, int airedSeason) {
+		return downloadAndStoreService.downloadRemoteSeason(codSerie, airedSeason);
+	}
+
+	@Override
+	public void storeRemoteSerie(Serie remoteSerie) {
+		downloadAndStoreService.storeRemoteSerie(remoteSerie);
+	}
+
+	@Override
+	public void storeRemoteSeason(Season remoteSeason) {
+		downloadAndStoreService.storeRemoteSeason(remoteSeason);
+	}
+
+	@Override
+	public List<String> listSeriesNames() {
+		return getAndListService.listSeriesNames();
+	}
+
+	@Override
+	public String[] listSerieSeasonsEpisodesNames(long codSerie, int airedSeason) {
+		return getAndListService.listSerieSeasonsEpisodesNames(codSerie, airedSeason);
+	}
+
+	@Override
+	public Serie getSerie(long codSerie) {
+		return getAndListService.getSerie(codSerie);
+	}
+
+	@Override
+	public Season getSeason(long codSerie, int airedSeason) {
+		return getAndListService.getSeason(codSerie, airedSeason);
+	}
+
+	@Override
+	public Episode getEpisode(long codSerie, int airedSeason, int airedEpisode) {
+		return getAndListService.getEpisode(codSerie, airedSeason, airedEpisode);
+	}
+
+	@Override
+	public Map<String, Long> searchSeriesLocal(String pattern) {
+		return searchService.searchSeriesLocal(pattern);
+	}
+
+	@Override
+	public Map<String, Long> searchSeriesRemote(String pattern) {
+		return searchService.searchSeriesRemote(pattern);
+	}
+
+	@Override
+	public Serie updateSerieOverview(long codSerie, String newOverview) {
+		return updateOverviewService.updateSerieOverview(codSerie, newOverview);
+	}
+
+	@Override
+	public Episode updateEpisodeOverview(long codSerie, int airedSeason, int airedEpisode, String newOverview) {
+		return updateOverviewService.updateEpisodeOverview(codSerie, airedSeason, airedEpisode, newOverview);
+	}	
 	
 }
