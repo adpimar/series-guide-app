@@ -60,7 +60,7 @@ public class UpdateSerieOverviewTest {
 
 		// Assert
 		assertNotNull(resultReturned);
-		assertEquals(resultReturned, FactoryExpectedResults.R03_1_1_1.getExpectedResult());
+		assertEquals(FactoryExpectedResults.R03_1_1_1.getExpectedResult(), resultReturned);
 		assertEquals(localManager.getSerie(resultReturned.getCodSerie()).getOverview(), newOverview);
 		
 	}
@@ -82,7 +82,7 @@ public class UpdateSerieOverviewTest {
 
 		// Assert
 		assertNotNull(resultReturned);
-		assertEquals(resultReturned, FactoryExpectedResults.R03_1_1_2.getExpectedResult());
+		assertEquals(FactoryExpectedResults.R03_1_1_2.getExpectedResult(), resultReturned);
 		assertEquals(localManager.getSerie(resultReturned.getCodSerie()).getOverview(), newOverview);
 		
 	}

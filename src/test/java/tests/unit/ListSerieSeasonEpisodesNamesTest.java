@@ -67,7 +67,7 @@ public class ListSerieSeasonEpisodesNamesTest {
 		// Assert
 		assertNotNull(resultReturned);
 		assertEquals(resultExpected.length, resultReturned.length);
-		assertArrayEquals(resultReturned, resultExpected);
+		assertArrayEquals(resultExpected, resultReturned);
 		
 	}
 
@@ -93,7 +93,7 @@ public class ListSerieSeasonEpisodesNamesTest {
 		// Assert
 		assertNotNull(resultReturned);
 		assertEquals(resultExpected.length, resultReturned.length);
-		assertArrayEquals(resultReturned, resultExpected);
+		assertArrayEquals(resultExpected, resultReturned);
 
 	}
 
@@ -120,7 +120,7 @@ public class ListSerieSeasonEpisodesNamesTest {
 		// Assert
 		assertNotNull(resultReturned);
 		assertEquals(resultExpected.length, resultReturned.length);
-		assertArrayEquals(resultReturned, resultExpected);
+		assertArrayEquals(resultExpected, resultReturned);
 	
 	}
 

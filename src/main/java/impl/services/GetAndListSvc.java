@@ -52,8 +52,12 @@ public class GetAndListSvc implements IGetAndListService {
 		
 		// Crea vector episodios ordenados
 		String[] episodesNames = new String[season.getTotalEpisodes()];
-		for (Episode episode : season.getEpisodes())
-			episodesNames[episode.getAiredEpisode() - 1] = episode.getEpisodeName();
+		Episode[] episodes = season.getEpisodes();		
+		for (int i = 0; i < episodes.length; i++) {
+			Episode episode = episodes[i];
+			if (episode != null)
+				episodesNames[i] = episode.getEpisodeName();
+		}
 		
 		return episodesNames;
 	}

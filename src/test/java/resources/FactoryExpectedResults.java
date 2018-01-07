@@ -39,8 +39,16 @@ public enum FactoryExpectedResults {
 	R08_1_2_3("R08.1.2.3.txt", "E"),
 	
 	R13_1_1_1("R13.1.1.1.txt", "S"),
+	R13_1_2_1("R13.1.2.1.txt", "S"),
 	R13_2_1_1("R13.2.1.1.txt", "S"),
 	R13_2_2_1("R13.2.2.1.txt", "S"),
+	
+	R14_1_1_1("R14.1.1.1.txt", "T"),
+	R14_1_2_1("R14.1.2.1.txt", "T"),
+	R14_1_2_2("R14.1.2.2.txt", "T"),
+	R14_1_2_3("R14.1.2.3.txt", "T"),
+	R14_2_2_1("R14.2.2.1.txt", "T"),
+	R14_2_2_2("R14.2.2.2.txt", "T"),
 	
 	R15_1_1_1("R15.1.1.1.txt", "T"),
 	R15_1_1_4("R15.1.1.4.txt", "T"),
@@ -99,8 +107,17 @@ public enum FactoryExpectedResults {
 	}
 	
 	private Season getExpectedSeason(BufferedReader b) throws IOException {
-		String[] fields = b.readLine().split("#");		
-		return TestParsers.localSeasonParser(fields);
+		String[] fields = b.readLine().split("#");
+		Season season = TestParsers.localSeasonParser(fields);
+		Episode[] episodes = season.getEpisodes();
+		String line;
+		Episode episode;
+		while ((line = b.readLine()) != null) {
+			fields = line.split("#");
+			episode = TestParsers.localEpisodeParser(fields);
+			episodes[episode.getAiredEpisode() - 1] = episode;
+		}
+		return season;
 	}
 	
 	private Episode getExpectedEpisode(BufferedReader b) throws IOException {

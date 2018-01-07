@@ -10,7 +10,7 @@ import impl.exceptions.NoEpisodesStoredException;
 import impl.exceptions.NoSeasonsStoredException;
 import impl.exceptions.NoSeriesStoredException;
 import impl.model.Episode;
-import resources.ExpectedEpisodes;
+import resources.FactoryExpectedResults;
 import resources.FactoryLocalManagers;
 
 public class R08_HU1 extends AcceptanceTest {
@@ -35,15 +35,15 @@ public class R08_HU1 extends AcceptanceTest {
 	public void indicarNoVistoEpisodio_ExisteEpisodioNoVisto_EpisodioNoVisto() {
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R08_1_1_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R08_1_1_1.getLocalManager());
 
 		// When		
-		Episode resultReturned = checkAsViewedService.uncheckEpisodeAsViewed(321060, 1, 1);
+		Episode resultReturned = seriesGuideApp.uncheckEpisodeAsViewed(321060, 1, 1);
 		
 		// Then
 		assertNotNull(resultReturned);
-		assertEquals(resultReturned, ExpectedEpisodes.R08_1_1_1.getExpectedEpisode());
-		assertFalse(getAndListService.getEpisode(321060, 1, 1).isSeen());
+		assertEquals(FactoryExpectedResults.R08_1_1_1.getExpectedResult(), resultReturned);
+		assertFalse(seriesGuideApp.getEpisode(321060, 1, 1).isSeen());
 		
 	}
 
@@ -58,15 +58,15 @@ public class R08_HU1 extends AcceptanceTest {
 	public void indicarNoVistoEpisodio_NoTodosVistosEpisodioVistoNoComentado_EpisodioNoVisto() {
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R08_1_2_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R08_1_2_1.getLocalManager());
 		
 		// When
-		Episode resultReturned = checkAsViewedService.uncheckEpisodeAsViewed(321060, 1, 2);
+		Episode resultReturned = seriesGuideApp.uncheckEpisodeAsViewed(321060, 1, 2);
 		
 		// Then
 		assertNotNull(resultReturned);
-		assertEquals(resultReturned, ExpectedEpisodes.R08_1_2_1.getExpectedEpisode());
-		assertFalse(getAndListService.getEpisode(321060, 1, 2).isSeen());
+		assertEquals(FactoryExpectedResults.R08_1_2_1.getExpectedResult(), resultReturned);
+		assertFalse(seriesGuideApp.getEpisode(321060, 1, 2).isSeen());
 		
 	}
 
@@ -76,15 +76,15 @@ public class R08_HU1 extends AcceptanceTest {
 	public void indicarNoVistoEpisodio_NoTodosVistosEpisodioVistoComentado_EpisodioNoVistoSinComentario() {
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R08_1_2_2.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R08_1_2_2.getLocalManager());
 		
 		// When
-		Episode resultReturned = checkAsViewedService.uncheckEpisodeAsViewed(321060, 1, 2);
+		Episode resultReturned = seriesGuideApp.uncheckEpisodeAsViewed(321060, 1, 2);
 		
 		// Then
 		assertNotNull(resultReturned);
-		assertEquals(resultReturned, ExpectedEpisodes.R08_1_2_2.getExpectedEpisode());
-		assertFalse(getAndListService.getEpisode(321060, 1, 2).isSeen());
+		assertEquals(FactoryExpectedResults.R08_1_2_2.getExpectedResult(), resultReturned);
+		assertFalse(seriesGuideApp.getEpisode(321060, 1, 2).isSeen());
 		
 	}
 	
@@ -94,16 +94,16 @@ public class R08_HU1 extends AcceptanceTest {
 	public void indicarNoVistoEpisodio_TodosVistosEpisodioVistoNoComentado_EpisodioNoVistoTemporadaNoVista() {
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R08_1_2_3.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R08_1_2_3.getLocalManager());
 		
 		// When
-		Episode resultReturned = checkAsViewedService.uncheckEpisodeAsViewed(321060, 1, 2);
+		Episode resultReturned = seriesGuideApp.uncheckEpisodeAsViewed(321060, 1, 2);
 		
 		// Then
 		assertNotNull(resultReturned);
-		assertEquals(resultReturned, ExpectedEpisodes.R08_1_2_3.getExpectedEpisode());
-		assertFalse(getAndListService.getEpisode(321060, 1, 2).isSeen());
-		assertFalse(getAndListService.getSeason(321060, 1).isSeen());
+		assertEquals(FactoryExpectedResults.R08_1_2_3.getExpectedResult(), resultReturned);
+		assertFalse(seriesGuideApp.getEpisode(321060, 1, 2).isSeen());
+		assertFalse(seriesGuideApp.getSeason(321060, 1).isSeen());
 		
 	}
 
@@ -120,10 +120,10 @@ public class R08_HU1 extends AcceptanceTest {
 		thrown.expect(NoEpisodesStoredException.class);
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R08_1_3_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R08_1_3_1.getLocalManager());
 
 		// When		
-		checkAsViewedService.uncheckEpisodeAsViewed(321060, 1, 2);
+		seriesGuideApp.uncheckEpisodeAsViewed(321060, 1, 2);
 		
 		// Then
 
@@ -137,10 +137,10 @@ public class R08_HU1 extends AcceptanceTest {
 		thrown.expect(NoSeasonsStoredException.class);
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R08_1_3_2.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R08_1_3_2.getLocalManager());
 
 		// When		
-		checkAsViewedService.uncheckEpisodeAsViewed(321060, 1, 2);
+		seriesGuideApp.uncheckEpisodeAsViewed(321060, 1, 2);
 		
 		// Then
 
@@ -154,10 +154,10 @@ public class R08_HU1 extends AcceptanceTest {
 		thrown.expect(NoSeriesStoredException.class);
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R08_1_3_3.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R08_1_3_3.getLocalManager());
 
 		// When		
-		checkAsViewedService.uncheckEpisodeAsViewed(321060, 1, 2);
+		seriesGuideApp.uncheckEpisodeAsViewed(321060, 1, 2);
 		
 		// Then
 

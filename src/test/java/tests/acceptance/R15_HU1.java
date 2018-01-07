@@ -10,7 +10,7 @@ import impl.exceptions.NoEpisodesStoredException;
 import impl.exceptions.NoSeasonsStoredException;
 import impl.exceptions.NoSeriesStoredException;
 import impl.model.Season;
-import resources.ExpectedSeasons;
+import resources.FactoryExpectedResults;
 import resources.FactoryLocalManagers;
 
 public class R15_HU1 extends AcceptanceTest {
@@ -35,14 +35,14 @@ public class R15_HU1 extends AcceptanceTest {
 	public void indicarVistaTemporada_TemporadaNoVistaConTodosEpisodios_TemporadaVista() {
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R15_1_1_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R15_1_1_1.getLocalManager());
 		
 		// When
-		Season resultReturned = checkAsViewedService.checkSeasonAsViewed(321060, 1);
+		Season resultReturned = seriesGuideApp.checkSeasonAsViewed(321060, 1);
 		
 		// Then
 		assertNotNull(resultReturned);
-		assertEquals(resultReturned, ExpectedSeasons.R15_1_1_1.getExpectedSeason());
+		assertEquals(FactoryExpectedResults.R15_1_1_1.getExpectedResult(), resultReturned);
 		assertTrue(compruebaTemporadaVistaConEpisodiosVistos(resultReturned));
 		
 	}
@@ -55,10 +55,10 @@ public class R15_HU1 extends AcceptanceTest {
 		thrown.expect(NoEpisodesStoredException.class);
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R15_1_1_2.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R15_1_1_2.getLocalManager());
 		
 		// When
-		checkAsViewedService.checkSeasonAsViewed(321060, 1);
+		seriesGuideApp.checkSeasonAsViewed(321060, 1);
 		
 		// Then
 		
@@ -72,10 +72,10 @@ public class R15_HU1 extends AcceptanceTest {
 		thrown.expect(NoEpisodesStoredException.class);
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R15_1_1_3.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R15_1_1_3.getLocalManager());
 		
 		// When
-		checkAsViewedService.checkSeasonAsViewed(321060, 1);
+		seriesGuideApp.checkSeasonAsViewed(321060, 1);
 		
 		// Then
 		
@@ -87,14 +87,14 @@ public class R15_HU1 extends AcceptanceTest {
 	public void indicarVistaTemporada_TemporadaVista_TemporadaVista() {
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R15_1_1_4.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R15_1_1_4.getLocalManager());
 		
 		// When
-		Season resultReturned = checkAsViewedService.checkSeasonAsViewed(321060, 1);
+		Season resultReturned = seriesGuideApp.checkSeasonAsViewed(321060, 1);
 		
 		// Then
 		assertNotNull(resultReturned);
-		assertEquals(resultReturned, ExpectedSeasons.R15_1_1_4.getExpectedSeason());
+		assertEquals(FactoryExpectedResults.R15_1_1_4.getExpectedResult(), resultReturned);
 		assertTrue(compruebaTemporadaVistaConEpisodiosVistos(resultReturned));
 
 	}
@@ -112,10 +112,10 @@ public class R15_HU1 extends AcceptanceTest {
 		thrown.expect(NoSeasonsStoredException.class);
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R15_1_2_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R15_1_2_1.getLocalManager());
 		
 		// When
-		checkAsViewedService.checkSeasonAsViewed(321060, 1);
+		seriesGuideApp.checkSeasonAsViewed(321060, 1);
 		
 		// Then
 		
@@ -129,10 +129,10 @@ public class R15_HU1 extends AcceptanceTest {
 		thrown.expect(NoSeriesStoredException.class);
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R15_1_2_2.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R15_1_2_2.getLocalManager());
 		
 		// When
-		checkAsViewedService.checkSeasonAsViewed(321060, 1);
+		seriesGuideApp.checkSeasonAsViewed(321060, 1);
 		
 		// Then
 		
@@ -145,11 +145,11 @@ public class R15_HU1 extends AcceptanceTest {
 		int airedSeason = season.getAiredSeason();
 		int totalEpisodes = season.getTotalEpisodes();
 		
-		if (!getAndListService.getSeason(codSerie, airedSeason).isSeen())
+		if (!seriesGuideApp.getSeason(codSerie, airedSeason).isSeen())
 			return false;
 		
 		for (int i = 1; i <= totalEpisodes; i++)
-			if (!getAndListService.getEpisode(codSerie, airedSeason, i).isSeen())
+			if (!seriesGuideApp.getEpisode(codSerie, airedSeason, i).isSeen())
 				return false;
 		
 		return true;

@@ -10,7 +10,7 @@ import impl.exceptions.NoEpisodesStoredException;
 import impl.exceptions.NoSeasonsStoredException;
 import impl.exceptions.NoSeriesStoredException;
 import impl.model.Episode;
-import resources.ExpectedEpisodes;
+import resources.FactoryExpectedResults;
 import resources.FactoryLocalManagers;
 
 public class R07_HU1 extends AcceptanceTest {
@@ -36,16 +36,17 @@ public class R07_HU1 extends AcceptanceTest {
 	public void indicarVistoEpisodio_EpisodioUnicoComoNoVisto_EpisodioVistoTemporadaVista() {
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R07_1_1_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R07_1_1_1.getLocalManager());
 
 		// When
-		Episode resultReturned = checkAsViewedService.checkEpisodeAsViewed(321060, 1, 1);
+		Episode resultReturned = seriesGuideApp.checkEpisodeAsViewed(321060, 1, 1);
 		
 		// Then
 		assertNotNull(resultReturned);
-		assertEquals(resultReturned, ExpectedEpisodes.R07_1_1_1.getExpectedEpisode());
-		assertTrue(getAndListService.getEpisode(321060, 1, 1).isSeen());
-		assertTrue(getAndListService.getSeason(321060, 1).isSeen());
+		assertEquals(FactoryExpectedResults.R07_1_1_1.getExpectedResult(), resultReturned);
+		assertTrue(seriesGuideApp.getEpisode(321060, 1, 1).isSeen());
+		assertTrue(seriesGuideApp.getSeason(321060, 1).isSeen());
+		
 	}
 	
 	// PRUEBA DE ACEPTACIÓN 07.1.1.2
@@ -54,15 +55,16 @@ public class R07_HU1 extends AcceptanceTest {
 	public void indicarVistoEpisodio_EpisodioVariosComoNoVistos_EpisodioVisto() {
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R07_1_1_2.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R07_1_1_2.getLocalManager());
 
 		// When
-		Episode resultReturned = checkAsViewedService.checkEpisodeAsViewed(321060, 1, 1);
+		Episode resultReturned = seriesGuideApp.checkEpisodeAsViewed(321060, 1, 1);
 		
 		// Then
 		assertNotNull(resultReturned);
-		assertEquals(resultReturned, ExpectedEpisodes.R07_1_1_2.getExpectedEpisode());
-		assertTrue(getAndListService.getEpisode(321060, 1, 1).isSeen());
+		assertEquals(FactoryExpectedResults.R07_1_1_2.getExpectedResult(), resultReturned);
+		assertTrue(seriesGuideApp.getEpisode(321060, 1, 1).isSeen());
+		
 	}
 
 	// -----------------------------------------------------------------------------
@@ -76,15 +78,16 @@ public class R07_HU1 extends AcceptanceTest {
 	public void indicarVistoEpisodio_EpisodioVistoNoComentado_EpisodioVisto() {
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R07_1_2_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R07_1_2_1.getLocalManager());
 
 		// When
-		Episode resultReturned = checkAsViewedService.checkEpisodeAsViewed(321060, 1, 2);
+		Episode resultReturned = seriesGuideApp.checkEpisodeAsViewed(321060, 1, 2);
 		
 		// Then
 		assertNotNull(resultReturned);
-		assertEquals(resultReturned, ExpectedEpisodes.R07_1_2_1.getExpectedEpisode());
-		assertTrue(getAndListService.getEpisode(321060, 1, 2).isSeen());	
+		assertEquals(FactoryExpectedResults.R07_1_2_1.getExpectedResult(), resultReturned);
+		assertTrue(seriesGuideApp.getEpisode(321060, 1, 2).isSeen());
+		
 	}
 	
 	// PRUEBA DE ACEPTACIÓN 07.1.2.2
@@ -93,15 +96,16 @@ public class R07_HU1 extends AcceptanceTest {
 	public void indicarVistoEpisodio_EpisodioVistoComentado_EpisodioVisto() {
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R07_1_2_2.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R07_1_2_2.getLocalManager());
 
 		// When
-		Episode resultReturned = checkAsViewedService.checkEpisodeAsViewed(321060, 1, 2);
+		Episode resultReturned = seriesGuideApp.checkEpisodeAsViewed(321060, 1, 2);
 		
 		// Then
 		assertNotNull(resultReturned);
-		assertEquals(resultReturned, ExpectedEpisodes.R07_1_2_2.getExpectedEpisode());
-		assertTrue(getAndListService.getEpisode(321060, 1, 2).isSeen());	
+		assertEquals(FactoryExpectedResults.R07_1_2_2.getExpectedResult(), resultReturned);
+		assertTrue(seriesGuideApp.getEpisode(321060, 1, 2).isSeen());
+		
 	}
 
 	// -----------------------------------------------------------------------------
@@ -117,10 +121,10 @@ public class R07_HU1 extends AcceptanceTest {
 		thrown.expect(NoEpisodesStoredException.class);
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R07_1_3_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R07_1_3_1.getLocalManager());
 		
 		// When
-		checkAsViewedService.checkEpisodeAsViewed(321060, 1, 2);
+		seriesGuideApp.checkEpisodeAsViewed(321060, 1, 2);
 		
 		// Then
 		
@@ -134,10 +138,10 @@ public class R07_HU1 extends AcceptanceTest {
 		thrown.expect(NoSeasonsStoredException.class);
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R07_1_3_2.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R07_1_3_2.getLocalManager());
 		
 		// When
-		checkAsViewedService.checkEpisodeAsViewed(321060, 1, 2);
+		seriesGuideApp.checkEpisodeAsViewed(321060, 1, 2);
 		
 		// Then
 		
@@ -151,10 +155,10 @@ public class R07_HU1 extends AcceptanceTest {
 		thrown.expect(NoSeriesStoredException.class);
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R07_1_3_3.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R07_1_3_3.getLocalManager());
 		
 		// When
-		checkAsViewedService.checkEpisodeAsViewed(321060, 1, 2);
+		seriesGuideApp.checkEpisodeAsViewed(321060, 1, 2);
 		
 		// Then
 		

@@ -37,10 +37,10 @@ public class R11_HU1 extends AcceptanceTest {
 		thrown.expect(NoKeywordsOnRemoteSearchException.class);
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R11_1_1_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R11_1_1_1.getLocalManager());
 		
 		// When
-		searchService.searchSeriesLocal("");
+		seriesGuideApp.searchSeriesLocal("");
 		
 		// Then
 
@@ -57,10 +57,10 @@ public class R11_HU1 extends AcceptanceTest {
 		);
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R11_1_1_2.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R11_1_1_2.getLocalManager());
 		
 		// When
-		Map<String, Long> resultReturned = searchService.searchSeriesLocal("The");
+		Map<String, Long> resultReturned = seriesGuideApp.searchSeriesLocal("The");
 		
 		// Then
 		assertNotNull(resultReturned);
@@ -71,7 +71,7 @@ public class R11_HU1 extends AcceptanceTest {
 
 	// PRUEBA DE ACEPTACIÓN 11.1.1.3
 
-	
+	@Test
 	public void buscarLocalmenteSerie_ExisteSerieConPalabrasClave_ListaNoVacia() {
 		
 		List<String> resultExpected = Arrays.asList(
@@ -79,10 +79,10 @@ public class R11_HU1 extends AcceptanceTest {
 		);
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R11_1_1_3.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R11_1_1_3.getLocalManager());
 		
 		// When
-		Map<String, Long> resultReturned = searchService.searchSeriesLocal("The Big Bang");
+		Map<String, Long> resultReturned = seriesGuideApp.searchSeriesLocal("The Big Bang");
 		
 		// Then
 		assertNotNull(resultReturned);
@@ -102,10 +102,10 @@ public class R11_HU1 extends AcceptanceTest {
 	public void buscarLocalmenteSerie_NoExisteSerieConUnaPalabraClave_ListaVacia() 	{
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R11_1_2_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R11_1_2_1.getLocalManager());
 		
 		// When
-		Map<String, Long> resultReturned = searchService.searchSeriesLocal("lalilo");
+		Map<String, Long> resultReturned = seriesGuideApp.searchSeriesLocal("lalilo");
 		
 		// Then
 		assertNotNull(resultReturned);
@@ -119,10 +119,10 @@ public class R11_HU1 extends AcceptanceTest {
 	public void buscarLocalmenteSerie_NoExisteSerieConPalabrasClave_ListaVacia() {
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R11_1_2_2.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R11_1_2_2.getLocalManager());
 		
 		// When
-		Map<String, Long> resultReturned = searchService.searchSeriesLocal("lalilo panilo");
+		Map<String, Long> resultReturned = seriesGuideApp.searchSeriesLocal("lalilo panilo");
 		
 		// Then
 		assertNotNull(resultReturned);
@@ -143,10 +143,10 @@ public class R11_HU1 extends AcceptanceTest {
 		thrown.expect(NoSeriesStoredException.class);
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R11_1_3_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R11_1_3_1.getLocalManager());
 		
 		// When
-		searchService.searchSeriesLocal("Stranger Things");
+		seriesGuideApp.searchSeriesLocal("Stranger Things");
 		
 		// Then
 
@@ -155,9 +155,10 @@ public class R11_HU1 extends AcceptanceTest {
 	// -----------------------------------------------------------------------------
 	
 	private boolean compruebaEstanLosTitulos(List<String> resultExpected, Map<String, Long> resultReturned) {
-		boolean flag = true;
-		for (String s : resultExpected) 
-			flag = flag && resultReturned.containsKey(s);
-		return flag;
+		for (String s : resultExpected)
+			if (!resultReturned.containsKey(s))
+				return false;
+		return true;
 	}
+	
 }

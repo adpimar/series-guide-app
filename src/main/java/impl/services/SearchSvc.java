@@ -1,8 +1,10 @@
 package impl.services;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
 
 import abs.managers.ILocalManager;
@@ -43,12 +45,10 @@ public class SearchSvc implements ISearchService {
 			throw new NoKeywordsOnRemoteSearchException();
 		
 		Map<String, Long> seriesMatched = new TreeMap<>();
-
-		Arrays.sort(keyWords);
 		
 		// Busca coincidencias con las series
 		for (Serie serie : series)
-			if (doesMatchSerie(keyWords, serie.getSeriesName()))
+			if (doesMatchSerie(keyWords, getCleanKeyWords(serie.getSeriesName())))
 				seriesMatched.put(serie.getSeriesName(), serie.getCodSerie());
 
 		return seriesMatched;
@@ -80,12 +80,10 @@ public class SearchSvc implements ISearchService {
 				.split(" ");
 	}
 	
-	private boolean doesMatchSerie(String[] sortedKeyWords, String seriesName) {
-		String[] serieKeyWords = getCleanKeyWords(seriesName);
-		for (String s : serieKeyWords)
-			if (Arrays.binarySearch(sortedKeyWords, s) >= 0)
-				return true;
-		return false;
+	private boolean doesMatchSerie(String[] keyWords, String[] serieKeyWords) {
+		Set<String> keyWordsSet = new HashSet<>(Arrays.asList(keyWords));
+		Set<String> seriekeyWordsSet = new HashSet<>(Arrays.asList(serieKeyWords));
+		return seriekeyWordsSet.containsAll(keyWordsSet);
 	}
 	
 }

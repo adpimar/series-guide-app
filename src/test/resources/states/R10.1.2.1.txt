@@ -1,30 +1,30 @@
 S#321060#The OA#Continuing#2016-12-16#Friday#12:00 AM#Netflix#Drama, Mystery, Science-Fiction#8.1#18#Having gone missing seven years ago, the previously blind Prairie Johnson returns home, now in her 20s with her sight restored. While many believe she is a miracle, others worry that she could be dangerous.
-T#321060#498968#1#2016-12-16#Ended#8#T
-E#5878316#498968#1#1#Homecoming#2016-12-16#A woman missing for seven years turns up at a hospital with strange scars on her back but can't or won't reveal where she's been.#T#null
-E#5878317#498968#1#2#New Colossus#2016-12-16#The OA retraces the dramatic twists and turns in her life after a childhood accident, leading up to a fateful encounter far from home many years later.#T#null
-E#5878318#498968#1#3#Champion#2016-12-16#A journalist approaches the family with an offer. At Hap's, a bond is forged with Homer and the others as they hatch a desperate plan.#T#null
-E#5878319#498968#1#4#Away#2016-12-16#An agonizing dilemma gives OA a new perspective on the group's plight. Homer resolves to find out what Hap's experiments are really about.#T#null
-E#5878320#498968#1#5#Paradise#2016-12-16#While Hap zeroes in on a new test subject in Cuba, Homer and OA work to perfect their escape plan. Scott reaches his breaking point.#T#null
-E#5878321#498968#1#6#Forking Paths#2016-12-16#As the group continues its search for the final movement, a startling turn of events gives Hap's work a new urgency.#T#null
-E#5878322#498968#1#7#Empire of Light#2016-12-16#An ominous new dream and a tense outing with Nancy and Abel take a toll on OA. Steve finds his life in turmoil once again.#T#null
-E#5878323#498968#1#8#Invisible Self#2016-12-16#After OA recounts a dramatic final night at Hap's, the others begin to see her story in a new light. The fragments of the dream click into place.#T#null
 S#305288#Stranger Things#Continuing#2016-07-15#Friday#03:00 AM#Netflix#Drama, Mystery, Science-Fiction, Thriller#9.2#126#When a young boy disappears, his mother, a police chief, and his friends must confront terrifying forces in order to get him back.
-T#305288#651264#1#2016-07-15#Ended#8#T
-E#5468124#651264#1#1#Chapter One: The Vanishing of Will Byers#2016-07-15#On his way home from a friend's house, young Will sees something terrifying. Nearby, a sinister secret lurks in the depths of a government lab.#T#null
-E#5481194#651264#1#2#Chapter Two: The Weirdo on Maple Street#2016-07-15#Lucas, Mike and Dustin try to talk to the girl they found in the woods. Hopper questions an anxious Joyce about an unsettling phone call.#T#null
-E#5621926#651264#1#3#Chapter Three: Holly, Jolly#2016-07-15#An increasingly concerned Nancy looks for Barb and finds out what Jonathan's been up to. Joyce is convinced Will is trying to talk to her.#T#null
-E#5621928#651264#1#4#Chapter Four: The Body#2016-07-15#Refusing to believe Will is dead, Joyce tries to connect with her son. The boys give Eleven a makeover. Nancy and Jonathan form an unlikely alliance.#T#null
-E#5621929#651264#1#5#Chapter Five: The Flea and the Acrobat#2016-07-15#Hopper breaks into the lab while Nancy and Jonathan confront the force that took Will. The boys ask Mr. Clarke how to travel to another dimension.#T#null
-E#5621930#651264#1#6#Chapter Six: The Monster#2016-07-15#A frantic Jonathan looks for Nancy in the darkness, but Steve's looking for her, too. Hopper and Joyce uncover the truth about the lab's experiments.#T#null
-E#5621931#651264#1#7#Chapter Seven: The Bathtub#2016-07-15#"Eleven struggles to reach Will, while Lucas warns that \""the bad men are coming.\"" Nancy and Jonathan show the police what Jonathan caught on camera."#T#null
-E#5621932#651264#1#8#Chapter Eight: The Upside Down#2016-07-15#Dr. Brenner holds Hopper and Joyce for questioning while the boys wait with Eleven in the gym. Back at Will's, Nancy and Jonathan prepare for battle.#T#null
-T#305288#679296#2#2017-10-27#Ended#9#T
-E#5734306#679296#2#1#Chapter One: MADMAX#2017-10-27#As the town preps for Halloween, a high-scoring rival shakes things up at the arcade, and a skeptical Hopper inspects a field of rotting pumpkins.#T#null
-E#5734307#679296#2#2#Chapter Two: Trick or Treat, Freak#2017-10-27#After Will sees something terrible on trick-or-treat night, Mike wonders whether Eleven's still out there. Nancy wrestles with the truth about Barb.#T#null
-E#5734308#679296#2#3#Chapter Three: The Pollywog#2017-10-27#Dustin adopts a strange new pet, and Eleven grows increasingly impatient. A well-meaning Bob urges Will to stand up to his fears.#T#null
-E#5734309#679296#2#4#Chapter Four: Will the Wise#2017-10-27#An ailing Will opens up to Joyce -- with disturbing results. While Hopper digs for the truth, Eleven unearths a surprising discovery.#T#null
-E#5734310#679296#2#5#Chapter Five: Dig Dug#2017-10-27#Nancy and Jonathan swap conspiracy theories with a new ally as Eleven searches for someone from her past. “Bob the Brain” tackles a difficult problem.#T#null
-E#5734311#679296#2#6#Chapter Six: The Spy#2017-10-27#Will's connection to a shadowy evil grows stronger, but no one's quite sure how to stop it. Elsewhere, Dustin and Steve forge an unlikely bond.#T#null
-E#5734312#679296#2#7#Chapter Seven: The Lost Sister#2017-10-27#Psychic visions draw Eleven to a band of violent outcasts and an angry girl with a shadowy past.#T#null
-E#5734313#679296#2#8#Chapter Eight: The Mind Flayer#2017-10-27#An unlikely hero steps forward when a deadly development puts the Hawkins Lab on lockdown, trapping Will and several others inside.#T#null
-E#5734314#679296#2#9#Chapter Nine: The Gate#2017-10-27#Eleven makes plans to finish what she started while the survivors turn up the heat on the monstrous force that's holding Will hostage.#T#null
+T#321060#691955#1#2016-12-16#8#F
+T#305288#651264#1#2016-07-15#8#F
+T#305288#679296#2#2017-10-27#9#F
+E#5878316#691955#1#1#Homecoming#2016-12-16#A woman missing for seven years turns up at a hospital with strange scars on her back but can't or won't reveal where she's been.#F#null
+E#5878317#691955#1#2#New Colossus#2016-12-16#The OA retraces the dramatic twists and turns in her life after a childhood accident, leading up to a fateful encounter far from home many years later.#F#null
+E#5878318#691955#1#3#Champion#2016-12-16#A journalist approaches the family with an offer. At Hap's, a bond is forged with Homer and the others as they hatch a desperate plan.#F#null
+E#5878319#691955#1#4#Away#2016-12-16#An agonizing dilemma gives OA a new perspective on the group's plight. Homer resolves to find out what Hap's experiments are really about.#F#null
+E#5878320#691955#1#5#Paradise#2016-12-16#While Hap zeroes in on a new test subject in Cuba, Homer and OA work to perfect their escape plan. Scott reaches his breaking point.#F#null
+E#5878321#691955#1#6#Forking Paths#2016-12-16#As the group continues its search for the final movement, a startling turn of events gives Hap's work a new urgency.#F#null
+E#5878322#691955#1#7#Empire of Light#2016-12-16#An ominous new dream and a tense outing with Nancy and Abel take a toll on OA. Steve finds his life in turmoil once again.#F#null
+E#5878323#691955#1#8#Invisible Self#2016-12-16#After OA recounts a dramatic final night at Hap's, the others begin to see her story in a new light. The fragments of the dream click into place.#F#null
+E#5468124#651264#1#1#Chapter One: The Vanishing of Will Byers#2016-07-15#On his way home from a friend's house, young Will sees something terrifying. Nearby, a sinister secret lurks in the depths of a government lab.#F#null
+E#5481194#651264#1#2#Chapter Two: The Weirdo on Maple Street#2016-07-15#Lucas, Mike and Dustin try to talk to the girl they found in the woods. Hopper questions an anxious Joyce about an unsettling phone call.#F#null
+E#5621926#651264#1#3#Chapter Three: Holly, Jolly#2016-07-15#An increasingly concerned Nancy looks for Barb and finds out what Jonathan's been up to. Joyce is convinced Will is trying to talk to her.#F#null
+E#5621928#651264#1#4#Chapter Four: The Body#2016-07-15#Refusing to believe Will is dead, Joyce tries to connect with her son. The boys give Eleven a makeover. Nancy and Jonathan form an unlikely alliance.#F#null
+E#5621929#651264#1#5#Chapter Five: The Flea and the Acrobat#2016-07-15#Hopper breaks into the lab while Nancy and Jonathan confront the force that took Will. The boys ask Mr. Clarke how to travel to another dimension.#F#null
+E#5621930#651264#1#6#Chapter Six: The Monster#2016-07-15#A frantic Jonathan looks for Nancy in the darkness, but Steve's looking for her, too. Hopper and Joyce uncover the truth about the lab's experiments.#F#null
+E#5621931#651264#1#7#Chapter Seven: The Bathtub#2016-07-15#"Eleven struggles to reach Will, while Lucas warns that \""the bad men are coming.\"" Nancy and Jonathan show the police what Jonathan caught on camera."#F#null
+E#5621932#651264#1#8#Chapter Eight: The Upside Down#2016-07-15#Dr. Brenner holds Hopper and Joyce for questioning while the boys wait with Eleven in the gym. Back at Will's, Nancy and Jonathan prepare for battle.#F#null
+E#5734306#679296#2#1#Chapter One: MADMAX#2017-10-27#As the town preps for Halloween, a high-scoring rival shakes things up at the arcade, and a skeptical Hopper inspects a field of rotting pumpkins.#F#null
+E#5734307#679296#2#2#Chapter Two: Trick or Treat, Freak#2017-10-27#After Will sees something terrible on trick-or-treat night, Mike wonders whether Eleven's still out there. Nancy wrestles with the truth about Barb.#F#null
+E#5734308#679296#2#3#Chapter Three: The Pollywog#2017-10-27#Dustin adopts a strange new pet, and Eleven grows increasingly impatient. A well-meaning Bob urges Will to stand up to his fears.#F#null
+E#5734309#679296#2#4#Chapter Four: Will the Wise#2017-10-27#An ailing Will opens up to Joyce -- with disturbing results. While Hopper digs for the truth, Eleven unearths a surprising discovery.#F#null
+E#5734310#679296#2#5#Chapter Five: Dig Dug#2017-10-27#Nancy and Jonathan swap conspiracy theories with a new ally as Eleven searches for someone from her past. “Bob the Brain” tackles a difficult problem.#F#null
+E#5734311#679296#2#6#Chapter Six: The Spy#2017-10-27#Will's connection to a shadowy evil grows stronger, but no one's quite sure how to stop it. Elsewhere, Dustin and Steve forge an unlikely bond.#F#null
+E#5734312#679296#2#7#Chapter Seven: The Lost Sister#2017-10-27#Psychic visions draw Eleven to a band of violent outcasts and an angry girl with a shadowy past.#F#null
+E#5734313#679296#2#8#Chapter Eight: The Mind Flayer#2017-10-27#An unlikely hero steps forward when a deadly development puts the Hawkins Lab on lockdown, trapping Will and several others inside.#F#null
+E#5734314#679296#2#9#Chapter Nine: The Gate#2017-10-27#Eleven makes plans to finish what she started while the survivors turn up the heat on the monstrous force that's holding Will hostage.#F#null

@@ -4,8 +4,4 @@ public class NoSeasonsStoredException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
 
-	public NoSeasonsStoredException() {
-		super("Temporada(s) no almacenada(s) en la BDL.");
-	}
-
 }

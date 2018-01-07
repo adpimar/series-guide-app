@@ -1,11 +1,11 @@
 package impl.services;
 
-import java.util.Arrays;
-
 import abs.managers.ILocalManager;
 import abs.managers.IRemoteManager;
 import abs.services.IDownloadAndStoreService;
-import impl.model.Episode;
+import impl.exceptions.NoSeriesStoredException;
+import impl.exceptions.SeasonAlreadyStoredException;
+import impl.exceptions.SerieAlreadyStoredException;
 import impl.model.Season;
 import impl.model.Serie;
 
@@ -24,71 +24,62 @@ public class DownloadAndStoreSvc implements IDownloadAndStoreService {
 		this.remoteManager = remoteManager;
 	}
 	
-	
 	@Override
-	public Serie downloadRemoteSerie(long codSerie) {	
+	public Serie downloadRemoteSerie(long codSerie) {
+		
+		// Comprueba si existe serie en BDL
+		Serie localSerie = localManager.getSerie(codSerie);
+		if (localSerie != null)
+			return localSerie;
+		
 		return remoteManager.getRemoteSerie(codSerie);	
 	}
 
 	@Override
-	public int storeRemoteSerie(Serie remoteSerie) {
-		
-		// 0 = No almacenada; 1 = Almacenada; 2 = Actualizada
-		
+	public void storeRemoteSerie(Serie remoteSerie) {
+				
 		// Comprueba si existe serie en BDL
 		Serie localSerie = localManager.getSerie(remoteSerie.getCodSerie());
-
+		if (localSerie != null)
+			throw new SerieAlreadyStoredException();
+			
 		// Almacena serie en BDL si no existe
-		if (localSerie == null) {
-			localManager.addSerie(remoteSerie);
-			return 1;
-		}
-		
-		// Actualiza serie en BDL si es necesario
-		if (!localSerie.equals(remoteSerie)) {
-			localManager.addSerie(remoteSerie);
-			return 2;
-		}
-		
-		return 0;
+		localManager.addSerie(remoteSerie);
+
 	}
 
 	@Override
 	public Season downloadRemoteSeason(long codSerie, int airedSeason) {
+		
+		// Comprueba si existe la serie en BDL
+		Serie localSerie = localManager.getSerie(codSerie);
+		if (localSerie == null)
+			throw new NoSeriesStoredException();
+		
+		// Comprueba si existe temporada en BDL
+		Season localSeason	= localSerie.getSeasonByAired(airedSeason);
+		if (localSeason != null)
+			return localSeason;
+		
 		return remoteManager.getRemoteSeason(codSerie, airedSeason);
 	}
 	
 	@Override
-	public int storeRemoteSeason(Serie serie, Season remoteSeason) {
+	public void storeRemoteSeason(Season remoteSeason) {
 		
-		// 0 = No almacenada; 1 = Almacenada; 2 = Actualizada
-		
+		// Comprueba si existe la serie en BDL
+		Serie localSerie = localManager.getSerie(remoteSeason.getCodSerie());
+		if (localSerie == null)
+			throw new NoSeriesStoredException();
+				
 		// Comprueba si existe temporada en BDL
 		Season localSeason = localManager.getSeason(remoteSeason.getCodSeason());
-
+		if (localSeason != null)
+			throw new SeasonAlreadyStoredException();
+			
 		// Almacena temporada en BDL si no existe
-		if (localSeason == null) {
-			localManager.addSeason(remoteSeason);
-			return 1;
-		}
-		
-		// Actualiza temporada en BDL si es necesario
-		if (checkIfSeasonNeedToUpdate(localSeason, remoteSeason)) {
-			localManager.addSeason(remoteSeason);
-			return 2;
-		}
-		
-		return 0;
-	}
-	
-	private boolean checkIfSeasonNeedToUpdate(Season localSeason, Season remoteSeason) {
-		if (!localSeason.equals(remoteSeason))
-			return true;
-		
-		Episode[] localEpisodes = localSeason.getEpisodes();
-		Episode[] remoteEpisodes = remoteSeason.getEpisodes();
-		
-		return Arrays.equals(localEpisodes, remoteEpisodes);		
+		localManager.addSeason(remoteSeason);
+
 	}
 
 }

@@ -26,14 +26,14 @@ public class R10_HU1 extends AcceptanceTest {
 	public void eliminarSerie_SerieAlmacenadaConVariasTemporadas_SerieBorrada() {
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R10_1_1_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R10_1_1_1.getLocalManager());
 		
 		// When
-		deleteService.deleteSerie(305288);
+		seriesGuideApp.deleteSerie(305288);
 		
 		// Then
 		thrown.expect(NoSeriesStoredException.class);
-		getAndListService.getSerie(305288);
+		seriesGuideApp.getSerie(305288);
 		
 	}
 
@@ -43,14 +43,14 @@ public class R10_HU1 extends AcceptanceTest {
 	public void eliminarSerie_SerieAlmacenadaConUnaTemporada_SerieBorrada() {
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R10_1_1_2.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R10_1_1_2.getLocalManager());
 		
 		// When
-		deleteService.deleteSerie(305288);
+		seriesGuideApp.deleteSerie(305288);
 		
 		// Then
 		thrown.expect(NoSeriesStoredException.class);
-		getAndListService.getSerie(305288);
+		seriesGuideApp.getSerie(305288);
 		
 	}
 
@@ -60,14 +60,14 @@ public class R10_HU1 extends AcceptanceTest {
 	public void eliminarSerie_SerieAlmacenadaSinTemporadas_SerieBorrada() {
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R10_1_1_3.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R10_1_1_3.getLocalManager());
 		
 		// When
-		deleteService.deleteSerie(305288);
+		seriesGuideApp.deleteSerie(305288);
 		
 		// Then
 		thrown.expect(NoSeriesStoredException.class);
-		getAndListService.getSerie(305288);
+		seriesGuideApp.getSerie(305288);
 		
 	}
 
@@ -79,10 +79,10 @@ public class R10_HU1 extends AcceptanceTest {
 		thrown.expect(NoSeriesStoredException.class);
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R10_1_1_4.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R10_1_1_4.getLocalManager());
 		
 		// When
-		deleteService.deleteSerie(321060);
+		seriesGuideApp.deleteSerie(321060);
 		
 		// Then
 
@@ -99,14 +99,14 @@ public class R10_HU1 extends AcceptanceTest {
 	public void eliminarSerie_ExistenVariasSeries_SerieBorrada() {
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R10_1_2_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R10_1_2_1.getLocalManager());
 		
 		// When
-		deleteService.deleteSerie(305288);
+		seriesGuideApp.deleteSerie(305288);
 		
 		// Then
 		thrown.expect(NoSeriesStoredException.class);
-		getAndListService.getSerie(305288);
+		seriesGuideApp.getSerie(305288);
 		
 	}
 

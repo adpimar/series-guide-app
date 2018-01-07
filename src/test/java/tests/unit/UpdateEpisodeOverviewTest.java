@@ -62,7 +62,7 @@ public class UpdateEpisodeOverviewTest {
 		
 		// Assert
 		assertNotNull(resultReturned);
-		assertEquals(resultReturned, FactoryExpectedResults.R06_1_1_1.getExpectedResult());
+		assertEquals(FactoryExpectedResults.R06_1_1_1.getExpectedResult(), resultReturned);
 		assertEquals(localManager.getEpisode(resultReturned.getCodEpisode()).getOverview(), newOverview);
 		
 	}
@@ -84,7 +84,7 @@ public class UpdateEpisodeOverviewTest {
 		
 		// Assert
 		assertNotNull(resultReturned);
-		assertEquals(resultReturned, FactoryExpectedResults.R06_1_1_2.getExpectedResult());
+		assertEquals(FactoryExpectedResults.R06_1_1_2.getExpectedResult(), resultReturned);
 		assertEquals(localManager.getEpisode(resultReturned.getCodEpisode()).getOverview(), newOverview);
 		
 	}

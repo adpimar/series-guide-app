@@ -34,15 +34,15 @@ public class R03_HU1 extends AcceptanceTest {
 		String newOverview = "";
 
 		// Given
-		setLocalManagers(FactoryLocalManagers.R03_1_1_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R03_1_1_1.getLocalManager());
 
 		// When
-		Serie resultReturned = updateOverviewService.updateSerieOverview(321060, newOverview);
+		Serie resultReturned = seriesGuideApp.updateSerieOverview(321060, newOverview);
 
 		// Then
 		assertNotNull(resultReturned);
 		assertEquals(resultReturned, FactoryExpectedResults.R03_1_1_1.getExpectedResult());
-		assertEquals(getAndListService.getSerie(321060).getOverview(), newOverview);
+		assertEquals(newOverview, seriesGuideApp.getSerie(resultReturned.getCodSerie()).getOverview());
 		
 	}
 
@@ -56,15 +56,15 @@ public class R03_HU1 extends AcceptanceTest {
 				+ "gran cambio: su vista se ha curado.";
 
 		// Given
-		setLocalManagers(FactoryLocalManagers.R03_1_1_2.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R03_1_1_2.getLocalManager());
 
 		// When
-		Serie resultReturned = updateOverviewService.updateSerieOverview(321060, newOverview);
+		Serie resultReturned = seriesGuideApp.updateSerieOverview(321060, newOverview);
 
 		// Then
 		assertNotNull(resultReturned);
 		assertEquals(resultReturned, FactoryExpectedResults.R03_1_1_2.getExpectedResult());
-		assertEquals(getAndListService.getSerie(321060).getOverview(), newOverview);
+		assertEquals(newOverview, seriesGuideApp.getSerie(resultReturned.getCodSerie()).getOverview());
 		
 	}
 
@@ -84,10 +84,10 @@ public class R03_HU1 extends AcceptanceTest {
 		thrown.expect(TooLongOverviewException.class);
 
 		// Given
-		setLocalManagers(FactoryLocalManagers.R03_1_1_3.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R03_1_1_3.getLocalManager());
 
 		// When
-		updateOverviewService.updateSerieOverview(321060, newOverview);
+		seriesGuideApp.updateSerieOverview(321060, newOverview);
 
 		// Then
 		
@@ -106,10 +106,10 @@ public class R03_HU1 extends AcceptanceTest {
 		thrown.expect(NoSeriesStoredException.class);
 
 		// Given
-		setLocalManagers(FactoryLocalManagers.R03_1_2_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R03_1_2_1.getLocalManager());
 
 		// When
-		updateOverviewService.updateSerieOverview(321060, "");
+		seriesGuideApp.updateSerieOverview(321060, "");
 
 		// Then
 

@@ -22,9 +22,9 @@ public class R01_HU1 extends AcceptanceTest {
 	// HISTORIA DE USUARIO 01.1
 	// Como usuario quiero obtener un listado de todos los títulos de mis series
 	// para saber cuáles estoy siguiendo.
-
+	
 	// -----------------------------------------------------------------------------
-
+	
 	// ESCENARIO 01.1.1
 	// Existen varias series almacenadas en la BDL.
 
@@ -39,15 +39,15 @@ public class R01_HU1 extends AcceptanceTest {
 		);
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R01_1_1_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R01_1_1_1.getLocalManager());
 		
 		// When
-		List<String> resultReturned = getAndListService.listSeriesNames();
+		List<String> resultReturned = seriesGuideApp.listSeriesNames();
 		
 		// Then
 		assertNotNull(resultReturned);
 		assertEquals(resultExpected.size(), resultReturned.size());
-		assertThat(resultReturned, containsInAnyOrder(resultExpected.toArray()));
+		assertThat(resultExpected, containsInAnyOrder(resultReturned.toArray()));
 		
 	}
 
@@ -66,15 +66,15 @@ public class R01_HU1 extends AcceptanceTest {
 		);
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R01_1_2_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R01_1_2_1.getLocalManager());
 		
 		// When
-		List<String> resultReturned = getAndListService.listSeriesNames();
+		List<String> resultReturned = seriesGuideApp.listSeriesNames();
 		
 		// Then
 		assertNotNull(resultReturned);
 		assertEquals(resultExpected.size(), resultReturned.size());
-		assertThat(resultReturned, containsInAnyOrder(resultExpected.toArray()));
+		assertThat(resultExpected, containsInAnyOrder(resultReturned.toArray()));
 		
 	}
 
@@ -91,10 +91,10 @@ public class R01_HU1 extends AcceptanceTest {
 		thrown.expect(NoSeriesStoredException.class);
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R01_1_3_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R01_1_3_1.getLocalManager());
 		
 		// When
-		getAndListService.listSeriesNames();
+		seriesGuideApp.listSeriesNames();
 		
 		// Then
 

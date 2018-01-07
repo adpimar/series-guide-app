@@ -11,7 +11,7 @@ import impl.exceptions.NoSeasonsStoredException;
 import impl.exceptions.NoSeriesStoredException;
 import impl.exceptions.TooLongCommentException;
 import impl.model.Episode;
-import resources.ExpectedEpisodes;
+import resources.FactoryExpectedResults;
 import resources.FactoryLocalManagers;
 
 public class R07_HU2 extends AcceptanceTest {
@@ -39,10 +39,10 @@ public class R07_HU2 extends AcceptanceTest {
 		thrown.expect(NoEpisodeCheckedAsViewedException.class);
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R07_2_1_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R07_2_1_1.getLocalManager());
 		
 		// When
-		checkAsViewedService.commentEpisodeViewed(321060, 1, 1, "");
+		seriesGuideApp.commentEpisodeViewed(321060, 1, 1, "");
 		
 		// Then
 
@@ -62,15 +62,15 @@ public class R07_HU2 extends AcceptanceTest {
 		String comment = "";
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R07_2_2_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R07_2_2_1.getLocalManager());
 		
 		// When
-		Episode resultReturned = checkAsViewedService.commentEpisodeViewed(321060, 1, 2, comment);
+		Episode resultReturned = seriesGuideApp.commentEpisodeViewed(321060, 1, 2, comment);
 		
 		// Then
 		assertNotNull(resultReturned);
-		assertEquals(resultReturned, ExpectedEpisodes.R07_2_2_1.getExpectedEpisode());
-		assertEquals(getAndListService.getEpisode(321060, 1, 2).getComment(), comment);
+		assertEquals(FactoryExpectedResults.R07_2_2_1.getExpectedResult(), resultReturned);
+		assertEquals(comment, seriesGuideApp.getEpisode(321060, 1, 2).getComment());
 		
 	}
 
@@ -82,15 +82,15 @@ public class R07_HU2 extends AcceptanceTest {
 		String comment = "¡Qué gran episodio! El mejor de la temporada hasta el momento.";
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R07_2_2_2.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R07_2_2_2.getLocalManager());
 
 		// When		
-		Episode resultReturned = checkAsViewedService.commentEpisodeViewed(321060, 1, 2, comment);
+		Episode resultReturned = seriesGuideApp.commentEpisodeViewed(321060, 1, 2, comment);
 		
 		// Then
 		assertNotNull(resultReturned);
-		assertEquals(resultReturned, ExpectedEpisodes.R07_2_2_2.getExpectedEpisode());
-		assertEquals(getAndListService.getEpisode(321060, 1, 2).getComment(), comment);
+		assertEquals(FactoryExpectedResults.R07_2_2_2.getExpectedResult(), resultReturned);
+		assertEquals(comment, seriesGuideApp.getEpisode(321060, 1, 2).getComment());
 		
 	}
 	
@@ -108,10 +108,10 @@ public class R07_HU2 extends AcceptanceTest {
 		thrown.expect(TooLongCommentException.class);
 				
 		// Given
-		setLocalManagers(FactoryLocalManagers.R07_2_2_3.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R07_2_2_3.getLocalManager());
 
 		// When		
-		checkAsViewedService.commentEpisodeViewed(321060, 1, 2, comment);
+		seriesGuideApp.commentEpisodeViewed(321060, 1, 2, comment);
 		
 		// Then
 		
@@ -131,15 +131,15 @@ public class R07_HU2 extends AcceptanceTest {
 		String comment = "¡Ya no me gusta!";
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R07_2_3_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R07_2_3_1.getLocalManager());
 
 		// When		
-		Episode resultReturned = checkAsViewedService.commentEpisodeViewed(321060, 1, 2, comment);
+		Episode resultReturned = seriesGuideApp.commentEpisodeViewed(321060, 1, 2, comment);
 		
 		// Then
 		assertNotNull(resultReturned);
-		assertEquals(resultReturned, ExpectedEpisodes.R07_2_3_1.getExpectedEpisode());
-		assertEquals(getAndListService.getEpisode(321060, 1, 2).getComment(), comment);
+		assertEquals(FactoryExpectedResults.R07_2_3_1.getExpectedResult(), resultReturned);
+		assertEquals(comment, seriesGuideApp.getEpisode(321060, 1, 2).getComment());
 
 	}
 
@@ -156,10 +156,10 @@ public class R07_HU2 extends AcceptanceTest {
 		thrown.expect(NoEpisodesStoredException.class);
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R07_2_4_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R07_2_4_1.getLocalManager());
 
 		// When		
-		checkAsViewedService.commentEpisodeViewed(321060, 1, 2, "");
+		seriesGuideApp.commentEpisodeViewed(321060, 1, 2, "");
 		
 		// Then
 
@@ -173,10 +173,10 @@ public class R07_HU2 extends AcceptanceTest {
 		thrown.expect(NoSeasonsStoredException.class);
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R07_2_4_2.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R07_2_4_2.getLocalManager());
 
 		// When		
-		checkAsViewedService.commentEpisodeViewed(321060, 1, 2, "");
+		seriesGuideApp.commentEpisodeViewed(321060, 1, 2, "");
 		
 		// Then
 
@@ -190,10 +190,10 @@ public class R07_HU2 extends AcceptanceTest {
 		thrown.expect(NoSeriesStoredException.class);
 		
 		// Given
-		setLocalManagers(FactoryLocalManagers.R07_2_4_3.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R07_2_4_3.getLocalManager());
 
 		// When		
-		checkAsViewedService.commentEpisodeViewed(321060, 1, 2, "");
+		seriesGuideApp.commentEpisodeViewed(321060, 1, 2, "");
 		
 		// Then
 
