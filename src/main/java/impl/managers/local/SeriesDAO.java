@@ -64,7 +64,7 @@ public class SeriesDAO implements ILocalManager {
 		Serie serie = new Serie();
 		
 	    try {
-	    	PreparedStatement consulta = conexion.getConnection().prepareStatement("SELECT * FROM SERIES WHERE cod_seRIE='" + codSerie +"'");
+	    	PreparedStatement consulta = conexion.getConnection().prepareStatement("SELECT * FROM SERIES WHERE cod_serie='" + codSerie +"'");
 	    	ResultSet res = consulta.executeQuery();
 	    	while(res.next()){
 	    		serie.setCodSerie(res.getLong("cod_serie"));
