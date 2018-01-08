@@ -1,7 +1,8 @@
 package impl.services;
 
-import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 import abs.managers.ILocalManager;
 import abs.services.IGetAndListService;
@@ -22,7 +23,7 @@ public class GetAndListSvc implements IGetAndListService {
 	}
 
 	@Override
-	public List<String> listSeriesNames() {
+	public Map<String, Long> listSeriesNames() {
 		
 		// Comprueba existen series
 		List<Serie> series = localManager.listSeries();
@@ -30,9 +31,9 @@ public class GetAndListSvc implements IGetAndListService {
 			throw new NoSeriesStoredException();
 
 		// Crea lista nombres series
-		List<String> seriesNames = new LinkedList<>();
+		Map<String, Long> seriesNames = new TreeMap<>();
 		for (Serie serie : localManager.listSeries())
-			seriesNames.add(serie.getSeriesName());
+			seriesNames.put(serie.getSeriesName(), serie.getCodSerie());
 		
 		return seriesNames;
 	}

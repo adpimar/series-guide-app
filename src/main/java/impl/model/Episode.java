@@ -138,17 +138,16 @@ public class Episode {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 
-		sb.append("[ EPISODIO ]");
-		sb.append("\nEpisodio id         : " + codEpisode);
-		sb.append("\nTemporada id        : " + codSeason);
-		sb.append("\nNúmero de temporada : " + airedSeason);
-		sb.append("\nNúmero de episodio  : " + airedEpisode);
-		sb.append("\nTítulo              : " + episodeName);
-		sb.append("\nfechaEmision        : " + firstAired);
-		sb.append("\nSinopsis            : " + overview);
-		sb.append("\nVisto               : " + seen);
-		sb.append("\nComentario          : " + comment);
-		sb.append("\n");
+		sb.append(" [ EPISODIO ]");
+		sb.append("\n  Episodio id         : " + codEpisode);
+		sb.append("\n  Temporada id        : " + codSeason);
+		sb.append("\n  Número de temporada : " + airedSeason);
+		sb.append("\n  Número de episodio  : " + airedEpisode);
+		sb.append("\n  Título              : " + episodeName);
+		sb.append("\n  Fecha de emisión    : " + firstAired);
+		sb.append("\n  Sinopsis            : " + overview);
+		sb.append("\n  Visto               : " + seen);
+		sb.append("\n  Comentario          : " + comment);
 
 		return sb.toString();
 	}

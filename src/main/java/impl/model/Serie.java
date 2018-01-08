@@ -198,19 +198,18 @@ public class Serie {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		
-		sb.append("[ SERIE ]");
-		sb.append("\nId                 : " + codSerie);
-		sb.append("\nTítulo             : " + seriesName);
-		sb.append("\nEstado             : " + status);
-		sb.append("\nInicio de emisión  : " + firstAired);
-		sb.append("\nDía de emisión     : " + airsDOW);
-		sb.append("\nHorario de emisión : " + airsTime);
-		sb.append("\nCadena             : " + network);
-		sb.append("\nGéneros            : " + genres);
-		sb.append("\nPuntuación         : " + siteRating);
-		sb.append("\nTotal puntuaciones : " + siteRatingCount);
-		sb.append("\nSinopsis           : " + overview);
-		sb.append("\n");
+		sb.append(" [ SERIE ]");
+		sb.append("\n  Id                 : " + codSerie);
+		sb.append("\n  Título             : " + seriesName);
+		sb.append("\n  Estado             : " + status);
+		sb.append("\n  Inicio de emisión  : " + firstAired);
+		sb.append("\n  Día de emisión     : " + airsDOW);
+		sb.append("\n  Horario de emisión : " + airsTime);
+		sb.append("\n  Cadena             : " + network);
+		sb.append("\n  Géneros            : " + genres);
+		sb.append("\n  Puntuación         : " + siteRating);
+		sb.append("\n  Total puntuaciones : " + siteRatingCount);
+		sb.append("\n  Sinopsis           : " + overview);
 		
 		return sb.toString();
 	}

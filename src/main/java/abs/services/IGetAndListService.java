@@ -1,6 +1,7 @@
 package abs.services;
 
 import java.util.List;
+import java.util.Map;
 
 import abs.managers.ISetLocalManager;
 import impl.model.Episode;
@@ -9,7 +10,7 @@ import impl.model.Serie;
 
 public interface IGetAndListService extends ISetLocalManager {
 	
-	List<String> listSeriesNames();
+	Map<String, Long> listSeriesNames();
 		
 	String[] listSerieSeasonsEpisodesNames(long codSerie, int airedSeason);
 
