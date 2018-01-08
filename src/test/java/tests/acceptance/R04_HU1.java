@@ -42,7 +42,7 @@ public class R04_HU1 extends AcceptanceTest {
 		};
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R04_1_1_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R04_1_1_1.getFakeLocalManager());
 		
 		// When
 		String[] resultReturned = seriesGuideApp.listSerieSeasonsEpisodesNames(321060, 1);
@@ -71,7 +71,7 @@ public class R04_HU1 extends AcceptanceTest {
 		};
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R04_1_1_2.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R04_1_1_2.getFakeLocalManager());
 		
 		// When
 		String[] resultReturned = seriesGuideApp.listSerieSeasonsEpisodesNames(321060, 1);
@@ -101,7 +101,7 @@ public class R04_HU1 extends AcceptanceTest {
 		};
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R04_1_1_3.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R04_1_1_3.getFakeLocalManager());
 		
 		// When
 		String[] resultReturned = seriesGuideApp.listSerieSeasonsEpisodesNames(260449, 1);
@@ -127,7 +127,7 @@ public class R04_HU1 extends AcceptanceTest {
 		thrown.expect(NoSeasonsStoredException.class);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R04_1_2_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R04_1_2_1.getFakeLocalManager());
 		
 		// When
 		seriesGuideApp.listSerieSeasonsEpisodesNames(321060, 1);
@@ -149,7 +149,7 @@ public class R04_HU1 extends AcceptanceTest {
 		thrown.expect(NoSeriesStoredException.class);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R04_1_3_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R04_1_3_1.getFakeLocalManager());
 		
 		// When
 		seriesGuideApp.listSerieSeasonsEpisodesNames(321060, 1);

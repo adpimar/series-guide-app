@@ -71,7 +71,7 @@ public class ListSeriesNamesTest {
 	public void listarTitulosSeries_UnaSerieAlmacenada_Listado() {
 		
 		// Arrange
-		getAndListService.setLocalManager(FactoryLocalManagers.R01_1_2_1.getLocalManager());
+		getAndListService.setLocalManager(FactoryLocalManagers.R01_1_2_1.getFakeLocalManager());
 		List<String> resultExpected = Arrays.asList(
 				"The OA"
 		);
@@ -91,7 +91,7 @@ public class ListSeriesNamesTest {
 		
 		// Arrange
 		thrown.expect(NoSeriesStoredException.class);
-		getAndListService.setLocalManager(FactoryLocalManagers.R01_1_3_1.getLocalManager());
+		getAndListService.setLocalManager(FactoryLocalManagers.R01_1_3_1.getFakeLocalManager());
 		
 		// Act
 		getAndListService.listSeriesNames();

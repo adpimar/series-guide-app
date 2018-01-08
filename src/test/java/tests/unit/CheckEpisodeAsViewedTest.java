@@ -54,7 +54,7 @@ public class CheckEpisodeAsViewedTest {
 	public void indicarVistoEpisodio_UnicoNoVisto_EpisodioVistoTemporadaVista() {
 
 		// Arrange
-		ILocalManager localManager = FactoryLocalManagers.R07_1_1_1.getLocalManager();
+		ILocalManager localManager = FactoryLocalManagers.R07_1_1_1.getFakeLocalManager();
 		checkAsViewedService.setLocalManager(localManager);
 
 		// Act
@@ -72,7 +72,7 @@ public class CheckEpisodeAsViewedTest {
 	public void indicarVistoEpisodio_NoUnicoNoVisto_EpisodioVistoTemporadaNoVista() {
 
 		// Arrange
-		ILocalManager localManager = FactoryLocalManagers.R07_1_1_2.getLocalManager();
+		ILocalManager localManager = FactoryLocalManagers.R07_1_1_2.getFakeLocalManager();
 		checkAsViewedService.setLocalManager(localManager);
 
 		// Act
@@ -90,7 +90,7 @@ public class CheckEpisodeAsViewedTest {
 	public void indicarVistoEpisodio_VistoNoComentado_EpisodioVisto() {
 
 		// Arrange
-		ILocalManager localManager = FactoryLocalManagers.R07_1_2_1.getLocalManager();
+		ILocalManager localManager = FactoryLocalManagers.R07_1_2_1.getFakeLocalManager();
 		checkAsViewedService.setLocalManager(localManager);
 
 		// Act
@@ -107,7 +107,7 @@ public class CheckEpisodeAsViewedTest {
 	public void indicarVistoEpisodio_VistoComentado_EpisodioVisto() {
 
 		// Arrange
-		ILocalManager localManager = FactoryLocalManagers.R07_1_2_2.getLocalManager();
+		ILocalManager localManager = FactoryLocalManagers.R07_1_2_2.getFakeLocalManager();
 		checkAsViewedService.setLocalManager(localManager);
 
 		// Act
@@ -125,7 +125,7 @@ public class CheckEpisodeAsViewedTest {
 
 		// Arrange
 		thrown.expect(NoEpisodesStoredException.class);
-		checkAsViewedService.setLocalManager(FactoryLocalManagers.R07_1_3_1.getLocalManager());
+		checkAsViewedService.setLocalManager(FactoryLocalManagers.R07_1_3_1.getFakeLocalManager());
 
 		// Act
 		checkAsViewedService.checkEpisodeAsViewed(321060, 1, 2);
@@ -139,7 +139,7 @@ public class CheckEpisodeAsViewedTest {
 
 		// Arrange
 		thrown.expect(NoSeasonsStoredException.class);
-		checkAsViewedService.setLocalManager(FactoryLocalManagers.R07_1_3_2.getLocalManager());
+		checkAsViewedService.setLocalManager(FactoryLocalManagers.R07_1_3_2.getFakeLocalManager());
 
 		// Act
 		checkAsViewedService.checkEpisodeAsViewed(321060, 1, 2);
@@ -153,7 +153,7 @@ public class CheckEpisodeAsViewedTest {
 
 		// Arrange
 		thrown.expect(NoSeriesStoredException.class);
-		checkAsViewedService.setLocalManager(FactoryLocalManagers.R07_1_3_3.getLocalManager());
+		checkAsViewedService.setLocalManager(FactoryLocalManagers.R07_1_3_3.getFakeLocalManager());
 
 		// Act
 		checkAsViewedService.checkEpisodeAsViewed(321060, 1, 2);

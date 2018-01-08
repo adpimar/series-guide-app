@@ -38,7 +38,7 @@ public class R14_HU1 extends AcceptanceTest {
 	@Test
 	public void descargarTemporadaRemota_NoAlmacenadaExisteSerieRemotaExisteTemporadaRemota_TemporadaRemota() {
 
-		ILocalManager localManager = FactoryLocalManagers.R14_1_1_1.getLocalManager();
+		ILocalManager localManager = FactoryLocalManagers.R14_1_1_1.getFakeLocalManager();
 		Season resultExpected = (Season) FactoryExpectedResults.R14_1_1_1.getExpectedResult();
 		
 		// Given
@@ -61,7 +61,7 @@ public class R14_HU1 extends AcceptanceTest {
 		thrown.expect(NotFoundSeasonOnRemoteServerException.class);
 				
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R14_1_1_2.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R14_1_1_2.getFakeLocalManager());
 		
 		// When
 		seriesGuideApp.downloadRemoteSeason(321060, 4);
@@ -78,7 +78,7 @@ public class R14_HU1 extends AcceptanceTest {
 		thrown.expect(NotFoundSeasonOnRemoteServerException.class);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R14_1_1_3.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R14_1_1_3.getFakeLocalManager());
 		
 		// When
 		seriesGuideApp.downloadRemoteSeason(999999, 1);
@@ -97,7 +97,7 @@ public class R14_HU1 extends AcceptanceTest {
 	@Test
 	public void descargarTemporadaRemota_AlmacenadaConTodosEpisodios_TemporadaLocal() {
 
-		ILocalManager localManager = FactoryLocalManagers.R14_1_2_1.getLocalManager();
+		ILocalManager localManager = FactoryLocalManagers.R14_1_2_1.getFakeLocalManager();
 		Season resultExpected = (Season) FactoryExpectedResults.R14_1_2_1.getExpectedResult();
 		
 		// Given
@@ -117,7 +117,7 @@ public class R14_HU1 extends AcceptanceTest {
 	@Test
 	public void descargarTemporadaRemota_AlmacenadaConUnEpisodio_TemporadaLocal() {
 
-		ILocalManager localManager = FactoryLocalManagers.R14_1_2_2.getLocalManager();
+		ILocalManager localManager = FactoryLocalManagers.R14_1_2_2.getFakeLocalManager();
 		Season resultExpected = (Season) FactoryExpectedResults.R14_1_2_2.getExpectedResult();
 		
 		// Given
@@ -137,7 +137,7 @@ public class R14_HU1 extends AcceptanceTest {
 	@Test
 	public void descargarTemporadaRemota_AlmacenadaSinEpisodios_TemporadaLocal() {
 
-		ILocalManager localManager = FactoryLocalManagers.R14_1_2_3.getLocalManager();
+		ILocalManager localManager = FactoryLocalManagers.R14_1_2_3.getFakeLocalManager();
 		Season resultExpected = (Season) FactoryExpectedResults.R14_1_2_3.getExpectedResult();
 		
 		// Given
@@ -165,7 +165,7 @@ public class R14_HU1 extends AcceptanceTest {
 		thrown.expect(NoSeriesStoredException.class);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R14_1_3_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R14_1_3_1.getFakeLocalManager());
 		
 		// When
 		seriesGuideApp.downloadRemoteSeason(321060, 1);
@@ -187,7 +187,7 @@ public class R14_HU1 extends AcceptanceTest {
 		thrown.expect(ErrorOnRemoteServerException.class);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R14_1_4_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R14_1_4_1.getFakeLocalManager());
 		
 		// When
 		seriesGuideApp.downloadRemoteSeason(321060, 1);
@@ -204,7 +204,7 @@ public class R14_HU1 extends AcceptanceTest {
 		thrown.expect(TimeoutOnRemoteServerException.class);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R14_1_4_2.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R14_1_4_2.getFakeLocalManager());
 		
 		// When
 		seriesGuideApp.downloadRemoteSeason(321060, 1);

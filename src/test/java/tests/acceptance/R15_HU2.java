@@ -35,7 +35,7 @@ public class R15_HU2 extends AcceptanceTest {
 	public void indicarNoVistaTemporada_TemporadaNoVistaConTodosEpisodios_TemporadaNoVista() {
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R15_2_1_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R15_2_1_1.getFakeLocalManager());
 		
 		// When
 		Season resultReturned = seriesGuideApp.uncheckSeasonAsViewed(321060, 1);
@@ -55,7 +55,7 @@ public class R15_HU2 extends AcceptanceTest {
 		thrown.expect(NoEpisodesStoredException.class);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R15_2_1_2.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R15_2_1_2.getFakeLocalManager());
 		
 		// When
 		seriesGuideApp.uncheckSeasonAsViewed(321060, 1);
@@ -72,7 +72,7 @@ public class R15_HU2 extends AcceptanceTest {
 		thrown.expect(NoEpisodesStoredException.class);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R15_2_1_3.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R15_2_1_3.getFakeLocalManager());
 		
 		// When
 		seriesGuideApp.uncheckSeasonAsViewed(321060, 1);
@@ -87,7 +87,7 @@ public class R15_HU2 extends AcceptanceTest {
 	public void indicarNoVistaTemporada_TemporadaVista_TemporadaNoVista() {
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R15_2_1_4.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R15_2_1_4.getFakeLocalManager());
 		
 		// When
 		Season resultReturned = seriesGuideApp.uncheckSeasonAsViewed(321060, 1);
@@ -112,7 +112,7 @@ public class R15_HU2 extends AcceptanceTest {
 		thrown.expect(NoSeasonsStoredException.class);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R15_2_2_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R15_2_2_1.getFakeLocalManager());
 		
 		// When
 		seriesGuideApp.uncheckSeasonAsViewed(321060, 1);
@@ -129,7 +129,7 @@ public class R15_HU2 extends AcceptanceTest {
 		thrown.expect(NoSeriesStoredException.class);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R15_2_2_2.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R15_2_2_2.getFakeLocalManager());
 		
 		// When
 		seriesGuideApp.uncheckSeasonAsViewed(321060, 1);

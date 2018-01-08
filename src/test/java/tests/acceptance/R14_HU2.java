@@ -36,7 +36,7 @@ public class R14_HU2 extends AcceptanceTest {
 		thrown.expect(NoSeriesStoredException.class);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R14_2_1_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R14_2_1_1.getFakeLocalManager());
 		
 		// When
 		seriesGuideApp.storeRemoteSeason((Season) FactoryMocks.R14_2_1_1.getMock());
@@ -55,7 +55,7 @@ public class R14_HU2 extends AcceptanceTest {
 	@Test
 	public void almacenarTemporadaRemota_NoAlmacenadaSerieSinTemporadas_TemporadaAlmacenada() {
 		
-		ILocalManager localManager = FactoryLocalManagers.R14_2_2_1.getLocalManager();
+		ILocalManager localManager = FactoryLocalManagers.R14_2_2_1.getFakeLocalManager();
 		Season mockSeason = (Season) FactoryMocks.R14_2_2_1.getMock();
 		Season resultExpected = (Season) FactoryExpectedResults.R14_2_2_1.getExpectedResult();
 		
@@ -75,7 +75,7 @@ public class R14_HU2 extends AcceptanceTest {
 	@Test
 	public void almacenarTemporadaRemota_NoAlmacenadaSerieConTemporadas_TemporadaAlmacenada() {
 
-		ILocalManager localManager = FactoryLocalManagers.R14_2_2_2.getLocalManager();
+		ILocalManager localManager = FactoryLocalManagers.R14_2_2_2.getFakeLocalManager();
 		Season mockSeason = (Season) FactoryMocks.R14_2_2_2.getMock();
 		Season resultExpected = (Season) FactoryExpectedResults.R14_2_2_2.getExpectedResult();
 		
@@ -103,7 +103,7 @@ public class R14_HU2 extends AcceptanceTest {
 		thrown.expect(NoSeriesStoredException.class);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R14_2_3_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R14_2_3_1.getFakeLocalManager());
 		
 		// When
 		seriesGuideApp.storeRemoteSeason((Season) FactoryMocks.R14_2_3_1.getMock());

@@ -59,7 +59,7 @@ public class ListSerieSeasonEpisodesNamesTest {
 				"Empire of Light",
 				"Invisible Self"
 		};
-		getAndListService.setLocalManager(FactoryLocalManagers.R04_1_1_1.getLocalManager());
+		getAndListService.setLocalManager(FactoryLocalManagers.R04_1_1_1.getFakeLocalManager());
 		
 		// Act
 		String[] resultReturned = getAndListService.listSerieSeasonsEpisodesNames(321060, 1);
@@ -85,7 +85,7 @@ public class ListSerieSeasonEpisodesNamesTest {
 				null,
 				null
 		};
-		getAndListService.setLocalManager(FactoryLocalManagers.R04_1_1_2.getLocalManager());
+		getAndListService.setLocalManager(FactoryLocalManagers.R04_1_1_2.getFakeLocalManager());
 		
 		// Act
 		String[] resultReturned = getAndListService.listSerieSeasonsEpisodesNames(321060, 1);
@@ -112,7 +112,7 @@ public class ListSerieSeasonEpisodesNamesTest {
 				null,
 				null
 		};
-		getAndListService.setLocalManager(FactoryLocalManagers.R04_1_1_3.getLocalManager());
+		getAndListService.setLocalManager(FactoryLocalManagers.R04_1_1_3.getFakeLocalManager());
 		
 		// Act
 		String[] resultReturned = getAndListService.listSerieSeasonsEpisodesNames(260449, 1);
@@ -129,7 +129,7 @@ public class ListSerieSeasonEpisodesNamesTest {
 		
 		// Arrange
 		thrown.expect(NoSeasonsStoredException.class);
-		getAndListService.setLocalManager(FactoryLocalManagers.R04_1_2_1.getLocalManager());
+		getAndListService.setLocalManager(FactoryLocalManagers.R04_1_2_1.getFakeLocalManager());
 		
 		// Act
 		getAndListService.listSerieSeasonsEpisodesNames(321060, 1);
@@ -143,7 +143,7 @@ public class ListSerieSeasonEpisodesNamesTest {
 			
 		// Arrange
 		thrown.expect(NoSeriesStoredException.class);
-		getAndListService.setLocalManager(FactoryLocalManagers.R04_1_3_1.getLocalManager());
+		getAndListService.setLocalManager(FactoryLocalManagers.R04_1_3_1.getFakeLocalManager());
 		
 		// Act
 		getAndListService.listSerieSeasonsEpisodesNames(321060, 1);

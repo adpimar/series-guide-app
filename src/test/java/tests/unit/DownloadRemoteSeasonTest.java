@@ -73,7 +73,7 @@ public class DownloadRemoteSeasonTest {
 	public void descargarTemporadaRemota_NoAlmacenadaExisteSerieRemotaExisteTemporadaRemota_TemporadaRemota() {
 		
 		// Arrange
-		ILocalManager localManager = FactoryLocalManagers.R14_1_1_1.getLocalManager();
+		ILocalManager localManager = FactoryLocalManagers.R14_1_1_1.getFakeLocalManager();
 		Season mockSeason = (Season) FactoryMocks.R14_1_1_1.getMock();
 		Season resultExpected = (Season) FactoryExpectedResults.R14_1_1_1.getExpectedResult();
 		downloadAndStoreService.setLocalManager(localManager);
@@ -93,7 +93,7 @@ public class DownloadRemoteSeasonTest {
 			
 		// Arrange
 		thrown.expect(NotFoundSeasonOnRemoteServerException.class);
-		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R14_1_1_2.getLocalManager());
+		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R14_1_1_2.getFakeLocalManager());
 		
 		// Act
 		when(remoteManager.getRemoteSeason(321060, 4)).thenThrow(NotFoundOnRemoteServerException.class);
@@ -108,7 +108,7 @@ public class DownloadRemoteSeasonTest {
 		
 		// Arrange
 		thrown.expect(NotFoundSeasonOnRemoteServerException.class);
-		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R14_1_1_3.getLocalManager());
+		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R14_1_1_3.getFakeLocalManager());
 		
 		// Act
 		when(remoteManager.getRemoteSeason(999999, 1)).thenThrow(NotFoundOnRemoteServerException.class);
@@ -123,7 +123,7 @@ public class DownloadRemoteSeasonTest {
 
 		
 		// Arrange
-		ILocalManager localManager = FactoryLocalManagers.R14_1_2_1.getLocalManager();
+		ILocalManager localManager = FactoryLocalManagers.R14_1_2_1.getFakeLocalManager();
 		Season resultExpected = (Season) FactoryExpectedResults.R14_1_2_1.getExpectedResult();
 		downloadAndStoreService.setLocalManager(localManager);
 		
@@ -140,7 +140,7 @@ public class DownloadRemoteSeasonTest {
 	public void descargarTemporadaRemota_AlmacenadaConUnEpisodio_TemporadaLocal() {
 
 		// Arrange
-		ILocalManager localManager = FactoryLocalManagers.R14_1_2_2.getLocalManager();
+		ILocalManager localManager = FactoryLocalManagers.R14_1_2_2.getFakeLocalManager();
 		Season resultExpected = (Season) FactoryExpectedResults.R14_1_2_2.getExpectedResult();
 		downloadAndStoreService.setLocalManager(localManager);
 		
@@ -157,7 +157,7 @@ public class DownloadRemoteSeasonTest {
 	public void descargarTemporadaRemota_AlmacenadaSinEpisodios_TemporadaLocal() {
 	
 		// Arrange
-		ILocalManager localManager = FactoryLocalManagers.R14_1_2_3.getLocalManager();
+		ILocalManager localManager = FactoryLocalManagers.R14_1_2_3.getFakeLocalManager();
 		Season resultExpected = (Season) FactoryExpectedResults.R14_1_2_3.getExpectedResult();
 		downloadAndStoreService.setLocalManager(localManager);
 		
@@ -175,7 +175,7 @@ public class DownloadRemoteSeasonTest {
 	
 		// Arrange
 		thrown.expect(NoSeriesStoredException.class);
-		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R14_1_3_1.getLocalManager());
+		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R14_1_3_1.getFakeLocalManager());
 		
 		// Act
 		when(remoteManager.getRemoteSeason(321060, 1)).thenThrow(NoSeriesStoredException.class);
@@ -190,7 +190,7 @@ public class DownloadRemoteSeasonTest {
 		
 		// Arrange
 		thrown.expect(ErrorOnRemoteServerException.class);
-		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R14_1_4_1.getLocalManager());
+		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R14_1_4_1.getFakeLocalManager());
 		
 		// Act
 		when(remoteManager.getRemoteSeason(321060, 1)).thenThrow(ErrorOnRemoteServerException.class);
@@ -205,7 +205,7 @@ public class DownloadRemoteSeasonTest {
 		
 		// Arrange
 		thrown.expect(TimeoutOnRemoteServerException.class);
-		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R14_1_4_2.getLocalManager());
+		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R14_1_4_2.getFakeLocalManager());
 		
 		// Act
 		when(remoteManager.getRemoteSeason(321060, 1)).thenThrow(TimeoutOnRemoteServerException.class);

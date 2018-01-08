@@ -55,7 +55,7 @@ public class CommentEpisodeViewedTest {
 		
 		// Arrange
 		thrown.expect(NoEpisodeCheckedAsViewedException.class);
-		checkAsViewedService.setLocalManager(FactoryLocalManagers.R07_2_1_1.getLocalManager());
+		checkAsViewedService.setLocalManager(FactoryLocalManagers.R07_2_1_1.getFakeLocalManager());
 		
 		// Act
 		checkAsViewedService.commentEpisodeViewed(321060, 1, 1, "");
@@ -69,7 +69,7 @@ public class CommentEpisodeViewedTest {
 			
 		// Arrange
 		String comment = "";
-		ILocalManager localManager = FactoryLocalManagers.R07_2_2_1.getLocalManager();
+		ILocalManager localManager = FactoryLocalManagers.R07_2_2_1.getFakeLocalManager();
 		checkAsViewedService.setLocalManager(localManager);
 		
 		// Act
@@ -87,7 +87,7 @@ public class CommentEpisodeViewedTest {
 
 		// Arrange
 		String comment = "¡Qué gran episodio! El mejor de la temporada hasta el momento.";
-		ILocalManager localManager = FactoryLocalManagers.R07_2_2_2.getLocalManager();
+		ILocalManager localManager = FactoryLocalManagers.R07_2_2_2.getFakeLocalManager();
 		checkAsViewedService.setLocalManager(localManager);
 		
 		// Act
@@ -110,7 +110,7 @@ public class CommentEpisodeViewedTest {
 				+ " Esperaba bastante más. Todo pasa de forma muy lenta y me he aburrido "
 				+ "demasiado. ¡Qué me devuelvan mi tiempo perdido!";
 		thrown.expect(TooLongCommentException.class);
-		checkAsViewedService.setLocalManager(FactoryLocalManagers.R07_2_2_3.getLocalManager());
+		checkAsViewedService.setLocalManager(FactoryLocalManagers.R07_2_2_3.getFakeLocalManager());
 
 		// Act		
 		checkAsViewedService.commentEpisodeViewed(321060, 1, 2, comment);
@@ -124,7 +124,7 @@ public class CommentEpisodeViewedTest {
 		
 		// Arrange
 		String comment = "¡Ya no me gusta!";
-		ILocalManager localManager = FactoryLocalManagers.R07_2_3_1.getLocalManager();
+		ILocalManager localManager = FactoryLocalManagers.R07_2_3_1.getFakeLocalManager();
 		checkAsViewedService.setLocalManager(localManager);
 		
 		// Act
@@ -142,7 +142,7 @@ public class CommentEpisodeViewedTest {
 		
 		// Arrange
 		thrown.expect(NoEpisodesStoredException.class);
-		checkAsViewedService.setLocalManager(FactoryLocalManagers.R07_2_4_1.getLocalManager());
+		checkAsViewedService.setLocalManager(FactoryLocalManagers.R07_2_4_1.getFakeLocalManager());
 
 		// Act		
 		checkAsViewedService.commentEpisodeViewed(321060, 1, 2, "");
@@ -156,7 +156,7 @@ public class CommentEpisodeViewedTest {
 		
 		// Arrange
 		thrown.expect(NoSeasonsStoredException.class);
-		checkAsViewedService.setLocalManager(FactoryLocalManagers.R07_2_4_2.getLocalManager());
+		checkAsViewedService.setLocalManager(FactoryLocalManagers.R07_2_4_2.getFakeLocalManager());
 
 		// Act		
 		checkAsViewedService.commentEpisodeViewed(321060, 1, 2, "");
@@ -170,7 +170,7 @@ public class CommentEpisodeViewedTest {
 		
 		// Arrange
 		thrown.expect(NoSeriesStoredException.class);
-		checkAsViewedService.setLocalManager(FactoryLocalManagers.R07_2_4_3.getLocalManager());
+		checkAsViewedService.setLocalManager(FactoryLocalManagers.R07_2_4_3.getFakeLocalManager());
 
 		// Act		
 		checkAsViewedService.commentEpisodeViewed(321060, 1, 2, "");

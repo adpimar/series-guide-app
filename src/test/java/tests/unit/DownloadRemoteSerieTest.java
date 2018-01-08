@@ -69,7 +69,7 @@ public class DownloadRemoteSerieTest {
 	public void descargarSerieRemota_NoAlmacenadaExisteSerieRemota_SerieDescargada() {
 		
 		// Arrange
-		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R13_1_1_1.getLocalManager());
+		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R13_1_1_1.getFakeLocalManager());
 		
 		// Act
 		when(remoteManager.getRemoteSerie(121361)).thenReturn((Serie) FactoryMocks.R13_1_1_1.getMock());
@@ -87,7 +87,7 @@ public class DownloadRemoteSerieTest {
 		
 		// Arrange
 		thrown.expect(NotFoundSerieOnRemoteServerException.class);
-		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R13_1_1_2.getLocalManager());
+		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R13_1_1_2.getFakeLocalManager());
 		
 		// Act
 		when(remoteManager.getRemoteSerie(999999)).thenThrow(new NotFoundOnRemoteServerException());
@@ -101,7 +101,7 @@ public class DownloadRemoteSerieTest {
 	public void descargarSerieRemota_AlmacenadaExisteSerie_SerieLocal() {
 				
 		// Arrange
-		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R13_1_2_1.getLocalManager());
+		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R13_1_2_1.getFakeLocalManager());
 		
 		// Act
 		Serie resultReturned = downloadAndStoreService.downloadRemoteSerie(121361);
@@ -117,7 +117,7 @@ public class DownloadRemoteSerieTest {
 
 		// Arrange
 		thrown.expect(ErrorOnRemoteServerException.class);
-		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R13_1_3_1.getLocalManager());
+		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R13_1_3_1.getFakeLocalManager());
 		
 		// Act
 		when(remoteManager.getRemoteSerie(121361)).thenThrow(new ErrorOnRemoteServerException());
@@ -132,7 +132,7 @@ public class DownloadRemoteSerieTest {
 		
 		// Arrange
 		thrown.expect(TimeoutOnRemoteServerException.class);
-		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R13_1_3_2.getLocalManager());
+		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R13_1_3_2.getFakeLocalManager());
 		
 		// Act
 		when(remoteManager.getRemoteSerie(121361)).thenThrow(new TimeoutOnRemoteServerException());

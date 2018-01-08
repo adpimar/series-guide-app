@@ -47,7 +47,7 @@ public class DeleteSerieTest {
 	public void eliminarSerie_ConVariasTemporadas_SerieBorrada() {
 		
 		// Arrange
-		ILocalManager localManager = FactoryLocalManagers.R10_1_1_1.getLocalManager();
+		ILocalManager localManager = FactoryLocalManagers.R10_1_1_1.getFakeLocalManager();
 		deleteService.setLocalManager(localManager);
 		
 		// Act
@@ -62,7 +62,7 @@ public class DeleteSerieTest {
 	public void eliminarSerie_ConUnaTemporada_SerieBorrada() {
 		
 		// Arrange
-		ILocalManager localManager = FactoryLocalManagers.R10_1_1_2.getLocalManager();
+		ILocalManager localManager = FactoryLocalManagers.R10_1_1_2.getFakeLocalManager();
 		deleteService.setLocalManager(localManager);
 		
 		// Act
@@ -77,7 +77,7 @@ public class DeleteSerieTest {
 	public void eliminarSerie_SinTemporadas_SerieBorrada() {
 		
 		// Arrange
-		ILocalManager localManager = FactoryLocalManagers.R10_1_1_3.getLocalManager();
+		ILocalManager localManager = FactoryLocalManagers.R10_1_1_3.getFakeLocalManager();
 		deleteService.setLocalManager(localManager);
 		
 		// Act
@@ -93,7 +93,7 @@ public class DeleteSerieTest {
 				
 		// Arrange
 		thrown.expect(NoSeriesStoredException.class);
-		deleteService.setLocalManager(FactoryLocalManagers.R10_1_1_4.getLocalManager());
+		deleteService.setLocalManager(FactoryLocalManagers.R10_1_1_4.getFakeLocalManager());
 		
 		// Act
 		deleteService.deleteSerie(321060);
@@ -106,7 +106,7 @@ public class DeleteSerieTest {
 	public void eliminarSerie_VariasSeriesAlmacenadas_SerieBorrada() {
 		
 		// Arrange
-		ILocalManager localManager = FactoryLocalManagers.R10_1_2_1.getLocalManager();
+		ILocalManager localManager = FactoryLocalManagers.R10_1_2_1.getFakeLocalManager();
 		deleteService.setLocalManager(localManager);
 		
 		// Act
