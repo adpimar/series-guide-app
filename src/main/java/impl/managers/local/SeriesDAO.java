@@ -14,6 +14,12 @@ import impl.model.Serie;
 
 public class SeriesDAO implements ILocalManager {
 
+	
+	public SeriesDAO(String path) {
+		
+		
+	}
+	
 	@Override
 	public List<Serie> listSeries() {
 		List<Serie> misSeries = new ArrayList<Serie>();
@@ -43,7 +49,7 @@ public class SeriesDAO implements ILocalManager {
 	    	conexion.disconnect();
 	    	
 	    } catch (Exception e) {
-	    	System.out.println("Error: Clase SeriesDAO, método listSeries()");
+	    	System.out.println("Error: Clase SeriesDAO, mï¿½todo listSeries()");
 	    	e.printStackTrace();
 	    }
 	    
@@ -53,8 +59,36 @@ public class SeriesDAO implements ILocalManager {
 
 	@Override
 	public Serie getSerie(long codSerie) {
-		// TODO Auto-generated method stub
-		return null;
+		MySQLConnect conexion = new MySQLConnect();
+	     
+		Serie serie = new Serie();
+		
+	    try {
+	    	PreparedStatement consulta = conexion.getConnection().prepareStatement("SELECT * FROM SERIES WHERE cod_seRIE='" + codSerie +"'");
+	    	ResultSet res = consulta.executeQuery();
+	    	while(res.next()){
+	    		serie.setCodSerie(res.getLong("cod_serie"));
+	    		serie.setSeriesName(res.getString("series_name"));
+	    		serie.setStatus(res.getString("status"));
+	    		serie.setFirstAired(res.getString("first_aired"));
+	    		serie.setAirsDOW(res.getString("airs_dow"));
+	    		serie.setAirsTime(res.getString("airs_time"));
+	    		serie.setNetwork(res.getString("network"));
+	    		serie.setGenres(res.getString("genres"));
+	    		serie.setSiteRating(Double.parseDouble(res.getString("site_rating")));
+	    		serie.setSiteRatingCount(Integer.parseInt(res.getString("site_rating_count")));
+	    		serie.setOverview(res.getString("overview"));
+	    	}
+	    	res.close();
+	    	consulta.close();
+	    	conexion.disconnect();
+	    	
+	    } catch (Exception e) {
+	    	System.out.println("Error: Clase SeriesDAO, mï¿½todo getSerie()");
+	    	e.printStackTrace();
+	    }
+	    
+	    return serie;
 	}
 
 	@Override
@@ -80,7 +114,7 @@ public class SeriesDAO implements ILocalManager {
 			 stm=connect.createStatement();
 			 stm.execute(sql);
 		 } catch (SQLException e) {
-			 System.out.println("Error: Clase SeriesDAO, método updateSerie(serie)");
+			 System.out.println("Error: Clase SeriesDAO, mï¿½todo updateSerie(serie)");
 			 e.printStackTrace();
 		 }		
 	}
@@ -96,7 +130,7 @@ public class SeriesDAO implements ILocalManager {
 			stm=connect.createStatement();
 			stm.execute(sql);
 		} catch (SQLException e) {
-			System.out.println("Error: Clase SeriesDAO, método removeSerie(serie)");
+			System.out.println("Error: Clase SeriesDAO, mï¿½todo removeSerie(serie)");
 			e.printStackTrace();
 		}		
 
@@ -104,6 +138,7 @@ public class SeriesDAO implements ILocalManager {
 
 	@Override
 	public List<Season> listSeasons() {
+/*
 		List<Season> misTemporadas = new ArrayList<Season>();
 	    MySQLConnect conexion = new MySQLConnect();
 	     
@@ -126,17 +161,42 @@ public class SeriesDAO implements ILocalManager {
 	    	conexion.disconnect();
 	    	
 	    } catch (Exception e) {
-	    	System.out.println("Error: Clase SeriesDAO, método listSeasons()");
+	    	System.out.println("Error: Clase SeriesDAO, mï¿½todo listSeasons()");
 	    	e.printStackTrace();
 	    }
 	    
 	    return misTemporadas;
+*/
+		return null;
 	}
 
 	@Override
 	public Season getSeason(long codSeason) {
-		// TODO Auto-generated method stub
-		return null;
+		MySQLConnect conexion = new MySQLConnect();
+	     
+		Season temporada = new Season();
+		
+	    try {
+	    	PreparedStatement consulta = conexion.getConnection().prepareStatement("SELECT * FROM TEMPORADAS WHERE cod_season='" + codSeason +"'");
+	    	ResultSet res = consulta.executeQuery();
+	    	while(res.next()){
+	    		temporada.setCodSerie(res.getLong("cod_serie"));
+	    		temporada.setCodSeason(res.getLong("cod_season"));
+	    		temporada.setAiredSeason(Integer.parseInt(res.getString("aired_season")));
+	    		temporada.setFirstAired(res.getString("first_aired"));
+	    		temporada.setTotalEpisodes(Integer.parseInt(res.getString("total_episodes")));
+	    		temporada.setSeen(Boolean.parseBoolean(res.getString("seen")));  		
+	    	}
+	    	res.close();
+	    	consulta.close();
+	    	conexion.disconnect();
+	    	
+	    } catch (Exception e) {
+	    	System.out.println("Error: Clase SeriesDAO, mÃ©todo getSeason()");
+	    	e.printStackTrace();
+	    }
+	    
+	    return temporada;
 	}
 
 	@Override
@@ -156,7 +216,7 @@ public class SeriesDAO implements ILocalManager {
 			 stm=connect.createStatement();
 			 stm.execute(sql);
 		 } catch (SQLException e) {
-			 System.out.println("Error: Clase SeriesDAO, método updateSeason(season)");
+			 System.out.println("Error: Clase SeriesDAO, mÃ©todo updateSeason(season)");
 			 e.printStackTrace();
 		 }		
 
@@ -173,7 +233,7 @@ public class SeriesDAO implements ILocalManager {
 			stm=connect.createStatement();
 			stm.execute(sql);
 		} catch (SQLException e) {
-			System.out.println("Error: Clase SeriesDAO, método removeSeason(season)");
+			System.out.println("Error: Clase SeriesDAO, mÃ©todo removeSeason(season)");
 			e.printStackTrace();
 		}		
 
@@ -187,8 +247,34 @@ public class SeriesDAO implements ILocalManager {
 
 	@Override
 	public Episode getEpisode(long codEpisode) {
-		// TODO Auto-generated method stub
-		return null;
+		MySQLConnect conexion = new MySQLConnect();
+	     
+		Episode episodio = new Episode();
+		
+	    try {
+	    	PreparedStatement consulta = conexion.getConnection().prepareStatement("SELECT * FROM EPISODIOS WHERE cod_episode='" + codEpisode +"'");
+	    	ResultSet res = consulta.executeQuery();
+	    	while(res.next()){
+	    		episodio.setCodEpisode(res.getLong("cod_episode"));
+	    		episodio.setCodSeason(res.getLong("cod_season"));
+	    		episodio.setAiredSeason(Integer.parseInt(res.getString("aired_season")));
+	    		episodio.setAiredEpisode(Integer.parseInt(res.getString("aired_episode")));
+	    		episodio.setEpisodeName(res.getString("episode_name"));
+	    		episodio.setFirstAired(res.getString("first_aired"));
+	    		episodio.setOverview(res.getString("overview"));
+	    		episodio.setSeen(Boolean.parseBoolean(res.getString("seen")));
+	    		episodio.setComment(res.getString("comment"));	    		
+	    	}
+	    	res.close();
+	    	consulta.close();
+	    	conexion.disconnect();
+	    	
+	    } catch (Exception e) {
+	    	System.out.println("Error: Clase SeriesDAO, mÃ©todo getEpisode()");
+	    	e.printStackTrace();
+	    }
+	    
+	    return episodio;
 	}
 
 	@Override
@@ -211,7 +297,7 @@ public class SeriesDAO implements ILocalManager {
 			 stm=connect.createStatement();
 			 stm.execute(sql);
 		 } catch (SQLException e) {
-			 System.out.println("Error: Clase SeriesDAO, método updateEpisode(episode)");
+			 System.out.println("Error: Clase SeriesDAO, mï¿½todo updateEpisode(episode)");
 			 e.printStackTrace();
 		 }	
 
@@ -228,7 +314,7 @@ public class SeriesDAO implements ILocalManager {
 			stm=connect.createStatement();
 			stm.execute(sql);
 		} catch (SQLException e) {
-			System.out.println("Error: Clase SeriesDAO, método removeEpisode(episode)");
+			System.out.println("Error: Clase SeriesDAO, mï¿½todo removeEpisode(episode)");
 			e.printStackTrace();
 		}		
 
@@ -236,20 +322,56 @@ public class SeriesDAO implements ILocalManager {
 
 	@Override
 	public void addSerie(Serie serie) {
-		// TODO Auto-generated method stub
+		MySQLConnect conexion = new MySQLConnect();
+		Statement stm= null;
+
+		String sql="INSERT INTO SERIES values ('"+serie.getCodSerie()+"','"+serie.getSeriesName()+"','"+serie.getStatus()+"','"+serie.getFirstAired()+"','"+serie.getAirsDOW()+"','"+serie.getAirsTime()+"','"+serie.getNetwork()+"','"+serie.getGenres()+"','"+serie.getSiteRating()+"','"+serie.getSiteRatingCount()+"','"+serie.getOverview()+"')";
 		
+		List<Season> temporadas = serie.getSeasons();
+		for(int i = 0; i < temporadas.size()-1; i++) {
+			addSeason(temporadas.get(i));
+		}
+
+		try {			
+			Connection connect = conexion.getConnection();
+			stm= connect.createStatement();
+			stm.execute(sql);
+			stm.close();
+			connect.close();
+		} catch (SQLException e) {
+			System.out.println("Error: Clase SeriesDAO, mï¿½todo addSeason(season)");
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public void addSeason(Season season) {
-		// TODO Auto-generated method stub
+		MySQLConnect conexion = new MySQLConnect();
+		Statement stm= null;
+
+		String sql="INSERT INTO TEMPORADAS values ('"+season.getCodSerie()+"','"+season.getCodSeason()+"','"+season.getAiredSeason()+"','"+season.getFirstAired()+"','"+season.getTotalEpisodes()+"','"+season.isSeen()+"')";
 		
+		Episode[] episodios = season.getEpisodes();
+		for(int i = 0; i < episodios.length-1; i++) {
+			addEpisode(episodios[i]);
+		}
+
+		try {			
+			Connection connect = conexion.getConnection();
+			stm= connect.createStatement();
+			stm.execute(sql);
+			stm.close();
+			connect.close();
+		} catch (SQLException e) {
+			System.out.println("Error: Clase SeriesDAO, mï¿½todo addSeason(season)");
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public void addEpisode(Episode episode) {
-		Statement stm= null;
 		MySQLConnect conexion = new MySQLConnect();
+		Statement stm= null;
 		
 		String sql="INSERT INTO EPISODIOS values ('"+episode.getCodEpisode()+"','"+episode.getCodSeason()+"','"+episode.getAiredSeason()+"','"+episode.getAiredEpisode()+"','"+episode.getEpisodeName()+"','"+episode.getFirstAired()+"','"+episode.getOverview()+"','"+episode.isSeen()+"','"+episode.getComment()+"')";
 		
@@ -260,7 +382,7 @@ public class SeriesDAO implements ILocalManager {
 			stm.close();
 			connect.close();
 		} catch (SQLException e) {
-			System.out.println("Error: Clase SeriesDAO, método addEpisode(episode)");
+			System.out.println("Error: Clase SeriesDAO, mï¿½todo addEpisode(episode)");
 			e.printStackTrace();
 		}
 		
