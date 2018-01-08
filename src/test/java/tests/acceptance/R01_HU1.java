@@ -1,12 +1,12 @@
 package tests.acceptance;
 
-import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Test;
 
@@ -42,12 +42,12 @@ public class R01_HU1 extends AcceptanceTest {
 		seriesGuideApp.setLocalManager(FactoryLocalManagers.R01_1_1_1.getLocalManager());
 		
 		// When
-		List<String> resultReturned = seriesGuideApp.listSeriesNames();
+		Map<String, Long> resultReturned = seriesGuideApp.listSeriesNames();
 		
 		// Then
 		assertNotNull(resultReturned);
 		assertEquals(resultExpected.size(), resultReturned.size());
-		assertThat(resultExpected, containsInAnyOrder(resultReturned.toArray()));
+		assertTrue(compruebaEstanLosTitulos(resultExpected, resultReturned));
 		
 	}
 
@@ -69,12 +69,12 @@ public class R01_HU1 extends AcceptanceTest {
 		seriesGuideApp.setLocalManager(FactoryLocalManagers.R01_1_2_1.getLocalManager());
 		
 		// When
-		List<String> resultReturned = seriesGuideApp.listSeriesNames();
+		Map<String, Long> resultReturned = seriesGuideApp.listSeriesNames();
 		
 		// Then
 		assertNotNull(resultReturned);
 		assertEquals(resultExpected.size(), resultReturned.size());
-		assertThat(resultExpected, containsInAnyOrder(resultReturned.toArray()));
+		assertTrue(compruebaEstanLosTitulos(resultExpected, resultReturned));
 		
 	}
 
@@ -98,6 +98,15 @@ public class R01_HU1 extends AcceptanceTest {
 		
 		// Then
 
+	}
+	
+	// ------------------------------------------------------------------------
+	
+	private boolean compruebaEstanLosTitulos(List<String> resultExpected, Map<String, Long> resultReturned) {
+		for (String s : resultExpected)
+			if (!resultReturned.containsKey(s))
+				return false;
+		return true;
 	}
 
 }

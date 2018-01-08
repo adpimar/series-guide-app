@@ -1,12 +1,12 @@
 package tests.integration;
 
-import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.AfterClass;
@@ -58,12 +58,12 @@ public class ListSeriesNamesTest {
 		);
 		
 		// Act
-		List<String> resultReturned = getAndListService.listSeriesNames();
+		Map<String, Long> resultReturned = getAndListService.listSeriesNames();
 		
 		// Assert
 		assertNotNull(resultReturned);
 		assertEquals(resultExpected.size(), resultReturned.size());
-		assertThat(resultExpected, containsInAnyOrder(resultReturned.toArray()));
+		assertTrue(compruebaEstanLosTitulos(resultExpected, resultReturned));
 		
 	}
 
@@ -77,12 +77,12 @@ public class ListSeriesNamesTest {
 		);
 		
 		// Act
-		List<String> resultReturned = getAndListService.listSeriesNames();
+		Map<String, Long> resultReturned = getAndListService.listSeriesNames();
 		
 		// Assert
 		assertNotNull(resultReturned);
 		assertEquals(resultExpected.size(), resultReturned.size());
-		assertThat(resultExpected, containsInAnyOrder(resultReturned.toArray()));
+		assertTrue(compruebaEstanLosTitulos(resultExpected, resultReturned));
 		
 	}
 
@@ -98,6 +98,15 @@ public class ListSeriesNamesTest {
 		
 		// Assert
 
+	}
+	
+	// ------------------------------------------------------------------------
+	
+	private boolean compruebaEstanLosTitulos(List<String> resultExpected, Map<String, Long> resultReturned) {
+		for (String s : resultExpected)
+			if (!resultReturned.containsKey(s))
+				return false;
+		return true;
 	}
 		
 }

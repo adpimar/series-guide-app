@@ -1,7 +1,5 @@
 package impl;
 
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 
 import abs.ISeriesGuideApp;
@@ -24,10 +22,6 @@ import impl.services.SearchSvc;
 import impl.services.UpdateOverviewSvc;
 
 public class SeriesGuideApp implements ISeriesGuideApp {
-
-	private List<Serie> series;
-	private List<Season> seasons;
-	private List<Episode> episodes;
 	
 	private ICheckAsViewedService checkAsViewedService;
 	private IDeleteService deleteService;
@@ -36,11 +30,7 @@ public class SeriesGuideApp implements ISeriesGuideApp {
 	private IDownloadAndStoreService downloadAndStoreService;
 	private IUpdateOverviewService updateOverviewService;
 	
-	public SeriesGuideApp() {		
-		series = new LinkedList<>();
-		seasons = new LinkedList<>();
-		episodes = new LinkedList<>();
-		
+	public SeriesGuideApp() {
 		checkAsViewedService = new CheckAsViewedSvc();
 		deleteService = new DeleteSvc();
 		getAndListService = new GetAndListSvc();
@@ -125,7 +115,7 @@ public class SeriesGuideApp implements ISeriesGuideApp {
 	}
 
 	@Override
-	public List<String> listSeriesNames() {
+	public Map<String, Long> listSeriesNames() {
 		return getAndListService.listSeriesNames();
 	}
 

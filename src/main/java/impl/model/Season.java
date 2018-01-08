@@ -138,15 +138,14 @@ public class Season {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 
-		sb.append("[ TEMPORADA ]");
-		sb.append("\nSerie id            : " + codSerie);
-		sb.append("\nTemporada id        : " + codSeason);
-		sb.append("\nNúmero de temporada : " + airedSeason);
-		sb.append("\nInicio de emisión   : " + firstAired);
-		sb.append("\nEstado              : " + status);
-		sb.append("\nEpisodios totales   : " + totalEpisodes);
-		sb.append("\nVista               : " + seen);
-		sb.append("\n");
+		sb.append(" [ TEMPORADA ]");
+		sb.append("\n  Serie id            : " + codSerie);
+		sb.append("\n  Temporada id        : " + codSeason);
+		sb.append("\n  Número de temporada : " + airedSeason);
+		sb.append("\n  Inicio de emisión   : " + firstAired);
+		sb.append("\n  Estado              : " + status);
+		sb.append("\n  Episodios totales   : " + totalEpisodes);
+		sb.append("\n  Vista               : " + seen);
 
 		return sb.toString();
 	}
