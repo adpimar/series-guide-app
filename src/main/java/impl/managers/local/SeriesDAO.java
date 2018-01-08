@@ -97,7 +97,7 @@ public class SeriesDAO implements ILocalManager {
 	    	conexion.disconnect();
 	    	
 	    } catch (Exception e) {
-	    	System.out.println("Error: Clase SeriesDAO, m�todo listSeries()");
+	    	System.out.println("Error: Clase SeriesDAO, método listSeries()");
 	    	e.printStackTrace();
 	    }
 	    
@@ -112,7 +112,7 @@ public class SeriesDAO implements ILocalManager {
 		Serie serie = new Serie();
 		
 	    try {
-	    	PreparedStatement consulta = conexion.getConnection().prepareStatement("SELECT * FROM SERIES WHERE cod_seRIE='" + codSerie +"'");
+	    	PreparedStatement consulta = conexion.getConnection().prepareStatement("SELECT * FROM SERIES WHERE cod_serie='" + codSerie +"'");
 	    	ResultSet res = consulta.executeQuery();
 	    	while(res.next()){
 	    		serie.setCodSerie(res.getLong("cod_serie"));
@@ -132,7 +132,7 @@ public class SeriesDAO implements ILocalManager {
 	    	conexion.disconnect();
 	    	
 	    } catch (Exception e) {
-	    	System.out.println("Error: Clase SeriesDAO, m�todo getSerie()");
+	    	System.out.println("Error: Clase SeriesDAO, método getSerie()");
 	    	e.printStackTrace();
 	    }
 	    
@@ -162,7 +162,7 @@ public class SeriesDAO implements ILocalManager {
 			 stm=connect.createStatement();
 			 stm.execute(sql);
 		 } catch (SQLException e) {
-			 System.out.println("Error: Clase SeriesDAO, m�todo updateSerie(serie)");
+			 System.out.println("Error: Clase SeriesDAO, método updateSerie(serie)");
 			 e.printStackTrace();
 		 }		
 	}
@@ -178,7 +178,7 @@ public class SeriesDAO implements ILocalManager {
 			stm=connect.createStatement();
 			stm.execute(sql);
 		} catch (SQLException e) {
-			System.out.println("Error: Clase SeriesDAO, m�todo removeSerie(serie)");
+			System.out.println("Error: Clase SeriesDAO, metodo removeSerie(serie)");
 			e.printStackTrace();
 		}		
 
@@ -345,7 +345,7 @@ public class SeriesDAO implements ILocalManager {
 			 stm=connect.createStatement();
 			 stm.execute(sql);
 		 } catch (SQLException e) {
-			 System.out.println("Error: Clase SeriesDAO, m�todo updateEpisode(episode)");
+			 System.out.println("Error: Clase SeriesDAO, método updateEpisode(episode)");
 			 e.printStackTrace();
 		 }	
 
@@ -362,7 +362,7 @@ public class SeriesDAO implements ILocalManager {
 			stm=connect.createStatement();
 			stm.execute(sql);
 		} catch (SQLException e) {
-			System.out.println("Error: Clase SeriesDAO, m�todo removeEpisode(episode)");
+			System.out.println("Error: Clase SeriesDAO, método removeEpisode(episode)");
 			e.printStackTrace();
 		}		
 
@@ -387,7 +387,7 @@ public class SeriesDAO implements ILocalManager {
 			stm.close();
 			connect.close();
 		} catch (SQLException e) {
-			System.out.println("Error: Clase SeriesDAO, m�todo addSeason(season)");
+			System.out.println("Error: Clase SeriesDAO, método addSerie(serie)");
 			e.printStackTrace();
 		}
 	}
@@ -411,7 +411,7 @@ public class SeriesDAO implements ILocalManager {
 			stm.close();
 			connect.close();
 		} catch (SQLException e) {
-			System.out.println("Error: Clase SeriesDAO, m�todo addSeason(season)");
+			System.out.println("Error: Clase SeriesDAO, método addSeason(season)");
 			e.printStackTrace();
 		}
 	}
@@ -430,7 +430,7 @@ public class SeriesDAO implements ILocalManager {
 			stm.close();
 			connect.close();
 		} catch (SQLException e) {
-			System.out.println("Error: Clase SeriesDAO, m�todo addEpisode(episode)");
+			System.out.println("Error: Clase SeriesDAO, método addEpisode(episode)");
 			e.printStackTrace();
 		}
 		
