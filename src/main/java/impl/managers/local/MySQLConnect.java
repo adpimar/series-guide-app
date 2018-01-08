@@ -8,6 +8,9 @@ public class MySQLConnect {
 	
 	static final String url = "jdbc:mysql://mysql:3306/seriesguideapp-adan";
 	
+    static final String user = "ei1048adan";
+    static final String pass = "adan";
+    
 	//Creates the Connection object
     static Connection connection = null;
     
@@ -17,10 +20,10 @@ public class MySQLConnect {
 			if (connection != null && !connection.isClosed())
 				return connection;
 			
-			//Class.forName("com.mysql.jdbc.Driver");
-			Class.forName("org.mysql.Driver");
+			Class.forName("com.mysql.jdbc.Driver");
+			//Class.forName("org.mysql.Driver");
 			
-			connection = DriverManager.getConnection(url);
+			connection = DriverManager.getConnection(url, user, pass);
 			
 			if (connection != null) 
 				System.out.println("Connected to the database seriesguideapp-adan");
