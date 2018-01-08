@@ -2,12 +2,12 @@ package impl.model;
 
 public class Episode {
 
-	private long codEpisode;
-	private long codSeason;
-	private int airedSeason;
-	private int airedEpisode;
-	private String episodeName;
-	private String firstAired;
+	private long cod_episode;
+	private long cod_season;
+	private int aired_season;
+	private int aired_episode;
+	private String episode_name;
+	private String first_aired;
 	private String overview;
 	private boolean seen;
 	private String comment;
@@ -15,27 +15,27 @@ public class Episode {
 	// ---------- Getters -----------------------------------------------------
 
 	public long getCodEpisode() {
-		return codEpisode;
+		return cod_episode;
 	}
 
 	public long getCodSeason() {
-		return codSeason;
+		return cod_season;
 	}
 
 	public int getAiredSeason() {
-		return airedSeason;
+		return aired_season;
 	}
 
 	public int getAiredEpisode() {
-		return airedEpisode;
+		return aired_episode;
 	}
 
 	public String getEpisodeName() {
-		return episodeName;
+		return episode_name;
 	}
 
 	public String getFirstAired() {
-		return firstAired;
+		return first_aired;
 	}
 
 	public String getOverview() {
@@ -53,27 +53,27 @@ public class Episode {
 	// ---------- Setters -----------------------------------------------------
 
 	public void setCodEpisode(long codEpisode) {
-		this.codEpisode = codEpisode;
+		this.cod_episode = codEpisode;
 	}
 
 	public void setCodSeason(long codSeason) {
-		this.codSeason = codSeason;
+		this.cod_season = codSeason;
 	}
 
 	public void setAiredSeason(int airedSeason) {
-		this.airedSeason = airedSeason;
+		this.aired_season = airedSeason;
 	}
 
 	public void setAiredEpisode(int airedEpisode) {
-		this.airedEpisode = airedEpisode;
+		this.aired_episode = airedEpisode;
 	}
 
 	public void setEpisodeName(String episodeName) {
-		this.episodeName = episodeName;
+		this.episode_name = episodeName;
 	}
 
 	public void setFirstAired(String firstAired) {
-		this.firstAired = firstAired;
+		this.first_aired = firstAired;
 	}
 
 	public void setOverview(String overview) {
@@ -99,28 +99,28 @@ public class Episode {
 		if (getClass() != obj.getClass())
 			return false;
 		Episode other = (Episode) obj;
-		if (airedEpisode != other.airedEpisode)
+		if (aired_episode != other.aired_episode)
 			return false;
-		if (airedSeason != other.airedSeason)
+		if (aired_season != other.aired_season)
 			return false;
-		if (codEpisode != other.codEpisode)
+		if (cod_episode != other.cod_episode)
 			return false;
-		if (codSeason != other.codSeason)
+		if (cod_season != other.cod_season)
 			return false;
 		if (comment == null) {
 			if (other.comment != null)
 				return false;
 		} else if (!comment.equals(other.comment))
 			return false;
-		if (episodeName == null) {
-			if (other.episodeName != null)
+		if (episode_name == null) {
+			if (other.episode_name != null)
 				return false;
-		} else if (!episodeName.equals(other.episodeName))
+		} else if (!episode_name.equals(other.episode_name))
 			return false;
-		if (firstAired == null) {
-			if (other.firstAired != null)
+		if (first_aired == null) {
+			if (other.first_aired != null)
 				return false;
-		} else if (!firstAired.equals(other.firstAired))
+		} else if (!first_aired.equals(other.first_aired))
 			return false;
 		if (overview == null) {
 			if (other.overview != null)
@@ -138,16 +138,17 @@ public class Episode {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 
-		sb.append(" [ EPISODIO ]");
-		sb.append("\n  Episodio id         : " + codEpisode);
-		sb.append("\n  Temporada id        : " + codSeason);
-		sb.append("\n  Número de temporada : " + airedSeason);
-		sb.append("\n  Número de episodio  : " + airedEpisode);
-		sb.append("\n  Título              : " + episodeName);
-		sb.append("\n  Fecha de emisión    : " + firstAired);
-		sb.append("\n  Sinopsis            : " + overview);
-		sb.append("\n  Visto               : " + seen);
-		sb.append("\n  Comentario          : " + comment);
+		sb.append("[ EPISODIO ]");
+		sb.append("\n Episodio id         : " + cod_episode);
+		sb.append("\n Temporada id        : " + cod_season);
+		sb.append("\n Número de temporada : " + aired_season);
+		sb.append("\n Número de episodio  : " + aired_episode);
+		sb.append("\n Título              : " + episode_name);
+		sb.append("\n fechaEmision        : " + first_aired);
+		sb.append("\n Sinopsis            : " + overview);
+		sb.append("\n Visto               : " + seen);
+		sb.append("\n Comentario          : " + comment);
+		sb.append("\n");
 
 		return sb.toString();
 	}

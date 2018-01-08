@@ -9,7 +9,9 @@ public class CreateTables {
 	public static void main(String[] argv) throws Exception {
 		
 		//Connect to the database
-		Connection conn = MySQLConnect.getConnection();
+		MySQLConnect conexion = new MySQLConnect();
+		Connection conn = conexion.getConnection();
+				
 		
 		/* Statement to create the tables */
 		if(conn != null){
@@ -41,7 +43,6 @@ public class CreateTables {
 							" cod_season LONG NOT NULL CHECK (cod_season >= 0), " +
 							" aired_season NUMERIC(2,0) NOT NULL, " +
 							" first_aired DATE NOT NULL, " +
-							" status VARCHAR(20) NOT NULL, " +
 							" total_episodes NUMERIC(2,0) NOT NULL, " +
 							" seen  BOOLEAN NOT NULL DEFAULT false, " +
 							" CONSTRAINT TEMPORADAS_pk PRIMARY KEY (cod_season));";

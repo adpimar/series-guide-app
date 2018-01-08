@@ -12,16 +12,12 @@ public class MySQLConnect {
     static final String pass = "adan";
     
 	//Creates the Connection object
-    static Connection connection = null;
+    Connection connection = null;
     
-	public static Connection getConnection() {
-		
-		try {
-			if (connection != null && !connection.isClosed())
-				return connection;
+    public MySQLConnect() {
+    	try {
 			
 			Class.forName("com.mysql.jdbc.Driver");
-			//Class.forName("org.mysql.Driver");
 			
 			connection = DriverManager.getConnection(url, user, pass);
 			
@@ -38,8 +34,15 @@ public class MySQLConnect {
             ex.printStackTrace();
         }
 		
+    
+    }
+    
+	public Connection getConnection() {
 		return connection;
+	}
 	
+	public void disconnect() {
+		connection = null;
 	}
 	
 }
