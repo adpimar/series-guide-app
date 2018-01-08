@@ -7,6 +7,7 @@ import org.junit.rules.ExpectedException;
 
 import abs.ISeriesGuideApp;
 import impl.SeriesGuideApp;
+import impl.managers.remote.thetvdb.TheTVDBAdapter;
 
 public class AcceptanceTest {
 
@@ -18,6 +19,7 @@ public class AcceptanceTest {
 	@BeforeClass
 	public static void inicia() {
 		seriesGuideApp = new SeriesGuideApp();
+		seriesGuideApp.setRemoteManager(new TheTVDBAdapter());
 	}
 
 	@AfterClass
