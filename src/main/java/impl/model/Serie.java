@@ -5,16 +5,16 @@ import java.util.List;
 
 public class Serie {
 	
-	private long codSerie;
-	private String seriesName;
+	private long cod_serie;
+	private String series_name;
 	private String status;
-	private String firstAired;
-	private String airsDOW;
-	private String airsTime;
+	private String first_aired;
+	private String airs_dow;
+	private String airs_time;
 	private String network;
 	private String genres;
-	private double siteRating;
-	private int siteRatingCount;
+	private double site_rating;
+	private int site_rating_count;
 	private String overview;
 
 	private List<Season> seasons;
@@ -35,11 +35,11 @@ public class Serie {
 	// ---------- Getters -----------------------------------------------------
 
 	public long getCodSerie() {
-		return codSerie;
+		return cod_serie;
 	}
 
 	public String getSeriesName() {
-		return seriesName;
+		return series_name;
 	}
 
 	public String getStatus() {
@@ -47,15 +47,15 @@ public class Serie {
 	}
 
 	public String getFirstAired() {
-		return firstAired;
+		return first_aired;
 	}
 
 	public String getAirsDOW() {
-		return airsDOW;
+		return airs_dow;
 	}
 
 	public String getAirsTime() {
-		return airsTime;
+		return airs_time;
 	}
 
 	public String getNetwork() {
@@ -67,11 +67,11 @@ public class Serie {
 	}
 
 	public double getSiteRating() {
-		return siteRating;
+		return site_rating;
 	}
 
 	public int getSiteRatingCount() {
-		return siteRatingCount;
+		return site_rating_count;
 	}
 
 	public String getOverview() {
@@ -84,28 +84,28 @@ public class Serie {
 	
 	// ---------- Setters -----------------------------------------------------
 
-	public void setCodSerie(long codSerie) {
-		this.codSerie = codSerie;
+	public void setCodSerie(long cod_serie) {
+		this.cod_serie = cod_serie;
 	}
 
-	public void setSeriesName(String seriesName) {
-		this.seriesName = seriesName;
+	public void setSeriesName(String series_name) {
+		this.series_name = series_name;
 	}
 
 	public void setStatus(String status) {
 		this.status = status;
 	}
 
-	public void setFirstAired(String firstAired) {
-		this.firstAired = firstAired;
+	public void setFirstAired(String first_aired) {
+		this.first_aired = first_aired;
 	}
 
-	public void setAirsDOW(String airsDOW) {
-		this.airsDOW = airsDOW;
+	public void setAirsDOW(String airs_dow) {
+		this.airs_dow = airs_dow;
 	}
 
-	public void setAirsTime(String airsTime) {
-		this.airsTime = airsTime;
+	public void setAirsTime(String airs_time) {
+		this.airs_time = airs_time;
 	}
 
 	public void setNetwork(String network) {
@@ -116,12 +116,12 @@ public class Serie {
 		this.genres = genres;
 	}
 
-	public void setSiteRating(double siteRating) {
-		this.siteRating = siteRating;
+	public void setSiteRating(double site_rating) {
+		this.site_rating = site_rating;
 	}
 
-	public void setSiteRatingCount(int siteRatingCount) {
-		this.siteRatingCount = siteRatingCount;
+	public void setSiteRatingCount(int site_ratingCount) {
+		this.site_rating_count = site_ratingCount;
 	}
 
 	public void setOverview(String overview) {
@@ -143,22 +143,22 @@ public class Serie {
 		if (getClass() != obj.getClass())
 			return false;
 		Serie other = (Serie) obj;
-		if (airsDOW == null) {
-			if (other.airsDOW != null)
+		if (airs_dow == null) {
+			if (other.airs_dow != null)
 				return false;
-		} else if (!airsDOW.equals(other.airsDOW))
+		} else if (!airs_dow.equals(other.airs_dow))
 			return false;
-		if (airsTime == null) {
-			if (other.airsTime != null)
+		if (airs_time == null) {
+			if (other.airs_time != null)
 				return false;
-		} else if (!airsTime.equals(other.airsTime))
+		} else if (!airs_time.equals(other.airs_time))
 			return false;
-		if (codSerie != other.codSerie)
+		if (cod_serie != other.cod_serie)
 			return false;
-		if (firstAired == null) {
-			if (other.firstAired != null)
+		if (first_aired == null) {
+			if (other.first_aired != null)
 				return false;
-		} else if (!firstAired.equals(other.firstAired))
+		} else if (!first_aired.equals(other.first_aired))
 			return false;
 		if (network == null) {
 			if (other.network != null)
@@ -175,14 +175,14 @@ public class Serie {
 				return false;
 		} else if (!overview.equals(other.overview))
 			return false;
-		if (seriesName == null) {
-			if (other.seriesName != null)
+		if (series_name == null) {
+			if (other.series_name != null)
 				return false;
-		} else if (!seriesName.equals(other.seriesName))
+		} else if (!series_name.equals(other.series_name))
 			return false;
-		if (Double.doubleToLongBits(siteRating) != Double.doubleToLongBits(other.siteRating))
+		if (Double.doubleToLongBits(site_rating) != Double.doubleToLongBits(other.site_rating))
 			return false;
-		if (siteRatingCount != other.siteRatingCount)
+		if (site_rating_count != other.site_rating_count)
 			return false;
 		if (status == null) {
 			if (other.status != null)
@@ -198,18 +198,19 @@ public class Serie {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		
-		sb.append(" [ SERIE ]");
-		sb.append("\n  Id                 : " + codSerie);
-		sb.append("\n  Título             : " + seriesName);
-		sb.append("\n  Estado             : " + status);
-		sb.append("\n  Inicio de emisión  : " + firstAired);
-		sb.append("\n  Día de emisión     : " + airsDOW);
-		sb.append("\n  Horario de emisión : " + airsTime);
-		sb.append("\n  Cadena             : " + network);
-		sb.append("\n  Géneros            : " + genres);
-		sb.append("\n  Puntuación         : " + siteRating);
-		sb.append("\n  Total puntuaciones : " + siteRatingCount);
-		sb.append("\n  Sinopsis           : " + overview);
+		sb.append("[ SERIE ]");
+		sb.append("\n Id                 : " + cod_serie);
+		sb.append("\n Título             : " + series_name);
+		sb.append("\n Estado             : " + status);
+		sb.append("\n Inicio de emisión  : " + first_aired);
+		sb.append("\n Día de emisión     : " + airs_dow);
+		sb.append("\n Horario de emisión : " + airs_time);
+		sb.append("\n Cadena             : " + network);
+		sb.append("\n Géneros            : " + genres);
+		sb.append("\n Puntuación         : " + site_rating);
+		sb.append("\n Total puntuaciones : " + site_rating_count);
+		sb.append("\n Sinopsis           : " + overview);
+		sb.append("\n");
 		
 		return sb.toString();
 	}

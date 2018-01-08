@@ -2,18 +2,17 @@ package impl.model;
 
 public class Season {
 
-	private long codSerie;
-	private long codSeason;
-	private int airedSeason;
-	private String firstAired;
-	private String status;
-	private int totalEpisodes;
+	private long cod_serie;
+	private long cod_season;
+	private int aired_season;
+	private String first_aired;
+	private int total_episodes;
 	private boolean seen;
 
 	private Episode[] episodes;
 
 	public Season() {
-		episodes = new Episode[totalEpisodes];
+		episodes = new Episode[total_episodes];
 	}
 	
 	// ------------------------------------------------------------------------
@@ -29,27 +28,23 @@ public class Season {
 	// ---------- Getters -----------------------------------------------------
 	
 	public long getCodSerie() {
-		return codSerie;
+		return cod_serie;
 	}
 	
 	public long getCodSeason() {
-		return codSeason;
+		return cod_season;
 	}
 
 	public int getAiredSeason() {
-		return airedSeason;
+		return aired_season;
 	}
 
 	public String getFirstAired() {
-		return firstAired;
-	}
-
-	public String getStatus() {
-		return status;
+		return first_aired;
 	}
 
 	public int getTotalEpisodes() {
-		return totalEpisodes;
+		return total_episodes;
 	}
 
 	public boolean isSeen() {
@@ -63,23 +58,19 @@ public class Season {
 	// ---------- Setters -----------------------------------------------------
 
 	public void setCodSerie(long codSerie) {
-		this.codSerie = codSerie;
+		this.cod_serie = codSerie;
 	}
 	
 	public void setCodSeason(long codSeason) {
-		this.codSeason = codSeason;
+		this.cod_season = codSeason;
 	}
 
 	public void setAiredSeason(int airedSeason) {
-		this.airedSeason = airedSeason;
+		this.aired_season = airedSeason;
 	}
 
 	public void setFirstAired(String firstAired) {
-		this.firstAired = firstAired;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
+		this.first_aired = firstAired;
 	}
 
 	public void setTotalEpisodes(int totalEpisodes) {
@@ -87,7 +78,7 @@ public class Season {
 		for (int i = 0; i < episodes.length; i++)
 			newEpisodes[i] = episodes[i];
 		episodes = newEpisodes;
-		this.totalEpisodes = totalEpisodes;
+		this.total_episodes = totalEpisodes;
 	}
 
 	public void setSeen(boolean seen) {
@@ -109,25 +100,20 @@ public class Season {
 		if (getClass() != obj.getClass())
 			return false;
 		Season other = (Season) obj;
-		if (airedSeason != other.airedSeason)
+		if (aired_season != other.aired_season)
 			return false;
-		if (codSeason != other.codSeason)
+		if (cod_season != other.cod_season)
 			return false;
-		if (codSerie != other.codSerie)
+		if (cod_serie != other.cod_serie)
 			return false;
-		if (firstAired == null) {
-			if (other.firstAired != null)
+		if (first_aired == null) {
+			if (other.first_aired != null)
 				return false;
-		} else if (!firstAired.equals(other.firstAired))
+		} else if (!first_aired.equals(other.first_aired))
 			return false;
 		if (seen != other.seen)
 			return false;
-		if (status == null) {
-			if (other.status != null)
-				return false;
-		} else if (!status.equals(other.status))
-			return false;
-		if (totalEpisodes != other.totalEpisodes)
+		if (total_episodes != other.total_episodes)
 			return false;
 		return true;
 	}
@@ -138,14 +124,14 @@ public class Season {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 
-		sb.append(" [ TEMPORADA ]");
-		sb.append("\n  Serie id            : " + codSerie);
-		sb.append("\n  Temporada id        : " + codSeason);
-		sb.append("\n  Número de temporada : " + airedSeason);
-		sb.append("\n  Inicio de emisión   : " + firstAired);
-		sb.append("\n  Estado              : " + status);
-		sb.append("\n  Episodios totales   : " + totalEpisodes);
-		sb.append("\n  Vista               : " + seen);
+		sb.append("[ TEMPORADA ]");
+		sb.append("\n Serie id            : " + cod_serie);
+		sb.append("\n Temporada id        : " + cod_season);
+		sb.append("\n Número de temporada : " + aired_season);
+		sb.append("\n Inicio de emisión   : " + first_aired);
+		sb.append("\n Episodios totales   : " + total_episodes);
+		sb.append("\n Vista               : " + seen);
+		sb.append("\n");
 
 		return sb.toString();
 	}
