@@ -229,11 +229,14 @@ public class TheTVDBAdapter implements IRemoteManager {
 		serie.setStatus(specificSerie.getStatus());
 		serie.setFirstAired(specificSerie.getFirstAired());
 		serie.setAirsDOW(specificSerie.getAirsDayOfWeek());
-		serie.setAirsTime(specificSerie.getAirsTime());
 		serie.setNetwork(specificSerie.getNetwork());
 		serie.setSiteRating(specificSerie.getSiteRating());
 		serie.setSiteRatingCount(specificSerie.getSiteRatingCount());
 		serie.setOverview(specificSerie.getOverview());
+		
+		String airsTime = specificSerie.getAirsTime();
+		airsTime = airsTime.length() == 7 ? "0" + airsTime : airsTime;
+		serie.setAirsTime(airsTime);
 		
 		List<String> genres = specificSerie.getGenre();
 		StringBuilder sb = new StringBuilder();

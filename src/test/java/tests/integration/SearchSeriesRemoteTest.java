@@ -10,8 +10,8 @@ import java.util.TreeMap;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -40,18 +40,12 @@ public class SearchSeriesRemoteTest {
 	@BeforeClass
 	public static void inicia() {
 		searchService = new SearchSvc();
+		searchService.setRemoteManager(new TheTVDBAdapter());
 	}
 
 	@AfterClass
 	public static void termina() {
 		searchService = null;
-	}
-	
-	// ------------------------------------------------------------------------
-		
-	@Before
-	public void prepara() {
-		searchService.setRemoteManager(new TheTVDBAdapter());
 	}
 	
 	// ------------------------------------------------------------------------------------------------------
@@ -135,15 +129,15 @@ public class SearchSeriesRemoteTest {
 		thrown.expect(NotFoundSerieOnRemoteServerException.class);
 		
 		// Act
-		searchService.searchSeriesRemote(searchPattern);
+		System.out.println(searchService.searchSeriesRemote(searchPattern));
 		
 		// Assert
 
 	}
 
-	@Test
+	@Ignore
 	public void buscarSerieRemota_ErrorDeServidor_Excepcion() {
-				
+
 		// Arrange
 		String searchPattern = "Thrones";
 		thrown.expect(ErrorOnRemoteServerException.class);
@@ -155,7 +149,7 @@ public class SearchSeriesRemoteTest {
 		
 	}
 
-	@Test
+	@Ignore
 	public void buscarSerieRemota_ErrorDeTimeout_Excepcion() {
 				
 		// Arrange

@@ -15,8 +15,8 @@ import abs.managers.ILocalManager;
 import abs.managers.IRemoteManager;
 import impl.exceptions.ErrorOnRemoteServerException;
 import impl.exceptions.NoSeriesStoredException;
+import impl.exceptions.NotFoundOnRemoteServerException;
 import impl.exceptions.NotFoundSeasonOnRemoteServerException;
-import impl.exceptions.NotFoundSerieOnRemoteServerException;
 import impl.exceptions.TimeoutOnRemoteServerException;
 import impl.model.Episode;
 import impl.model.Season;
@@ -81,7 +81,7 @@ public class R14_HU1 extends AcceptanceTest {
 				
 		// Given
 		seriesGuideApp.setLocalManager(FactoryLocalManagers.R14_1_1_2.getLocalManager());
-		when(remoteManager.getRemoteSeason(321060, 4)).thenThrow(NotFoundSeasonOnRemoteServerException.class);
+		when(remoteManager.getRemoteSeason(321060, 4)).thenThrow(NotFoundOnRemoteServerException.class);
 		
 		// When
 		seriesGuideApp.downloadRemoteSeason(321060, 4);
@@ -95,14 +95,14 @@ public class R14_HU1 extends AcceptanceTest {
 	@Test
 	public void descargarTemporadaRemota_NoAlmacenadaNoExisteSerieRemota_Excepcion() {
 
-		thrown.expect(NotFoundSerieOnRemoteServerException.class);
+		thrown.expect(NotFoundSeasonOnRemoteServerException.class);
 		
 		// Given
 		seriesGuideApp.setLocalManager(FactoryLocalManagers.R14_1_1_3.getLocalManager());
-		when(remoteManager.getRemoteSeason(321060, 1)).thenThrow(NotFoundSerieOnRemoteServerException.class);
+		when(remoteManager.getRemoteSeason(999999, 1)).thenThrow(NotFoundOnRemoteServerException.class);
 		
 		// When
-		seriesGuideApp.downloadRemoteSeason(321060, 1);
+		seriesGuideApp.downloadRemoteSeason(999999, 1);
 
 		// Then
 		
