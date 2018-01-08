@@ -248,7 +248,21 @@ public class SeriesDAO implements ILocalManager {
 
 	@Override
 	public void addEpisode(Episode episode) {
-		// TODO Auto-generated method stub
+		Statement stm= null;
+		MySQLConnect conexion = new MySQLConnect();
+		
+		String sql="INSERT INTO EPISODIOS values ('"+episode.getCodEpisode()+"','"+episode.getCodSeason()+"','"+episode.getAiredSeason()+"','"+episode.getAiredEpisode()+"','"+episode.getEpisodeName()+"','"+episode.getFirstAired()+"','"+episode.getOverview()+"','"+episode.isSeen()+"','"+episode.getComment()+"')";
+		
+		try {			
+			Connection connect = conexion.getConnection();
+			stm= connect.createStatement();
+			stm.execute(sql);
+			stm.close();
+			connect.close();
+		} catch (SQLException e) {
+			System.out.println("Error: Clase SeriesDAO, método addEpisode(episode)");
+			e.printStackTrace();
+		}
 		
 	}
 
