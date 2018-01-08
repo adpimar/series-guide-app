@@ -12,6 +12,8 @@ import abs.managers.IRemoteManager;
 import abs.services.ISearchService;
 import impl.exceptions.NoKeywordsOnRemoteSearchException;
 import impl.exceptions.NoSeriesStoredException;
+import impl.exceptions.NotFoundOnRemoteServerException;
+import impl.exceptions.NotFoundSerieOnRemoteServerException;
 import impl.model.Serie;
 
 public class SearchSvc implements ISearchService {
@@ -67,8 +69,12 @@ public class SearchSvc implements ISearchService {
 		Map<String, Long> seriesMatched = new TreeMap<>();
 						
 		// Busca coincidencias con las series
-		for (Serie serie : remoteManager.searchRemoteSeries(pattern))
-			seriesMatched.put(serie.getSeriesName(), serie.getCodSerie());
+		try {
+			for (Serie serie : remoteManager.searchRemoteSeries(pattern))
+				seriesMatched.put(serie.getSeriesName(), serie.getCodSerie());
+		} catch(NotFoundOnRemoteServerException e) {
+			throw new NotFoundSerieOnRemoteServerException();
+		}
 		
 		return seriesMatched;
 	}

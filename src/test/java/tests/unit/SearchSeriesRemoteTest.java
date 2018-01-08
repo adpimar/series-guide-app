@@ -25,6 +25,7 @@ import abs.managers.IRemoteManager;
 import abs.services.ISearchService;
 import impl.exceptions.ErrorOnRemoteServerException;
 import impl.exceptions.NoKeywordsOnRemoteSearchException;
+import impl.exceptions.NotFoundOnRemoteServerException;
 import impl.exceptions.NotFoundSerieOnRemoteServerException;
 import impl.exceptions.TimeoutOnRemoteServerException;
 import impl.model.Serie;
@@ -149,7 +150,7 @@ public class SearchSeriesRemoteTest {
 		// Arrange
 		String searchPattern = "lalilos";
 		thrown.expect(NotFoundSerieOnRemoteServerException.class);
-		when(remoteManager.searchRemoteSeries(searchPattern)).thenThrow(new NotFoundSerieOnRemoteServerException());
+		when(remoteManager.searchRemoteSeries(searchPattern)).thenThrow(new NotFoundOnRemoteServerException());
 		
 		// Act
 		searchService.searchSeriesRemote(searchPattern);

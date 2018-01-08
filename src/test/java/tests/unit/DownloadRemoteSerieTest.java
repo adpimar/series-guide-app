@@ -19,6 +19,7 @@ import org.mockito.MockitoAnnotations;
 import abs.managers.IRemoteManager;
 import abs.services.IDownloadAndStoreService;
 import impl.exceptions.ErrorOnRemoteServerException;
+import impl.exceptions.NotFoundOnRemoteServerException;
 import impl.exceptions.NotFoundSerieOnRemoteServerException;
 import impl.exceptions.TimeoutOnRemoteServerException;
 import impl.model.Serie;
@@ -89,7 +90,7 @@ public class DownloadRemoteSerieTest {
 		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R13_1_1_2.getLocalManager());
 		
 		// Act
-		when(remoteManager.getRemoteSerie(999999)).thenThrow(new NotFoundSerieOnRemoteServerException());
+		when(remoteManager.getRemoteSerie(999999)).thenThrow(new NotFoundOnRemoteServerException());
 		downloadAndStoreService.downloadRemoteSerie(999999);
 		
 		// Assert
