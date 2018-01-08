@@ -34,7 +34,7 @@ public class R03_HU1 extends AcceptanceTest {
 		String newOverview = "";
 
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R03_1_1_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R03_1_1_1.getFakeLocalManager());
 
 		// When
 		Serie resultReturned = seriesGuideApp.updateSerieOverview(321060, newOverview);
@@ -56,7 +56,7 @@ public class R03_HU1 extends AcceptanceTest {
 				+ "gran cambio: su vista se ha curado.";
 
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R03_1_1_2.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R03_1_1_2.getFakeLocalManager());
 
 		// When
 		Serie resultReturned = seriesGuideApp.updateSerieOverview(321060, newOverview);
@@ -84,7 +84,7 @@ public class R03_HU1 extends AcceptanceTest {
 		thrown.expect(TooLongOverviewException.class);
 
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R03_1_1_3.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R03_1_1_3.getFakeLocalManager());
 
 		// When
 		seriesGuideApp.updateSerieOverview(321060, newOverview);
@@ -106,7 +106,7 @@ public class R03_HU1 extends AcceptanceTest {
 		thrown.expect(NoSeriesStoredException.class);
 
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R03_1_2_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R03_1_2_1.getFakeLocalManager());
 
 		// When
 		seriesGuideApp.updateSerieOverview(321060, "");

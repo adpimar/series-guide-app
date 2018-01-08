@@ -52,7 +52,7 @@ public class UpdateSerieOverviewTest {
 		
 		// Arrange
 		String newOverview = "";
-		ILocalManager localManager = FactoryLocalManagers.R03_1_1_1.getLocalManager();
+		ILocalManager localManager = FactoryLocalManagers.R03_1_1_1.getFakeLocalManager();
 		updateOverviewService.setLocalManager(localManager);
 
 		// Act
@@ -74,7 +74,7 @@ public class UpdateSerieOverviewTest {
 				+ " 7 largos años. Un día, vuelve a la comunidad donde se crió con un "
 				+ "gran cambio: su vista se ha curado.";
 		
-		ILocalManager localManager = FactoryLocalManagers.R03_1_1_2.getLocalManager();
+		ILocalManager localManager = FactoryLocalManagers.R03_1_1_2.getFakeLocalManager();
 		updateOverviewService.setLocalManager(localManager);
 
 		// Act
@@ -101,7 +101,7 @@ public class UpdateSerieOverviewTest {
 				+ "incapaces de conseguir información. La joven solo habla con un grupo de...";
 		
 		thrown.expect(TooLongOverviewException.class);
-		updateOverviewService.setLocalManager(FactoryLocalManagers.R03_1_1_3.getLocalManager());
+		updateOverviewService.setLocalManager(FactoryLocalManagers.R03_1_1_3.getFakeLocalManager());
 
 		// Act
 		updateOverviewService.updateSerieOverview(321060, newOverview);
@@ -115,7 +115,7 @@ public class UpdateSerieOverviewTest {
 		
 		// Arrange
 		thrown.expect(NoSeriesStoredException.class);
-		updateOverviewService.setLocalManager(FactoryLocalManagers.R03_1_2_1.getLocalManager());
+		updateOverviewService.setLocalManager(FactoryLocalManagers.R03_1_2_1.getFakeLocalManager());
 
 		// Act
 		updateOverviewService.updateSerieOverview(321060, "");

@@ -51,7 +51,7 @@ public class StoreRemoteSerieTest {
 				
 		// Arrange
 		Serie mockSerie = (Serie) FactoryMocks.R13_2_1_1.getMock();
-		ILocalManager localManager = FactoryLocalManagers.R13_2_1_1.getLocalManager();
+		ILocalManager localManager = FactoryLocalManagers.R13_2_1_1.getFakeLocalManager();
 		downloadAndStoreService.setLocalManager(localManager);
 				
 		// Act
@@ -67,7 +67,7 @@ public class StoreRemoteSerieTest {
 
 		// Arrange
 		thrown.expect(SerieAlreadyStoredException.class);
-		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R13_2_2_1.getLocalManager());
+		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R13_2_2_1.getFakeLocalManager());
 				
 		// Act
 		downloadAndStoreService.storeRemoteSerie((Serie) FactoryMocks.R13_2_2_1.getMock());

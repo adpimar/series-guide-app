@@ -31,7 +31,7 @@ public class R02_HU1 extends AcceptanceTest {
 	public void obtenerSerieAlmacenada_ExisteUnaSerie_Serie() {
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R02_1_1_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R02_1_1_1.getFakeLocalManager());
 		
 		// When
 		Serie resultReturned = seriesGuideApp.getSerie(321060);
@@ -48,7 +48,7 @@ public class R02_HU1 extends AcceptanceTest {
 	public void obtenerSerieAlmacenada_ExistenVariasSeries_Serie() {
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R02_1_1_2.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R02_1_1_2.getFakeLocalManager());
 		
 		// When
 		Serie resultReturned = seriesGuideApp.getSerie(260449);
@@ -72,7 +72,7 @@ public class R02_HU1 extends AcceptanceTest {
 		thrown.expect(NoSeriesStoredException.class);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R02_1_2_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R02_1_2_1.getFakeLocalManager());
 		
 		// When
 		seriesGuideApp.getSerie(260449);
@@ -89,7 +89,7 @@ public class R02_HU1 extends AcceptanceTest {
 		thrown.expect(NoSeriesStoredException.class);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R02_1_2_2.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R02_1_2_2.getFakeLocalManager());
 		
 		// When
 		seriesGuideApp.getSerie(000000);
@@ -106,7 +106,7 @@ public class R02_HU1 extends AcceptanceTest {
 		thrown.expect(NoSeriesStoredException.class);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R02_1_2_3.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R02_1_2_3.getFakeLocalManager());
 		
 		// When
 		seriesGuideApp.getSerie(321060);

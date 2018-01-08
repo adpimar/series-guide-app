@@ -53,7 +53,7 @@ public class SearchSeriesLocalTest {
 				
 		// Arrange
 		thrown.expect(NoKeywordsOnRemoteSearchException.class);
-		searchService.setLocalManager(FactoryLocalManagers.R11_1_1_1.getLocalManager());
+		searchService.setLocalManager(FactoryLocalManagers.R11_1_1_1.getFakeLocalManager());
 		
 		// Act
 		searchService.searchSeriesLocal("");
@@ -70,7 +70,7 @@ public class SearchSeriesLocalTest {
 				"The OA",
 				"The Big Bang Theory"
 		);
-		searchService.setLocalManager(FactoryLocalManagers.R11_1_1_2.getLocalManager());
+		searchService.setLocalManager(FactoryLocalManagers.R11_1_1_2.getFakeLocalManager());
 		
 		// Act
 		Map<String, Long> resultReturned = searchService.searchSeriesLocal("The");
@@ -89,7 +89,7 @@ public class SearchSeriesLocalTest {
 		List<String> resultExpected = Arrays.asList(
 				"The Big Bang Theory"
 		);
-		searchService.setLocalManager(FactoryLocalManagers.R11_1_1_3.getLocalManager());
+		searchService.setLocalManager(FactoryLocalManagers.R11_1_1_3.getFakeLocalManager());
 		
 		// Act
 		Map<String, Long> resultReturned = searchService.searchSeriesLocal("The Big Bang");
@@ -105,7 +105,7 @@ public class SearchSeriesLocalTest {
 	public void buscarSerieLocal_NoAlmacenadaVariasSeriesConUnaPalabraClave_ListadoVacio() 	{
 		
 		// Arrange
-		searchService.setLocalManager(FactoryLocalManagers.R11_1_2_1.getLocalManager());
+		searchService.setLocalManager(FactoryLocalManagers.R11_1_2_1.getFakeLocalManager());
 		
 		// Act
 		Map<String, Long> resultReturned = searchService.searchSeriesLocal("lalilo");
@@ -120,7 +120,7 @@ public class SearchSeriesLocalTest {
 	public void buscarSerieLocal_NoAlmacenadaVariasSeriesConVariasPalabrasClave_ListadoVacio() {
 		
 		// Arrange
-		searchService.setLocalManager(FactoryLocalManagers.R11_1_2_2.getLocalManager());
+		searchService.setLocalManager(FactoryLocalManagers.R11_1_2_2.getFakeLocalManager());
 		
 		// Act
 		Map<String, Long> resultReturned = searchService.searchSeriesLocal("lalilo panilo");
@@ -136,7 +136,7 @@ public class SearchSeriesLocalTest {
 		
 		// Arrange
 		thrown.expect(NoSeriesStoredException.class);
-		searchService.setLocalManager(FactoryLocalManagers.R11_1_3_1.getLocalManager());
+		searchService.setLocalManager(FactoryLocalManagers.R11_1_3_1.getFakeLocalManager());
 		
 		// Act
 		searchService.searchSeriesLocal("Stranger Things");

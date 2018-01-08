@@ -37,7 +37,7 @@ public class R13_HU1 extends AcceptanceTest {
 		Serie resultExpected = (Serie) FactoryExpectedResults.R13_1_1_1.getExpectedResult();
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R13_1_1_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R13_1_1_1.getFakeLocalManager());
 		
 		// When
 		Serie resultReturned = seriesGuideApp.downloadRemoteSerie(121361);
@@ -57,7 +57,7 @@ public class R13_HU1 extends AcceptanceTest {
 		thrown.expect(NotFoundSerieOnRemoteServerException.class);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R13_1_1_2.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R13_1_1_2.getFakeLocalManager());
 		
 		// When
 		seriesGuideApp.downloadRemoteSerie(999999);
@@ -77,7 +77,7 @@ public class R13_HU1 extends AcceptanceTest {
 	public void descargarSerieRemota_AlmacenadaExisteSerie_SerieLocal() {
 				
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R13_1_2_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R13_1_2_1.getFakeLocalManager());
 		
 		// When
 		Serie resultReturned = seriesGuideApp.downloadRemoteSerie(121361);
@@ -101,7 +101,7 @@ public class R13_HU1 extends AcceptanceTest {
 		thrown.expect(ErrorOnRemoteServerException.class);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R13_1_3_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R13_1_3_1.getFakeLocalManager());
 		
 		// When
 		seriesGuideApp.downloadRemoteSerie(121361);
@@ -118,7 +118,7 @@ public class R13_HU1 extends AcceptanceTest {
 		thrown.expect(TimeoutOnRemoteServerException.class);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R13_1_3_2.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R13_1_3_2.getFakeLocalManager());
 		
 		// When
 		seriesGuideApp.downloadRemoteSerie(121361);

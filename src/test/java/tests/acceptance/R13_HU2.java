@@ -34,7 +34,7 @@ public class R13_HU2 extends AcceptanceTest {
 		Serie mockSerie = (Serie) FactoryMocks.R13_2_1_1.getMock();
 				
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R13_2_1_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R13_2_1_1.getFakeLocalManager());
 				
 		// When
 		seriesGuideApp.storeRemoteSerie(mockSerie);
@@ -57,7 +57,7 @@ public class R13_HU2 extends AcceptanceTest {
 		thrown.expect(SerieAlreadyStoredException.class);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R13_2_2_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R13_2_2_1.getFakeLocalManager());
 				
 		// When
 		seriesGuideApp.storeRemoteSerie((Serie) FactoryMocks.R13_2_2_1.getMock());

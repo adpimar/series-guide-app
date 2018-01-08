@@ -39,7 +39,7 @@ public class R01_HU1 extends AcceptanceTest {
 		);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R01_1_1_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R01_1_1_1.getFakeLocalManager());
 		
 		// When
 		Map<String, Long> resultReturned = seriesGuideApp.listSeriesNames();
@@ -66,7 +66,7 @@ public class R01_HU1 extends AcceptanceTest {
 		);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R01_1_2_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R01_1_2_1.getFakeLocalManager());
 		
 		// When
 		Map<String, Long> resultReturned = seriesGuideApp.listSeriesNames();
@@ -91,7 +91,7 @@ public class R01_HU1 extends AcceptanceTest {
 		thrown.expect(NoSeriesStoredException.class);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R01_1_3_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R01_1_3_1.getFakeLocalManager());
 		
 		// When
 		seriesGuideApp.listSeriesNames();

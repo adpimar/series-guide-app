@@ -28,7 +28,7 @@ public class R09_HU1 extends AcceptanceTest {
 	public void eliminarTemporada_TodosEpisodiosAlmacenadosTodosVistos_TemporadaBorrada() {
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R09_1_1_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R09_1_1_1.getFakeLocalManager());
 		
 		// When
 		seriesGuideApp.deleteSeason(321060, 1);
@@ -45,7 +45,7 @@ public class R09_HU1 extends AcceptanceTest {
 	public void eliminarTemporada_TodosEpisodiosAlmacenadosNoTodosVistos_TemporadaBorrada() {
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R09_1_1_2.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R09_1_1_2.getFakeLocalManager());
 		
 		// When
 		seriesGuideApp.deleteSeason(321060, 1);
@@ -62,7 +62,7 @@ public class R09_HU1 extends AcceptanceTest {
 	public void eliminarTemporada_UnEpisodioAlmacenado_TemporadaBorrada() {
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R09_1_1_3.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R09_1_1_3.getFakeLocalManager());
 		
 		// When
 		seriesGuideApp.deleteSeason(321060, 1);
@@ -79,7 +79,7 @@ public class R09_HU1 extends AcceptanceTest {
 	public void eliminarTemporada_NingunEpisodioAlmacenado_TemporadaBorrada() {
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R09_1_1_4.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R09_1_1_4.getFakeLocalManager());
 		
 		// When
 		seriesGuideApp.deleteSeason(321060, 1);
@@ -102,7 +102,7 @@ public class R09_HU1 extends AcceptanceTest {
 	public void eliminarTemporada_SerieConVariasTemporadas_TemporadaBorrada() {
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R09_1_2_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R09_1_2_1.getFakeLocalManager());
 		
 		// When
 		seriesGuideApp.deleteSeason(305288, 1);
@@ -126,7 +126,7 @@ public class R09_HU1 extends AcceptanceTest {
 		thrown.expect(NoSeasonsStoredException.class);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R09_1_3_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R09_1_3_1.getFakeLocalManager());
 		
 		// When
 		seriesGuideApp.deleteSeason(321060, 1);
@@ -143,7 +143,7 @@ public class R09_HU1 extends AcceptanceTest {
 		thrown.expect(NoSeriesStoredException.class);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R09_1_3_2.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R09_1_3_2.getFakeLocalManager());
 		
 		// When
 		seriesGuideApp.deleteSeason(321060, 1);

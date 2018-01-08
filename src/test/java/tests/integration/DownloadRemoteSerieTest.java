@@ -55,7 +55,7 @@ public class DownloadRemoteSerieTest {
 		
 		// Arrange
 		Serie resultExpected = (Serie) FactoryExpectedResults.R13_1_1_1.getExpectedResult();
-		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R13_1_1_1.getLocalManager());
+		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R13_1_1_1.getFakeLocalManager());
 		
 		// Act
 		Serie resultReturned = downloadAndStoreService.downloadRemoteSerie(121361);
@@ -73,7 +73,7 @@ public class DownloadRemoteSerieTest {
 		
 		// Arrange
 		thrown.expect(NotFoundSerieOnRemoteServerException.class);
-		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R13_1_1_2.getLocalManager());
+		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R13_1_1_2.getFakeLocalManager());
 		
 		// Act
 		downloadAndStoreService.downloadRemoteSerie(999999);
@@ -86,7 +86,7 @@ public class DownloadRemoteSerieTest {
 	public void descargarSerieRemota_AlmacenadaExisteSerie_SerieLocal() {
 				
 		// Arrange
-		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R13_1_2_1.getLocalManager());
+		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R13_1_2_1.getFakeLocalManager());
 		
 		// Act
 		Serie resultReturned = downloadAndStoreService.downloadRemoteSerie(121361);
@@ -102,7 +102,7 @@ public class DownloadRemoteSerieTest {
 
 		// Arrange
 		thrown.expect(ErrorOnRemoteServerException.class);
-		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R13_1_3_1.getLocalManager());
+		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R13_1_3_1.getFakeLocalManager());
 		
 		// Act
 		downloadAndStoreService.downloadRemoteSerie(121361);
@@ -116,7 +116,7 @@ public class DownloadRemoteSerieTest {
 		
 		// Arrange
 		thrown.expect(TimeoutOnRemoteServerException.class);
-		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R13_1_3_2.getLocalManager());
+		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R13_1_3_2.getFakeLocalManager());
 		
 		// Act
 		downloadAndStoreService.downloadRemoteSerie(121361);

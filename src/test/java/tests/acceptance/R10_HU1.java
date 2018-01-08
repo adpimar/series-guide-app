@@ -26,7 +26,7 @@ public class R10_HU1 extends AcceptanceTest {
 	public void eliminarSerie_SerieAlmacenadaConVariasTemporadas_SerieBorrada() {
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R10_1_1_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R10_1_1_1.getFakeLocalManager());
 		
 		// When
 		seriesGuideApp.deleteSerie(305288);
@@ -43,7 +43,7 @@ public class R10_HU1 extends AcceptanceTest {
 	public void eliminarSerie_SerieAlmacenadaConUnaTemporada_SerieBorrada() {
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R10_1_1_2.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R10_1_1_2.getFakeLocalManager());
 		
 		// When
 		seriesGuideApp.deleteSerie(305288);
@@ -60,7 +60,7 @@ public class R10_HU1 extends AcceptanceTest {
 	public void eliminarSerie_SerieAlmacenadaSinTemporadas_SerieBorrada() {
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R10_1_1_3.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R10_1_1_3.getFakeLocalManager());
 		
 		// When
 		seriesGuideApp.deleteSerie(305288);
@@ -79,7 +79,7 @@ public class R10_HU1 extends AcceptanceTest {
 		thrown.expect(NoSeriesStoredException.class);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R10_1_1_4.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R10_1_1_4.getFakeLocalManager());
 		
 		// When
 		seriesGuideApp.deleteSerie(321060);
@@ -99,7 +99,7 @@ public class R10_HU1 extends AcceptanceTest {
 	public void eliminarSerie_ExistenVariasSeries_SerieBorrada() {
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R10_1_2_1.getLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R10_1_2_1.getFakeLocalManager());
 		
 		// When
 		seriesGuideApp.deleteSerie(305288);

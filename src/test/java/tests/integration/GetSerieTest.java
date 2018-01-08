@@ -49,7 +49,7 @@ public class GetSerieTest {
 	public void obtenerSerie_EncontradaEntreUnaSerie_Serie() {
 		
 		// Arrange
-		getAndListService.setLocalManager(FactoryLocalManagers.R02_1_1_1.getLocalManager());
+		getAndListService.setLocalManager(FactoryLocalManagers.R02_1_1_1.getFakeLocalManager());
 		
 		// Act
 		Serie resultReturned = getAndListService.getSerie(321060);
@@ -64,7 +64,7 @@ public class GetSerieTest {
 	public void obtenerSerie_EncontradaEntreVariasSerie_Serie() {
 		
 		// Arrange
-		getAndListService.setLocalManager(FactoryLocalManagers.R02_1_1_2.getLocalManager());
+		getAndListService.setLocalManager(FactoryLocalManagers.R02_1_1_2.getFakeLocalManager());
 		
 		// Act
 		Serie resultReturned = getAndListService.getSerie(260449);
@@ -80,7 +80,7 @@ public class GetSerieTest {
 				
 		// Arrange
 		thrown.expect(NoSeriesStoredException.class);
-		getAndListService.setLocalManager(FactoryLocalManagers.R02_1_2_1.getLocalManager());
+		getAndListService.setLocalManager(FactoryLocalManagers.R02_1_2_1.getFakeLocalManager());
 		
 		// Act
 		getAndListService.getSerie(260449);
@@ -94,7 +94,7 @@ public class GetSerieTest {
 				
 		// Arrange
 		thrown.expect(NoSeriesStoredException.class);
-		getAndListService.setLocalManager(FactoryLocalManagers.R02_1_2_2.getLocalManager());
+		getAndListService.setLocalManager(FactoryLocalManagers.R02_1_2_2.getFakeLocalManager());
 		
 		// Act
 		getAndListService.getSerie(000000);
@@ -108,7 +108,7 @@ public class GetSerieTest {
 		
 		// Arrange
 		thrown.expect(NoSeriesStoredException.class);
-		getAndListService.setLocalManager(FactoryLocalManagers.R02_1_2_3.getLocalManager());
+		getAndListService.setLocalManager(FactoryLocalManagers.R02_1_2_3.getFakeLocalManager());
 		
 		// Act
 		getAndListService.getSerie(321060);
