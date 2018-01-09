@@ -48,8 +48,7 @@ public class SeriesDAO implements ILocalManager {
 					case 'T': sqlSentence = TestSQLParsers.seasonInsertSQL(fields); break;
 					case 'E': sqlSentence = TestSQLParsers.episodeInsertSQL(fields);
 				}
-				//stm.execute(sqlSentence);
-				System.out.println(sqlSentence);
+				stm.execute(sqlSentence);
 			}
 			
 			stm.close();

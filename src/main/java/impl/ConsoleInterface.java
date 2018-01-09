@@ -22,7 +22,6 @@ import impl.managers.remote.thetvdb.TheTVDBAdapter;
 import impl.model.Episode;
 import impl.model.Season;
 import impl.model.Serie;
-import resources.FakeBDL;
 
 public class ConsoleInterface {
 
@@ -443,7 +442,8 @@ public class ConsoleInterface {
 				+ File.separator + "resources" 
 				+ File.separator + "interface" 
 				+ File.separator + "bdl.txt";	
-		return new FakeBDL(filename);
+		//return new FakeBDL(filename);
+		return null;
 	}
 	
 	private IRemoteManager getRemoteManager() {
