@@ -4,14 +4,22 @@ before_script:
   - echo `pwd`
   - export GRADLE_USER_HOME=`pwd`/.gradle
   - chmod +x gradlew
+  
+variables:
+  MYSQL_ROOT_PASSWORD: b166er
+  MYSQL_USER: ei1048adan
+  MYSQL_PASSWORD: adan
+  MYSQL_DATABASE: seriesguideapp
 
 build:
   stage: build
   script:
-    - ./gradlew assemble
+    - ./gradlew clean assemble
 
 test:
   stage: test
+  tags:
+    - mysql
   script:
     - ./gradlew test
 
