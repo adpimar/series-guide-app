@@ -4,7 +4,7 @@ import impl.model.Episode;
 import impl.model.Season;
 import impl.model.Serie;
 
-public class TestParsers {
+public class ParserModel {
 
 	public static Serie localSerieParser(String[] fields) {
 		Serie serie = new Serie();

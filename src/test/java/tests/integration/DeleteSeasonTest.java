@@ -48,7 +48,7 @@ public class DeleteSeasonTest {
 	public void eliminarTemporada_UnicaConTodosEpisodiosTodosVistos_TemporadaBorrada() {
 		
 		// Arrange
-		ILocalManager localManager = FactoryLocalManagers.R09_1_1_1.getFakeLocalManager();
+		ILocalManager localManager = FactoryLocalManagers.R09_1_1_1.getLocalManager();
 		deleteService.setLocalManager(localManager);
 		
 		// Act
@@ -65,7 +65,7 @@ public class DeleteSeasonTest {
 	public void eliminarTemporada_UnicaConTodosEpisodiosNoTodosVistos_TemporadaBorrada() {
 		
 		// Arrange
-		ILocalManager localManager = FactoryLocalManagers.R09_1_1_2.getFakeLocalManager();
+		ILocalManager localManager = FactoryLocalManagers.R09_1_1_2.getLocalManager();
 		deleteService.setLocalManager(localManager);
 		
 		// Act
@@ -80,7 +80,7 @@ public class DeleteSeasonTest {
 	public void eliminarTemporada_UnicaConUnEpisodio_TemporadaBorrada() {
 		
 		// Arrange
-		ILocalManager localManager = FactoryLocalManagers.R09_1_1_3.getFakeLocalManager();
+		ILocalManager localManager = FactoryLocalManagers.R09_1_1_3.getLocalManager();
 		deleteService.setLocalManager(localManager);
 		
 		// Act
@@ -95,7 +95,7 @@ public class DeleteSeasonTest {
 	public void eliminarTemporada_UnicaSinEpisodios_TemporadaBorrada() {
 		
 		// Arrange
-		ILocalManager localManager = FactoryLocalManagers.R09_1_1_4.getFakeLocalManager();
+		ILocalManager localManager = FactoryLocalManagers.R09_1_1_4.getLocalManager();
 		deleteService.setLocalManager(localManager);
 		
 		// Act
@@ -111,7 +111,7 @@ public class DeleteSeasonTest {
 	public void eliminarTemporada_NoUnica_TemporadaBorrada() {
 				
 		// Arrange
-		ILocalManager localManager = FactoryLocalManagers.R09_1_2_1.getFakeLocalManager();
+		ILocalManager localManager = FactoryLocalManagers.R09_1_2_1.getLocalManager();
 		deleteService.setLocalManager(localManager);
 		
 		// Act
@@ -127,7 +127,7 @@ public class DeleteSeasonTest {
 		
 		// Arrange
 		thrown.expect(NoSeasonsStoredException.class);
-		deleteService.setLocalManager(FactoryLocalManagers.R09_1_3_1.getFakeLocalManager());
+		deleteService.setLocalManager(FactoryLocalManagers.R09_1_3_1.getLocalManager());
 		
 		// Act
 		deleteService.deleteSeason(321060, 1);
@@ -141,7 +141,7 @@ public class DeleteSeasonTest {
 		
 		// Arrange
 		thrown.expect(NoSeriesStoredException.class);
-		deleteService.setLocalManager(FactoryLocalManagers.R09_1_3_2.getFakeLocalManager());
+		deleteService.setLocalManager(FactoryLocalManagers.R09_1_3_2.getLocalManager());
 		
 		// Act
 		deleteService.deleteSeason(321060, 1);

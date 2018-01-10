@@ -1,7 +1,9 @@
 package resources;
 
-public class TestSQLParsers {
+public class ParserSQL {
 
+	private static final int OVERVIEW_LIMIT = 500;
+	
 	public static String serieInsertSQL(String[] fields) {
 		int i = 1;
 		StringBuilder sb = new StringBuilder();
@@ -14,11 +16,11 @@ public class TestSQLParsers {
 		sb.append(readStringFields(fields[i++]) + ", ");
 		sb.append(readStringFields(fields[i++]) + ", ");
 		sb.append(readStringFields(fields[i++]) + ", ");
-		sb.append(readStringFields(fields[i++]) + ", ");
+		sb.append(readStringFields(fields[i++]) + ", ");	
 		sb.append(readStringFields(fields[i++]) + ", ");
 		sb.append(fields[i++] + ", ");
 		sb.append(fields[i++] + ", ");
-		sb.append(readStringFields(fields[i++]) + ");");
+		sb.append(readStringFields(checkTooLongOverview(fields[i++])) + ");");
 		
 		return sb.toString();
 	}
@@ -42,7 +44,7 @@ public class TestSQLParsers {
 	public static String episodeInsertSQL(String[] fields) {
 		int i = 1;
 		StringBuilder sb = new StringBuilder();
-		
+
 		sb.append("INSERT INTO EPISODIOS (cod_episode, cod_season, aired_season, aired_episode, episode_name, first_aired, overview, seen, comment) ");
 		sb.append("VALUES (");
 		sb.append(fields[i++] + ", ");
@@ -51,10 +53,10 @@ public class TestSQLParsers {
 		sb.append(fields[i++] + ", ");
 		sb.append(readStringFields(fields[i++]) + ", ");
 		sb.append(readStringFields(fields[i++]) + ", ");
-		sb.append(readStringFields(fields[i++]) + ", ");
+		sb.append(readStringFields(checkTooLongOverview(fields[i++])) + ", ");
 		sb.append((fields[i++].toUpperCase().charAt(0) == 'T') + ", ");
 		sb.append(readStringFields(fields[i++]) + ");");
-		
+
 		return sb.toString();
 	}
 
@@ -64,6 +66,12 @@ public class TestSQLParsers {
 		if (field.equals("\"\"") || field.equals("empty"))
 			return "\"\"";
 		return "\"" + field + "\"";
+	}
+	
+	private static String checkTooLongOverview(String overview) {
+		if (overview.length() > OVERVIEW_LIMIT)
+			return overview.substring(0, OVERVIEW_LIMIT - 1);
+		return overview;
 	}
 
 }

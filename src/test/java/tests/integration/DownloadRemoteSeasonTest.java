@@ -57,7 +57,7 @@ public class DownloadRemoteSeasonTest {
 	public void descargarTemporadaRemota_NoAlmacenadaExisteSerieRemotaExisteTemporadaRemota_TemporadaRemota() {
 		
 		// Arrange
-		ILocalManager localManager = FactoryLocalManagers.R14_1_1_1.getFakeLocalManager();
+		ILocalManager localManager = FactoryLocalManagers.R14_1_1_1.getLocalManager();
 		Season resultExpected = (Season) FactoryExpectedResults.R14_1_1_1.getExpectedResult();
 		downloadAndStoreService.setLocalManager(localManager);
 		
@@ -75,7 +75,7 @@ public class DownloadRemoteSeasonTest {
 			
 		// Arrange
 		thrown.expect(NotFoundSeasonOnRemoteServerException.class);
-		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R14_1_1_2.getFakeLocalManager());
+		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R14_1_1_2.getLocalManager());
 		
 		// Act
 		downloadAndStoreService.downloadRemoteSeason(321060, 4);
@@ -89,7 +89,7 @@ public class DownloadRemoteSeasonTest {
 		
 		// Arrange
 		thrown.expect(NotFoundSeasonOnRemoteServerException.class);
-		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R14_1_1_3.getFakeLocalManager());
+		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R14_1_1_3.getLocalManager());
 		
 		// Act
 		downloadAndStoreService.downloadRemoteSeason(999999, 1);
@@ -103,7 +103,7 @@ public class DownloadRemoteSeasonTest {
 
 		
 		// Arrange
-		ILocalManager localManager = FactoryLocalManagers.R14_1_2_1.getFakeLocalManager();
+		ILocalManager localManager = FactoryLocalManagers.R14_1_2_1.getLocalManager();
 		Season resultExpected = (Season) FactoryExpectedResults.R14_1_2_1.getExpectedResult();
 		downloadAndStoreService.setLocalManager(localManager);
 		
@@ -120,7 +120,7 @@ public class DownloadRemoteSeasonTest {
 	public void descargarTemporadaRemota_AlmacenadaConUnEpisodio_TemporadaLocal() {
 
 		// Arrange
-		ILocalManager localManager = FactoryLocalManagers.R14_1_2_2.getFakeLocalManager();
+		ILocalManager localManager = FactoryLocalManagers.R14_1_2_2.getLocalManager();
 		Season resultExpected = (Season) FactoryExpectedResults.R14_1_2_2.getExpectedResult();
 		downloadAndStoreService.setLocalManager(localManager);
 		
@@ -137,7 +137,7 @@ public class DownloadRemoteSeasonTest {
 	public void descargarTemporadaRemota_AlmacenadaSinEpisodios_TemporadaLocal() {
 	
 		// Arrange
-		ILocalManager localManager = FactoryLocalManagers.R14_1_2_3.getFakeLocalManager();
+		ILocalManager localManager = FactoryLocalManagers.R14_1_2_3.getLocalManager();
 		Season resultExpected = (Season) FactoryExpectedResults.R14_1_2_3.getExpectedResult();
 		downloadAndStoreService.setLocalManager(localManager);
 		
@@ -155,7 +155,7 @@ public class DownloadRemoteSeasonTest {
 	
 		// Arrange
 		thrown.expect(NoSeriesStoredException.class);
-		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R14_1_3_1.getFakeLocalManager());
+		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R14_1_3_1.getLocalManager());
 		
 		// Act
 		downloadAndStoreService.downloadRemoteSeason(321060, 1);
@@ -169,7 +169,7 @@ public class DownloadRemoteSeasonTest {
 		
 		// Arrange
 		thrown.expect(ErrorOnRemoteServerException.class);
-		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R14_1_4_1.getFakeLocalManager());
+		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R14_1_4_1.getLocalManager());
 		
 		// Act
 		downloadAndStoreService.downloadRemoteSeason(321060, 1);
@@ -183,7 +183,7 @@ public class DownloadRemoteSeasonTest {
 		
 		// Arrange
 		thrown.expect(TimeoutOnRemoteServerException.class);
-		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R14_1_4_2.getFakeLocalManager());
+		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R14_1_4_2.getLocalManager());
 		
 		// Act
 		downloadAndStoreService.downloadRemoteSeason(321060, 1);

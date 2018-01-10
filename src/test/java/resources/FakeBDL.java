@@ -43,9 +43,9 @@ public class FakeBDL implements ILocalManager {
 		while ((line = b.readLine()) != null) {
 			String[] fields = line.split("#");
 			switch (fields[0].charAt(0)) {
-				case 'S': addSerie(TestParsers.localSerieParser(fields)); break;
-				case 'T': addSeason(TestParsers.localSeasonParser(fields)); break;
-				case 'E': addEpisode(TestParsers.localEpisodeParser(fields));
+				case 'S': addSerie(ParserModel.localSerieParser(fields)); break;
+				case 'T': addSeason(ParserModel.localSeasonParser(fields)); break;
+				case 'E': addEpisode(ParserModel.localEpisodeParser(fields));
 			}
 		}
 		b.close();
