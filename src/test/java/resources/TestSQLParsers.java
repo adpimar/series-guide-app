@@ -63,7 +63,7 @@ public class TestSQLParsers {
 			return "null";
 		if (field.equals("\"\"") || field.equals("empty"))
 			return "\"\"";
-		return "\"" + field + "\"";
+		return "\'" + field + "\'";
 	}
 
 }

@@ -6,8 +6,7 @@ import java.sql.SQLException;
 
 public class MySQLConnect {
 	
-	static final String url = "jdbc:mysql://mysql:3306/seriesguideapp-adan";
-	
+	static final String url = "jdbc:mysql://localhost:3306/seriesguideapp";
     static final String user = "ei1048adan";
     static final String pass = "adan";
     
@@ -34,7 +33,6 @@ public class MySQLConnect {
             ex.printStackTrace();
         }
 		
-    
     }
     
 	public Connection getConnection() {
