@@ -77,23 +77,23 @@ public enum FactoryMocks {
 	
 	private Serie getMockRemoteSerie(BufferedReader b) throws IOException {
 		String[] fields = b.readLine().split("#");		
-		return TestParsers.localSerieParser(fields);
+		return ParserModel.localSerieParser(fields);
 	}
 	
 	private Serie getMockRemoteSearchSerie(BufferedReader b) throws IOException {
 		String[] fields = b.readLine().split("#");		
-		return TestParsers.remoteSearchSerieParser(fields);
+		return ParserModel.remoteSearchSerieParser(fields);
 	}
 	
 	private Season getMockRemoteSeason(BufferedReader b) throws IOException {
 		String[] fields = b.readLine().split("#");
-		Season season = TestParsers.localSeasonParser(fields);
+		Season season = ParserModel.localSeasonParser(fields);
 		Episode[] episodes = season.getEpisodes();
 		String line;
 		Episode episode;
 		while ((line = b.readLine()) != null) {
 			fields = line.split("#");
-			episode = TestParsers.localEpisodeParser(fields);
+			episode = ParserModel.localEpisodeParser(fields);
 			episodes[episode.getAiredEpisode() - 1] = episode;
 		}
 		return season;
@@ -106,7 +106,7 @@ public enum FactoryMocks {
 		List<Serie> series = new LinkedList<>();
 		while ((line = b.readLine()) != null) {
 			fields = line.split("#");
-			serie = TestParsers.remoteSearchSerieParser(fields);
+			serie = ParserModel.remoteSearchSerieParser(fields);
 			series.add(serie);
 		}
 		return series;

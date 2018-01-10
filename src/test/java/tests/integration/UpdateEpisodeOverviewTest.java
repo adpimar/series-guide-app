@@ -54,7 +54,7 @@ public class UpdateEpisodeOverviewTest {
 		
 		// Arrange
 		String newOverview = "";		
-		ILocalManager localManager = FactoryLocalManagers.R06_1_1_1.getFakeLocalManager();
+		ILocalManager localManager = FactoryLocalManagers.R06_1_1_1.getLocalManager();
 		updateOverviewService.setLocalManager(localManager);
 		
 		// Act
@@ -76,7 +76,7 @@ public class UpdateEpisodeOverviewTest {
 				+ "del grupo. Homer decide averiguar el verdadero propósito de los "
 				+ "experimentos de Hap.";
 
-		ILocalManager localManager = FactoryLocalManagers.R06_1_1_2.getFakeLocalManager();
+		ILocalManager localManager = FactoryLocalManagers.R06_1_1_2.getLocalManager();
 		updateOverviewService.setLocalManager(localManager);
 		
 		// Act
@@ -104,7 +104,7 @@ public class UpdateEpisodeOverviewTest {
 						+ "finalmente cobran sentido ... ";
 		
 		thrown.expect(TooLongOverviewException.class);
-		updateOverviewService.setLocalManager(FactoryLocalManagers.R06_1_1_3.getFakeLocalManager());
+		updateOverviewService.setLocalManager(FactoryLocalManagers.R06_1_1_3.getLocalManager());
 		
 		// Act
 		updateOverviewService.updateEpisodeOverview(321060, 1, 4, newOverview);
@@ -118,7 +118,7 @@ public class UpdateEpisodeOverviewTest {
 		
 		// Arrange
 		thrown.expect(NoEpisodesStoredException.class);
-		updateOverviewService.setLocalManager(FactoryLocalManagers.R06_1_2_1.getFakeLocalManager());
+		updateOverviewService.setLocalManager(FactoryLocalManagers.R06_1_2_1.getLocalManager());
 		
 		// Act
 		updateOverviewService.updateEpisodeOverview(321060, 1, 4, "");
@@ -132,7 +132,7 @@ public class UpdateEpisodeOverviewTest {
 		
 		// Arrange
 		thrown.expect(NoSeasonsStoredException.class);
-		updateOverviewService.setLocalManager(FactoryLocalManagers.R06_1_2_2.getFakeLocalManager());
+		updateOverviewService.setLocalManager(FactoryLocalManagers.R06_1_2_2.getLocalManager());
 		
 		// Act
 		updateOverviewService.updateEpisodeOverview(321060, 1, 4, "");
@@ -146,7 +146,7 @@ public class UpdateEpisodeOverviewTest {
 		
 		// Arrange
 		thrown.expect(NoSeriesStoredException.class);
-		updateOverviewService.setLocalManager(FactoryLocalManagers.R06_1_2_3.getFakeLocalManager());
+		updateOverviewService.setLocalManager(FactoryLocalManagers.R06_1_2_3.getLocalManager());
 		
 		// Act
 		updateOverviewService.updateEpisodeOverview(321060, 1, 4, "");

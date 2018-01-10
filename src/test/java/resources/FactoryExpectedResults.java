@@ -103,18 +103,18 @@ public enum FactoryExpectedResults {
 
 	private Serie getExpectedSerie(BufferedReader b) throws IOException {
 		String[] fields = b.readLine().split("#");		
-		return TestParsers.localSerieParser(fields);
+		return ParserModel.localSerieParser(fields);
 	}
 	
 	private Season getExpectedSeason(BufferedReader b) throws IOException {
 		String[] fields = b.readLine().split("#");
-		Season season = TestParsers.localSeasonParser(fields);
+		Season season = ParserModel.localSeasonParser(fields);
 		Episode[] episodes = season.getEpisodes();
 		String line;
 		Episode episode;
 		while ((line = b.readLine()) != null) {
 			fields = line.split("#");
-			episode = TestParsers.localEpisodeParser(fields);
+			episode = ParserModel.localEpisodeParser(fields);
 			episodes[episode.getAiredEpisode() - 1] = episode;
 		}
 		return season;
@@ -122,7 +122,7 @@ public enum FactoryExpectedResults {
 	
 	private Episode getExpectedEpisode(BufferedReader b) throws IOException {
 		String[] fields = b.readLine().split("#");		
-		return TestParsers.localEpisodeParser(fields);
+		return ParserModel.localEpisodeParser(fields);
 	}
 
 }

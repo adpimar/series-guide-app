@@ -52,7 +52,7 @@ public class StoreRemoteSeasonTest {
 		thrown.expect(NoSeriesStoredException.class);
 		
 		// Arrange
-		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R14_2_1_1.getFakeLocalManager());
+		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R14_2_1_1.getLocalManager());
 		
 		// Act
 		downloadAndStoreService.storeRemoteSeason((Season) FactoryMocks.R14_2_1_1.getMock());
@@ -65,7 +65,7 @@ public class StoreRemoteSeasonTest {
 	public void almacenarTemporadaRemota_NoAlmacenadaSerieSinTemporadas_TemporadaAlmacenada() {
 				
 		// Arrange
-		ILocalManager localManager = FactoryLocalManagers.R14_2_2_1.getFakeLocalManager();
+		ILocalManager localManager = FactoryLocalManagers.R14_2_2_1.getLocalManager();
 		Season mockSeason = (Season) FactoryMocks.R14_2_2_1.getMock();
 		Season resultExpected = (Season) FactoryExpectedResults.R14_2_2_1.getExpectedResult();
 		downloadAndStoreService.setLocalManager(localManager);
@@ -82,7 +82,7 @@ public class StoreRemoteSeasonTest {
 	public void almacenarTemporadaRemota_NoAlmacenadaSerieConTemporadas_TemporadaAlmacenada() {
 	
 		// Arrange
-		ILocalManager localManager = FactoryLocalManagers.R14_2_2_2.getFakeLocalManager();
+		ILocalManager localManager = FactoryLocalManagers.R14_2_2_2.getLocalManager();
 		Season mockSeason = (Season) FactoryMocks.R14_2_2_2.getMock();
 		Season resultExpected = (Season) FactoryExpectedResults.R14_2_2_2.getExpectedResult();
 		downloadAndStoreService.setLocalManager(localManager);
@@ -100,7 +100,7 @@ public class StoreRemoteSeasonTest {
 
 		// Arrange
 		thrown.expect(NoSeriesStoredException.class);
-		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R14_2_3_1.getFakeLocalManager());
+		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R14_2_3_1.getLocalManager());
 		
 		// Act
 		downloadAndStoreService.storeRemoteSeason((Season) FactoryMocks.R14_2_3_1.getMock());

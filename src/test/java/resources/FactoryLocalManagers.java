@@ -3,7 +3,6 @@ package resources;
 import java.io.File;
 
 import abs.managers.ILocalManager;
-import impl.managers.local.SeriesDAO;
 
 public enum FactoryLocalManagers {
 
@@ -148,7 +147,7 @@ public enum FactoryLocalManagers {
 	}
 	
 	public ILocalManager getLocalManager() {
-		return new SeriesDAO(PATH + filename);
+		return new RealBDL(PATH + filename);
 	}
 
 }

@@ -51,7 +51,7 @@ public class GetEpisodeTest {
 	public void obtenerEpisodio_UnaSerieUnaTemporada_Episodio() {
 		
 		// Arrange
-		getAndListService.setLocalManager(FactoryLocalManagers.R05_1_1_1.getFakeLocalManager());
+		getAndListService.setLocalManager(FactoryLocalManagers.R05_1_1_1.getLocalManager());
 		
 		// Act
 		Episode resultReturned = getAndListService.getEpisode(321060, 1, 6);
@@ -66,7 +66,7 @@ public class GetEpisodeTest {
 	public void obtenerEpisodio_UnaSerieVariasTemporadas_Episodio() {
 		
 		// Arrange
-		getAndListService.setLocalManager(FactoryLocalManagers.R05_1_1_2.getFakeLocalManager());
+		getAndListService.setLocalManager(FactoryLocalManagers.R05_1_1_2.getLocalManager());
 		
 		// Act
 		Episode resultReturned = getAndListService.getEpisode(305288, 1, 6);
@@ -81,7 +81,7 @@ public class GetEpisodeTest {
 	public void obtenerEpisodio_VariasSeriesVariasTemporadas_Episodio() {
 
 		// Arrange
-		getAndListService.setLocalManager(FactoryLocalManagers.R05_1_1_3.getFakeLocalManager());
+		getAndListService.setLocalManager(FactoryLocalManagers.R05_1_1_3.getLocalManager());
 		
 		// Act
 		Episode resultReturned = getAndListService.getEpisode(321060, 1, 6);
@@ -97,7 +97,7 @@ public class GetEpisodeTest {
 		
 		// Arrange
 		thrown.expect(NoEpisodesStoredException.class);
-		getAndListService.setLocalManager(FactoryLocalManagers.R05_1_2_1.getFakeLocalManager());
+		getAndListService.setLocalManager(FactoryLocalManagers.R05_1_2_1.getLocalManager());
 		
 		// Act
 		getAndListService.getEpisode(321060, 1, 6);
@@ -111,7 +111,7 @@ public class GetEpisodeTest {
 		
 		// Arrange
 		thrown.expect(NoSeasonsStoredException.class);
-		getAndListService.setLocalManager(FactoryLocalManagers.R05_1_3_1.getFakeLocalManager());
+		getAndListService.setLocalManager(FactoryLocalManagers.R05_1_3_1.getLocalManager());
 		
 		// Act
 		getAndListService.getEpisode(321060, 1, 6);
@@ -125,7 +125,7 @@ public class GetEpisodeTest {
 		
 		// Arrange
 		thrown.expect(NoSeriesStoredException.class);
-		getAndListService.setLocalManager(FactoryLocalManagers.R05_1_4_1.getFakeLocalManager());
+		getAndListService.setLocalManager(FactoryLocalManagers.R05_1_4_1.getLocalManager());
 		
 		// Act
 		getAndListService.getEpisode(321060, 1, 6);

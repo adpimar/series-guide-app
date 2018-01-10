@@ -54,7 +54,7 @@ public class UncheckSeasonAsViewedTest {
 	public void indicarNoVistaTemporada_NoVistaConTodosEpisodios_TemporadaNoVista() {
 		
 		// Arrange
-		ILocalManager localManager = FactoryLocalManagers.R15_2_1_1.getFakeLocalManager();
+		ILocalManager localManager = FactoryLocalManagers.R15_2_1_1.getLocalManager();
 		checkAsViewedService.setLocalManager(localManager);
 		
 		// Act
@@ -72,7 +72,7 @@ public class UncheckSeasonAsViewedTest {
 		
 		// Arrange
 		thrown.expect(NoEpisodesStoredException.class);
-		checkAsViewedService.setLocalManager(FactoryLocalManagers.R15_2_1_2.getFakeLocalManager());
+		checkAsViewedService.setLocalManager(FactoryLocalManagers.R15_2_1_2.getLocalManager());
 		
 		// Act
 		checkAsViewedService.uncheckSeasonAsViewed(321060, 1);
@@ -86,7 +86,7 @@ public class UncheckSeasonAsViewedTest {
 		
 		// Arrange
 		thrown.expect(NoEpisodesStoredException.class);
-		checkAsViewedService.setLocalManager(FactoryLocalManagers.R15_2_1_3.getFakeLocalManager());
+		checkAsViewedService.setLocalManager(FactoryLocalManagers.R15_2_1_3.getLocalManager());
 		
 		// Act
 		checkAsViewedService.uncheckSeasonAsViewed(321060, 1);
@@ -99,7 +99,7 @@ public class UncheckSeasonAsViewedTest {
 	public void indicarNoVistaTemporada_Vista_TemporadaNoVista() {
 		
 		// Arrange
-		ILocalManager localManager = FactoryLocalManagers.R15_2_1_4.getFakeLocalManager();
+		ILocalManager localManager = FactoryLocalManagers.R15_2_1_4.getLocalManager();
 		checkAsViewedService.setLocalManager(localManager);
 		
 		// Act
@@ -117,7 +117,7 @@ public class UncheckSeasonAsViewedTest {
 		
 		// Arrange
 		thrown.expect(NoSeasonsStoredException.class);
-		checkAsViewedService.setLocalManager(FactoryLocalManagers.R15_2_2_1.getFakeLocalManager());
+		checkAsViewedService.setLocalManager(FactoryLocalManagers.R15_2_2_1.getLocalManager());
 		
 		// Act
 		checkAsViewedService.uncheckSeasonAsViewed(321060, 1);
@@ -131,7 +131,7 @@ public class UncheckSeasonAsViewedTest {
 		
 		// Arrange
 		thrown.expect(NoSeriesStoredException.class);
-		checkAsViewedService.setLocalManager(FactoryLocalManagers.R15_2_2_2.getFakeLocalManager());
+		checkAsViewedService.setLocalManager(FactoryLocalManagers.R15_2_2_2.getLocalManager());
 		
 		// Act
 		checkAsViewedService.uncheckSeasonAsViewed(321060, 1);
