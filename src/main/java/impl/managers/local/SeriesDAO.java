@@ -20,6 +20,9 @@ import resources.TestSQLParsers;
 
 public class SeriesDAO implements ILocalManager {
 
+	public SeriesDAO() {
+		
+	}
 	
 	public SeriesDAO(String filename) {
 		configureBDL(filename);
@@ -38,6 +41,7 @@ public class SeriesDAO implements ILocalManager {
 		try {	
 
 			connect = conexion.getConnection();
+			System.out.println(connect);
 			stm = connect.createStatement();
 			b = new BufferedReader(new FileReader(filename));
 			
