@@ -48,7 +48,7 @@ public class CreateTables {
 					" status VARCHAR(20) NOT NULL, " +
 					" first_aired DATE NOT NULL, " +
 					" airs_dow VARCHAR(10) NOT NULL, " +
-					" airs_time TIME NOT NULL, " +
+					" airs_time VARCHAR(10) NOT NULL, " +
 					" network VARCHAR(20) NOT NULL, " +
 					" genres VARCHAR(100) NOT NULL, " +
 					" site_rating NUMERIC(2,0) NOT NULL, " +
@@ -69,7 +69,7 @@ public class CreateTables {
 					" cod_serie INT NOT NULL CHECK (cod_serie >= 0), " +
 					" cod_season INT NOT NULL CHECK (cod_season >= 0), " +
 					" aired_season NUMERIC(2,0) NOT NULL, " +
-					" first_aired DATE NOT NULL, " +
+					" first_aired VARCHAR(10) NOT NULL, " +
 					" total_episodes NUMERIC(2,0) NOT NULL, " +
 					" seen  BOOLEAN NOT NULL DEFAULT false, " +
 					" CONSTRAINT TEMPORADAS_pk PRIMARY KEY (cod_season));";
@@ -89,7 +89,7 @@ public class CreateTables {
 					" aired_season NUMERIC(2,0) NOT NULL, " +
 					" aired_episode NUMERIC(2,0) NOT NULL, " +
 					" episode_name VARCHAR(50) NOT NULL, " +
-					" first_aired DATE NOT NULL, " +
+					" first_aired VARCHAR(10) NOT NULL, " +
 					" overview VARCHAR(500), " +
 					" seen BOOLEAN NOT NULL DEFAULT false, " +
 					" comment varchar(150), " +

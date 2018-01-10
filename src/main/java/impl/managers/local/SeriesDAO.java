@@ -39,10 +39,14 @@ public class SeriesDAO implements ILocalManager {
 		Connection connect;
 		
 		try {	
-
+		
 			connect = conexion.getConnection();
-			System.out.println(connect);
 			stm = connect.createStatement();
+
+			stm.execute("DELETE FROM episodios");
+			stm.execute("DELETE FROM temporadas");
+			stm.execute("DELETE FROM series");
+			
 			b = new BufferedReader(new FileReader(filename));
 			
 			while ((line = b.readLine()) != null) {
