@@ -11,7 +11,7 @@ public class MySQLConnect {
 	
 	// JDBC driver name and database URL
 	private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-	private static final String DB_URL = "jdbc:mysql://mysql:3306/seriesguideapp";
+	private static final String DB_URL = "jdbc:mysql://mysql:3306/seriesguideapp?useSSL=false";
 	private static final String DATABASE_NAME = "seriesguideapp";
 	
 	// Database credentials
@@ -55,29 +55,29 @@ public class MySQLConnect {
 				e.printStackTrace();
 			}
 			
-			try {
-				stmt.executeUpdate("DROP TABLE seriesguideapp.EPISODIOS;");
-				System.out.println("Tabla EPISODIOS eliminada");
-			} catch (SQLException e) {
-				System.out.println("Fallo en el DROP TABLE EPISODIOS");
-				e.printStackTrace();
-			}
-			
-			try {
-				stmt.executeUpdate("DROP TABLE seriesguideapp.TEMPORADAS;");
-				System.out.println("Tabla TEMPORADAS eliminada");
-			} catch (SQLException e) {
-				System.out.println("Fallo en el DROP TABLE TEMPORADAS");
-				e.printStackTrace();
-			}
-			
-			try {
-				stmt.executeUpdate("DROP TABLE seriesguideapp.SERIES;");
-				System.out.println("Tabla SERIES eliminada");
-			} catch (SQLException e) {
-				System.out.println("Fallo en el DROP TABLE SERIES");
-				e.printStackTrace();
-			}
+//			try {
+//				stmt.executeUpdate("DROP TABLE seriesguideapp.EPISODIOS;");
+//				System.out.println("Tabla EPISODIOS eliminada");
+//			} catch (SQLException e) {
+//				System.out.println("Fallo en el DROP TABLE EPISODIOS");
+//				e.printStackTrace();
+//			}
+//			
+//			try {
+//				stmt.executeUpdate("DROP TABLE seriesguideapp.TEMPORADAS;");
+//				System.out.println("Tabla TEMPORADAS eliminada");
+//			} catch (SQLException e) {
+//				System.out.println("Fallo en el DROP TABLE TEMPORADAS");
+//				e.printStackTrace();
+//			}
+//			
+//			try {
+//				stmt.executeUpdate("DROP TABLE seriesguideapp.SERIES;");
+//				System.out.println("Tabla SERIES eliminada");
+//			} catch (SQLException e) {
+//				System.out.println("Fallo en el DROP TABLE SERIES");
+//				e.printStackTrace();
+//			}
 			
 			try {
 				System.out.println("Creando tablas...");

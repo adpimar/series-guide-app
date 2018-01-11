@@ -26,9 +26,9 @@ public class RealBDL extends SeriesDAO {
 
 			stm = mySQLConnect.getConnection().createStatement();
 
-			stm.execute("DELETE FROM episodios");
-			stm.execute("DELETE FROM temporadas");
-			stm.execute("DELETE FROM series");
+			stm.execute("DELETE FROM seriesguideapp.EPISODIOS");
+			stm.execute("DELETE FROM seriesguideapp.TEMPORADAS");
+			stm.execute("DELETE FROM seriesguideapp.SERIES");
 
 			b = new BufferedReader(new FileReader(filename));
 
