@@ -120,16 +120,24 @@ public class ConsoleInterface {
 	
 	private void listarSeries() {
 		mostrarTitulo("Listar todas las series");
-		Map<String, Long> series = seriesGuideApp.listSeriesNames();
-		listarSeriesAuxiliar(series);
+		try {
+			Map<String, Long> series = seriesGuideApp.listSeriesNames();
+			listarSeriesAuxiliar(series);
+		} catch (NoSeriesStoredException e) {
+			imprimeFeedback("ERROR: No hay series almacenadas.");
+		}
 	}
 	
 	private void visualizarSerie() {
 		mostrarTitulo("Visualizar una serie");	
 		long codSerie = pideCodigoSerie();
-		Serie serie = seriesGuideApp.getSerie(codSerie);	
-		imprimeObjeto(serie);
-		menuSerie(serie);
+		try {
+			Serie serie = seriesGuideApp.getSerie(codSerie);	
+			imprimeObjeto(serie);
+			menuSerie(serie);
+		} catch (NoSeriesStoredException e) {
+			imprimeFeedback("ERROR: La serie no está almacenada en la BDL.");
+		}
 	}
 	
 	private void buscarSerieLocal() {
