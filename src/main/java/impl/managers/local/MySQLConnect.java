@@ -11,7 +11,7 @@ public class MySQLConnect {
 	
 	// JDBC driver name and database URL
 	private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-	private static final String DB_URL = "jdbc:mysql://mysql:3306/seriesguideapp?&useSSL=false";
+	private static final String DB_URL = "jdbc:mysql://mysql:3306/seriesguideapp";
 	private static final String DATABASE_NAME = "seriesguideapp";
 	
 	// Database credentials
@@ -38,24 +38,22 @@ public class MySQLConnect {
 
 			stmt = connection.createStatement();
 			
-//			try {
-//				stmt.executeUpdate("DROP DATABASE " + DATABASE_NAME);
-//				System.out.println("DATABASE eliminada");
-//			} catch (SQLException e) {
-//				e.printStackTrace();
-//				System.out.println("Fallo en el DROP DATABASE");
-//			}
-//			
-//			try {
-//				System.out.println("Creando BDL...");
-//				stmt.executeUpdate("CREATE DATABASE " + DATABASE_NAME);
-//				System.out.println("BDL creada satisfactoriamente...");
-//			} catch (SQLException e) {
-//				System.out.println("¡BDL ya había sido creada!");
-//				e.printStackTrace();
-//			}
+			try {
+				stmt.executeUpdate("DROP DATABASE " + DATABASE_NAME);
+				System.out.println("DATABASE eliminada");
+			} catch (SQLException e) {
+				e.printStackTrace();
+				System.out.println("Fallo en el DROP DATABASE");
+			}
 			
-			
+			try {
+				System.out.println("Creando BDL...");
+				stmt.executeUpdate("CREATE DATABASE " + DATABASE_NAME);
+				System.out.println("BDL creada satisfactoriamente...");
+			} catch (SQLException e) {
+				System.out.println("¡BDL ya había sido creada!");
+				e.printStackTrace();
+			}
 			
 			try {
 				stmt.executeUpdate("DROP TABLE EPISODIOS;");
