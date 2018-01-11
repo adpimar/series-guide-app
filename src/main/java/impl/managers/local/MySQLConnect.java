@@ -12,8 +12,8 @@ public class MySQLConnect {
 	// JDBC driver name and database URL
 	private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 	//private static final String DB_URL = "jdbc:mysql://mysql:3306/seriesguideapp?&useSSL=false";
-	//private static final String DB_URL = "jdbc:mysql://localhost:3306/seriesguideapp?&useSSL=false";
-	private static final String DB_URL = "jdbc:mysql://mysql:3306/seriesguideapp";
+	private static final String DB_URL = "jdbc:mysql://localhost:3306/seriesguideapp?&useSSL=false";
+	//private static final String DB_URL = "jdbc:mysql://mysql:3306/seriesguideapp";
 	private static final String DATABASE_NAME = "seriesguideapp";
 	
 	// Database credentials
@@ -31,17 +31,17 @@ public class MySQLConnect {
 
 		try {
 
-			// STEP 2: Register JDBC driver
+			// Register JDBC driver
 			Class.forName(JDBC_DRIVER);
 
-			// STEP 3: Open a connection
+			// Open a connection
 			System.out.println("Conectando a BDL...");
 			connection = DriverManager.getConnection(DB_URL, USER, PASS);
 
+			stmt = connection.createStatement();
+			
 			try {
-				// STEP 4: Create database
 				System.out.println("Creando BDL...");
-				stmt = connection.createStatement();
 				stmt.executeUpdate("CREATE DATABASE " + DATABASE_NAME);
 				System.out.println("BDL creada satisfactoriamente...");
 			} catch (SQLException e) {
