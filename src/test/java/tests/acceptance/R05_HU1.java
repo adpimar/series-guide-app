@@ -34,7 +34,7 @@ public class R05_HU1 extends AcceptanceTest {
 	public void obtenerEpisodio_ExisteUnaSerieUnaTemporada_Episodio() {
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R05_1_1_1.getFakeLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R05_1_1_1.getLocalManager());
 		
 		// When
 		Episode resultReturned = seriesGuideApp.getEpisode(321060, 1, 6);
@@ -51,7 +51,7 @@ public class R05_HU1 extends AcceptanceTest {
 	public void obtenerEpisodio_ExisteUnaSerieVariasTemporadas_Episodio() {
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R05_1_1_2.getFakeLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R05_1_1_2.getLocalManager());
 		
 		// When
 		Episode resultReturned = seriesGuideApp.getEpisode(305288, 1, 6);
@@ -68,7 +68,7 @@ public class R05_HU1 extends AcceptanceTest {
 	public void obtenerEpisodio_ExistenVariasSeriesVariasTemporadas_Episodio() {
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R05_1_1_3.getFakeLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R05_1_1_3.getLocalManager());
 		
 		// When
 		Episode resultReturned = seriesGuideApp.getEpisode(321060, 1, 6);
@@ -93,7 +93,7 @@ public class R05_HU1 extends AcceptanceTest {
 		thrown.expect(NoEpisodesStoredException.class);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R05_1_2_1.getFakeLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R05_1_2_1.getLocalManager());
 		
 		// When
 		seriesGuideApp.getEpisode(321060, 1, 6);
@@ -116,7 +116,7 @@ public class R05_HU1 extends AcceptanceTest {
 		thrown.expect(NoSeasonsStoredException.class);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R05_1_3_1.getFakeLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R05_1_3_1.getLocalManager());
 		
 		// When
 		seriesGuideApp.getEpisode(321060, 1, 6);
@@ -138,7 +138,7 @@ public class R05_HU1 extends AcceptanceTest {
 		thrown.expect(NoSeriesStoredException.class);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R05_1_4_1.getFakeLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R05_1_4_1.getLocalManager());
 		
 		// When
 		seriesGuideApp.getEpisode(321060, 1, 6);

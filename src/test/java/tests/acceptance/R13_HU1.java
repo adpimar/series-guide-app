@@ -37,7 +37,7 @@ public class R13_HU1 extends AcceptanceTest {
 		Serie resultExpected = (Serie) FactoryExpectedResults.R13_1_1_1.getExpectedResult();
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R13_1_1_1.getFakeLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R13_1_1_1.getLocalManager());
 		
 		// When
 		Serie resultReturned = seriesGuideApp.downloadRemoteSerie(121361);
@@ -57,7 +57,7 @@ public class R13_HU1 extends AcceptanceTest {
 		thrown.expect(NotFoundSerieOnRemoteServerException.class);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R13_1_1_2.getFakeLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R13_1_1_2.getLocalManager());
 		
 		// When
 		seriesGuideApp.downloadRemoteSerie(999999);
@@ -75,16 +75,19 @@ public class R13_HU1 extends AcceptanceTest {
 	
 	@Test
 	public void descargarSerieRemota_AlmacenadaExisteSerie_SerieLocal() {
-				
+		
+		Serie resultExpected = (Serie) FactoryExpectedResults.R13_1_2_1.getExpectedResult();
+		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R13_1_2_1.getFakeLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R13_1_2_1.getLocalManager());
 		
 		// When
 		Serie resultReturned = seriesGuideApp.downloadRemoteSerie(121361);
 		
 		// Then
 		assertNotNull(resultReturned);
-		assertEquals(FactoryExpectedResults.R13_1_2_1.getExpectedResult(), resultReturned);
+		assertEquals(resultExpected.getCodSerie(), resultReturned.getCodSerie());
+		assertEquals(resultExpected.getSeriesName(), resultReturned.getSeriesName());
 		
 	}
 
@@ -101,7 +104,7 @@ public class R13_HU1 extends AcceptanceTest {
 		thrown.expect(ErrorOnRemoteServerException.class);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R13_1_3_1.getFakeLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R13_1_3_1.getLocalManager());
 		
 		// When
 		seriesGuideApp.downloadRemoteSerie(121361);
@@ -118,7 +121,7 @@ public class R13_HU1 extends AcceptanceTest {
 		thrown.expect(TimeoutOnRemoteServerException.class);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R13_1_3_2.getFakeLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R13_1_3_2.getLocalManager());
 		
 		// When
 		seriesGuideApp.downloadRemoteSerie(121361);

@@ -71,7 +71,7 @@ public class CreateTables {
 					" aired_season NUMERIC(2,0) NOT NULL, " +
 					" first_aired VARCHAR(10) NOT NULL, " +
 					" total_episodes NUMERIC(2,0) NOT NULL, " +
-					" seen  BOOLEAN NOT NULL DEFAULT false, " +
+					" seen BOOLEAN NOT NULL DEFAULT false, " +
 					" CONSTRAINT TEMPORADAS_pk PRIMARY KEY (cod_season));";
 						
 				stmt.executeUpdate(sql);
