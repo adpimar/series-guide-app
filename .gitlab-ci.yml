@@ -21,7 +21,7 @@ test:
   tags:
     - mysql
   script:
-    - ./gradlew test
+    - ./gradlew test --debug
 
 after_script:
   - echo "Fin de la integración continua"
