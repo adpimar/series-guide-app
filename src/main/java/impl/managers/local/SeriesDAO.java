@@ -14,16 +14,21 @@ import impl.model.Serie;
 
 public class SeriesDAO implements ILocalManager {
 
+	protected MySQLConnect mySQLConnect;
+
+	public SeriesDAO() {
+		mySQLConnect = MySQLConnect.getMySQLConnect();
+	}
+
 	@Override
 	public List<Serie> listSeries() {
 		List<Serie> misSeries = new ArrayList<>();
-		MySQLConnect conexion = new MySQLConnect();
 		try {
-			ResultSet res = conexion.getConnection().prepareStatement(SQLParser.listSeriesSQL()).executeQuery();
+			ResultSet res = mySQLConnect.getConnection().prepareStatement(SQLParser.listSeriesSQL()).executeQuery();
 			while (res.next())
 				misSeries.add(SQLParser.extractSerieFromSQL(res));
 			res.close();
-			conexion.disconnect();
+			mySQLConnect.disconnect();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -32,10 +37,9 @@ public class SeriesDAO implements ILocalManager {
 
 	@Override
 	public void addSerie(Serie serie) {
-		MySQLConnect conexion = new MySQLConnect();
 		try {
-			conexion.getConnection().createStatement().execute(SQLParser.insertSerieSQL(serie));
-			conexion.disconnect();
+			mySQLConnect.getConnection().createStatement().execute(SQLParser.insertSerieSQL(serie));
+			mySQLConnect.disconnect();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -43,26 +47,25 @@ public class SeriesDAO implements ILocalManager {
 
 	@Override
 	public Serie getSerie(long codSerie) {
-		MySQLConnect conexion = new MySQLConnect();
 		Serie serie = null;
 		ResultSet res;
 		try {
-			Connection con = conexion.getConnection();
-			
+			Connection con = mySQLConnect.getConnection();
+
 			// Dame la serie
 			res = con.prepareStatement(SQLParser.getSerieSQL(codSerie)).executeQuery();
 			while (res.next())
 				serie = SQLParser.extractSerieFromSQL(res);
-			
+
 			if (serie != null) {
-			
+
 				// Dame las temporadas
 				List<Season> seasons = new LinkedList<>();
 				res = con.prepareStatement(SQLParser.listSerieSeasonsSQL(codSerie)).executeQuery();
 				while (res.next())
 					seasons.add(SQLParser.extractSeasonFromSQL(res));
 				serie.setSeasons(seasons);
-				
+
 				// Dame los episodios
 				Episode[] episodes;
 				Episode episode;
@@ -75,11 +78,11 @@ public class SeriesDAO implements ILocalManager {
 					}
 					season.setEpisodes(episodes);
 				}
-				
+
 			}
 
 			res.close();
-			conexion.disconnect();
+			mySQLConnect.disconnect();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -88,11 +91,10 @@ public class SeriesDAO implements ILocalManager {
 
 	@Override
 	public void updateSerie(Serie serie) {
-		MySQLConnect conexion = new MySQLConnect();
 		String a = null;
 		try {
-			conexion.getConnection().createStatement().execute(a = SQLParser.updateSerieSQL(serie));
-			conexion.disconnect();
+			mySQLConnect.getConnection().createStatement().execute(a = SQLParser.updateSerieSQL(serie));
+			mySQLConnect.disconnect();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println(a);
@@ -101,10 +103,9 @@ public class SeriesDAO implements ILocalManager {
 
 	@Override
 	public void removeSerie(Serie serie) {
-		MySQLConnect conexion = new MySQLConnect();
 		try {
-			conexion.getConnection().createStatement().execute(SQLParser.deleteSerieSQL(serie.getCodSerie()));
-			conexion.disconnect();
+			mySQLConnect.getConnection().createStatement().execute(SQLParser.deleteSerieSQL(serie.getCodSerie()));
+			mySQLConnect.disconnect();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -121,10 +122,9 @@ public class SeriesDAO implements ILocalManager {
 
 	@Override
 	public void addSeason(Season season) {
-		MySQLConnect conexion = new MySQLConnect();
 		try {
-			conexion.getConnection().createStatement().execute(SQLParser.insertSeasonSQL(season));
-			conexion.disconnect();
+			mySQLConnect.getConnection().createStatement().execute(SQLParser.insertSeasonSQL(season));
+			mySQLConnect.disconnect();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -132,15 +132,14 @@ public class SeriesDAO implements ILocalManager {
 
 	@Override
 	public Season getSeason(long codSeason) {
-		MySQLConnect conexion = new MySQLConnect();
 		Season season = null;
 		try {
-			Connection con = conexion.getConnection();
+			Connection con = mySQLConnect.getConnection();
 			ResultSet res = con.prepareStatement(SQLParser.getSeasonSQL(codSeason)).executeQuery();
 			while (res.next())
 				season = SQLParser.extractSeasonFromSQL(res);
 			res.close();
-			conexion.disconnect();
+			mySQLConnect.disconnect();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -149,10 +148,9 @@ public class SeriesDAO implements ILocalManager {
 
 	@Override
 	public void updateSeason(Season season) {
-		MySQLConnect conexion = new MySQLConnect();
 		try {
-			conexion.getConnection().createStatement().execute(SQLParser.updateSeasonSQL(season));
-			conexion.disconnect();
+			mySQLConnect.getConnection().createStatement().execute(SQLParser.updateSeasonSQL(season));
+			mySQLConnect.disconnect();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -160,10 +158,9 @@ public class SeriesDAO implements ILocalManager {
 
 	@Override
 	public void removeSeason(Season season) {
-		MySQLConnect conexion = new MySQLConnect();
 		try {
-			conexion.getConnection().createStatement().execute(SQLParser.deleteSeasonSQL(season.getCodSeason()));
-			conexion.disconnect();
+			mySQLConnect.getConnection().createStatement().execute(SQLParser.deleteSeasonSQL(season.getCodSeason()));
+			mySQLConnect.disconnect();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -181,10 +178,9 @@ public class SeriesDAO implements ILocalManager {
 
 	@Override
 	public void addEpisode(Episode episode) {
-		MySQLConnect conexion = new MySQLConnect();
 		try {
-			conexion.getConnection().createStatement().execute(SQLParser.insertEpisodeSQL(episode));
-			conexion.disconnect();
+			mySQLConnect.getConnection().createStatement().execute(SQLParser.insertEpisodeSQL(episode));
+			mySQLConnect.disconnect();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -192,14 +188,13 @@ public class SeriesDAO implements ILocalManager {
 
 	@Override
 	public Episode getEpisode(long codEpisode) {
-		MySQLConnect conexion = new MySQLConnect();
 		Episode episode = null;
 		try {
-			ResultSet res = conexion.getConnection().prepareStatement(SQLParser.getEpisodeSQL(codEpisode)).executeQuery();
+			ResultSet res = mySQLConnect.getConnection().prepareStatement(SQLParser.getEpisodeSQL(codEpisode)).executeQuery();
 			while (res.next())
 				episode = SQLParser.extractEpisodeFromSQL(res);
 			res.close();
-			conexion.disconnect();
+			mySQLConnect.disconnect();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -208,10 +203,9 @@ public class SeriesDAO implements ILocalManager {
 
 	@Override
 	public void updateEpisode(Episode episode) {
-		MySQLConnect conexion = new MySQLConnect();
 		try {
-			conexion.getConnection().createStatement().execute(SQLParser.updateEpisodeSQL(episode));
-			conexion.disconnect();
+			mySQLConnect.getConnection().createStatement().execute(SQLParser.updateEpisodeSQL(episode));
+			mySQLConnect.disconnect();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -219,10 +213,9 @@ public class SeriesDAO implements ILocalManager {
 
 	@Override
 	public void removeEpisode(Episode episode) {
-		MySQLConnect conexion = new MySQLConnect();
 		try {
-			conexion.getConnection().createStatement().execute(SQLParser.deleteEpisodeSQL(episode.getCodEpisode()));
-			conexion.disconnect();
+			mySQLConnect.getConnection().createStatement().execute(SQLParser.deleteEpisodeSQL(episode.getCodEpisode()));
+			mySQLConnect.disconnect();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

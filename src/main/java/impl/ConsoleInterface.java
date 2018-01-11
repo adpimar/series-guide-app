@@ -1,6 +1,5 @@
 package impl;
 
-import java.io.File;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Scanner;
@@ -18,6 +17,7 @@ import impl.exceptions.SeasonAlreadyStoredException;
 import impl.exceptions.SerieAlreadyStoredException;
 import impl.exceptions.TooLongCommentException;
 import impl.exceptions.TooLongOverviewException;
+import impl.managers.local.SeriesDAO;
 import impl.managers.remote.thetvdb.TheTVDBAdapter;
 import impl.model.Episode;
 import impl.model.Season;
@@ -26,11 +26,18 @@ import impl.model.Serie;
 public class ConsoleInterface {
 
 	private ISeriesGuideApp seriesGuideApp;
+	private ILocalManager localManager;
+	private IRemoteManager remoteManager;
 	private Scanner entradaEscaner;
 
 	public static void main(String[] args) {	
-		new ConsoleInterface();
+		new ConsoleInterface(new SeriesDAO(), new TheTVDBAdapter());
 		System.exit(0);
+	}
+	
+	public ConsoleInterface(ILocalManager localManager, IRemoteManager remoteManager) {
+		this.localManager = localManager;
+		this.remoteManager = remoteManager;
 	}
 	
 	// ------------------------------------------------------------------------
@@ -71,8 +78,8 @@ public class ConsoleInterface {
 	
 	private void inicia() {
 		seriesGuideApp = new SeriesGuideApp();
-		seriesGuideApp.setLocalManager(getLocalManager());
-		seriesGuideApp.setRemoteManager(getRemoteManager());
+		seriesGuideApp.setLocalManager(localManager);
+		seriesGuideApp.setRemoteManager(remoteManager);
 		entradaEscaner = new Scanner(System.in);
 	}
 	
@@ -430,24 +437,6 @@ public class ConsoleInterface {
 		} catch (TooLongCommentException e) {
 			imprimeFeedback("ERROR: El comentario excede de los 150 caracteres.");
 		}
-	}
-
-	// ------------------------------------------------------------------------
-	// ------------------------------------------------------------------------
-	// ------------------------------------------------------------------------
-	
-	private ILocalManager getLocalManager() {	
-		String filename = "src" 
-				+ File.separator + "test" 
-				+ File.separator + "resources" 
-				+ File.separator + "interface" 
-				+ File.separator + "bdl.txt";	
-		//return new FakeBDL(filename);
-		return null;
-	}
-	
-	private IRemoteManager getRemoteManager() {
-		return new TheTVDBAdapter();
 	}
 	
 	// ------------------------------------------------------------------------
