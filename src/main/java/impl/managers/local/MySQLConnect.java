@@ -56,7 +56,7 @@ public class MySQLConnect {
 			}
 			
 			try {
-				stmt.executeUpdate("DROP TABLE EPISODIOS;");
+				stmt.executeUpdate("DROP TABLE seriesguideapp.EPISODIOS;");
 				System.out.println("Tabla EPISODIOS eliminada");
 			} catch (SQLException e) {
 				System.out.println("Fallo en el DROP TABLE EPISODIOS");
@@ -64,7 +64,7 @@ public class MySQLConnect {
 			}
 			
 			try {
-				stmt.executeUpdate("DROP TABLE TEMPORADAS;");
+				stmt.executeUpdate("DROP TABLE seriesguideapp.TEMPORADAS;");
 				System.out.println("Tabla TEMPORADAS eliminada");
 			} catch (SQLException e) {
 				System.out.println("Fallo en el DROP TABLE TEMPORADAS");
@@ -72,7 +72,7 @@ public class MySQLConnect {
 			}
 			
 			try {
-				stmt.executeUpdate("DROP TABLE SERIES;");
+				stmt.executeUpdate("DROP TABLE seriesguideapp.SERIES;");
 				System.out.println("Tabla SERIES eliminada");
 			} catch (SQLException e) {
 				System.out.println("Fallo en el DROP TABLE SERIES");
