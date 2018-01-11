@@ -11,7 +11,7 @@ public class MySQLConnect {
 	
 	// JDBC driver name and database URL
 	private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-	private static final String DB_URL = "jdbc:mysql://mysql:3306/seriesguideapp?&useSSL=false";
+	private static final String DB_URL = "jdbc:mysql://localhost:3306/seriesguideapp?&useSSL=false";
 	private static final String DATABASE_NAME = "seriesguideapp";
 	
 	// Database credentials
@@ -30,7 +30,7 @@ public class MySQLConnect {
 		try {
 
 			// Register JDBC driver
-			Class.forName(JDBC_DRIVER);
+			Class.forName(JDBC_DRIVER).newInstance();
 
 			// Open a connection
 			System.out.println("Conectando a BDL...");

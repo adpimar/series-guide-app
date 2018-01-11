@@ -57,23 +57,6 @@ public class CreateTables {
 		stmt.executeUpdate(sql);
 		
 		System.out.println("Tabla EPISODIOS creada.");
-		
-//		sql = "ALTER TABLE TEMPORADAS ADD CONSTRAINT SERIES_TEMPORADAS" + 
-//			" FOREIGN KEY (cod_serie) " +
-//			" REFERENCES SERIES (cod_serie) " + 
-//			" ON DELETE CASCADE " +
-//			" ON UPDATE CASCADE;";
-//	
-//		stmt.executeUpdate(sql);
-//
-//
-//		sql = "ALTER TABLE EPISODIOS ADD CONSTRAINT TEMPORADAS_EPISODIOS" + 
-//			" FOREIGN KEY (cod_season) " +
-//			" REFERENCES TEMPORADAS (cod_season) " + 
-//			" ON DELETE CASCADE " +
-//			" ON UPDATE CASCADE;";
-//					
-//		stmt.executeUpdate(sql);
 
 	}
 
