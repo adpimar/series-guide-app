@@ -11,7 +11,9 @@ public class MySQLConnect {
 	
 	// JDBC driver name and database URL
 	private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-	private static final String DB_URL = "jdbc:mysql://mysql:3306/seriesguideapp?&useSSL=false";
+	//private static final String DB_URL = "jdbc:mysql://mysql:3306/seriesguideapp?&useSSL=false";
+	//private static final String DB_URL = "jdbc:mysql://localhost:3306/seriesguideapp?&useSSL=false";
+	private static final String DB_URL = "jdbc:mysql://mysql:3306/seriesguideapp";
 	private static final String DATABASE_NAME = "seriesguideapp";
 	
 	// Database credentials
