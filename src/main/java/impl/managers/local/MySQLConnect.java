@@ -79,7 +79,7 @@ public class MySQLConnect {
 			}
 		}
 		
-		System.out.println("¡Todo en orden!");
+		System.out.println("¡Todo en orden!\n");
 
 	}
 	

@@ -38,12 +38,7 @@ public class ConsoleInterface {
 	public ConsoleInterface(ILocalManager localManager, IRemoteManager remoteManager) {
 		this.localManager = localManager;
 		this.remoteManager = remoteManager;
-	}
-	
-	// ------------------------------------------------------------------------
-	
-	public ConsoleInterface() {
-		
+
 		System.out.println("======================================================");
 		System.out.println("  SERIES GUIDE APP");
 		System.out.println();
