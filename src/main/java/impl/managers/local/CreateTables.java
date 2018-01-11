@@ -57,9 +57,7 @@ public class CreateTables {
 			" FOREIGN KEY (cod_serie) " +
 			" REFERENCES SERIES (cod_serie) " + 
 			" ON DELETE CASCADE " +
-			" ON UPDATE CASCADE " +
-			" DEFERRABLE " +
-			" INITIALLY IMMEDIATE;";
+			" ON UPDATE CASCADE;";
 	
 		stmt.executeUpdate(sql);
 
@@ -68,9 +66,7 @@ public class CreateTables {
 			" FOREIGN KEY (cod_season) " +
 			" REFERENCES TEMPORADAS (cod_season) " + 
 			" ON DELETE CASCADE " +
-			" ON UPDATE CASCADE " +
-			" DEFERRABLE " +
-			" INITIALLY IMMEDIATE;";
+			" ON UPDATE CASCADE;";
 					
 		stmt.executeUpdate(sql);
 

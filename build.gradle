@@ -28,11 +28,7 @@ dependencies {
     implementation 'com.google.guava:guava:21.0'
     implementation 'org.glassfish.jersey.containers:jersey-container-servlet:2.25.1'    
 	implementation 'org.glassfish.jersey.media:jersey-media-json-jackson:2.25.1'
-	//implementation 'mysql:mysql-connector-java:5.1.39'
-	
-	compile('mysql:mysql-connector-java:5.1.39') {
-	    transitive = true
-	}
+	implementation 'mysql:mysql-connector-java:5.1.39'
 
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
