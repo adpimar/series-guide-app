@@ -9,7 +9,7 @@ public class CreateTables {
 		
 		String sql;
 
-		sql = "CREATE TABLE SERIES (" +
+		sql = "CREATE TABLE seriesguideapp.SERIES (" +
 			" cod_serie INT NOT NULL, " +
 			" series_name VARCHAR(50) NOT NULL, " +
 			" status VARCHAR(20) NOT NULL, " +
@@ -27,7 +27,7 @@ public class CreateTables {
 
 		System.out.println("Tabla SERIES creada.");
 		
-		sql = "CREATE TABLE TEMPORADAS (" +
+		sql = "CREATE TABLE seriesguideapp.TEMPORADAS (" +
 			"cod_serie INT NOT NULL, " +
 			"cod_season INT NOT NULL, " +
 			"aired_season NUMERIC(2,0) NOT NULL, " +
@@ -35,13 +35,13 @@ public class CreateTables {
 			"total_episodes NUMERIC(2,0) NOT NULL, " +
 			"seen BOOLEAN NOT NULL DEFAULT false, " +
 			"CONSTRAINT TEMPORADAS_pk PRIMARY KEY (cod_season)," + 
-			"FOREIGN KEY (cod_serie) REFERENCES SERIES (cod_serie) ON DELETE CASCADE ON UPDATE CASCADE);";
+			"FOREIGN KEY (cod_serie) REFERENCES seriesguideapp.SERIES (cod_serie) ON DELETE CASCADE ON UPDATE CASCADE);";
 				
 		stmt.executeUpdate(sql);
 		
 		System.out.println("Tabla TEMPORADAS creada.");
 
-		sql = "CREATE TABLE EPISODIOS (" +
+		sql = "CREATE TABLE seriesguideapp.EPISODIOS (" +
 			"cod_episode INT NOT NULL, " +
 			"cod_season INT NOT NULL, " +
 			"aired_season NUMERIC(2,0) NOT NULL, " +
@@ -52,7 +52,7 @@ public class CreateTables {
 			"seen BOOLEAN NOT NULL DEFAULT false, " +
 			"comment varchar(150), " +
 			"CONSTRAINT EPISODIOS_pk PRIMARY KEY (cod_episode), " +
-			"FOREIGN KEY (cod_season) REFERENCES TEMPORADAS (cod_season) ON DELETE CASCADE ON UPDATE CASCADE);";
+			"FOREIGN KEY (cod_season) REFERENCES seriesguideapp.TEMPORADAS (cod_season) ON DELETE CASCADE ON UPDATE CASCADE);";
 		
 		stmt.executeUpdate(sql);
 		
