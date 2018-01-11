@@ -8,7 +8,7 @@ public class ParserSQL {
 		int i = 1;
 		StringBuilder sb = new StringBuilder();
 		
-		sb.append("INSERT INTO SERIES (cod_serie, series_name, status, first_aired, airs_dow, airs_time, network, genres, site_rating, site_rating_count, overview) ");
+		sb.append("INSERT INTO seriesguideapp.SERIES (cod_serie, series_name, status, first_aired, airs_dow, airs_time, network, genres, site_rating, site_rating_count, overview) ");
 		sb.append("VALUES (");
 		sb.append(fields[i++] + ", ");
 		sb.append(readStringFields(fields[i++]) + ", ");
@@ -29,7 +29,7 @@ public class ParserSQL {
 		int i = 1;
 		StringBuilder sb = new StringBuilder();
 		
-		sb.append("INSERT INTO TEMPORADAS (cod_serie, cod_season, aired_season, first_aired, total_episodes, seen) ");
+		sb.append("INSERT INTO seriesguideapp.TEMPORADAS (cod_serie, cod_season, aired_season, first_aired, total_episodes, seen) ");
 		sb.append("VALUES (");
 		sb.append(fields[i++] + ", ");
 		sb.append(fields[i++] + ", ");
@@ -45,7 +45,7 @@ public class ParserSQL {
 		int i = 1;
 		StringBuilder sb = new StringBuilder();
 
-		sb.append("INSERT INTO EPISODIOS (cod_episode, cod_season, aired_season, aired_episode, episode_name, first_aired, overview, seen, comment) ");
+		sb.append("INSERT INTO seriesguideapp.EPISODIOS (cod_episode, cod_season, aired_season, aired_episode, episode_name, first_aired, overview, seen, comment) ");
 		sb.append("VALUES (");
 		sb.append(fields[i++] + ", ");
 		sb.append(fields[i++] + ", ");
