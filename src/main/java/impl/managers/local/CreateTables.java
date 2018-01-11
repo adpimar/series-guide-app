@@ -10,7 +10,7 @@ public class CreateTables {
 		String sql;
 
 		sql = "CREATE TABLE SERIES (" +
-			" cod_serie INT NOT NULL CHECK (cod_serie >= 0), " +
+			" cod_serie INT NOT NULL, " +
 			" series_name VARCHAR(50) NOT NULL, " +
 			" status VARCHAR(20) NOT NULL, " +
 			" first_aired DATE NOT NULL, " +
@@ -25,50 +25,55 @@ public class CreateTables {
 		
 		stmt.executeUpdate(sql);
 
+		System.out.println("Tabla SERIES creada.");
 		
 		sql = "CREATE TABLE TEMPORADAS (" +
-			" cod_serie INT NOT NULL CHECK (cod_serie >= 0), " +
-			" cod_season INT NOT NULL CHECK (cod_season >= 0), " +
-			" aired_season NUMERIC(2,0) NOT NULL, " +
-			" first_aired VARCHAR(10) NOT NULL, " +
-			" total_episodes NUMERIC(2,0) NOT NULL, " +
-			" seen BOOLEAN NOT NULL DEFAULT false, " +
-			" CONSTRAINT TEMPORADAS_pk PRIMARY KEY (cod_season));";
+			"cod_serie INT NOT NULL, " +
+			"cod_season INT NOT NULL, " +
+			"aired_season NUMERIC(2,0) NOT NULL, " +
+			"first_aired VARCHAR(10) NOT NULL, " +
+			"total_episodes NUMERIC(2,0) NOT NULL, " +
+			"seen BOOLEAN NOT NULL DEFAULT false, " +
+			"CONSTRAINT TEMPORADAS_pk PRIMARY KEY (cod_season)," + 
+			"FOREIGN KEY (cod_serie) REFERENCES SERIES (cod_serie) ON DELETE CASCADE ON UPDATE CASCADE);";
 				
 		stmt.executeUpdate(sql);
+		
+		System.out.println("Tabla TEMPORADAS creada.");
 
 		sql = "CREATE TABLE EPISODIOS (" +
-			" cod_episode INT NOT NULL CHECK (cod_episode >= 0), " +
-			" cod_season INT NOT NULL CHECK (cod_season >= 0), " +
-			" aired_season NUMERIC(2,0) NOT NULL, " +
-			" aired_episode NUMERIC(2,0) NOT NULL, " +
-			" episode_name VARCHAR(50) NOT NULL, " +
-			" first_aired VARCHAR(10) NOT NULL, " +
-			" overview VARCHAR(500), " +
-			" seen BOOLEAN NOT NULL DEFAULT false, " +
-			" comment varchar(150), " +
-			" CONSTRAINT EPISODIOS_pk PRIMARY KEY (cod_episode)," +
-			" CONSTRAINT COMMENT_chk CHECK (seen = false AND comment IS NULL));";
+			"cod_episode INT NOT NULL, " +
+			"cod_season INT NOT NULL, " +
+			"aired_season NUMERIC(2,0) NOT NULL, " +
+			"aired_episode NUMERIC(2,0) NOT NULL, " +
+			"episode_name VARCHAR(50) NOT NULL, " +
+			"first_aired VARCHAR(10) NOT NULL, " +
+			"overview VARCHAR(500), " +
+			"seen BOOLEAN NOT NULL DEFAULT false, " +
+			"comment varchar(150), " +
+			"CONSTRAINT EPISODIOS_pk PRIMARY KEY (cod_episode), " +
+			"FOREIGN KEY (cod_season) REFERENCES TEMPORADAS (cod_season) ON DELETE CASCADE ON UPDATE CASCADE);";
 		
 		stmt.executeUpdate(sql);
-
 		
-		sql = "ALTER TABLE TEMPORADAS ADD CONSTRAINT SERIES_TEMPORADAS" + 
-			" FOREIGN KEY (cod_serie) " +
-			" REFERENCES SERIES (cod_serie) " + 
-			" ON DELETE CASCADE " +
-			" ON UPDATE CASCADE;";
-	
-		stmt.executeUpdate(sql);
-
-
-		sql = "ALTER TABLE EPISODIOS ADD CONSTRAINT TEMPORADAS_EPISODIOS" + 
-			" FOREIGN KEY (cod_season) " +
-			" REFERENCES TEMPORADAS (cod_season) " + 
-			" ON DELETE CASCADE " +
-			" ON UPDATE CASCADE;";
-					
-		stmt.executeUpdate(sql);
+		System.out.println("Tabla EPISODIOS creada.");
+		
+//		sql = "ALTER TABLE TEMPORADAS ADD CONSTRAINT SERIES_TEMPORADAS" + 
+//			" FOREIGN KEY (cod_serie) " +
+//			" REFERENCES SERIES (cod_serie) " + 
+//			" ON DELETE CASCADE " +
+//			" ON UPDATE CASCADE;";
+//	
+//		stmt.executeUpdate(sql);
+//
+//
+//		sql = "ALTER TABLE EPISODIOS ADD CONSTRAINT TEMPORADAS_EPISODIOS" + 
+//			" FOREIGN KEY (cod_season) " +
+//			" REFERENCES TEMPORADAS (cod_season) " + 
+//			" ON DELETE CASCADE " +
+//			" ON UPDATE CASCADE;";
+//					
+//		stmt.executeUpdate(sql);
 
 	}
 

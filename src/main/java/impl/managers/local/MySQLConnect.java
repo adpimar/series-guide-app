@@ -11,7 +11,7 @@ public class MySQLConnect {
 	
 	// JDBC driver name and database URL
 	private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-	private static final String DB_URL = "jdbc:mysql://mysql:3306/seriesguideapp?&useSSL=false";
+	private static final String DB_URL = "jdbc:mysql://localhost:3306/seriesguideapp?&useSSL=false";
 	private static final String DATABASE_NAME = "seriesguideapp";
 	
 	// Database credentials
@@ -47,11 +47,34 @@ public class MySQLConnect {
 			}
 			
 			try {
+				stmt.executeUpdate("DROP TABLE EPISODIOS;");
+			} catch (SQLException e) {
+				System.out.println("¡No creadas todavía!");
+				e.printStackTrace();
+			}
+			
+			try {
+				stmt.executeUpdate("DROP TABLE TEMPORADAS;");
+			} catch (SQLException e) {
+				System.out.println("¡No creadas todavía!");
+				e.printStackTrace();
+			}
+			
+			try {
+				stmt.executeUpdate("DROP TABLE SERIES;");
+			} catch (SQLException e) {
+				System.out.println("¡No creadas todavía!");
+				e.printStackTrace();
+			}
+
+			
+			try {
 				System.out.println("Creando tablas...");
 				CreateTables.createDatabaseTables(stmt);
 				System.out.println("Tablas creadas satisfactoriamente...");
 			} catch (SQLException e) {
 				System.out.println("¡Las tablas ya habían sido creadas!");
+				e.printStackTrace();
 			}
 
 		} catch (SQLException e) {
