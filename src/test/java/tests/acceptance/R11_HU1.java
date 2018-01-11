@@ -37,7 +37,7 @@ public class R11_HU1 extends AcceptanceTest {
 		thrown.expect(NoKeywordsOnRemoteSearchException.class);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R11_1_1_1.getFakeLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R11_1_1_1.getLocalManager());
 		
 		// When
 		seriesGuideApp.searchSeriesLocal("");
@@ -57,7 +57,7 @@ public class R11_HU1 extends AcceptanceTest {
 		);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R11_1_1_2.getFakeLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R11_1_1_2.getLocalManager());
 		
 		// When
 		Map<String, Long> resultReturned = seriesGuideApp.searchSeriesLocal("The");
@@ -79,7 +79,7 @@ public class R11_HU1 extends AcceptanceTest {
 		);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R11_1_1_3.getFakeLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R11_1_1_3.getLocalManager());
 		
 		// When
 		Map<String, Long> resultReturned = seriesGuideApp.searchSeriesLocal("The Big Bang");
@@ -102,7 +102,7 @@ public class R11_HU1 extends AcceptanceTest {
 	public void buscarLocalmenteSerie_NoExisteSerieConUnaPalabraClave_ListaVacia() 	{
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R11_1_2_1.getFakeLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R11_1_2_1.getLocalManager());
 		
 		// When
 		Map<String, Long> resultReturned = seriesGuideApp.searchSeriesLocal("lalilo");
@@ -119,7 +119,7 @@ public class R11_HU1 extends AcceptanceTest {
 	public void buscarLocalmenteSerie_NoExisteSerieConPalabrasClave_ListaVacia() {
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R11_1_2_2.getFakeLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R11_1_2_2.getLocalManager());
 		
 		// When
 		Map<String, Long> resultReturned = seriesGuideApp.searchSeriesLocal("lalilo panilo");
@@ -143,7 +143,7 @@ public class R11_HU1 extends AcceptanceTest {
 		thrown.expect(NoSeriesStoredException.class);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R11_1_3_1.getFakeLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R11_1_3_1.getLocalManager());
 		
 		// When
 		seriesGuideApp.searchSeriesLocal("Stranger Things");

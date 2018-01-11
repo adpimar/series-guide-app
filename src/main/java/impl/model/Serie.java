@@ -180,10 +180,6 @@ public class Serie {
 				return false;
 		} else if (!series_name.equals(other.series_name))
 			return false;
-		if (Double.doubleToLongBits(site_rating) != Double.doubleToLongBits(other.site_rating))
-			return false;
-		if (site_rating_count != other.site_rating_count)
-			return false;
 		if (status == null) {
 			if (other.status != null)
 				return false;

@@ -39,7 +39,7 @@ public class R07_HU2 extends AcceptanceTest {
 		thrown.expect(NoEpisodeCheckedAsViewedException.class);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R07_2_1_1.getFakeLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R07_2_1_1.getLocalManager());
 		
 		// When
 		seriesGuideApp.commentEpisodeViewed(321060, 1, 1, "");
@@ -62,7 +62,7 @@ public class R07_HU2 extends AcceptanceTest {
 		String comment = "";
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R07_2_2_1.getFakeLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R07_2_2_1.getLocalManager());
 		
 		// When
 		Episode resultReturned = seriesGuideApp.commentEpisodeViewed(321060, 1, 2, comment);
@@ -82,7 +82,7 @@ public class R07_HU2 extends AcceptanceTest {
 		String comment = "¡Qué gran episodio! El mejor de la temporada hasta el momento.";
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R07_2_2_2.getFakeLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R07_2_2_2.getLocalManager());
 
 		// When		
 		Episode resultReturned = seriesGuideApp.commentEpisodeViewed(321060, 1, 2, comment);
@@ -108,7 +108,7 @@ public class R07_HU2 extends AcceptanceTest {
 		thrown.expect(TooLongCommentException.class);
 				
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R07_2_2_3.getFakeLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R07_2_2_3.getLocalManager());
 
 		// When		
 		seriesGuideApp.commentEpisodeViewed(321060, 1, 2, comment);
@@ -131,7 +131,7 @@ public class R07_HU2 extends AcceptanceTest {
 		String comment = "¡Ya no me gusta!";
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R07_2_3_1.getFakeLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R07_2_3_1.getLocalManager());
 
 		// When		
 		Episode resultReturned = seriesGuideApp.commentEpisodeViewed(321060, 1, 2, comment);
@@ -156,7 +156,7 @@ public class R07_HU2 extends AcceptanceTest {
 		thrown.expect(NoEpisodesStoredException.class);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R07_2_4_1.getFakeLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R07_2_4_1.getLocalManager());
 
 		// When		
 		seriesGuideApp.commentEpisodeViewed(321060, 1, 2, "");
@@ -173,7 +173,7 @@ public class R07_HU2 extends AcceptanceTest {
 		thrown.expect(NoSeasonsStoredException.class);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R07_2_4_2.getFakeLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R07_2_4_2.getLocalManager());
 
 		// When		
 		seriesGuideApp.commentEpisodeViewed(321060, 1, 2, "");
@@ -190,7 +190,7 @@ public class R07_HU2 extends AcceptanceTest {
 		thrown.expect(NoSeriesStoredException.class);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R07_2_4_3.getFakeLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R07_2_4_3.getLocalManager());
 
 		// When		
 		seriesGuideApp.commentEpisodeViewed(321060, 1, 2, "");

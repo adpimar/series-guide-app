@@ -35,7 +35,7 @@ public class R15_HU1 extends AcceptanceTest {
 	public void indicarVistaTemporada_TemporadaNoVistaConTodosEpisodios_TemporadaVista() {
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R15_1_1_1.getFakeLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R15_1_1_1.getLocalManager());
 		
 		// When
 		Season resultReturned = seriesGuideApp.checkSeasonAsViewed(321060, 1);
@@ -55,7 +55,7 @@ public class R15_HU1 extends AcceptanceTest {
 		thrown.expect(NoEpisodesStoredException.class);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R15_1_1_2.getFakeLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R15_1_1_2.getLocalManager());
 		
 		// When
 		seriesGuideApp.checkSeasonAsViewed(321060, 1);
@@ -72,7 +72,7 @@ public class R15_HU1 extends AcceptanceTest {
 		thrown.expect(NoEpisodesStoredException.class);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R15_1_1_3.getFakeLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R15_1_1_3.getLocalManager());
 		
 		// When
 		seriesGuideApp.checkSeasonAsViewed(321060, 1);
@@ -87,7 +87,7 @@ public class R15_HU1 extends AcceptanceTest {
 	public void indicarVistaTemporada_TemporadaVista_TemporadaVista() {
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R15_1_1_4.getFakeLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R15_1_1_4.getLocalManager());
 		
 		// When
 		Season resultReturned = seriesGuideApp.checkSeasonAsViewed(321060, 1);
@@ -112,7 +112,7 @@ public class R15_HU1 extends AcceptanceTest {
 		thrown.expect(NoSeasonsStoredException.class);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R15_1_2_1.getFakeLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R15_1_2_1.getLocalManager());
 		
 		// When
 		seriesGuideApp.checkSeasonAsViewed(321060, 1);
@@ -129,7 +129,7 @@ public class R15_HU1 extends AcceptanceTest {
 		thrown.expect(NoSeriesStoredException.class);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R15_1_2_2.getFakeLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R15_1_2_2.getLocalManager());
 		
 		// When
 		seriesGuideApp.checkSeasonAsViewed(321060, 1);

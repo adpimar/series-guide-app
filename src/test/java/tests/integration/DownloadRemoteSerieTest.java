@@ -84,8 +84,9 @@ public class DownloadRemoteSerieTest {
 	
 	@Test
 	public void descargarSerieRemota_AlmacenadaExisteSerie_SerieLocal() {
-				
+		
 		// Arrange
+		Serie resultExpected = (Serie) FactoryExpectedResults.R13_1_2_1.getExpectedResult();
 		downloadAndStoreService.setLocalManager(FactoryLocalManagers.R13_1_2_1.getLocalManager());
 		
 		// Act
@@ -93,7 +94,8 @@ public class DownloadRemoteSerieTest {
 		
 		// Assert
 		assertNotNull(resultReturned);
-		assertEquals(FactoryExpectedResults.R13_1_2_1.getExpectedResult(), resultReturned);
+		assertEquals(resultExpected.getCodSerie(), resultReturned.getCodSerie());
+		assertEquals(resultExpected.getSeriesName(), resultReturned.getSeriesName());
 		
 	}
 	

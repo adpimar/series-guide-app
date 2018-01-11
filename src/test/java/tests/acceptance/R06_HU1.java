@@ -36,7 +36,7 @@ public class R06_HU1 extends AcceptanceTest {
 		String newOverview = "";
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R06_1_1_1.getFakeLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R06_1_1_1.getLocalManager());
 		
 		// When
 		Episode resultReturned = seriesGuideApp.updateEpisodeOverview(321060, 1, 4, newOverview);
@@ -59,7 +59,7 @@ public class R06_HU1 extends AcceptanceTest {
 				+ "experimentos de Hap.";
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R06_1_1_2.getFakeLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R06_1_1_2.getLocalManager());
 		
 		// When
 		Episode resultReturned = seriesGuideApp.updateEpisodeOverview(321060, 1, 4, newOverview);
@@ -89,7 +89,7 @@ public class R06_HU1 extends AcceptanceTest {
 		thrown.expect(TooLongOverviewException.class);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R06_1_1_3.getFakeLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R06_1_1_3.getLocalManager());
 		
 		// When
 		seriesGuideApp.updateEpisodeOverview(321060, 1, 4, newOverview);
@@ -111,7 +111,7 @@ public class R06_HU1 extends AcceptanceTest {
 		thrown.expect(NoEpisodesStoredException.class);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R06_1_2_1.getFakeLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R06_1_2_1.getLocalManager());
 		
 		// When
 		seriesGuideApp.updateEpisodeOverview(321060, 1, 4, "");
@@ -128,7 +128,7 @@ public class R06_HU1 extends AcceptanceTest {
 		thrown.expect(NoSeasonsStoredException.class);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R06_1_2_2.getFakeLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R06_1_2_2.getLocalManager());
 		
 		// When
 		seriesGuideApp.updateEpisodeOverview(321060, 1, 4, "");
@@ -145,7 +145,7 @@ public class R06_HU1 extends AcceptanceTest {
 		thrown.expect(NoSeriesStoredException.class);
 		
 		// Given
-		seriesGuideApp.setLocalManager(FactoryLocalManagers.R06_1_2_3.getFakeLocalManager());
+		seriesGuideApp.setLocalManager(FactoryLocalManagers.R06_1_2_3.getLocalManager());
 		
 		// When
 		seriesGuideApp.updateEpisodeOverview(321060, 1, 4, "");
