@@ -39,28 +39,39 @@ public class MySQLConnect {
 			stmt = connection.createStatement();
 			
 			try {
+				stmt.executeUpdate("DROP DATABASE " + DATABASE_NAME);
+			} catch (SQLException e) {
+				e.printStackTrace();
+				System.out.println("Fallo en el DROP DATABASE");
+			}
+			
+			try {
 				System.out.println("Creando BDL...");
 				stmt.executeUpdate("CREATE DATABASE " + DATABASE_NAME);
 				System.out.println("BDL creada satisfactoriamente...");
 			} catch (SQLException e) {
 				System.out.println("¡BDL ya había sido creada!");
+				e.printStackTrace();
 			}
 			
 			try {
 				stmt.executeUpdate("DROP TABLE EPISODIOS;");
 			} catch (SQLException e) {
+				System.out.println("Fallo en el DROP TABLE EPISODIOS");
 				e.printStackTrace();
 			}
 			
 			try {
 				stmt.executeUpdate("DROP TABLE TEMPORADAS;");
 			} catch (SQLException e) {
+				System.out.println("Fallo en el DROP TABLE TEMPORADAS");
 				e.printStackTrace();
 			}
 			
 			try {
 				stmt.executeUpdate("DROP TABLE SERIES;");
 			} catch (SQLException e) {
+				System.out.println("Fallo en el DROP TABLE SERIES");
 				e.printStackTrace();
 			}
 			
@@ -76,11 +87,14 @@ public class MySQLConnect {
 		} catch (SQLException e) {
 
 			// Handle errors for JDBC
+			System.out.println("Fallo general SQL");
 			e.printStackTrace();
+			
 
 		} catch (Exception e) {
 
 			// Handle errors for Class.forName
+			System.out.println("Fallo general servidor");
 			e.printStackTrace();
 
 		} finally {
