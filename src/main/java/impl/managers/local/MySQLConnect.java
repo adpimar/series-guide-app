@@ -47,7 +47,6 @@ public class MySQLConnect {
 			}
 			
 			try {
-				// STEP 5: Create tables
 				System.out.println("Creando tablas...");
 				CreateTables.createDatabaseTables(stmt);
 				System.out.println("Tablas creadas satisfactoriamente...");
@@ -96,7 +95,7 @@ public class MySQLConnect {
 	public Connection getConnection() {
 		try {
 			connection = DriverManager.getConnection(DB_URL, USER, PASS);
-			System.out.println("Realizada conexión con BDL");
+			//System.out.println("Realizada conexión con BDL");
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println("Error de conexión con BDL");

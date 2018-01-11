@@ -2,17 +2,17 @@ package impl.model;
 
 public class Season {
 
-	private long cod_serie;
-	private long cod_season;
-	private int aired_season;
-	private String first_aired;
-	private int total_episodes;
+	private long codSerie;
+	private long codSeason;
+	private int airedSeason;
+	private String firstAired;
+	private int totalEpisodes;
 	private boolean seen;
 
 	private Episode[] episodes;
 
 	public Season() {
-		episodes = new Episode[total_episodes];
+		episodes = new Episode[totalEpisodes];
 	}
 	
 	// ------------------------------------------------------------------------
@@ -28,23 +28,23 @@ public class Season {
 	// ---------- Getters -----------------------------------------------------
 	
 	public long getCodSerie() {
-		return cod_serie;
+		return codSerie;
 	}
 	
 	public long getCodSeason() {
-		return cod_season;
+		return codSeason;
 	}
 
 	public int getAiredSeason() {
-		return aired_season;
+		return airedSeason;
 	}
 
 	public String getFirstAired() {
-		return first_aired;
+		return firstAired;
 	}
 
 	public int getTotalEpisodes() {
-		return total_episodes;
+		return totalEpisodes;
 	}
 
 	public boolean isSeen() {
@@ -58,19 +58,19 @@ public class Season {
 	// ---------- Setters -----------------------------------------------------
 
 	public void setCodSerie(long codSerie) {
-		this.cod_serie = codSerie;
+		this.codSerie = codSerie;
 	}
 	
 	public void setCodSeason(long codSeason) {
-		this.cod_season = codSeason;
+		this.codSeason = codSeason;
 	}
 
 	public void setAiredSeason(int airedSeason) {
-		this.aired_season = airedSeason;
+		this.airedSeason = airedSeason;
 	}
 
 	public void setFirstAired(String firstAired) {
-		this.first_aired = firstAired;
+		this.firstAired = firstAired;
 	}
 
 	public void setTotalEpisodes(int totalEpisodes) {
@@ -78,7 +78,7 @@ public class Season {
 		for (int i = 0; i < episodes.length; i++)
 			newEpisodes[i] = episodes[i];
 		episodes = newEpisodes;
-		this.total_episodes = totalEpisodes;
+		this.totalEpisodes = totalEpisodes;
 	}
 
 	public void setSeen(boolean seen) {
@@ -100,20 +100,20 @@ public class Season {
 		if (getClass() != obj.getClass())
 			return false;
 		Season other = (Season) obj;
-		if (aired_season != other.aired_season)
+		if (airedSeason != other.airedSeason)
 			return false;
-		if (cod_season != other.cod_season)
+		if (codSeason != other.codSeason)
 			return false;
-		if (cod_serie != other.cod_serie)
+		if (codSerie != other.codSerie)
 			return false;
-		if (first_aired == null) {
-			if (other.first_aired != null)
+		if (firstAired == null) {
+			if (other.firstAired != null)
 				return false;
-		} else if (!first_aired.equals(other.first_aired))
+		} else if (!firstAired.equals(other.firstAired))
 			return false;
 		if (seen != other.seen)
 			return false;
-		if (total_episodes != other.total_episodes)
+		if (totalEpisodes != other.totalEpisodes)
 			return false;
 		return true;
 	}
@@ -125,11 +125,11 @@ public class Season {
 		StringBuilder sb = new StringBuilder();
 
 		sb.append("[ TEMPORADA ]");
-		sb.append("\n Serie id            : " + cod_serie);
-		sb.append("\n Temporada id        : " + cod_season);
-		sb.append("\n Número de temporada : " + aired_season);
-		sb.append("\n Inicio de emisión   : " + first_aired);
-		sb.append("\n Episodios totales   : " + total_episodes);
+		sb.append("\n Serie id            : " + codSerie);
+		sb.append("\n Temporada id        : " + codSeason);
+		sb.append("\n Número de temporada : " + airedSeason);
+		sb.append("\n Inicio de emisión   : " + firstAired);
+		sb.append("\n Episodios totales   : " + totalEpisodes);
 		sb.append("\n Vista               : " + seen);
 		sb.append("\n");
 

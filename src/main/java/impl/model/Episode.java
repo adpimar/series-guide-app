@@ -2,12 +2,12 @@ package impl.model;
 
 public class Episode {
 
-	private long cod_episode;
-	private long cod_season;
-	private int aired_season;
-	private int aired_episode;
-	private String episode_name;
-	private String first_aired;
+	private long codEpisode;
+	private long codSeason;
+	private int airedSeason;
+	private int airedEpisode;
+	private String episodeName;
+	private String firstAired;
 	private String overview;
 	private boolean seen;
 	private String comment;
@@ -15,27 +15,27 @@ public class Episode {
 	// ---------- Getters -----------------------------------------------------
 
 	public long getCodEpisode() {
-		return cod_episode;
+		return codEpisode;
 	}
 
 	public long getCodSeason() {
-		return cod_season;
+		return codSeason;
 	}
 
 	public int getAiredSeason() {
-		return aired_season;
+		return airedSeason;
 	}
 
 	public int getAiredEpisode() {
-		return aired_episode;
+		return airedEpisode;
 	}
 
 	public String getEpisodeName() {
-		return episode_name;
+		return episodeName;
 	}
 
 	public String getFirstAired() {
-		return first_aired;
+		return firstAired;
 	}
 
 	public String getOverview() {
@@ -53,27 +53,27 @@ public class Episode {
 	// ---------- Setters -----------------------------------------------------
 
 	public void setCodEpisode(long codEpisode) {
-		this.cod_episode = codEpisode;
+		this.codEpisode = codEpisode;
 	}
 
 	public void setCodSeason(long codSeason) {
-		this.cod_season = codSeason;
+		this.codSeason = codSeason;
 	}
 
 	public void setAiredSeason(int airedSeason) {
-		this.aired_season = airedSeason;
+		this.airedSeason = airedSeason;
 	}
 
 	public void setAiredEpisode(int airedEpisode) {
-		this.aired_episode = airedEpisode;
+		this.airedEpisode = airedEpisode;
 	}
 
 	public void setEpisodeName(String episodeName) {
-		this.episode_name = episodeName;
+		this.episodeName = episodeName;
 	}
 
 	public void setFirstAired(String firstAired) {
-		this.first_aired = firstAired;
+		this.firstAired = firstAired;
 	}
 
 	public void setOverview(String overview) {
@@ -99,28 +99,28 @@ public class Episode {
 		if (getClass() != obj.getClass())
 			return false;
 		Episode other = (Episode) obj;
-		if (aired_episode != other.aired_episode)
+		if (airedEpisode != other.airedEpisode)
 			return false;
-		if (aired_season != other.aired_season)
+		if (airedSeason != other.airedSeason)
 			return false;
-		if (cod_episode != other.cod_episode)
+		if (codEpisode != other.codEpisode)
 			return false;
-		if (cod_season != other.cod_season)
+		if (codSeason != other.codSeason)
 			return false;
 		if (comment == null) {
 			if (other.comment != null)
 				return false;
 		} else if (!comment.equals(other.comment))
 			return false;
-		if (episode_name == null) {
-			if (other.episode_name != null)
+		if (episodeName == null) {
+			if (other.episodeName != null)
 				return false;
-		} else if (!episode_name.equals(other.episode_name))
+		} else if (!episodeName.equals(other.episodeName))
 			return false;
-		if (first_aired == null) {
-			if (other.first_aired != null)
+		if (firstAired == null) {
+			if (other.firstAired != null)
 				return false;
-		} else if (!first_aired.equals(other.first_aired))
+		} else if (!firstAired.equals(other.firstAired))
 			return false;
 		if (overview == null) {
 			if (other.overview != null)
@@ -139,12 +139,12 @@ public class Episode {
 		StringBuilder sb = new StringBuilder();
 
 		sb.append("[ EPISODIO ]");
-		sb.append("\n Episodio id         : " + cod_episode);
-		sb.append("\n Temporada id        : " + cod_season);
-		sb.append("\n Número de temporada : " + aired_season);
-		sb.append("\n Número de episodio  : " + aired_episode);
-		sb.append("\n Título              : " + episode_name);
-		sb.append("\n fechaEmision        : " + first_aired);
+		sb.append("\n Episodio id         : " + codEpisode);
+		sb.append("\n Temporada id        : " + codSeason);
+		sb.append("\n Número de temporada : " + airedSeason);
+		sb.append("\n Número de episodio  : " + airedEpisode);
+		sb.append("\n Título              : " + episodeName);
+		sb.append("\n fechaEmision        : " + firstAired);
 		sb.append("\n Sinopsis            : " + overview);
 		sb.append("\n Visto               : " + seen);
 		sb.append("\n Comentario          : " + comment);
